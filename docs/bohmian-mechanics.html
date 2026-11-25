@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A first look at the guiding equation and probability current in nonrelativistic Bohmian mechanics.">
+  <title>How the wave function guides particles · Papers</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css"
+    integrity="sha384-WwGtaC6ywCHxA5cstpj/3+xIZvTez8dq2IcBQaXRkenHZ7FVVq1ZROtURwfbtTlG" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.js"
+    integrity="sha384-a1WQdjRj162i159OYq041X6I4K8NenkrI09LlPmiHg0YOb7CR+wJOraXwK9abpnE" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="math.js"></script>
+</head>
+<body>
+  <main>
+    <nav aria-label="Site"><a href="index.html">All papers</a></nav>
+    <article>
+      <header>
+        <h1>How the wave function guides particles</h1>
+        <p>In Bohmian mechanics, particles have positions that change with
+          time. The wave function gives a velocity field on configuration space,
+          and the actual configuration follows that field.</p>
+      </header>
+
+      <section aria-labelledby="guiding-equation">
+        <h2 id="guiding-equation">The guiding equation</h2>
+        <p>Consider \(N\) spinless particles in three dimensions with a
+          scalar potential \(V\). Their positions form a single configuration
+          \(Q(t)=(Q_1(t),\ldots,Q_N(t))\). The wave function \(\psi_t\)
+          evolves on configuration space according to Schrödinger’s equation.</p>
+        <div class="math-display">
+          \[
+            i\hbar\,\partial_t\psi_t
+            = -\sum_{k=1}^{N}\frac{\hbar^2}{2m_k}\Delta_k\psi_t + V\psi_t .
+          \]
+        </div>
+        <p>Write \(\nabla_k\) for the gradient in the \(k\)th particle’s
+          coordinates and \(m_k\) for its mass. At configurations where
+          \(\psi_t\) is nonzero, the guiding equation gives each velocity.</p>
+        <div class="math-display">
+          \[
+            \frac{dQ_k}{dt}(t) =
+            \frac{\hbar}{m_k}\operatorname{Im}
+            \left(\frac{\nabla_k\psi_t}{\psi_t}\right)(Q(t)).
+          \]
+        </div>
+        <p>For a wave function that couples the particle coordinates, the
+          velocity of one particle can depend on the positions of the others.</p>
+      </section>
+
+      <section aria-labelledby="probability-current">
+        <h2 id="probability-current">Where probability enters</h2>
+        <p>The velocity field is the quantum probability current divided by
+          the density \(\rho_t=|\psi_t|^2\). Schrödinger’s equation with a real
+          potential gives the continuity equation for this density.</p>
+        <div class="math-display">
+          \[
+            \partial_t\rho_t + \sum_{k=1}^N \nabla_k\cdot j_k = 0,
+            \qquad
+            j_k = \frac{\hbar}{m_k}\operatorname{Im}
+              \bigl(\overline{\psi_t}\,\nabla_k\psi_t\bigr).
+          \]
+        </div>
+        <p>Where the flow is well defined, this is the same equation for
+          transporting an ensemble of configurations along the guiding field.
+          Under suitable conditions, an ensemble initially distributed by
+          \(|\psi_0|^2\) therefore has density \(|\psi_t|^2\) at time \(t\).
+          This preservation is called <em>equivariance</em>.</p>
+      </section>
+
+      <section aria-labelledby="references">
+        <h2 id="references">References</h2>
+        <ul>
+          <li>James Oliver Taylor, <cite>Connections with Bohmian Mechanics</cite>,
+            Rutgers University, 2003. <a href="https://jostylr.com/pdfs/thesis.pdf">Thesis PDF</a></li>
+          <li>Roderich Tumulka, <cite>Bohmian Mechanics</cite>.
+            <a href="https://arxiv.org/abs/1704.08017">arXiv:1704.08017</a></li>
+        </ul>
+      </section>
+    </article>
+  </main>
+</body>
+</html>

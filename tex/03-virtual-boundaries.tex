@@ -1,0 +1,940 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts,amsthm,mathtools,bm}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{cor}{Corollary}
+\newtheorem{defn}{Definition}
+\newtheorem{principle}{Principle}
+\newtheorem{statement}{Statement}
+\theoremstyle{remark}
+\newtheorem{statementr}{Statement}
+
+\title{Virtual Boundaries and Cut-Independent Quantum Hamiltonians}
+\author{James Taylor}
+\date{Working draft derived from the 2003 thesis}
+\begin{document}
+\maketitle
+
+\section{Self-adjoint extensions from cutting} \label{s:sa}
+
+
+We now pursue the functional analytic approach. This approach is
+concerned with different self-adjoint extensions of the formal
+Hamiltonian on the same \ensuremath{L^{2}}\ space. We will formulate a principle
+based on this approach and it will correspond to the previous approaches. In
+particular, for each character of the fundamental group, we shall have
+a corresponding Bohmian theory. 
+We first introduce the rough picture and then provide bite-sized
+pieces of a precise treatment.
+
+The idea is to cut \ensuremath{\mathcal{Q}}\ in order to make it simply connected. That
+is to say, we shall specify a set $\ensuremath{\kappa} \subset \ensuremath{\mathcal{Q}}$ such that $
+\ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{\ensuremath{\kappa}}} \ensuremath{:=} \ensuremath{\mathcal{Q}} \setminus \ensuremath{\kappa}$ is a simply connected open
+set. We shall also demand that \ensuremath{\kappa}\ be appropriately smooth and
+minimal. If $E$ is a bundle over \ensuremath{\mathcal{Q}}, then $\ensuremath{\bar{E}_{\ensuremath{\kappa}}}$ denotes the
+restriction of  $E$ to $\ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{\ensuremath{\kappa}}}$. 
+We also have an induced Hamiltonian  acting on
+the sections with compact support in \ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{\ensuremath{\kappa}}}. But  such
+wave functions no longer form a domain of essential self-adjointness for $H$ in the
+Hilbert space $\ensuremath{L^{2}}(\ensuremath{\mathcal{Q}}, E)$. We
+therefore need to choose a self-adjoint extension of $H$. 
+Generally, there are many different extensions. 
+For us, a self-adjoint extension will be acceptable only if 
+the resulting Bohmian evolution cannot be used to detect which
+cut was used to generate the theory. 
+
+
+\subsection{The circle}
+
+ 
+Let us consider our canonical example, $\ensuremath{\mathcal{Q}} = S^1$, $E=
+\ensuremath{\mathcal{Q}} \times \ensuremath{\mathbb{C}}$. We parametrize the circle with 
+the angle $\theta$.
+A cut \ensuremath{\kappa}\ corresponds to choosing a point; say $\ensuremath{\kappa} = 0$ in the
+parametrization.   
+Once we cut it, then we may view the space as the interval $[0,
+ 2\pi]$. We wish to consider various self-adjoint extensions of the
+Laplacian defined on $\ensuremath{C^{\infty}_0}([0,2\pi])$. The domains of essential
+self-adjointness which correspond to the ones we have found before
+consist of functions in 
+$C^{\infty} ( [0, 2\pi])$
+ satisfying the boundary condition $D^n \ensuremath{\psi}( 2 \pi) = \gamma
+D^n \ensuremath{\psi} (0)$.\footnote{Here $\gamma$ must be of modulus one so that the
+Hamiltonian is symmetric on this domain as an integration by
+parts argument demonstrates.}  
+This corresponds to the
+periodicity condition $\ensuremath{\psi} (\theta + 2 \pi) = \gamma
+ \ensuremath{\psi} (\theta)$ on \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}\ 
+and it also corresponds to having 
+the connection $\nabla -  \frac{\ln(\gamma)}{2 \pi} d\theta$ on
+$ \ensuremath{\mathcal{Q}}\times \ensuremath{\mathbb{C}}$.
+
+
+It is a  fact that the full set of
+self-adjoint extensions  is a family parameterized by four
+parameters. The extensions above are
+ characterized by just one parameter. How do we discard the other
+extensions? The idea is that the Bohmian evolution should not depend
+upon which cut was chosen; in this regard, a cut should be thought of
+as a choice of coordinates. For example, if we choose the extension
+with boundary conditions that \ensuremath{\psi}\ vanishes at both endpoints, then
+we know that typically, the particle's trajectory will not cross the
+cut point. This is the kind of dependence that we are trying to
+avoid.  
+A variety of extensions have the property that the velocity
+field is ill-defined at the cut point; we certainly would exclude
+those extensions. There is one family of
+extensions for which the velocity field is defined and continuous at
+the cut point, but it is not smooth
+at the cut point. We exclude them as well. This leaves us with only
+the ones we had previously.
+
+We have roughly described why the other cuts are unsuitable from our
+perspective. The question is now whether the boundary conditions we
+consider good actually satisfy being cut-independent. 
+Choose $\gamma_1$ and $\gamma_2$ such that  $\gamma =
+\frac{\gamma_1}{\gamma_2}$.  
+Another cut, $\ensuremath{\kappa'} \in (0, 2\pi)$, would correspond to
+$[\ensuremath{\kappa'}, \ensuremath{\kappa'}
++2\pi]$. A unitary equivalence map \ensuremath{U^{\ensuremath{\kappa}{'}  \ensuremath{\kappa}{}}} from \ensuremath{\kappa'}\ to \ensuremath{\kappa}, which
+preserves the Bohmian velocities except at the cut points, is
+\[
+\ensuremath{U^{\ensuremath{\kappa}{'}  \ensuremath{\kappa}{}}}(\theta) \ensuremath{\psi}(\theta) \ensuremath{:=} \begin{cases}
+                         \gamma_1 \ensuremath{\psi}(\theta) & \theta \in (0, \ensuremath{\kappa'})\\
+                         \gamma_2 \ensuremath{\psi}(\theta) & \theta \in (\ensuremath{\kappa'}, 2\pi)
+                        \end{cases}.
+\]
+As this map is constant away from the cuts, it is rather
+self-evident that the Bohmian velocity field is unchanged under this mapping.
+Furthermore, this is a bijection between the domains; choosing the
+$\gamma_i$ so that  the ratio is $\gamma$ is the key fact. This
+ensures that the 
+discontinuity at \ensuremath{\kappa'}\ disappears while the smoothness at
+\ensuremath{\kappa}\ is replaced with a discontinuity
+ ensuring that the wave function\ satisfies the
+boundary condition.
+As the wave function\ evolution will commute with this mapping, we can see that
+the Bohmian evolution is independent of which cut is chosen in the
+formation of the Hamiltonian.
+
+
+Let us make a couple of remarks about approaches that did not work. 
+If we  were to demand that the wave function's  evolution
+is independent of the cut, then the only allowed boundary condition is
+ the trivial periodic
+boundary condition;  the only domain which is
+independent of the cut is the one in which \ensuremath{\psi}, and its derivatives,
+agree at the boundary.
+ Another possibility, one which is too weak, is
+that of unitary equivalence. On the circle, given any extension based
+on a cut, we can implement a rotation on the circle and obtain a
+unitarily equivalent evolution based on another cut. That is to say,
+unitary equivalence excludes nothing. 
+
+
+\subsection{What is a cut?}
+We first need to define what a cut is. After doing that, we 
+consider certain illuminating examples although the most illuminating
+is in the context of identical particles as discussed in the next chapter. 
+
+A cut, \ensuremath{\kappa}, is a closed subset of \ensuremath{\mathcal{Q}}\ satisfying
+\begin{enumerate}
+\item Its complement, \ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{\ensuremath{\kappa}}}, is a simply connected
+set.\footnote{We take simply connected to also imply that the space is
+connected. 
+}
+\item If $\ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{\ensuremath{\kappa}}} \subset A$ and $A$ is an open, simply connected
+subset of \ensuremath{\mathcal{Q}}, then $A = \ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{\ensuremath{\kappa}}}$.
+\item The cut \ensuremath{\kappa}\ should be smooth in the sense that about any point
+$p \in \ensuremath{\kappa}$, there is a neighborhood $V$ such that $V \cap \ensuremath{\kappa}$ is
+the union of a finite number of regular, $(n-1)$-dimensional
+submanifolds.\footnote{A regular
+submanifold is one in which every point of it has a coordinate
+chart in the manifold 
+in which the submanifold looks like a subspace in that coordinate
+system. This assumption of regularity 
+is to avoid having a boundary such as the following in
+the plane:  
+$\{(x, \sin(\frac{1}{x}))| 0<x\leq 1\} \cup \{(0,y)| y \in [-1,1]\}$.
+ That is not the kind of boundary we want. Note that in that
+example, any small neighborhood about the origin has an
+infinite number of disconnected  lines arising from 
+the intersection of the submanifold
+with the neighborhood.}   
+\end{enumerate}
+
+
+For $S^1$, an $(n-1)$-dimensional submanifold is a point. If we remove
+more than one point, then the resulting space ceases to be
+connected. Thus, a cut \ensuremath{\kappa}\ for the circle is the removal of a single
+point. For the torus, $T^2$, an example of a cut is the removal of a
+horizontal circle and a vertical circle. Their intersection is
+typically a
+single point. In the usual representation of the torus as a square in
+the plane, the boundary of the square is the cut \ensuremath{\kappa}\ and the
+interior is the fundamental domain, \ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{\ensuremath{\kappa}}}. Analogously,
+if we take a cube in \ensuremath{\mathbb{R}^{3}}\ and identify opposite sides to obtain
+$T^3 = S^1\times S^1 \times S^1$, then the
+boundary of the cube is a cut. Notice that it consists of the union
+of three copies of $T^2$. The twelve edges of the cube are the
+three circles each of which  corresponds to an intersection of two of these
+surfaces. The corners
+ correspond to the single point of $T^3$ in which all three
+manifolds intersect.  In contrast, a vertical cylinder's cut is a vertical
+line which is a single $(2-1)$-dimensional submanifold with no
+self-intersections.  
+
+
+\subsection{BV-equivalence and cut-independent self-adjoint extensions}
+
+
+We shall now make a precise expression as to what it means for the
+ Bohmian evolution to be independent of the cut. 
+We define two self-adjoint operators $H_1$  and $H_2$ to be
+\emph{BV-equivalent} iff there exists a unitary operator $U: 
+L^2[\ensuremath{\mathcal{Q}},E] \to L^2[\ensuremath{\mathcal{Q}}, E]$ such that 
+\begin{enumerate}
+\item  $v^{\ensuremath{\psi}} (\ensuremath{q}) 
+= v^{U \ensuremath{\psi}} (\ensuremath{q})$ almost everywhere (w.r.t. Lebesgue measure)
+\item $U H_1 \ensuremath{\psi} = H_2 U \ensuremath{\psi}$ for every $\ensuremath{\psi}$ in the domain of $H_1$. 
+\end{enumerate}
+This does define an equivalence relation on the set of self-adjoint
+operators.\footnote{Composition of two BV-equivalences is clear
+enough.  As for the inverse of BV-equivalence being a BV-equivalence,
+the first property is still clear. For the
+second property, the domain is the issue. To resolve it, take
+ the adjoint of the equation and use the facts
+that both $H_1$ and $H_2$ are self-adjoint and $U$ is unitary. Thus,
+one can conclude $U^{-1} H_2 = H_1 U^{-1}$.} 
+We shall state what these conditions imply, but we shall only give a
+rough argument in establishing  the
+implications. 
+
+
+Since the velocity fields must be defined at the same places (almost
+everywhere), the supports of $\ensuremath{\psi}$ and $U \ensuremath{\psi}$ must be
+the same. This implies that $U$ is a unitary matrix-valued function over
+\ensuremath{\mathcal{Q}}, i.e.\ $(U \ensuremath{\psi}) (\ensuremath{q})  = U(\ensuremath{q}) \ensuremath{\psi}(\ensuremath{q}) $, with $U(\ensuremath{q})$ a
+unitary matrix acting on the value space of \ensuremath{\psi}.\footnote{This follows
+from the fact that $U$ commutes with all of the position spectral
+measures. If we were discussing only scalar valued wave functions, we could 
+then say that $U$ is diagonalizable in the position
+representation. The reason for the commutation is that if $P_A$ is a
+projection operator onto the wave functions with support in $A$, then $U P_A
+(\ensuremath{\psi}_A + \ensuremath{\psi}_{A^c}) = U \ensuremath{\psi}_A  = P_A( U\ensuremath{\psi}_A + U\ensuremath{\psi}_{A^c})$; all that
+is necessary is that $U$ preserves supports.}
+Furthermore, $U$
+should be smooth except for a set of measure zero; the set of measure zero
+arises since we only demand agreement up to a set of measure zero. We can
+then use the 
+preservation of the velocities to conclude that $U$ has to be 
+constant 
+in any region of smoothness.\footnote{We really mean parallel, i.e.\ $\nabla U =0$.  
+We shall generally use the term constant especially since $U$ will
+generally 
+be a pointwise 
+multiple of the identity.} 
+The second condition implies that $U$ bijectively maps
+the domain of $H_1$ to the domain of $H_2$.\footnote{From an orthodox
+perspective, one would presumably demand that the local density is
+unaffected by the unitary transformation. This immediately leads to
+$U(q)$. To argue that it is locally constant, one would need to invoke
+the commutation with the Hamiltonian. In particular, one needs 
+$[\ensuremath{\Delta}, U] =0$. This immediately leads to, acting on a test function
+\ensuremath{\psi}, $(\ensuremath{\Delta} U) \ensuremath{\psi} + \nabla U \cdot \nabla \ensuremath{\psi} = 0$. Thus, $U$ is
+locally constant.}
+
+Equipped with a satisfactory notion of equivalence, we shall state
+precisely what  cut-independence of the extension means.
+Given a cut \ensuremath{\kappa}, we define $\ensuremath{H_{\ensuremath{\kappa}}}^{0}$ to be the formal Hamiltonian 
+ $ -\ensuremath{\Delta} +V$  with domain 
+$\ensuremath{C^{\infty}_0}(\ensuremath{\bar{E}_{\ensuremath{\kappa}}})$. By $\ensuremath{H_{\ensuremath{\kappa}}}$, we shall mean a self-adjoint extension 
+of $\ensuremath{H_{\ensuremath{\kappa}}}^{0}$. 
+Then  \ensuremath{H_{\ensuremath{\kappa}}}\ is
+\emph{cut-independent} iff for each cut \ensuremath{\kappa'}, there is a
+corresponding $\ensuremath{H_{\ensuremath{\kappa'}}}$  which is BV-equivalent to \ensuremath{H_{\ensuremath{\kappa}}}. 
+Although there are many choices, we shall simply assume that 
+a 
+BV-equivalence map taking $\ensuremath{H_{\ensuremath{\kappa}}} \to \ensuremath{H_{\ensuremath{\kappa'}}}$
+ has
+been chosen; it will be 
+denoted by
+\ensuremath{U^{\ensuremath{\kappa}{}  \ensuremath{\kappa}{'}}}. 
+
+
+\subsection{The principle}
+
+We now establish a family of cut-independent self-adjoint extensions,
+one for each character. The construction is to appeal to the covering
+space to obtain the relevant evolution.  
+To do this, we  show that given a periodicity
+condition on the covering space, we do have a corresponding
+cut-independent self-adjoint extension.
+
+In many ways, the cut approach is a non-smooth version of the
+covering space approach. 
+Indeed, select a fundamental domain\footnote{A fundamental domain is a
+region of the covering space which bijectively corresponds, under the
+projection map, to \ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{\ensuremath{\kappa}}}. In more general contexts, the boundary of
+a fundamental domain is allowed to be quite wild.} $R$ on the covering space
+whose boundary is contained in the lift of \ensuremath{\kappa}. 
+Given a character, \ensuremath{\gamma},
+define
+\[\Lambda_{\ensuremath{\gamma_{}}} \ensuremath{:=} \{\phi \in \ensuremath{\mathcal{D}}(H)
+| \phi(\sigma
+\ensuremath{\hat{q}}) = \ensuremath{\gamma_{\ensuremath{\sigma}}} \phi(\ensuremath{\hat{q}}) \forall \ensuremath{\hat{q}} \in \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}\},
+\]
+the set of smooth sections of the lifted bundle
+$\ensuremath{\widehat{E}}$ satisfying the periodicity condition defined by \ensuremath{\gamma}. 
+The unitary evolution on the covering space preserves this
+domain and preserves the \ensuremath{L^{2}}\ norm of each section restricted to the
+region. Define the dense domain of $\ensuremath{L^{2}}(\ensuremath{\mathcal{Q}}, E)$
+\[
+\ensuremath{E_{\ensuremath{\kappa}, \ensuremath{\gamma_{}}}}  \ensuremath{:=}
+\{\ensuremath{\psi} | \exists \phi \in \Lambda_{\ensuremath{\gamma_{}}} \text{ s.t. }
+ \forall \ensuremath{q} \in \ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{\ensuremath{\kappa}}},  \ensuremath{\psi}(\ensuremath{q}) = \phi(\ensuremath{\hat{q}})  \text{ for
+the unique } \ensuremath{\hat{q}} \in (\ensuremath{\ensuremath{\rho}}^{-1} (\ensuremath{q}) \cap R)\}
+\]
+and let $\ensuremath{\ensuremath{\rho}}_R(\phi)$ be the bijection making the correspondence between
+the elements of $\Lambda_{\ensuremath{\gamma_{}}}$ and \ensuremath{E_{\ensuremath{\kappa}, \ensuremath{\gamma_{}}}}.
+Then the covering space evolution defines a unitary evolution on
+\ensuremath{E_{\ensuremath{\kappa}, \ensuremath{\gamma_{}}}}\ which takes the domain to itself. 
+Thus, if we define \ensuremath{H_{\ensuremath{\kappa}}}\ to be the formal Hamiltonian defined on
+\ensuremath{E_{\ensuremath{\kappa}, \ensuremath{\gamma_{}}}},  then \ensuremath{H_{\ensuremath{\kappa}}}\ is self-adjoint. 
+
+To establish that \ensuremath{H_{\ensuremath{\kappa}}}\ is cut-independent, we choose another cut
+\ensuremath{\kappa'}. We select a fundamental domain $R'$ on \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}\ 
+ with a boundary formed
+from the lift of \ensuremath{\kappa'}. We do the same process again to generate
+\ensuremath{H_{\ensuremath{\kappa'}}}, choosing the same periodicity condition as the one for \ensuremath{H_{\ensuremath{\kappa}}}. 
+The BV-equivalence mapping is extremely simple. Let $f^{RR'}$ be the
+map taking $R$ to $R'$ which is defined away from the boundary.
+Then the BV-equivalence map is
+\[
+\ensuremath{U^{\ensuremath{\kappa}{}  \ensuremath{\kappa}{'}}} \ensuremath{\psi}(\ensuremath{q}) 
+= \ensuremath{U^{\ensuremath{\kappa}{}  \ensuremath{\kappa}{'}}} \ensuremath{\ensuremath{\rho}}_R(\phi) (\ensuremath{q}) 
+\ensuremath{:=} \phi(f^{RR'}(\ensuremath{\ensuremath{\rho}}^{-1}_R(\ensuremath{q})) 
+=\ensuremath{\gamma}_{\sigma(\ensuremath{q}, f^{RR'})} \ensuremath{\ensuremath{\rho}}_R(\phi) (\ensuremath{q}).
+\]
+In words, we take our wave function\ in \ensuremath{E_{\ensuremath{\kappa}, \ensuremath{\gamma_{}}}}, lift it to the appropriate wave function\ on
+the covering space, using the level $R$, then we project down the
+corresponding parts of that wave function\ defined over $R'$.  If
+$\ensuremath{q} \in R \cap R'$, then the BV-equivalence map at \ensuremath{q}\ is the
+identity. Elsewhere, it would be multiplication by the appropriate
+phase induced by the periodicity condition.  
+Thus, given a character and a cut, we have a 
+ cut-independent self-adjoint extension of the formal 
+Hamiltonian. 
+
+
+As a general principle, we can state the following. 
+\begin{principle}[Abelian Quantization Principle, H]
+To specify a Bohmian theory, one needs to pick a Riemannian manifold
+ $\ensuremath{\mathcal{Q}}$, a 
+ cc-Hermitian\ vector bundle $E$ over
+ \ensuremath{\mathcal{Q}}, a potential $V$, and a character \ensuremath{\gamma}\
+ of the fundamental group \ensuremath{\pi_1 ({\ensuremath{\mathcal{Q}}})}.
+ The Bohmian
+ theory $(\ensuremath{\mathcal{Q}}, E, V, \ensuremath{\gamma})_H$ is defined by 
+\eqref{ie:ve}
+where  the wave function\
+$\ensuremath{\psi}_t$ is a section of the bundle $ E$ and $H$ is the cut-independent
+ self-adjoint extension defined by \ensuremath{\gamma}\ and the cut \ensuremath{\kappa}. 
+
+\end{principle}
+
+
+\subsection{ Characterization of cut-independence }
+Given a cut-independent self-adjoint
+extension whose BV-equivalence map is
+of the form 
+$ \gamma_{ \ensuremath{q} } \ensuremath{\text{Id}} $, 
+then there is an associated character of \ensuremath{\pi_1 ({\ensuremath{\mathcal{Q}}})}.
+In general, 
+the various unitary representations of the fundamental group characterize the
+possible cut-independent extensions; this can be argued in a similar
+vein as below. As shall be explained in the next chapter, there is
+good reason to ignore such possibilities. 
+
+Therefore, for the rest of this section, BV-equivalence
+maps will be multiples of the identity. 
+
+\begin{theorem}
+Let $E$ be a cc-Hermitian\ vector bundle over the Riemannian configuration
+space \ensuremath{\mathcal{Q}}\ and $V$ a potential acting on $E$. 
+Let \ensuremath{H_{\ensuremath{\kappa}}}\ be a cut-independent self-adjoint extension 
+generating the Bohmian theory $(\ensuremath{\mathcal{Q}}, E, V)_{\ensuremath{H_{\ensuremath{\kappa}}}}$ whose
+BV-equivalence maps are scalar multiples of the identity. Then there
+exists a character $\ensuremath{\gamma}$ such that 
+ $(\ensuremath{\mathcal{Q}}, E, V)_{\ensuremath{H_{\ensuremath{\kappa}}}} \ensuremath{\simeq} (\ensuremath{\mathcal{Q}}, E, V, \ensuremath{\gamma})_{\nabla}$.
+\end{theorem}
+
+From the equivalence proved in Section {\ref{s:fb}}, we can conclude that
+the set of cut-independent self-adjoint extensions is characterized by
+the cut and a character. 
+
+\begin{proof}
+
+We start with the cut-independent \ensuremath{H_{\ensuremath{\kappa}}}. 
+Each pair $(\ensuremath{\bar{E}_{{\ensuremath{\kappa'}}}}, \ensuremath{U^{\ensuremath{\kappa}{}  \ensuremath{\kappa}{'}}})$ is to be a generalized chart for our
+bundle.\footnote{By generalized, we mean that we are not actually
+going to write down coordinate charts. Instead these are neighborhoods
+with a bundle structure already implied. Our construction does not
+require us to go to coordinates; it only requires us to have patches
+that we can put together differently.} The transition
+map  going from the chart of $\ensuremath{\kappa}'$ to the chart of $\ensuremath{\kappa}''$ is the
+(BV-equivalence) map 
+\[
+\ensuremath{U^{\ensuremath{\kappa}{'}  \ensuremath{\kappa}{''}}} \ensuremath{:=} \ensuremath{U^{\ensuremath{\kappa}{}  \ensuremath{\kappa}{''}}}(\ensuremath{U^{\ensuremath{\kappa}{}  \ensuremath{\kappa}{'}}})^{-1} .
+\] These maps are smooth away from
+the cuts $\ensuremath{\kappa}'$ and $\ensuremath{\kappa}''$; we shall establish this later. 
+We then form the disjoint union of all of these charts and define our vector
+bundle to 
+ be the set of equivalence classes under the relation
+\begin{equation} \label{ei:eqvr}
+(\ensuremath{q}, v)_{\ensuremath{\kappa}'} \ensuremath{\sim} (\ensuremath{q}, w)_{\ensuremath{\kappa}''} \text{ iff }
+\ensuremath{U^{\ensuremath{\kappa}{'}  \ensuremath{\kappa}{''}}} v = w;
+\end{equation}
+By $(\ensuremath{q}, v)_{\ensuremath{\kappa}'}$ we mean that $\ensuremath{q} \in \ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{{\ensuremath{\kappa'}}}}$
+and $v \in E_{\ensuremath{q}}$. 
+Because  BV-equivalence is an equivalence relation, the relation above
+is indeed an equivalence relation.
+Quite generally, 
+it can be shown that this setup does define a bundle as is often done
+in the context of physics. We shall call this bundle $G$. 
+Parallel transport is defined, in a chart, as  the 
+parallel transport in $E$.
+Furthermore, \ensuremath{H_{\ensuremath{\kappa}}}\  defines a Schr\"odinger\ evolution
+with the correct formal Hamiltonian on $G$; cut-independence is
+important to show that the evolution in any of the other charts is
+compatible. The first property for BV-equivalence establishes
+that the Bohmian evolution will be the same either using \ensuremath{H_{\ensuremath{\kappa}}}\ or the
+bundle $G$.  
+
+All that remains is to demonstrate that $G = F_{\ensuremath{\gamma}} \otimes E$,
+for some flat line bundle $F_{\ensuremath{\gamma}}$. For this, consider the
+parallel transport of the element $v \in E_{\ensuremath{q}}$, $\ensuremath{q} \in
+\ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{\ensuremath{\kappa}}}$, around the closed loop
+$\alpha$, parametrized in the interval $[0,1]$. 
+For simplicity, assume that $\ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{\ensuremath{\kappa}}}$ and
+$\ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{{\ensuremath{\kappa'}}}}$ form a cover of $\alpha$ and that it is possible to
+find $t_1, t_2$
+such that $\alpha_t \in \ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{\ensuremath{\kappa}}}$ for $t \in [0,t_1] \cup [t_2, 1]$
+while $\alpha_t \in \ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{{\ensuremath{\kappa'}}}}$ for $t \in [t_1, t_2]$.  
+Then parallel transport along $\alpha$ is 
+\[
+P_{\alpha_0 \to \alpha_1}^G v =
+P_{\alpha_{t_2} \to \alpha_1}^{\ensuremath{\bar{E}_{{\ensuremath{\kappa}}}}} 
+\ensuremath{U^{\ensuremath{\kappa}{'}  \ensuremath{\kappa}{}}}_{\alpha_{t_2}}  
+P_{\alpha_{t_1} \to \alpha_{t_2}}^{\ensuremath{\bar{E}_{{\ensuremath{\kappa'}}}}}
+\ensuremath{U^{\ensuremath{\kappa}{}  \ensuremath{\kappa}{'}}}_{\alpha_{t_1}} P_{\alpha_{0} \to \alpha_{t_1}}^{\ensuremath{\bar{E}_{{\ensuremath{\kappa}}}}} v
+= \ensuremath{U^{\ensuremath{\kappa}{'}  \ensuremath{\kappa}{}}}_{\alpha_{t_2}} \ensuremath{U^{\ensuremath{\kappa}{}  \ensuremath{\kappa}{'}}}_{\alpha_{t_1}} P_{\alpha_0 \to
+\alpha_1}^E v 
+\]
+where we used the fact that the BV-equivalence maps commute with the
+parallel transport operators which is especially true as they are just
+scalars. Thus, we have that parallel transport is just parallel
+transport in $E$ times a phase factor. To finish the argument, we need
+to argue that the phase factor depends only on the homotopy class of
+the curve. This follows from two facts. First, within a chart, we can
+smoothly vary the path $\alpha$ without changing the phase part since
+BV-equivalence maps are constant away from the boundaries. Second,
+parallel transport is independent of the charts.
+
+
+ Except for establishing smoothness of the BV-equivalence maps, 
+we have arrived at our result. The flat line bundle that we tensor
+with $E$ has the holonomy given by the phase holonomy constructed from
+the BV-equivalences as done above. 
+
+
+We now  establish some smoothness results. We need this to
+demonstrate that the transition maps are smooth where they are
+supposed to be. This will also establish that the appropriate wave functions in
+the domain of \ensuremath{H_{\ensuremath{\kappa}}}, those that are smooth enough to provide a Bohmian
+evolution, actually become the smooth sections of $G$ in the
+construction. Although this seems like a side remark, it is actually
+quite important as it demonstrates the restrictions placed on the
+BV-equivalence maps due to property 2 of the definition for being a
+BV-equivalent map. 
+
+Given an operator $A$,  let $\ensuremath{\mathcal{D}}(A)$ be the domain of $A$. Define
+$\ensuremath{C^{\infty}}(A) \ensuremath{:=} \bigcap_{n=1}^{\infty} \ensuremath{\mathcal{D}}(A^n)$. Let \ensuremath{H_{\ensuremath{\kappa}}}\ be a
+cut-independent self-adjoint extension and \ensuremath{H_{\ensuremath{\kappa'}}}\ be a BV-equivalent
+extension. Then, from the definition of BV-equivalence, it is clear that
+$\ensuremath{C^{\infty}}(\ensuremath{H_{\ensuremath{\kappa}}})$ is mapped into $\ensuremath{C^{\infty}}(\ensuremath{H_{\ensuremath{\kappa'}}})$. By Sobolev regularity
+theorems for the Laplacian, we actually have that $\ensuremath{C^{\infty}}(\ensuremath{H_{\ensuremath{\kappa}}})$
+consists of smooth functions away from the boundary and these
+functions, and their derivatives, have limits as one approaches the
+boundaries. Therefore, the image of a smooth section under a 
+BV-equivalence map  is smooth. 
+Since a BV-equivalence map is multiplication by a
+function, we can deduce that the
+BV-equivalence map must be smooth away from the boundaries. Furthermore,
+the jumps along a given cut are prescribed by the domain of the extension 
+corresponding to that cut. 
+
+Since BV-equivalence is an equivalence relation, the same statement
+holds for the composition of BV-equivalence maps. Thus, the map
+$\ensuremath{U^{\ensuremath{\kappa}{}  \ensuremath{\kappa}{'}}} \ensuremath{U^{\ensuremath{\kappa}{''}  \ensuremath{\kappa}{}}}$ is smooth along $\ensuremath{\kappa}$ wherever $\ensuremath{\kappa}$ does
+not intersect either of the other cuts. One can also then understand
+that under the equivalence map defining the bundles, sections in
+$\ensuremath{C^{\infty}}(\ensuremath{H_{\ensuremath{\kappa}}})$ that
+might not look smooth along the boundary do get mapped to sections
+that are smooth along \ensuremath{\kappa}\ in the new chart although they will
+generally cease to be smooth along the cut of the new chart. 
+
+\end{proof}
+
+
+\section{Comparisons} {\label{s:comp}}
+
+In this chapter, we have described three very different approaches to
+finding various theories. To summarize, we have shown that there is
+only one Abelian Quantization Principle, i.e., 
+\[
+(\ensuremath{\mathcal{Q}}, E, V, \ensuremath{\gamma}) 
+\ensuremath{:=} (\ensuremath{\mathcal{Q}}, E, V, \gamma)_{\ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}} 
+\ensuremath{\simeq} (\ensuremath{\mathcal{Q}}, E, V, \gamma)_{\nabla} 
+\ensuremath{\simeq} (\ensuremath{\mathcal{Q}}, E, V, \gamma)_{H}.
+\] 
+Although equivalent,  each approach had a different feeling to
+it. Indeed, the covering space approach is to change the domain of
+the wave function\ into a simply connected space. The bundle approach is to change the
+notion of derivative; to a certain extent, we can view this as
+changing the range of the wave function. 
+The self-adjoint extension
+approach directly  
+changes the Hamiltonian. It is not at all obvious that all
+three approaches should have worked and it is quite remarkable 
+ that they produce the same
+possibilities. We shall now attempt to contrast the three
+approaches. 
+
+
+Our first approach was to use the covering space; this 
+ is a topological solution. Indeed, since 
+topology is responsible for these extra possibilities, it seems quite
+natural to attempt to trivialize the topology. The usual
+topological mechanism for  a trivialization is the use of the 
+ simply connected covering space particularly when gradients are involved. 
+ We used Bohmian mechanics to explain why the
+covering space is useful. The Bohmian constraint is the condition of
+projectability of the velocity field. The immediate solution
+ is the scalar periodicity condition. We demonstrated that this works
+ for any Bohmian theory. In the next chapter, we shall show that,
+ generically, the scalar periodicity 
+ condition is the only periodicity condition that works.
+The true advantage of the covering space is its simplicity. Noticing
+ that it is a character which is at work is immediate. It also 
+provides a single framework for all of the various
+ possible theories.
+ A minor disadvantage is that the covering space causes certain
+ worries to occur. One worry, easily dismissable, but very
+ tempting, is to be bothered by the possibility of 
+  wave functions  on the covering space 
+ whose Bohmian velocities project down to the base
+ space for all time without satisfying any periodicity conditions.
+The appropriate response is that the goal is to find theories, not
+ exceptions, but many may be unsatisfied with this. Another worry, of
+ a very technical nature, is that for spaces with infinite fundamental
+ groups, the wave functions satisfying a periodicity condition are not in
+ \ensuremath{L^{2}}. This technical problem can be dealt with in a variety of ways,
+ such as appealing to the other approaches or perhaps to the theory of
+ rigged Hilbert spaces, 
+ but it is still an annoyance. 
+
+
+The approach of considering different self-adjoint extensions is a
+functional analysis approach. The issue is, after all, about the
+evolution of a system. But in order to consider these possibilities,
+we had to the cut space in such a way to make it simply
+connected. Then our self-adjoint extension could be thought of as
+describing what happens along this virtual boundary. The picture to
+have is that 
+as a wave packet passes through the boundary, it picks up a phase. But
+considering all self-adjoint extensions is to consider a great number
+of possible theories. The necessary demand for the extension to be
+physically reasonable was that the extension was cut-independent. This
+notion was grounded in the Bohmian evolution not detecting which cut
+was used. 
+ We immediately constructed a cut-independent extension for each
+character; one way was to appeal to the covering space. But in this
+context, it seemed necessary to rule out the vast number of other
+possibilities, which we did.  Unlike the covering space, these
+possibilities  did form their own theory. We dismissed them 
+on the grounds that  
+ they  introduced an element assumed to be not  in the physics, in
+much the same way that physics demands an appropriate 
+invariance under coordinate changes. 
+
+The bundle approach is a geometric solution. As wave functions are sections of
+a vector bundle,  the idea is to consider various different
+connections potentially involving various bundles. 
+The important fact is that having a non-trivial fundamental group 
+implies the  existence of inequivalent flat bundles. 
+ This allowed us to define different Bohmian
+theories by tensoring the original bundle with a flat line bundle. 
+Interestingly, 
+the bundle approach does not seem to  offer any wrong directions. 
+We had no isolated
+wave functions and we had no obvious alternative theories. In terms of
+tensoring with a line bundle, only the flat ones are allowed and they
+are easily classified. One could ask the question if it is possible to
+have locally equivalent bundles which are not constructed in this
+manner. This is the case for flat bundles, 
+as all flat bundles of a given dimension are
+locally equivalent to each other, 
+but from the experience with spin as detailed in the next chapter, 
+it seems that the only generically
+permitted construction is tensoring with a flat line bundle. 
+
+
+One strength of the bundle approach is in the following question:
+ Given the existence
+of certain structures, such as spin,
+ necessary for the kinds of theories we want,
+what are the possible bundles over the configuration space that can
+support these structures? 
+Although interesting, this question is not what this work is
+ addressing.  Indeed, that question applies for simply
+connected spaces and requires the consideration of very specific theories
+such as those involving spin. 
+
+
+As to the role of Bohmian mechanics in these considerations, the main
+role is to solidify the notion that wave functions
+are not primary objects and to explain what is of primary concern,
+namely the particles and their evolution.
+Indeed, the wave function\ does not need to be well-defined on the base
+space, only the Bohmian velocity field needs to be. 
+To put it more
+succinctly, wave functions should be thought of as more in the nature of
+potentials, which are certain artifacts of describing the dynamics,
+and less in the nature of electromagnetic fields, which are actually 
+exact objects. 
+
+And yet we are not implying that these arguments cannot be made in
+standard quantum mechanics. If one accepts, as an axiom, that the local
+density is the central object in the theory, then the same results
+will follow in almost the same way. 
+The cut 
+ approach would replace the preservation of the velocity fields
+with the preservation of the density. 
+In the covering space approach, the projectability of the density would
+ replace the projectability of the velocity field. 
+The only actual change in the arguments would be the need to use the
+Laplacian to demonstrate local constancy of the periodicity or boundary
+conditions. 
+
+\section{Local equivalence} \label{is:leqv}
+
+A hidden principle that we have found to be a useful guide is that of
+local equivalence. Given the data $(\ensuremath{\mathcal{Q}}, E, V)$, the various 
+theories generated by
+the Abelian Quantization Principle\ are all locally equivalent to each other. This means that
+only global considerations
+ can distinguish the theories. 
+
+
+What does local equivalence 
+mean? Roughly, the equations of motion look locally the same. The
+objects generating the theory such as $g$, $\nabla$, and $V$ are all
+local objects and, in a certain sense,  locally they remain unchanged. 
+The global difference comes in from the
+character. Another way of saying what local equivalence is, is to
+consider coordinates in a neighborhood 
+and write down the equations, restricted to that neighborhood, in those
+coordinates. The theories are locally equivalent if, in the
+appropriate coordinates, the equations are the same. 
+ Appropriate coordinates means the following. Pick a
+point $\ensuremath{q} \in \ensuremath{\mathcal{Q}}$ and a simply connected neighborhood of
+\ensuremath{q}. 
+Choose
+a basis of the tangent space at $\ensuremath{q}$ and a basis of $E$ at
+\ensuremath{q}. Then pick normal coordinates for \ensuremath{\mathcal{Q}}\ 
+and parallel transport the basis
+of the vector bundle along the geodesics in \ensuremath{\mathcal{Q}}. One can then show
+that the equations are the same. 
+
+Local equivalence helps us limit the possibilities. This chapter has
+shown that, as far as we can imagine, AQP describes all the possible
+locally equivalent theories. But if we allow  the dimension of the
+bundle fiber to change, then we can find other theories for which 
+the theories are locally equivalent in terms of individual 
+components, but they are not,
+strictly speaking, 
+locally equivalent as the number of components is different. 
+More to the point, if $G$ is the  tensor product of  $E$ with some flat bundle
+$F$, then there is no local isomorphism between $G$ and $E$ if $F$ is
+not a line bundle. Nevertheless, if the initial wave function\ is a product
+state, then its evolution will locally look like it is a section of
+$E$. The relevance of such possibilities is rather unclear. 
+
+
+\section{Quantization of classical systems} \label{is:quant}
+
+We finish the chapter by indicating how to quantize a classical system
+from a Bohmian point of view. The procedure is little more than Schr\"odinger\
+quantization, i.e.\ writing down  Schr\"odinger's equation. One of the uses of Bohmian
+mechanics is that this is all that needs to be chosen; the Bohmian
+velocity law is always the same. Bohmian mechanics also provides the
+appropriate framework in order to recover the classical system in the
+classical limit of the quantum theory. Finally, we use the ideas of
+this chapter to quantize a classical system whose force is only locally
+a gradient, i.e.\ the potential is only well-defined on the universal
+covering space.  
+
+\subsection{Newtonian dynamics on a manifold}
+We start with a Riemannian configuration space \ensuremath{\mathcal{Q}}, 
+with metric $g$, and a
+real-valued potential function $V$ defined on \ensuremath{\mathcal{Q}}.
+This is
+enough information to define a classical evolution on 
+\ensuremath{\mathcal{Q}}. Indeed, the Levi-Civita connection, defined by the metric,
+allows the acceleration vector to be defined. The metric also provides
+a canonical isomorphism between 
+ 1-forms and tangent vectors. Thus, given $V$, we have
+Newton's equation: $\ddot{Q} = - \nabla V$. Equivalently, Newton's 
+ equation may be written, in terms of 1-forms, as 
+$g(\ddot{Q}, \cdot) = -dV(\cdot)$. An immediate
+consequence of this equation is conservation of energy, 
+$ \frac{1}{2}g(\dot{Q},\dot{Q}) + V(Q) = E$. 
+
+\subsection{Bohmian Quantization}
+The question we address is what the corresponding quantum system
+is. The general prescription is that our wave functions are to be
+complex-valued functions and the Hamiltonian is 
+$-\ensuremath{\Delta}+V$. The wave function\ evolves according to Schr\"odinger's equation\ \eqref{ie:rse}. 
+This is Schr\"odinger\ quantization. To complete the theory, we take Bohm's
+equation \eqref{ie:rbe} as defining the evolution of the particles. 
+
+This should be contrasted with standard quantum mechanics in which the
+theory is only fully specified after the relevant observables are
+chosen. 
+This can
+be tricky since generally the momentum operator does not exist,
+e.g.\ the half-line, or the position operator does not exist, e.g.\ the
+circle. The relevant data for quantum theories does exist, as can be
+deduced from Bohmian mechanics, but the story becomes much more
+complicated and requires the finesse of a master in order to do it
+correctly without the aid of Bohmian mechanics. 
+
+\subsection{Classical limit}
+When one quantizes a system, the main purpose is to form a quantum
+theory which, under certain suitable conditions, will behave like the
+given system. 
+From a
+Bohmian perspective, this is formally clear. Indeed, just as in \ensuremath{\mathbb{R}^{n}},
+we can write Schr\"odinger's equation, using the polar form $\ensuremath{\psi} = Re^{iS/\ensuremath{\hbar}}$, as two
+coupled real equations. One of the equations is the
+Hamilton-Jacobi equation for the above classical system with an
+additional term, the quantum potential
+$(\frac{-\ensuremath{\hbar}^2\ensuremath{\Delta} R}{2R})$. Thus, in any region in which
+ this potential may be
+considered negligible, the system will behave classically in that
+region. Giving a
+precise story of when it is negligible is subtle; see \cite{ADGZ02}. 
+The main lesson to learn is that in Bohmian mechanics 
+the classical limit only involves
+demonstrating
+ that the trajectories of the actual particles are approximately classical. In
+contrast, standard quantum mechanics must explain what objects are
+supposed to behave in a way in which the classical world will emerge. 
+
+We conclude this subsection with what this chapter tells us about 
+quantization. Although the above quantization procedure does define a
+unique theory given $V$, it is not necessarily 
+the only Bohmian  theory with that classical limit. 
+If $\ensuremath{\mathcal{Q}}$ is multiply connected, then the Abelian Quantization Principle\ tells us that for
+each character of the fundamental group, 
+we have a different Bohmian theory involving the
+potential $V$. Section {\ref{is:leqv}}\ explained that  these theories
+are locally equivalent. Since the classical limit is largely based on
+a local viewpoint, we can expect that these various theories all have
+the same classical limit. To distinguish between them, one must
+consider the quantum effects. 
+
+\subsection{Potentials on the covering space} \label{s:pers}
+
+
+We have been assuming that we have a
+time-independent formal Hamiltonian well-defined on \ensuremath{\mathcal{Q}}. One can
+ask the question about quantizing systems with a potential which is
+only defined on the covering space; an example is having a constant
+electric field along a circle. Alternatively, we could also
+ pursue time-dependent, topologically motivated 
+connections, such as having a time-dependent magnetic field in the
+Aharonov-Bohm setup. On the surface, these seem to be areas where the
+approaches are inequivalent. On closer inspection, these are, in fact,
+the same phenomena. 
+
+
+We start with \ensuremath{\mathcal{Q}}\ and a 1-form $\omega$ which is closed but not
+exact on \ensuremath{\mathcal{Q}}. 
+The model spaces to think about are 
+the circle and the torus. 
+
+We take $\omega$ to be our classical force, and we
+have its potential $V$ on the covering space, but not on the base
+space.  We therefore consider the Bohmian system on the covering space
+which corresponds to $-\ensuremath{\Delta} +V$, and the relevant set of wave functions will be
+those that consistently project down. We claim that the periodicity
+condition now becomes time-dependent. More to the point, our space of
+wave functions will be a disjoint union over the periodicity conditions and any
+particular wave function\ will evolve from one sector to the next. Note that the
+space of  wave functions  ceases to be a linear space. 
+
+To establish what we just claimed, we start with a wave function\ on the
+covering space satisfying 
+\begin{equation} \label{ei:tpercon}
+\ensuremath{\psi} (\ensuremath{\sigma} \ensuremath{\hat{q}}, 0) = \ensuremath{\gamma_{\ensuremath{\sigma}}} \ensuremath{\psi}(\ensuremath{\hat{q}},0).
+\end{equation}
+ Our claim is that if $V(\ensuremath{\sigma} \ensuremath{\hat{q}}) = V(\ensuremath{\hat{q}}) +
+\beta_{\ensuremath{\sigma}}$ for all \ensuremath{\hat{q}}\ and \ensuremath{\sigma}, then 
+\begin{equation} \label{ei:tcons}
+\ensuremath{\psi} (\ensuremath{\sigma} \ensuremath{\hat{q}} , t) 
+= \ensuremath{\gamma_{\ensuremath{\sigma}}} e^{-i \beta_{\ensuremath{\sigma}}t} \ensuremath{\psi} (\ensuremath{\hat{q}}, t).    
+\end{equation}
+We can establish this by noting that if $\phi$ is any solution to 
+Schr\"odinger's equation, then  
+\[\phi_{\ensuremath{\sigma}} (\ensuremath{\hat{q}},t)
+\ensuremath{:=} 
+\ensuremath{\gamma_{\ensuremath{\sigma}}}^{-1}  e^{i \beta_{\ensuremath{\sigma}}t} \phi (\ensuremath{\sigma}
+\ensuremath{\hat{q}}, t)
+\] is also a solution to Schr\"odinger's equation. That is a simple computation. If \ensuremath{\psi}\
+satisfies equation \eqref{ei:tpercon}, then $\ensuremath{\psi}_{\ensuremath{\sigma}}(\ensuremath{\hat{q}}, 0) =
+ \ensuremath{\psi}(\ensuremath{\hat{q}}, 0)$. Hence, by uniqueness of solutions, 
+\[\ensuremath{\psi}_{\sigma}(\ensuremath{\hat{q}}, t) = \ensuremath{\psi}(\ensuremath{\hat{q}}, t)\] which is equation
+ \eqref{ei:tcons}.
+That is to say,  we have time-dependent periodicity
+conditions. Furthermore, as above, in the classical
+limit the motion on \ensuremath{\mathcal{Q}}\ should look Newtonian with force $\omega$.
+
+We now wish to argue that the above Bohmian system
+ is equivalent to a Hamiltonian with a
+time-dependent connection, but with a fixed periodicity
+condition. Quite generally, we claim that the 
+Bohmian
+systems 
+\begin{equation} \label{e:2thry}
+(-\ensuremath{\Delta} + V, \nabla) \ensuremath{\sim} (-(\nabla -i
+tdV )^2, \nabla -i
+tdV )
+\end{equation}
+are equivalent
+under the map $\ensuremath{\psi} \mapsto e^{ i V t} \ensuremath{\psi}$.\footnote{If $V$ depends on
+$t$, then we would replace $Vt$ with $W \ensuremath{:=} \int V dt$ and replace
+$tdV $ with $dW$. 
+}
+ Again, a simple computation
+establishes this. If we make this change, then the time-dependent
+mapping cancels the time-dependent change of phase in the periodicity
+condition. Hence we are  left with the initial periodicity condition as
+the condition for all $t$. We may 
+thus
+define a flat bundle over \ensuremath{\mathcal{Q}}, by using the time-independent periodicity
+condition. As $dV$ is well-defined on \ensuremath{\mathcal{Q}},  
+the time-dependent connection on the bundle over the covering
+space induces a time-dependent connection on the bundle over
+\ensuremath{\mathcal{Q}}. 
+
+As for the cuts, it seems that time-dependent boundary conditions
+would be necessary. Our scheme would be the following. Cut the space
+and define $V$ up to the boundary.
+If we use time-independent conditions,
+then the potential we are modeling is the one corresponding to the
+lift of this discontinuous potential to the covering space. The cut
+would certainly matter and  presumably no 
+BV-equivalence exists between the different cuts. 
+However, if we use a time-dependent
+boundary condition, as suggested by the time-dependent periodicity condition,
+then the extension will be cut-independent.
+
+
+Let us say a few words about this in relation to a quantum system on
+the circle. 
+On the circle, there are closed, but not
+exact, 1-forms. 
+Indeed, a constant force along
+the circle is represented by the the non-exact 1-form
+$\frac{\beta}{2\pi}d\theta $. We shall suppress the $d\theta$ as is
+customarily done.   
+On the covering space we
+have a potential function, $\frac{\beta}{2\pi} \theta$,  and, therefore, a
+well-defined Schr\"odinger's equation.  The
+  periodicity condition is $\ensuremath{\psi} (\theta +2\pi n, t) = \gamma^n e^{i
+\beta n t} \ensuremath{\psi}(\theta, t)$. 
+Such wave functions obviously define a Bohmian evolution on $S^1$.
+The change of connection which eliminates this time-dependent
+periodicity condition is $\ensuremath{\frac{\partial {}}{\partial {\theta}}} - i \frac{\beta}{2 \pi}
+t$. Forming the induced line bundle over the circle, we have the
+trivial bundle with 
+ connection 
+\begin{equation*} 
+\nabla \ensuremath{:=} \ensuremath{\frac{\partial {}}{\partial {\theta}}} - i ( \frac{\alpha + t \beta}{2 \pi} )
+\end{equation*}
+ where $\alpha$
+satisfies $\gamma = e^{i \alpha}$. This connection incorporates both the
+periodicity condition and the time-dependent connection on the
+covering space.
+
+\clearpage
+
+\section{Functional-analytic supplement}
+
+\subsection{The issue of self-adjointness} \label{s:sat} \label{a:functan}
+
+There are technical issues that we have avoided. In particular,
+ the formal Hamiltonian may not be essentially self-adjoint when
+defined on the domain of smooth, compactly supported wave functions on
+\ensuremath{\mathcal{Q}}. 
+In \cite{BS92}, it is
+shown that for two identical particles moving in two dimensions, there
+is a one-parameter 
+family of self-adjoint extensions for each periodicity condition
+except the one corresponding to fermions, for which the extension is
+unique. That paper argues for a
+certain regularity condition which does select out the usual
+extension. 
+
+In \cite{AT98, S97},  the issue of self-adjointness for the
+Aharonov-Bohm effect is explored. 
+Modelling on the plane with the origin removed,
+one finds that, in addition to the topological choice, there is a
+family of extensions specified by four real parameters. They use the
+bundle approach and specify the connection first before
+considering the self-adjoint extensions.
+
+
+In general, if \ensuremath{\mathcal{Q}}'s Hamiltonian  is not an essentially self-adjoint
+operator on the usual small domain of wave functions, then one needs to appeal
+to the particulars of the situation to make the appropriate
+selection. With the bundle approach, it seems
+necessary to first make the topological choices and then ask for
+extensions. For the cut approach, it would seem to be reasonable to do
+both at the same time. In the case of the covering space 
+it seems  possible
+that we could first pick the extension on the covering space 
+ and then choose among the compatible periodicity
+conditions. 
+
+Finally, from the perspective of Bohmian evolutions, it is sufficient
+to choose the wave functions which can serve as initial wave functions. That is to say,
+for our theory we need to specify what are the allowed initial
+conditions. The wave functions which are allowed are those which provide a
+Bohmian evolution for typical configurations. This is a dense set
+invariant under the Schr\"odinger\ evolution; hence it is a domain of essential
+self-adjointness. Thus, if $\ensuremath{\mathcal{A}}$ denotes the set of Bohmian wave functions,
+then our theory is completely specified with the following
+information:
+$\{\ensuremath{\mathcal{Q}}, g, E, \nabla, \ensuremath{({}, {})}, \boldsymbol S, V, \gamma,
+\ensuremath{\mathcal{A}}\}$.
+
+\clearpage
+\bibliographystyle{abbrv}
+\bibliography{references}
+\end{document}

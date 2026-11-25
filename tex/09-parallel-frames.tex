@@ -1,0 +1,148 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts,amsthm,mathtools,bm}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{cor}{Corollary}
+\newtheorem{defn}{Definition}
+\newtheorem{principle}{Principle}
+\newtheorem{statement}{Statement}
+\theoremstyle{remark}
+\newtheorem{statementr}{Statement}
+
+\title{A Very Useful Frame Field}
+\author{James Taylor}
+\date{Working draft derived from the 2003 thesis}
+\begin{document}
+\maketitle
+
+\section{A very useful frame field} \label{a:difgeom} 
+
+
+In this part, we shall explain how to find sections satisfying
+constraints on the symmetric part of their covariant derivative. 
+Let $M$ be a manifold with connection and $E$ be a vector bundle over $M$
+whose fiber is either isomorphic to \ensuremath{\mathbb{R}^{k}} or $\ensuremath{\mathbb{C}}^k$. Fix $p
+\in M$. This appendix relies upon the work of Chapter \ref{c:taylor}
+and is used in Chapter \ref{c:geom}
+
+
+Choose a coordinate neighborhood about $p$ such that for every point
+$q$ in the neighborhood, there is a unique
+geodesic between $p$ and $q$. Choose a basis $\{e_i\}_{i=1}^{k}$
+of the fiber $E_p$ for the rank $k$ bundle $E$  
+over $M$. Parallel transport these vectors along the geodesics
+emanating from $p$, defining a basis field  also denoted by 
+$\{e_i\}_{i=1}^{k}$. 
+
+Let $q$ be any point in the neighborhood. Take
+\ensuremath{\gamma_v}\ to be the unique geodesic between $p$ and $q$. Then, by
+definition, for each $i$, $\nabla_v [e_i] = 0$ along $\ensuremath{\gamma_v}$. Thus,
+Corollary~{\ref{tc:da}} applies and we may conclude that the {\bf symmetric}
+ part of  $D^n_p [e_i]
+=0$ for all $i$.\footnote{It is true that the diagonal part of a
+  tensor determines its symmetric values. One proof is based on the
+  following. Define $f(a_1, \ldots,a_k) \ensuremath{:=} A(\{\sum_i a_i e_i \}^n)$.
+Notice that we know $f$ for all values of the $a_i$'s. Expand the
+right-hand side. Taking the appropriate \ensuremath{\text{n}^{\text{th}}}-order partial derivatives
+with respect to the 
+$a_i$'s and evaluating the derivatives at $(0,\ldots, 0)$, we can
+generate any symmetric expression in the $e_i$'s of length $n$ that we
+wish.} 
+ We emphasize that this is only true at $p$.
+
+Now define $A := \sum_{i=1}^k f^i e_i$ where the $f^i$ are
+scalar functions defined on the neighborhood. Then the symmetric part
+of the covariant
+derivatives of $A$ are the symmetric covariant derivatives of the $f^i$'s. 
+Using Corollary~{\ref{tc:imp}}, we know that the symmetric part of the
+higher order covariant derivatives of the $f^i$'s are  the
+Euclidean derivatives when expressed in 
+ normal coordinates. Thus, it is reasonably
+easy to specify the symmetric part of various higher order covariant
+derivatives. 
+
+The other parts of the covariant derivatives are part of the geometric
+structure of the connection. For example, the second covariant
+derivative's antisymmetric part is the curvature tensor, at least if
+the connection on $M$ has no torsion. More specifically, we claim
+\[
+\ensuremath{{{\nabla}}_{x}^{}{[\ensuremath{{{\nabla}}_{y}^{}{[A]}}{}]}} - \ensuremath{{{\nabla}}_{y}^{}{[\ensuremath{{{\nabla}}_{x}^{}{[A]}}{}]}}
+- \ensuremath{{{\nabla}}_{[x,y]}^{}{[A]}} 
+=
+D^2[A] (y\otimes x -x \otimes y) - D[A] (\tau(x, y))
+\]
+where $\tau$ is the torsion; torsion, acting on a function $f$, is 
+\[
+\tau(x,y)f = (\ensuremath{{{\nabla}}_{x}^{}{[y]}} - \ensuremath{{{\nabla}}_{y}^{}{[x]}} -[x,y])f 
+= D^2[f](x\otimes y -y \otimes x).
+\]
+These assertions may be verified using the chain rule. A typical fact
+to use, for example, is
+\[
+\ensuremath{{{\nabla}}_{x}^{}{[\ensuremath{{{\nabla}}_{y}^{}{[A]}}{}]}} =  
+D^2 [A] (y \otimes x) + D[A](\ensuremath{{{\nabla}}_{x}^{}{[y]}}).
+\]
+The formulas involving the differentiation of the vector fields are
+the usual formulas for the curvature and torsion of a
+connection. Writing it in this fashion demonstrates that curvature is
+independent of the connection on the manifold. But writing it using
+the higher covariant derivatives allows us to immediately see that the
+objects are tensors in the tangent vector slots involving $x$ and
+$y$. As for the curvature being a tensor in $A$, that is why the
+torsion term is necessary. Indeed, multiply $A$ by a function $f$, and
+one sees that cross terms cancel when computing the antisymmetric part
+leaving the expression in $A$ that we want plus a torsion
+term. Subtracting the torsion therefore eliminates the contribution of
+$f$. 
+
+Another way to view the subtraction of the torsion
+ is to think of torsion as a type of
+curvature and that multiplication of a scalar function times a section
+is actually the tensor product of the section of $E$ with a section of
+the trivial one-dimensional bundle over $M$. Then, as is easily seen,
+the curvature of the tensor product connection  is a sum of the two
+ curvatures. Thus, we subtract the function's curvature to obtain the
+ curvature of the bundle $E$. 
+
+In any event, when we use our special basis, we are only left with the
+antisymmetric part  as the symmetric part of
+the basis fields vanish at $p$. Thus the second covariant derivatives of these
+fields is the curvature tensor applied to field that we are
+differentiating, assuming that there is no torsion. 
+
+As an application of this, we can prove that if $E$ is a complex
+bundle with a connection and a parallel inner product $\ensuremath{({}, {})}$,
+then the curvature tensor is anti-self-adjoint. Let $R$ be the
+curvature tensor. Then, to establish our claim, we need to show that 
+\[
+\ensuremath{({\ensuremath{\psi}}, {R\phi})} = - \ensuremath{({R \ensuremath{\psi}}, {\phi})}
+\]
+for any sections $\ensuremath{\psi}$ and $\phi$ of $E$. Fix a point $p \in M$. 
+Given $\ensuremath{\psi}_p, \phi_p \in
+E_p$, define $\ensuremath{\psi}$ and $ \phi$  by parallel transporting the value at
+$p$ to all the other points in an appropriately small neighborhood
+about $p$. As just explained, $D^2 \ensuremath{\psi} = R\ensuremath{\psi}$ and similarly for
+$\phi$ where we use a torsionless connection on $M$ to compute the
+second covariant derivative. Since the inner product is parallel, we
+have that $\ensuremath{({\ensuremath{\psi}}, {\phi})}_q = \ensuremath{({\ensuremath{\psi}}, {\phi})}_p$ for all $q$ in the
+neighborhood. More to the point, we have $D[\ensuremath{({\ensuremath{\psi}}, {\phi})}] =0$ and,
+more importantly, 
+\[
+D^2 [\ensuremath{({\ensuremath{\psi}}, {\phi})}] = 0.
+\]
+But notice that 
+\[
+D^2_p[\ensuremath{({\ensuremath{\psi}}, {\phi})}] = \ensuremath{({D_p^2[\ensuremath{\psi}]}, {\phi})} + \ensuremath{({\ensuremath{\psi}}, {D_p^2[\phi]})}
+= \ensuremath{({R \ensuremath{\psi}}, {\phi})}_p + \ensuremath{({\ensuremath{\psi}}, {R\phi})}_p;
+\]
+note that only at $p$ do we have the vanishing of the first derivative
+terms in addition to the second derivative terms being the curvature tensor. 
+As one can see, we have our result.
+
+\clearpage
+\bibliographystyle{abbrv}
+\bibliography{references}
+\end{document}

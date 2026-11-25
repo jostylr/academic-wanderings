@@ -1,0 +1,2183 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts,amsthm,mathtools,bm}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{cor}{Corollary}
+\newtheorem{defn}{Definition}
+\newtheorem{principle}{Principle}
+\newtheorem{statement}{Statement}
+\theoremstyle{remark}
+\newtheorem{statementr}{Statement}
+
+\title{Identical Particles, Set-Indexed Spin Bundles, and Bundle Triviality}
+\author{James Taylor}
+\date{Working draft derived from the 2003 thesis}
+\begin{document}
+\maketitle
+
+\section{Many particle systems} \label{c:manpart}
+
+
+This chapter  
+demonstrates that Bohmian mechanics\  provides an argument for why
+the wave function\ for a system of identical particles must have a certain symmetry;
+this should be contrasted with the claim of some that the lack of precise
+trajectories in standard quantum mechanics is the reason for such a
+constraint. 
+ There are others who have discussed the Bohmian\ story of
+identical particles \cite{SC95, S95, BBS99, Bac03}. Our
+particular approach has the appeal that it is 
+founded upon the Abelian Quantization Principle. 
+
+
+The principle implies multiple possibilities only for 
+configuration spaces with nontrivial topology.
+As we shall discuss, for $N$ identical particles, the 
+configuration space, \ensuremath{{}^N\ensuremath{\mathbb{R}^{3}}},  is the space of all $N$-element subsets of
+physical space. The space is a manifold which is not simply connected;
+its fundamental group has two characters. Applying the principle leads
+to 
+the Bose-Fermi alternative.
+In order to
+apply our principle in 
+the case of spin, we define 
+the spin bundle over \ensuremath{{}^N\ensuremath{\mathbb{R}^{3}}}.  It is an
+unusual definition;  the fiber at the point $\ensuremath{q} \subset
+\ensuremath{\mathbb{R}^{3}}$, is the $N$-fold tensor product of the 1-particle spin
+space with itself using
+\ensuremath{q}\ as the index set for 
+the
+tensor product. Once we have the spin bundle, then the principle
+immediately leads to the Bose-Fermi alternative. 
+
+
+The literature on identical particles is quite extensive.\footnote{We found one
+compilation of references for the symmetrization postulate that
+contained over 350 references and yet it seemed far from complete.}
+ We will only mention some of the key papers that we managed to come
+across.
+The literature about the symmetrization postulate
+in non-relativistic quantum mechanics seems to have begun with
+\cite{MO64}. Both that paper and \cite{Gir65} focussed on 
+observables. This approach is still used; in  \cite{Gal91}, there
+is an argument for the identical particle case 
+based on observables and decomposition of the Hilbert space into
+permutation representations. A critique of such approaches may be
+found in \cite{Mir73}. 
+The topological approaches began with \cite{DL71} and its use of Feynman path
+integrals on 
+multiply
+connected spaces. 
+An approach that changes the connection on the configuration space is
+that of \cite{LM77}; they include a brief discussion for the case of spin. 
+An orthodox approach, using the covering space and only discussing
+scalar wave functions,  
+is discussed in \cite{Mor92}.  
+The version for
+Nelson's stochastic 
+mechanics may be found in Nelson 
+\cite{Nel85}
+
+and its relevance is that it is that description upon which this
+chapter is based. 
+
+
+We do not address the connection
+between spin and statistics. Our accomplishment is to demonstrate that
+for each type of particle, there are two choices for theories that
+locally look identical; the spin-statistics is an additional statement
+that gives the relation between spin and statistics. It is usually
+derived in the context of relativistic quantum field theory.
+In \cite{Bal93}, the authors give
+an approach that does establish the relationship between spin and
+statistics in the context of non-relativistic theories describing the
+creation and annihilation of particles with 
+anti-particles. The approach is based
+on making a radical change to the 
+configuration space. Indeed, it ceases to be a manifold and they 
+devote many pages to arguing that the topology is reasonable and
+simply connected. 
+For scalar wave functions, this implies that only bosonic wave functions are
+allowed. For spin, they specify how two particles can annihilate or
+create one another; this mimics a full rotation in physical space
+acting on a 1-particle spin space thereby providing 
+the spin-statistics relation.
+In \cite{MR97}, the authors use the Schwinger representation of spin to
+give an argument for the spin-statistics relation in non-relativistic
+quantum mechanics. They postulated that a certain set of axioms, which 
+their
+specific construction did satisfy, would force the spin-statistics
+relation to be true. The conjecture is false as  they 
+later found other constructions satisfying these axioms, but 
+ not the
+spin-statistics relation \cite{MR01}. 
+
+
+This chapter is organized as follows. We start by explaining \ensuremath{{}^N\ensuremath{\mathbb{R}^{d}}}. We
+follow this by describing a set of cuts for that space. We then apply
+the Abelian Quantization Principle\ to scalar-valued wave functions to  
+conclude that
+the particles are either governed by bosonic or fermionic wave functions if
+$d \geq 3$. Anyons appear as possibilities if $d = 2$.  
+We make full use of the notion of a set-indexed tensor product  
+in Section {\ref{s:nspin}}\  when we discuss spin
+on the natural 
+configuration space. Our principle immediately applies and we obtain
+the usual Bose-Fermi alternative in the case of spin. Section {\ref{s:bprin}}\
+considers, and then rules out, certain possibilities that go beyond the
+general principle. In the specific case of identical particles, we
+give, in Section {\ref{s:view}}, a different 
+ kind of argument for the Bose-Fermi
+alternative. Section {\ref{s:cm}}\  briefly  highlights why classical mechanics,
+involving identical particles and formulated on \ensuremath{{}^N\ensuremath{\mathbb{R}^{d}}},
+are not enriched by appealing to the covering space if $d \geq 3$. 
+The final section describes a speculative idea as to how to describe a
+system of distinguished particles as arising from a theory of
+indistinguishable particles.
+
+
+\section{The configuration space of identical particles} \label{s:nat}
+
+
+This section explains why
+the space of $N$-element subsets of physical space is the correct
+configuration space. The usual way of dealing with identical particles
+is to label them and then demand that the labelling is irrelevant to
+the motion of the particles. The configuration space which we use, and
+which is certainly not novel, is a way of formulating the dynamics
+without introducing the irrelevant structure of labelling.  In what
+follows, we shall take $\ensuremath{\mathbb{R}^{\ensuremath{d}}}$ to be the physical space and we
+require $\ensuremath{d} \geq 2$.\footnote{For $\ensuremath{d} =1$, the configuration space
+consists of a variety of simply connected components. The principle
+will not apply and the statistics, in as much as they are present, 
+ only arise as boundary conditions on the Hamiltonian.}
+
+
+As a starting point,  we might say that a 
+ dynamical system of $N$ identical particles is one in which the
+appropriate exchange
+of the initial 
+conditions results in the new solutions being the exchange of the old
+solutions.  
+Note that to exchange the particles, we have already
+distinguished them by more than just their locations. The statement is
+then asserting that the dynamics does not notice the distinguishing
+characteristics. A stronger statement, and one more to the point, is
+ that
+exchanging two identical particles has no effect on the world. 
+It would then be logical to make no distinction between the particles
+in forming the configuration space of the system. 
+Fundamentally, we have $N$ points in
+physical space. 
+Stating this mathematically, our configuration space is 
+the space of all $N$-element subsets of \ensuremath{\mathbb{R}^{\ensuremath{d}}}.  Instead of 
+\ensuremath{(\boldsymbol{q}_1,\ldots,\boldsymbol{q}_N)}, the configuration is  
+\ensuremath{\{\boldsymbol{q}_1,\ldots,\boldsymbol{q}_N\}}. Instead of \ensuremath{\mathbb{R}^{\ensuremath{d} N}}, the  configuration space of $N$
+identical particles is given by 
+\begin{equation*}
+\ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{d}}}} \  \ensuremath{:=} \ \ensuremath{\{S|S \subseteq \ensuremath{\mathbb{R}^{\ensuremath{d}}}, |S| = N \}}. 
+\end{equation*}
+
+A more familiar form is given by the following; it is the mathematical
+version of starting with a labelled system and then removing the labelling.  
+We define $\ensuremath{\ensuremath{\Delta}}$ to be the set of configurations of \ensuremath{\mathbb{R}^{\ensuremath{d} N}}\ having
+coincident points, that is to say,  
+\begin{equation*}
+\ensuremath{\ensuremath{\Delta}} \ensuremath{:=} \ensuremath{\{ \ensuremath{(\boldsymbol{q}_1,\ldots,\boldsymbol{q}_N)} \in \ensuremath{\mathbb{R}^{\ensuremath{d} N}} | \exists \text{
+$i$, $j$ s.t. $\boldsymbol{q}_i = \boldsymbol{q}_j$} \}}. 
+\end{equation*}  
+let $\ensuremath{\mathbb{R}^{\ensuremath{d},N}}_{\neq}$
+ denote the set of noncoincident points in \ensuremath{\mathbb{R}^{\ensuremath{d} N}}, i.e.\ 
+\begin{equation*}
+\ensuremath{\mathbb{R}^{\ensuremath{d},N}}_{\neq} \ensuremath{:=}\ \ensuremath{\ensuremath{\mathbb{R}^{\ensuremath{d} N}} \setminus \ensuremath{\ensuremath{\Delta}}}. 
+\end{equation*}
+Let \ensuremath{S_N}\ denote the group of permutations of the set 
+$\{ 1, \ldots N \}$. 
+This group acts freely on \ensuremath{\ensuremath{\mathbb{R}^{d,N}}_{\neq}}\ by permuting the indices, i.e.\ 
+\begin{equation*}
+\ensuremath{\sigma} (\boldsymbol{q}_1,\ldots, \boldsymbol{q}_N) \mapsto 
+(\boldsymbol{q}_{\ensuremath{\sigma}1},\ldots, \boldsymbol{q}_{\ensuremath{\sigma} N})
+\end{equation*} 
+and the exclusion of \ensuremath{\ensuremath{\Delta}}\ implies that, for every nontrivial
+  permutation, 
+there are no fixed points.
+Then the natural configuration space \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{d}}}}\ can be (canonically)
+identified with the Riemannian manifold of equivalence classes under
+that action; more compactly
+\begin{equation*}
+ \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{d}}}} \ensuremath{\cong} \ensuremath{\ensuremath{\mathbb{R}^{d,N}}_{\neq}} / \ensuremath{S_N}.
+\end{equation*}
+From this identification, \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{d}}}}\ is itself a Riemannian manifold. 
+The identification also correctly suggests that, in analogy with the
+torus, \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{d}}}}\ 
+is not simply connected. 
+
+
+\section{Applying the Abelian Quantization Principle}
+
+
+For $\ensuremath{d} \geq 3$, the universal covering
+space of \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{d}}}}\ is 
+ \ensuremath{\ensuremath{\mathbb{R}^{d,N}}_{\neq}}. As said above, a permutation naturally defines a
+diffeomorphism on \ensuremath{\ensuremath{\mathbb{R}^{d,N}}_{\neq}}; the 
+set of these diffeomorphisms forms the covering group. 
+The fundamental group at a point $\ensuremath{q}\ \in \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{d}}}}$ is the set of
+bijections of the set to itself. Both groups are isomorphic to the
+permutation group \ensuremath{S_N}. 
+The only characters of \ensuremath{S_N}\  are the trivial one and
+the alternating 
+one. The trivial character defines the bosonic wave functions which satisfy
+the periodicity condition
+\begin{equation} \label{e:tri}
+\ensuremath{\psi}(\ensuremath{\sigma} \ensuremath{\hat{q}}) = \ensuremath{\psi}(\ensuremath{\hat{q}}).
+\end{equation}
+The alternating character defines the fermionic wave functions which satisfy
+the periodicity condition 
+\begin{equation} \label{e:alt}
+\ensuremath{\psi}(\ensuremath{\sigma} \ensuremath{\hat{q}}) = (-1)^{\ensuremath{\sigma}}\ensuremath{\psi}(\ensuremath{\hat{q}}).\footnote{
+The sign of the permutation, $(-1)^\ensuremath{\sigma}$, is  $1$ if
+\ensuremath{\sigma}\ can be written as a composition of an even number of
+transpositions, and $-1$ otherwise.}
+\end{equation} 
+Applying the Abelian Quantization Principle, we conclude the Bose-Fermi alternative.
+
+The case  $d = 2$ is quite different since $\ensuremath{\mathbb{R}^{2N}}_{\neq}$ is not
+simply connected. The fundamental group of
+ \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{2}}}}\ is isomorphic to the braid group, not
+\ensuremath{S_N}. There is a 
+one-parameter family of different characters for this group. 
+Bosons and fermions are among the possibilities, but there are many
+more. The reason that $d = 2$ is different 
+is that a set of paths that  exchanges two
+particles twice may not be homotopic to the identity; more to the
+point, these paths are in $\ensuremath{\mathbb{R}^{2}}\times[0,1]$, 
+a space in which knots can
+occur. 
+The generators for
+the braid group may be chosen to be a certain subset of 
+ braids that exchange two particles;\footnote{More precisely, label
+the particles. Then $\sigma_i$ is the path exchanging particles
+$i$ and $i+1$. Furthermore, these paths, which  may be thought of as
+parametrized 
+circles in the plane, should all have the same orientations arising
+from the parametrization.} 
+they satisfy the relations
+\begin{align*} 
+\sigma_i \sigma_j &=\sigma_j\sigma_i \quad \hbox{for} \quad j \neq i \pm 1 , \\
+\sigma_i\sigma_{i+1}\sigma_i &= \sigma_{i+1}\sigma_i \sigma_{i+1}. 
+\end{align*}
+The second relation implies that a character of the braid group assigns the same complex number to
+each  generator. If that number is $e^{i \beta}$, 
+then the periodicity condition is 
+\begin{equation*}
+\ensuremath{\psi} (\ensuremath{\sigma}(\ensuremath{\hat{q}}))
+= e^{i |\ensuremath{\sigma}| \beta}  \ensuremath{\psi}(\ensuremath{\hat{q}}),
+\end{equation*} 
+where $|\ensuremath{\sigma}|$ is the, appropriately counted, number of generators
+defining  $\ensuremath{\sigma}$. Bosons correspond to $\beta = 0$ and fermions to
+$\beta = \pi$. 
+The particles corresponding to the  other possibilities are
+usually called \emph{anyons}. They were first suggested in
+\cite{LM77}, and their investigation began in earnest with 
+\cite{GMS81, Wi82}. See \cite{Mor92} for some more details and references. 
+
+\subsection{Identical particles moving in $M$}
+
+More generally, let physical space be the Riemannian manifold $M$. Then
+the configuration space for identical particles would be the
+$N$-element subsets of $M$, denoted by \ensuremath{{}^{N}\! {M}}. The 
+tangent space of
+the configuration space at the point \ensuremath{q}\ 
+is $\bigoplus_{\ensuremath{\boldsymbol{q}} \in \ensuremath{q}} T_{\ensuremath{\boldsymbol{q}}}M$. Its metric, if the
+particles all have mass $m$, is
+\begin{equation*} 
+\ensuremath{{}^{N}\! {g}}(\mathop{\oplus}_{\ensuremath{\boldsymbol{q}} \in \ensuremath{q}} v_{\ensuremath{\boldsymbol{q}}}, \mathop{\oplus}_{\ensuremath{\boldsymbol{q}}
+\in \ensuremath{q}} w_{\ensuremath{\boldsymbol{q}}})
+\ensuremath{:=} \sum_{\ensuremath{\boldsymbol{q}} \in \ensuremath{q}} m g(v_{\ensuremath{\boldsymbol{q}}},w_{\ensuremath{\boldsymbol{q}}}).
+\end{equation*} 
+
+Then, as above, we can apply the principle to \ensuremath{{}^{N}\! {M}}. 
+We will always have bosons and fermions as
+possibilities, but there may be more possibilities depending on the
+dimension of $M$ and $M$'s fundamental group.  
+
+
+\section{Identical particles with spin} \label{s:nspin}
+
+
+The textbooks, when discussing identical particles with spin $s$, take 
+the configuration space to be \ensuremath{\ensuremath{\mathbb{R}^{d,N}}_{\neq}}\ and the value space of the wave function\ to
+be the $N$-fold tensor product of $W \ensuremath{:=} \ensuremath{\mathbb{C}}^{2s+1}$, the
+1-particle value space, with itself. We denote it in various ways:
+$
+ W_1 \otimes \cdots \otimes W_N 
+=  \bigotimes_{i=1}^{N} W_i = \bigotimes_{i \in 
+\{1, \ldots, N \}} W_i = W^{\otimes N}.
+$
+
+It is tempting to say that each factor of the tensor product
+corresponds to each particle. But if we do this, we are
+assigning a label  $i \in \{1, \ldots, N\}$ to each particle. On \ensuremath{{}^N\ensuremath{\mathbb{R}^{3}}},
+there is no consistent way of making such an assignment. 
+Thus it may appear that the configuration space \ensuremath{{}^N\ensuremath{\mathbb{R}^{3}}}\ is incompatible
+with spin, but it is, in fact, quite compatible. 
+We associate a copy
+of $W$ not with each particle, but rather with every
+point in physical space $\ensuremath{\mathbb{R}^{3}}$. 
+Even in the
+standard story,  labelling identical particles is not allowed. 
+That is why, even for bosons, there is a permutation
+action on the value space. If we wish to work on
+\ensuremath{{}^N\ensuremath{\mathbb{R}^{3}}}, we must define a tensor product which only labels the particles
+by their locations.
+We do this by replacing the usual  tensor product's 
+index set $\{1, \ldots, N\}$  
+with the $N$-element set $\{ \ensuremath{\boldsymbol{q}}_1, \ldots \ensuremath{\boldsymbol{q}}_N\} \in \ensuremath{{}^N\ensuremath{\mathbb{R}^{3}}}$. 
+Instead of using
+$\bigotimes_{i \in 
+\{1, \ldots, N \}} W_i = W^{\otimes N},
+\text{ we form } \bigotimes_{\ensuremath{\boldsymbol{q}} \in 
+\ensuremath{q}} W_{\ensuremath{\boldsymbol{q}}} = W^{\otimes \ensuremath{q}}.
+$
+
+\subsection{The spin bundle and a Bohmian theory}
+The use of an arbitrary finite index set is a straightforward notion. 
+We wish to replace $\{1, \ldots, N\}$ with the $N$-element set
+$T$. The ordering in the usual tensor product serves as a way to map
+the factors of the tensor product bijectively to the elements of $\{1,
+\ldots, N\}$.  Analogously, a product element in the  $T$-indexed tensor
+product of $W$ with itself $N$-times 
+should be thought of as a function from $T$ into $W$. The obvious
+analogues to the usual definitions of the tensor product hold and we
+state them in Appendix \ref{s:setten}; one can also find this
+definition in  \cite{Bour}. Here we shall content ourselves to make a
+notational correspondence. The tensor product space $W^{\otimes N 
+}$ is replaced with $W^{\otimes T}$. The product element
+$\otimes_{i=1}^N w_i$ is replaced with $\otimes_{a \in T} w_a$. The usual
+tensor product rules still hold. For example, 
+$ \mathop{\otimes}_{a \in T} x_a + \mathop{\otimes}_{a \in T} y_a = \mathop{\otimes}_{a
+\in T} z_a$ 
+if, for some $a' \in T$, we have both $x_{a'}
++y_{a'} = z_{a'}$ and, for all the other $a \in T$, 
+ $x_a = y_a=z_a$.
+This trivial extension of the commonly used version of the tensor 
+product is exactly what we need for spin. 
+ 
+
+
+We begin by defining the spin bundle,\footnote{For spin, we shall
+ restrict our discussion to $d=3$. We will use the
+ notation
+
+$\ensuremath{\mathcal{Q}} \ensuremath{:=} \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{3}}}} $
+
+and use \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}\ for the universal covering space, \ensuremath{\ensuremath{\mathbb{R}^{d,N}}_{\neq}}.
+  }
+which we shall write as
+\ensuremath{\ensuremath{W}^{\otimes \ensuremath{\mathcal{Q}}}}. Let \ensuremath{W}\ be the single-particle 
+spin space for  
+our $N$ identical particles.
+ Given $\ensuremath{q}
+\in \ensuremath{\mathcal{Q}}$, we define the spin space \emph{at that point} to be
+\ensuremath{{\ensuremath{W}}^{{\otimes}{\ensuremath{q}}}}. This defines the fibers for our spin bundle; one can use the
+connection described below to define the bundle
+structure.\footnote{One could always define the bundle structure first
+by locally labeling the particles in order to define a coordinate
+  patch, but it is more appealing to use the
+identification between the points that the connection provides.}
+
+We need to define the connection. We shall do this by  
+specifying the equivalent notion of parallel transport. Given
+two points \ensuremath{q}, \ensuremath{q'}\ and a path \ensuremath{\alpha}\ connecting them, then
+we have a  set bijection \ensuremath{\ensuremath{\sigma}_{\alpha}}\ between \ensuremath{q}\ and
+\ensuremath{q'}\ given by following the $N$ trajectories in physical space that
+\ensuremath{\alpha}\ represents. This bijection of the index sets provides a
+natural  isomorphism between \ensuremath{{\ensuremath{W}}^{{\otimes}{\ensuremath{q}}}}\ 
+and \ensuremath{{\ensuremath{W}}^{{\otimes}{\ensuremath{q}'}}}; this isomorphism will be the parallel transport operator,
+or holonomy operator, 
+associated to \ensuremath{\alpha}. It is clear that it depends  only on the
+homotopy class of \ensuremath{\alpha}.
+This in turn implies that the connection is flat. We shall use
+$\nabla$ to denote the gradient associated with this
+connection.
+
+
+Section {\ref{s:bbun}} has essentially already described the 
+Bohmian mechanics on this bundle. Indeed, the wave function\ is a
+(smooth) section
+of the bundle. This  means that $\ensuremath{\psi}( \ensuremath{q}) \in \ensuremath{{\ensuremath{W}}^{{\otimes}{\ensuremath{q}}}}$ for
+every $\ensuremath{q} \in \ensuremath{\mathcal{Q}}$. In particular, the value space of the wave function\
+varies from point to point. 
+The wave function\ defines a velocity field on
+\ensuremath{\mathcal{Q}}\ as it did before. The equations
+of motion are Bohm's equation and Pauli's equation:
+\begin{subequations}
+\begin{align} 
+\ensuremath{\frac{d{\boldsymbol{Q}_t}}{d{t}}} =&  \ensuremath{\frac{\hbar}{m_{}}} \textrm{Im}
+\frac {\ensuremath{({\ensuremath{\psi}_t}, {\nabla_{\boldsymbol{Q}_t} \ensuremath{\psi}_t})}}{
+\ensuremath{({\ensuremath{\psi}_t}, {\ensuremath{\psi}_t})}} (Q_t)
+  \quad \text{for each $\boldsymbol{Q}_t \in Q_t$,} \label{e:natbohm}\\  
+i \hbar \ensuremath{\frac{\partial {\ensuremath{\psi}_t}}{\partial {t}}} =& (\ensuremath{ - \sum_{ \ensuremath{\boldsymbol{q}} \in \ensuremath{q}}
+\ensuremath{\frac{\hbar^2}{2m_{}}} \ensuremath{\Delta}_{\ensuremath{\boldsymbol{q}}}  + V_{\ensuremath{q}} + \sum_{\ensuremath{\boldsymbol{q}} \in \ensuremath{q}}
+\ensuremath{\ensuremath{\mu}(\ensuremath{\boldsymbol{S}}^{\ensuremath{\boldsymbol{q}}} \cdot
+\boldsymbol{B}_{{\ensuremath{\boldsymbol{q}}}})}}) \ensuremath{\psi}_t \label{e:natschr}.
+\end{align}
+\end{subequations}
+By $\nabla_{\boldsymbol{Q}} \ensuremath{\psi}$, we mean that we fix all the elements of
+$Q$ except for $\boldsymbol{Q}$.\footnote{More precisely, $\nabla \ensuremath{\psi}$ is
+metrically equivalent to the
+1-form $D \ensuremath{\psi}$ acting on 
+$T_{\ensuremath{q}}\ensuremath{\mathcal{Q}} = \bigoplus_{\ensuremath{\boldsymbol{q}} \in \ensuremath{q}} T_{\ensuremath{\boldsymbol{q}}}
+\ensuremath{\mathbb{R}^{\ensuremath{3}}}$. 
+As we want to transform a 1-form defined on $T_{\boldsymbol{Q}}
+\ensuremath{\mathbb{R}^{\ensuremath{3}}}$, we restrict $D \ensuremath{\psi}$ to the subspace in
+$T_{\ensuremath{q}}\ensuremath{\mathcal{Q}}$ 
+that   $T_{\boldsymbol{Q}}
+\ensuremath{\mathbb{R}^{\ensuremath{3}}}$ is. Equivalently, we are transforming the 1-form
+on $T\ensuremath{\mathcal{Q}}$ defined by
+\mbox{$D\ensuremath{\psi} \{ (\bigoplus_{\substack{\boldsymbol{Q}' \in Q, 
+\boldsymbol{Q}' \neq  \boldsymbol{Q}}} w_{\boldsymbol{Q}'}) \oplus
+v_{\boldsymbol{Q}} \}\ensuremath{:=} D\ensuremath{\psi}  
+\{0 \oplus
+v_{\boldsymbol{Q}} \}$.}
+}
+The symbol
+$\ensuremath{\frac{d{\boldsymbol{Q}_t}}{d{t}}}$ represents  the tangent vector of the
+trajectory in physical 
+space going through $\boldsymbol{Q}_t$ at time $t$. 
+
+
+ 
+
+
+\subsection{Applying \ensuremath{\text{AQP}_{\ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}}}}
+
+The covering space version of the Abelian Quantization Principle\ 
+tells us to lift the spin bundle to the covering
+space and look at wave functions satisfying a periodicity condition. 
+When we pull-back the bundle, by definition
+elements in the same covering fiber\ 
+have the same exact spin space. We shall  use the notation \ensuremath{\ensuremath{W}^{\otimes \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}}}\ for
+ the lifted spin 
+bundle since  the lifted bundle is identical to
+ the bundle formed using the index set
+ $\{\ensuremath{\boldsymbol{q}}_1, \dotsc \ensuremath{\boldsymbol{q}}_N\} = \ensuremath{q}$ at 
+ the point $(\ensuremath{\boldsymbol{q}}_1, \dotsc, \ensuremath{\boldsymbol{q}}_N)= \ensuremath{\hat{q}}$. We shall also use the
+ notation $\ensuremath{\boldsymbol{q}} \in \ensuremath{\hat{q}}$ with the idea of viewing $\ensuremath{\hat{q}}$ as a set
+ instead of as an $N$-tuple. 
+
+The class of wave functions for each theory generated by the principle 
+ is characterized by the periodicity condition 
+\begin{equation*}
+\ensuremath{\psi} (\ensuremath{\sigma}(\ensuremath{\hat{q}}))
+= \ensuremath{\gamma_{\ensuremath{\sigma}}} \ensuremath{\psi}(\ensuremath{\hat{q}}).
+\end{equation*} 
+ Since
+ our space is \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{3}}}}, we have two 
+ possibilities for different 
+ classes  of wave functions: bosons  ($\ensuremath{\gamma_{\ensuremath{\sigma}}} = 1$)  and fermions ($\ensuremath{\gamma_{\ensuremath{\sigma}}}
+ =(-1)^{\ensuremath{\sigma}}$).  We have reached the main
+ conclusion.  
+
+
+It is useful to relate our presentation to the usual story. 
+In the usual story, one starts with
+ \ensuremath{\ensuremath{\mathbb{R}^{d,N}}_{\neq}}\ and one  uses the trivial bundle $W^{\otimes N}$ with its trivial
+connection. By a bosonic wave function, one then means a wave function\ satisfying
+\begin{equation} 
+\ensuremath{\psi}(\ensuremath{\sigma} \ensuremath{\hat{q}}) = \ensuremath{R_{{\ensuremath{\sigma}}}} \ensuremath{\psi}(\ensuremath{\hat{q}}).
+\end{equation}
+where \ensuremath{R_{{\ensuremath{\sigma}}}}\ is the permutation of the spin factors related to the
+permutation of the set $\{ 1, \ldots, N \}$ represented by
+$\ensuremath{\sigma}$.
+To
+relate our spin space, $\ensuremath{{\ensuremath{W}}^{{\otimes}{\ensuremath{\hat{q}}}}}$, to the trivial space,
+$\ensuremath{{\ensuremath{W}}^{{\otimes}{N}}}$, at the point $\ensuremath{\hat{q}} = (\ensuremath{\boldsymbol{q}}_1, \dotsc, \ensuremath{\boldsymbol{q}}_N)$, we use
+the bijection between $\{1, \dotsc, N\}$ and $\{\ensuremath{\boldsymbol{q}}_1, \dotsc,
+\ensuremath{\boldsymbol{q}}_N\}$ which the $N$-tuple provides. 
+
+We would like to point out that our general principle would not apply
+in the usual formulation. Indeed, if we used the trivial bundle, and
+its trivial connection, on the
+base space, we first run into the problem that the Hamiltonian is not
+particularly well-defined.\footnote{Note that we
+do know the Hamiltonian on the covering space; the spin terms in the
+Hamiltonian at the points $\ensuremath{\hat{q}}$ and $\ensuremath{\sigma} \ensuremath{\hat{q}}$,  are related by
+conjugation with \ensuremath{R_{{\ensuremath{\sigma}}}}. 
+} 
+If we then lift the
+trivial bundle  $\ensuremath{\mathcal{Q}} \times \ensuremath{{\ensuremath{W}}^{{\otimes}{N}}}$ to \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}, 
+we get the trivial flat bundle,
+$\ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}\times \ensuremath{{\ensuremath{W}}^{{\otimes}{N}}}$. As implied
+in Section {\ref{s:bprin}}, sections of $\ensuremath{\widehat{\ensuremath{\mathcal{Q}}}} \times \ensuremath{{\ensuremath{W}}^{{\otimes}{N}}}$
+  which satisfy the trivial periodicity
+condition will not be
+invariant under the evolution. 
+Only the fermionic and bosonic periodicity conditions are invariant
+under the Pauli evolution. 
+
+\subsection{Applying \ensuremath{\text{AQP}_{H}}} 
+
+
+As for the cut version, we have the same conclusions as before and for
+the same reason. For the cuts of \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{3}}}}\ described in
+Section {\ref{s:cutnrd}}, we have the 
+boundary condition of $-1$ for the fermions. The BV-equivalence maps
+consist of multiplication by $1$ or $-1$ depending on the cut and the
+regions. This approach suggests that the difference
+between bosons and fermions is the Hamiltonian. In particular, a wave function,
+whose support is simply connected, has the potential to be either
+bosonic or fermionic depending on which evolution is
+chosen. Also note that, just as an example, the  other fermionic wave functions will
+evolve under the bosonic evolution.  
+But  they  
+ should instantaneously cease to be fermionic as well as becoming
+ unsuitable for a Bohmian evolution.
+
+\subsection{Cutting \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{3}}}}} \label{s:cutnrd}
+
+A rather pleasant exercise  is to 
+describe how to cut for $\ensuremath{\mathcal{Q}} \ensuremath{:=} \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{3}}}}$ so that it becomes simply
+connected.  
+For each $i$, we define $\ensuremath{\kappa}_i$, $i=1,\dotsc,\ensuremath{3}$, to
+be the set of points $\ensuremath{q} \in \ensuremath{\mathcal{Q}}$ such that at least two points
+in \ensuremath{q}\ have equal  $\ensuremath{{i}^{th}}$\  components. In other words, 
+\begin{equation*}
+\ensuremath{\kappa}_i \ensuremath{:=} \{ \ensuremath{q} \in \ensuremath{\mathcal{Q}}| \exists \ensuremath{\boldsymbol{q}}, \tilde{\ensuremath{\boldsymbol{q}}} \in \ensuremath{q}
+\text{ s.t. } \ensuremath{\boldsymbol{q}}^i =\tilde{\ensuremath{\boldsymbol{q}}}^i\}.
+\end{equation*} 
+Note that $\ensuremath{q} \in \ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{{\ensuremath{\kappa}_i}}}$ iff \ensuremath{q}\ can be ordered
+by the $\ensuremath{{i}^{th}}$\ component of its
+elements. 
+Indeed, a corresponding fundamental domain in \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}\ is the set
+$\{\ensuremath{\hat{q}} \in \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}| \ensuremath{\boldsymbol{q}}_1^i < \ensuremath{\boldsymbol{q}}_2^i < \cdots < \ensuremath{\boldsymbol{q}}_{N}^i
+\}$. From the definition of a cut, it is reasonably clear that
+properties 1 and 2 are satisfied;  the main observation is that
+the paths must preserve the ordering. Thus nontrivial exchange is
+forbidden. As for the third property, note that the set in which
+three points have the same $\ensuremath{{i}^{th}}$ component is a
+$(n-2)$-dimensional submanifold. But if we restrict the submanifold to
+ a small enough
+neighborhood of such a
+point, then we find that it becomes a union of 3 regular submanifolds, 
+one for each
+pair. We could also have a $(n-2)$-dimensional part by having two
+pairs of points with the same $\ensuremath{{i}^{th}}$\ component for each pair, but
+different for the different pairs, e.g. $\ensuremath{\boldsymbol{q}}_1^i = \ensuremath{\boldsymbol{q}}_2^i \neq
+\ensuremath{\boldsymbol{q}}_3^i = \ensuremath{\boldsymbol{q}}_4^i$. Then, in small neighborhoods, this
+appears as the union of two submanifolds. If all of the $\ensuremath{{i}^{th}}$\
+components are 
+equal, then there are $\binom{N}{2}$ submanifolds in the local union. 
+In analogous fashion, all of the self-intersections are locally the
+union of regular submanifolds. 
+
+
+\subsection{Applying \ensuremath{\text{AQP}_{\nabla}}}
+
+Instead of viewing fermionic wave functions as sections on the covering space
+satisfying a periodicity condition or as sections of the cut spin bundle
+satisfying certain virtual boundary conditions, we will view them as
+sections of a certain bundle over
+\ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{3}}}}. For
+complex-valued functions, we will construct the Fermi line, a one
+dimensional bundle endowed with a flat connection such that parallel
+transporting a vector along an element \ensuremath{\sigma}\ of the fundamental group 
+ is equivalent to
+multiplying the vector by $(-1)^{\ensuremath{\sigma}}$. 
+As for
+higher spins, we construct the appropriate bundle for fermions 
+by tensoring the Fermi
+line with the spin bundle. 
+
+We start with some terminology. 
+ A Bose bundle is a
+bundle whose sections are bosonic wave functions; a Fermi bundle's  sections
+ are the fermionic wave functions.
+For spin 0, i.e.\ the scalar case,  we shall refer to the
+Bose bundle as  the Bose
+line and the Fermi bundle as the Fermi line. 
+ The number of particles for the discussion below will be, as usual, 
+ $N$.
+
+
+The Bose line is the trivial flat line bundle. That is to say the Bose
+line is $\ensuremath{\mathcal{Q}} \times \ensuremath{\mathbb{C}}$. 
+For higher spins, the Bose bundle is the spin bundle, 
+ a flat bundle which is inequivalent to the trivial flat
+ bundle. Indeed, the
+holonomy representation on the spin bundle is the permutation
+ representation.\footnote{   
+By  \emph{permutation representation}, we mean any representation
+ equivalent to the one acting on $(\ensuremath{\mathbb{C}}^k)^{\otimes
+ N}$  which takes any $N$-element permutation into the
+ operator \ensuremath{R_{{\ensuremath{\sigma}}}}\ which does the same permutation on the tensor product index
+ set $N$. 
+The \emph{alternating permutation
+representation} shall mean any representation equivalent to $\ensuremath{\sigma}
+\mapsto (-1)^{\ensuremath{\sigma}} \ensuremath{R_{{\ensuremath{\sigma}}}}$.
+}    
+We shall describe the Fermi line in a
+moment; assume  that we know what it is. 
+The Fermi bundle for higher spins is then the tensor product of the
+Bose bundle with the Fermi line as the principle suggests. 
+By construction, the holonomy representation of 
+the fermion bundle is the alternating permutation representation, as
+ it should be.
+
+The question remains how to describe  the Fermi line over \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{3}}}}. The
+ Fermi line is a flat, 1-dimensional
+ bundle such that parallel transport maps   
+$w \mapsto -w$ along any path exchanging two particles and for any $w$. 
+ We shall first do this in the physically relevant case
+ of three dimensions.
+For odd dimensions, the configuration space of identical particles is not
+orientable. That is to say, the bundle of pseudo-scalars, 
+$\bigwedge^{Nd}(T^{*}(\ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{3}}}}))$, is nontrivial, i.e.\ the selection of a
+non-zero global volume form is impossible. The holonomy
+representation of this line bundle 
+is the alternating character. Complexifying it preserves the 
+holonomy and we end up with the Fermi line bundle. 
+
+
+We now do a different construction which works for all dimensions. 
+ Using the  particle number $N$, form the $N^N$ dimensional bundle
+$(\ensuremath{\mathbb{C}}^N)^{\otimes \ensuremath{\mathcal{Q}}}$.
+Parallel transport along a path is defined in the obvious way  
+by using the bijection of the index set induced by the path. 
+The 1-dimensional subbundle of totally
+antisymmetric elements is the Fermi line for $N$
+particles; symbolically, we could write the Fermi line as
+$\bigwedge^{\ensuremath{\mathcal{Q}}}(\ensuremath{\mathbb{C}}^N)$. 
+To say it another way, the subspace of the fiber that we
+want is
+the top
+dimensional antisymmetric space obtained from  $\ensuremath{\mathbb{C}}^N$ and the
+exterior algebra, i.e.\ the determinant line  
+$\bigwedge^N (\ensuremath{\mathbb{C}}^N) \subset (\ensuremath{\mathbb{C}}^N)^{\otimes N}$. 
+To start to understand this bundle, note that the operation of parallel
+transport does map this subbundle to itself. Furthermore, since
+parallel transport around a loop permutes the factors, it is easy to
+see that the total antisymmetry of the vector 
+means the holonomy representation is
+equivalent to the alternating character. Explicitly, 
+\begin{equation*}
+\mathop{\wedge}_{\ensuremath{\boldsymbol{q}} \in \ensuremath{q}} \ensuremath{w}_{\ensuremath{\boldsymbol{q}}} 
+\overset{\ensuremath{\Gamma_{\ensuremath{\sigma}}}}{\mapsto} 
+\mathop{\wedge}_{\ensuremath{\boldsymbol{q}} \in \ensuremath{q}}{\ensuremath{w}_{\ensuremath{\sigma}\ensuremath{\boldsymbol{q}}}}
+ = \det(\ensuremath{\Gamma_{\ensuremath{\sigma}}}) \mathop{\wedge}_{\ensuremath{\boldsymbol{q}} \in \ensuremath{q}} \ensuremath{w}_{\ensuremath{\boldsymbol{q}}}  
+= (-1)^{\sigma} \mathop{\wedge}_{\ensuremath{\boldsymbol{q}} \in \ensuremath{q}} \ensuremath{w}_{\ensuremath{\boldsymbol{q}}}
+\end{equation*}
+where \ensuremath{\Gamma_{\ensuremath{\sigma}}}\ is the holonomy operator associated to the path \ensuremath{\sigma}\
+and each $w_\ensuremath{q}$ is an element of $\ensuremath{\mathbb{C}}^N$.
+
+
+\subsection{Generalization}  
+
+There is an obvious way to generalize the above story. Let $M$ be a
+Riemannian manifold and let it be the space in which the particles
+move. Furthermore, let $E$ be a cc-Hermitian\ bundle over  $M$; $E$ should be 
+the 1-particle value space. Then to generate a theory of identical
+particle motion, we do the same as we did before. Let $\ensuremath{\mathcal{Q}} :=
+\ensuremath{{}^{N}\! {M}}$.  We define $E^{\otimes \ensuremath{\mathcal{Q}}}$ to have the fiber
+$E^{\otimes \ensuremath{q}} \ensuremath{:=} \bigotimes_{\ensuremath{\boldsymbol{q}} \in \ensuremath{q}} E_{\ensuremath{\hat{q}}}$. 
+We again define parallel
+transport by using the induced paths in $M$ generated by a path in
+\ensuremath{\mathcal{Q}}.  The parallel transport of a product element is the  
+parallel transport of  the factors in the product  over
+the  paths in physical space. In the spin bundle, 
+parallel
+transport of a factor was trivial.
+ We shall refer to
+$E^{\otimes \ensuremath{\mathcal{Q}}}$ as the position product bundle of $E$ over $M$
+and $\bigoplus_{\ensuremath{\mathcal{Q}}} E$ as the position sum bundle of $E$ over $M$.
+
+Applying the Abelian Quantization Principle\ in any of its forms, 
+we again have bosons and fermions as before. We may
+also have additional possibilities depending on the dimension of $M$
+and its fundamental group. 
+ 
+
+\section{Beyond the principle?} 
+
+This section describes what happens if we try to go beyond the Abelian Quantization Principle. We
+describe this in all three approaches as each has its own flavor to
+how the possibility is rejected. Of course, technically we only need
+to do this once. Although we are giving this argument in the context
+of identical particles with spin, this is really a discussion about
+whether the Abelian Quantization Principle\ is formulated in an appropriate level of generality.
+
+\subsection{Beyond \ensuremath{\text{AQP}_{\ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}}}?} \label{s:bprin}
+
+
+The covering space formulation suggests that the wave function\ on different levels
+should differ only by a multiplicative constant. Our motivation was
+the realization that this is an invariant condition guaranteeing that
+the wave function\ provides a Bohmian\ evolution on the base space. Looking at
+Bohm's equation, it is clear that if we replace the constant scalar with a
+constant unitary matrix, then we again have a projective Bohmian\
+velocity field.  We thus formulate our
+periodicity condition\ as  
+\begin{equation} \label{e:ansatz}
+\ensuremath{\psi}(\ensuremath{\sigma} \ensuremath{\hat{q}}) = \ensuremath{\Gamma_{\ensuremath{\sigma}}}(\ensuremath{\hat{q}}) \ensuremath{\psi}(\ensuremath{\hat{q}})
+\end{equation}
+where \ensuremath{\Gamma_{\ensuremath{\sigma}}}\ is locally constant.\footnote{
+\emph{Local constancy} means that we can obtain \ensuremath{\Gamma_{\ensuremath{\sigma}}}\ from parallel
+transporting it along a curve; equivalently, its covariant derivative
+satisfies 
+\begin{equation*}
+\nabla \ensuremath{\Gamma_{\ensuremath{\sigma}}} = 0.
+\end{equation*}
+Although it makes no sense to ask if it is globally constant since
+the vector fibers themselves depend on \ensuremath{\hat{q}}, it does make sense to
+ask if $\ensuremath{\Gamma_{\ensuremath{\ensuremath{\sigma}_{1}}}} (\ensuremath{\hat{q}}) = \ensuremath{\Gamma_{\ensuremath{\ensuremath{\sigma}_{1}}}} (\ensuremath{\ensuremath{\sigma}_{2}}
+\ensuremath{\hat{q}})$. This equation does not hold; instead we have to apply
+permutations:  $\ensuremath{\Gamma_{\ensuremath{\ensuremath{\sigma}_{1}}}} (\ensuremath{\ensuremath{\sigma}_{2}} \ensuremath{\hat{q}}) = R_{\ensuremath{\ensuremath{\sigma}_{2}}} \ensuremath{\Gamma_{\ensuremath{\ensuremath{\sigma}_{1}}}} (
+\ensuremath{\hat{q}}) R_{\ensuremath{\ensuremath{\sigma}_{2}}}^{-1}$ where $R_{\ensuremath{\ensuremath{\sigma}_{2}}}$ is the appropriate
+permutation matrix representing the parallel transport operator for
+spinors. 
+}
+The 
+condition of invariance under
+Pauli's equation is a very strong condition; whether \ensuremath{\Gamma_{\ensuremath{\sigma}}}\ is
+unitary or not, invariance demands that \ensuremath{\Gamma_{\ensuremath{\sigma}}}\ is a multiple of the
+identity. This is what we shall now explain. 
+
+Invariance means that if an initial $\ensuremath{\psi}_0$ satisfies
+(\ref{e:ansatz}), then its solution will satisfy (\ref{e:ansatz}) for
+all later times. Let $\ensuremath{\psi}_t$  be the solution to Pauli's equation\ with initial
+condition $\ensuremath{\psi}_0$ and assume that (\ref{e:ansatz}) holds for all
+time. Using Pauli's equation, we  
+ compute
+\begin{equation*}
+  H \ensuremath{\Gamma_{\ensuremath{\sigma}}} \ensuremath{\psi}_t 
+= H (\ensuremath{\psi}_t \circ \ensuremath{\sigma}) 
+= i \ensuremath{\hbar} \ensuremath{\frac{\partial {(\ensuremath{\psi}_t \circ \ensuremath{\sigma})}}{\partial {t}}}  
+= i \ensuremath{\hbar} \ensuremath{\frac{\partial {(\ensuremath{\Gamma_{\ensuremath{\sigma}}} \ensuremath{\psi}_t)}}{\partial {t}}} 
+= i \ensuremath{\hbar} \ensuremath{\Gamma_{\ensuremath{\sigma}}} \ensuremath{\frac{\partial {\ensuremath{\psi}_t}}{\partial {t}}} 
+= \ensuremath{\Gamma_{\ensuremath{\sigma}}} H \ensuremath{\psi}_t;
+\end{equation*}
+of critical importance to this computation is the easy fact that if
+$\ensuremath{\psi}_t$ is any solution of Pauli's equation, then $\ensuremath{\psi}_t \circ \ensuremath{\sigma}$ is a solution as
+well.\footnote{This follows from the fact that composing \ensuremath{\psi}\ with
+\ensuremath{\sigma}\ does not affect the Laplacian and that the spin terms for our
+bundle are equal at different points along the same covering fiber. In
+the standard story, a permutation in spin space would need to be
+invoked.} 
+We thus have the fundamental relation
+\begin{equation} \label{e:commu}
+[H, \ensuremath{\Gamma_{\ensuremath{\sigma}}}] \ensuremath{\psi}_t  = 0.  
+\end{equation}
+
+
+By local constancy, \ensuremath{\Gamma_{\ensuremath{\sigma}}}\ commutes with the
+Laplacian.
+We are left with 
+\begin{equation} \label{e:spincom}
+[\sum_{\ensuremath{\boldsymbol{q}} \in \ensuremath{\hat{q}}} \ensuremath{(\ensuremath{\boldsymbol{S}}^{\ensuremath{\boldsymbol{q}}} \cdot
+{B}_{{\ensuremath{\boldsymbol{q}}}})}, \ensuremath{\Gamma_{\ensuremath{\sigma}}}] \ensuremath{\psi} (\ensuremath{\hat{q}}) = 0.
+\end{equation}
+To use this equation effectively, we fix a point, $\ensuremath{\hat{q}}$, and
+parallel transport our objects from every $\ensuremath{\hat{q}}'$ to \ensuremath{\hat{q}}. Parallel
+transport preserves (\ref{e:spincom}). Since \ensuremath{\Gamma_{\ensuremath{\sigma}}}\ is parallel,
+we now have a family of equations constraining $\ensuremath{\Gamma_{\ensuremath{\sigma}}}(\ensuremath{\hat{q}})$. For a generic
+Hamiltonian, the $\boldsymbol{B}$ field will vary from point to point and we
+are led to the conclusion that the commutation relation holds for all
+spin terms. Furthermore, if \ensuremath{\psi}\ is sufficiently generic, then we
+would expect the commutation relations to hold for all spinors in the
+spin space at \ensuremath{\hat{q}}. We can then say that \ensuremath{\Gamma_{\ensuremath{\sigma}}}\ must commute with 
+the $3N$ 
+element set $\bigcup_{ \ensuremath{\boldsymbol{q}} \in \ensuremath{\hat{q}}
+} \{\ensuremath{{S_{x}}}^{\ensuremath{\boldsymbol{q}}}, \ensuremath{{S_{y}}}^{\ensuremath{\boldsymbol{q}}}, \ensuremath{{S_{z}}}^{\ensuremath{\boldsymbol{q}}}\}$;
+this set is a set of generators for an irreducible
+representation.\footnote{
+\ensuremath{{\ensuremath{W}}^{{\otimes}{\ensuremath{q}}}}\ is an irreducible representation space of \ensuremath{\mathop{\times}_{\ensuremath{\boldsymbol{q}} \in \ensuremath{q}} \ensuremath{SU(2)}}, the 
+\ensuremath{q}-indexed group product of \ensuremath{SU(2)}. This follows because 
+the single-particle
+spin space, \ensuremath{W}, is an irreducible representation space of
+\ensuremath{SU(2)}; tensor products of representation spaces naturally represent
+the group product; and, by Proposition 4.14 on page 82 in \cite{BrDi},
+such product representations are irreducible if the factors themselves are
+irreducible. The proof in that text uses the theory of
+characters of a representation. 
+To avoid confusion, please note that we are not discussing the
+natural representation of \ensuremath{SU(2)}\ on 
+\ensuremath{{\ensuremath{W}}^{{\otimes}{\ensuremath{q}}}}\ which is a reducible representation. 
+}
+Thus, by
+Schur's lemma, \ensuremath{\Gamma_{\ensuremath{\sigma}}}\ must be a multiple of the identity. Again, by
+local constancy, 
+ the scalar
+multiple is a global constant.  We have the Bose-Fermi
+alternative and we find that we failed to 
+ go beyond the principle. 
+
+\subsection{Beyond \ensuremath{\text{AQP}_{H}}?}
+
+The cut approach goes in much the same way. The difference is that in
+the very formulation, we are looking for a domain of
+self-adjointness. Just being symmetric implies, 
+roughly speaking, that the boundary
+conditions need to commute with the Hamiltonian. Thus, we immediately
+have the commutation relation between the representation of the
+fundamental group and the spin representation leading again to the
+fundamental group's representation being essentially one-dimensional.
+
+\subsection{Beyond \ensuremath{\text{AQP}_{\nabla}}?}
+
+As for going beyond \ensuremath{\text{AQP}_{\nabla}}, we need to ask a different
+question. Our original question was modest; we only wanted to find a
+method for constructing different theories based on a given bundle. We
+formulated a principle as to how to do this and we established that it
+was equivalent to what we had done in the covering space approach. But
+we could also try to find all bundles
+that are locally equivalent but
+globally inequivalent. As an example, we might know that the theory we
+want has the property that the associated bundle $E$ is endowed with a
+flat connection. Then the question reduces to characterizing all flat
+bundles of a given dimension.
+We shall give the well-known answer to this question, and
+then explain how one might exclude these possibilities based on other
+constraints. In particular, the presence of the spin structures
+prevents us from considering all flat bundles
+ over \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{3}}}}. 
+
+
+We wish to 
+characterize all  
+ flat bundles over
+\ensuremath{\mathcal{Q}}. Each flat bundle over
+\ensuremath{\mathcal{Q}}\ corresponds to a different 
+Bohmian theory; locally each flat bundle is equivalent, but globally
+these are inequivalent flat  bundles and distinguished by their
+holonomy representations.
+If the flat bundle has a parallel inner
+product,  then the representation is unitary under that inner product.  
+After taking into account the appropriate equivalence
+relations,\footnote{
+Two flat bundles, $E$ and $F$  over \ensuremath{\mathcal{Q}}, are equivalent if there
+is a smooth 
+diffeomorphism $f$ between 
+the two bundles such that $f(\ensuremath{q}, \cdot)$ is an isomorphism from
+$E_{\ensuremath{q}}$ onto $F_{\ensuremath{q}}$ for
+each $\ensuremath{q} \in \ensuremath{\mathcal{Q}}$ and  the pull-back of the
+connection on $F$ agrees
+with the connection on $E$. Two representations are equivalent if
+there is an isomorphism between the vector spaces which induces an
+isomorphism of the representations; that is to say, if $f: V \to W$ is
+an isomorphism, $\ensuremath{\sigma} \mapsto A_{\ensuremath{\sigma}}$ is a representation of the
+group $G$ on $V$, and $\ensuremath{\sigma} \mapsto B_{\ensuremath{\sigma}}$ is a representation of the
+group $G$ on $W$, then $f$ demonstrates the equivalence  if and
+only if $f A_\ensuremath{\sigma} f^{-1} = B_{\ensuremath{\sigma}}$. It is an easy fact that if
+the representations formed by the parallel transport operators on $E$
+and $F$ are
+equivalent, then $E$ and $F$ are equivalent as flat bundles. To see
+this, simply take the equivalence at one point, parallel
+transport it around, and use the representation properties to
+demonstrate that this is a consistent procedure, i.e.\ the parallel
+transported isomorphism is the same as the original one. The character
+of the representation, defined to be the mapping from the group to the
+trace of its representative, is in bijective correspondence with the
+equivalence classes of the representations. 
+}
+it is a fact
+that for each unitary representation of \ensuremath{\pi_1 ({\ensuremath{\mathcal{Q}}})} acting on $W$, there is
+exactly one flat 
+bundle with a parallel inner product.\footnote{One way to construct
+them is to appeal to the covering space. Let $\ensuremath{\sigma} \mapsto \ensuremath{\Gamma_{\ensuremath{\sigma}}}$ be the
+corresponding representation of the covering group. Then define the
+equivalence relation $(\ensuremath{\hat{q}}, v) \ensuremath{\sim}
+   (\ensuremath{\sigma} \ensuremath{\hat{q}}, \ensuremath{\Gamma_{\ensuremath{\sigma}}} v)$. The corresponding bundle and induced
+parallel transport is the correct flat bundle.}
+ For each flat bundle,
+we have a Bohmian theory; it is a standard fact that equivalent flat bundles
+provide equivalent theories.\footnote{Using a connection-equivalence
+bundle map, say $\Phi: E \to F$, we may map wave functions to wave functions and note that since
+$\nabla^E \Phi \ensuremath{\psi} = \Phi \nabla^F \ensuremath{\psi}$ and $\Phi_{\ensuremath{q}}$ is
+unitary, we have the same Bohmian velocities. As $\Phi$ also suitably commutes
+with the Hamiltonians, we have the same Bohmian evolution. 
+} Thus, for flat bundles whose potentials are scalar
+multiples of the identity, we have a different theory for each unitary
+representation of \ensuremath{\pi_1 ({\ensuremath{\mathcal{Q}}})}.
+
+In the case of identical particles with spin,
+ our potentials are not just scalar multiples of the identity. We
+want a bundle which can support the spin terms. 
+Our demand is that
+that the spin operators should locally form a
+parallel set of operators and be appropriately linked to the physical
+positions in space.  Specifically, we demand that for each element
+$\ensuremath{\boldsymbol{q}} \in  \ensuremath{q} 
+\in \ensuremath{\mathcal{Q}}$, there
+is an associated  spin vector, $\ensuremath{\boldsymbol{S}}_{\ensuremath{\boldsymbol{q}}}$.  As we parallel
+transport these 
+operators along a 
+path $\alpha$ in \ensuremath{\mathcal{Q}}, the spin vector associated to $\ensuremath{\boldsymbol{q}}$ should be
+mapped into the spin vector associated with
+$\alpha_{\ensuremath{\boldsymbol{q}}}(t)$, the point in physical space at time $t$ that 
+$\ensuremath{\boldsymbol{q}}$ is mapped to via $\alpha$.\footnote{Recall that a path $\alpha
+: [0,1] \to  
+\ensuremath{\mathcal{Q}}$ is a set of $N$ trajectories in physical space. We denote the
+path starting at \ensuremath{\boldsymbol{q}}\ by $\alpha_{\ensuremath{\boldsymbol{q}}} : [0,1] \to \ensuremath{\mathbb{R}^{\ensuremath{3}}}$.}  
+Around a representative of a nontrivial element in \ensuremath{\pi_1 ({\ensuremath{\mathcal{Q}}, \ensuremath{q}})},
+the spin vectors are permuted.\footnote{ 
+This implies that the spin operators are not sections of the
+endomorphism bundle. Only the set of spin vectors is globally defined.
+We could define a local parallel section for each spin operator, but
+these cannot be extended globally on \ensuremath{\mathcal{Q}}. 
+}
+The holonomy operators are responsible for implementing this permutation. 
+By using Schur's lemma appropriately, we can argue that the holonomy
+representation  must either be the permutation representation or the
+alternating permutation 
+representation.\footnote{If we know the action of a matrix on all of
+ the elements of an irreducible representation, then we know the
+ matrix up to a scalar multiple. Since the action is that of a
+ permutation, then the holonomy must be of the form of a character
+ tensored with the permutation representation.}
+
+
+ Thus, the only flat bundles capable of supporting the
+spin terms are the Bose bundles and the Fermi bundles.
+ The argument given above is the argument given in \cite{LM77}.
+Thus, if we demand flatness and the presence of spin, we conclude that
+our principle is the most generic that we can expect. 
+
+What if we remove the constraint of flatness? 
+Trying to characterize all bundles of a certain dimension with a
+prescribed curvature, is not, to our knowledge, 
+an easy task. Our general principle allows us to construct new bundles
+from a given bundle, but to find all such bundles is an entirely
+different question. With the spin terms, we can at least substantially
+reduce the question. Indeed, we still demand the spin operators to be
+parallel and to be permuted upon transporting around any loop. 
+Thus, along any path, Schur's lemma tells us that 
+parallel transport along a closed
+curve is implemented by scalar multiples of permutation matrices. The
+permutation depends only on the homotopy class of the curve while the
+scalar will generally vary over the homotopy class. It then seems
+plausible to say that all bundles with the spin terms may be formed by
+tensoring the spin bundle with a line bundle. The question of
+classification then reduces to classifying all line bundles over
+\ensuremath{\mathcal{Q}}.\footnote{From a discussion with R. Tumulka, it seemed that
+the key question is whether there are closed, but not exact
+2-forms. This is because the curvature tensor for a line bundle is
+a closed 2-form. Thus, if all closed 2-forms are exact, then given a
+prescribed curvature, there is a 1-form which may be subtracted from
+the connection to achieve a flat connection; since flat connections
+have been characterized by $\pi_1$, this would conclude the argument. 
+But closed
+2-forms being exact is implied by the triviality of the second
+homotopy class, $\pi_2(M)$. 
+In other words, if all continuous maps of $S^2$ into
+$M$ are 
+contractible in the space, then 2-forms are exact. 
+Except for $d=3$,  $\pi_2(\ensuremath{\ensuremath{\mathbb{R}^{d,N}}_{\neq}})$ seems to be
+trivial. Indeed, pick two particles and place a sphere between two of
+them. This sphere can be contracted iff $d \geq 4$; this follows by
+viewing one particle as the origin and demanding that the contracting
+ sphere never intersects the origin. We would suspect that, for $d
+\geq 4$, $\pi_2(\ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{3}}}})$ is finite and therefore its cohomology is trivial. 
+Whether or not the exceptional case $d=3$ is an exception is
+not known to us. We conjecture that, just as anyons arise in two
+dimensions, in three dimensions we do have such 2-forms and quite
+possibly such bundles. 
+}
+
+
+\section{Below the principle} \label{iss:beypri}
+
+
+Just as it is possible in special circumstances to formulate theories
+that go beyond the Abelian Quantization Principle, it is also possible to be in a situation in
+which the different characters give rise to equivalent theories. We
+have put this material here since the example is best understood at
+this point. 
+
+
+This bundle was suggested
+by Federico Bonetto in the context of a theory of mixed bosons and
+fermions; we discuss this here only in the scalar case. One approach to a
+system in which we have $m$ bosons and  $n$ fermions is to 
+to choose the configuration space to be the 
+Cartesian product ${}^{m} \ensuremath{\mathbb{R}^{3}} \times {}^{n} \ensuremath{\mathbb{R}^{3}} $. The
+ bundle over that space would then be the ordinary tensor product of the 
+ the respective Bose and Fermi lines. Another possibility is to 
+take the special $3k$-forms on \ensuremath{{}^N\ensuremath{\mathbb{R}^{3}}}\ which
+respect the particle identity; in local coordinates, we have 
+ $d\ensuremath{\boldsymbol{q}}_{i_1} \wedge  \cdots \wedge d\ensuremath{\boldsymbol{q}}_{i_k}$.
+
+
+Such a $3k$-form could be thought to represent
+$k$-fermions and $N-k$ bosons. What happens if we tensor this bundle
+with the Fermi line? As one would naively expect, this switches the
+fermions and bosons, i.e., it maps the $3k$-forms into
+$3(N-k)$-forms. Thus, 
+the bundle of all special forms is equivalent to itself tensored with
+the Fermi line. In order for the two Bohmian theories to be
+equivalent, we would actually need the Hamiltonian to be the same
+under the equivalence;  this seems to place some restrictions on the
+Hamiltonian. 
+The interested reader can find more details about the interplay of
+different types of particles and \ensuremath{{}^N\ensuremath{\mathbb{R}^{3}}}\ in
+\cite{GTu03} and Section {\ref{s:dpart}}. 
+
+
+For a simpler counterexample,  take 
+the bundle $E$ to be the direct sum  (Whitney sum) of
+the Fermi line, $F$,  and the Bose line, $B$,  over \ensuremath{{}^N\ensuremath{\mathbb{R}^{3}}}. Then the principle
+ suggests that to find other 
+theories, we should tensor the Fermi line, $F$,
+with $E$ to obtain a new bundle $G$. 
+But in fact, we have 
+\[
+G \ensuremath{:=} F \otimes (F \oplus B) \ensuremath{\cong} F \otimes F \oplus F \otimes B
+\ensuremath{\cong} B \oplus F \ensuremath{\cong} E . 
+\]
+Assume that we had a potential $V= \bigl( \begin{smallmatrix} a &b \\
+c&d \end{smallmatrix} \bigr)$ acting on $E$. If one computes, one
+finds that $\ensuremath{\text{Id}} \otimes V \mapsto \bigl( \begin{smallmatrix} d &c \\
+b&a \end{smallmatrix} \bigr)$ under these isomorphisms. 
+As derivatives are unaffected by these
+isomorphisms,  we shall have equivalent theories iff $a=d$ and $b
+=c$. 
+
+
+Note
+that what happens in these case is  the vanishing of 
+the trace of the holonomy operators of $E$
+representing  the paths whose holonomy operators in $F$  are
+ non-trivial.
+ Since the character of a
+representation determines a representation up to
+isomorphism 
+and the
+character of a tensor product is the product of the
+characters,\footnote{See \cite{BrDi}. Recall that the character of a 
+representation is the mapping from the group into the complex numbers
+defined by taking the trace of the representatives.} we have that
+$G$'s holonomy representation is
+ equivalent to $E$'s holonomy representation.
+It seems that if we avoid this kind of degenerate situation, 
+then we will obtain inequivalent
+theories. 
+
+
+\section{Bundle triviality}
+
+A natural question to ask about the Bose bundles and Fermi bundles is
+whether these bundles are trivial or not. 
+They are certainly not trivial flat
+bundles. But a bundle can have a non-trivial flat connection and still
+be trivial as a bundle, 
+as is the case for the complex line over the circle. It
+turns out that some of the bundles are trivial and some are not. Given
+that information, it might then be reasonable to suggest that the
+spin-statistics relation would be correlated to the triviality of the
+bundle. More precisely, the conjecture would be that 
+ the Bose bundles for integral spin
+ would be trivial while the Fermi bundles would
+be trivial for half-integral spin. This conjecture is false. In
+fact, there is no correlation. Here is the table of relations for
+$N=2$, $d =3$, spin $s$:
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+ & $s=2l$  &  $s=2l+\frac{1}{2}$ &  $s=2l+1$ &  $s=2l+\frac{3}{2}$\\
+\hline
+Bose & trivial & nontrivial & nontrivial & trivial \\
+Fermi  & nontrivial & nontrivial & trivial & trivial\\
+\hline
+\end{tabular}
+\end{center}
+for $l \in \mathbb{N}$. 
+For $N > 2$, the Bose bundle  is nontrivial for odd integral spin while 
+the Fermi bundle is nontrivial for even integral spin. We do not know the 
+triviality or nontriviality of the other bundles except for the Bose
+line which is clearly trivial. We give here a
+ brief outline of the reason for these
+results. In Appendix \ref{s:triv}, we give a more complete account of these
+results.
+
+
+We start with some facts about line bundles over \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{d}}}}. First, a 
+flat line bundle with trivial holonomy is a trivial bundle. To
+trivialize, simply parallel transport a (1-element) basis to every
+point of the manifold. Since the
+holonomy is trivial, this is a well-defined operation. Second, if a
+flat line bundle has non-trivial holonomy, over \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{d}}}}, then it is
+non-trivial. As there are only two characters of the fundamental
+group, this is a statement directly about the Fermi line. The
+proof of this assertion lies in the following idea.
+The difference between
+two connections is a 1-form and for both of them to be flat, the
+1-form must be closed. Furthermore, to have a nontrivial holonomy, the
+1-form must be non-exact. Since all closed 1-forms on \ensuremath{\mathcal{Q}}\ are exact, we
+are done. Thus the Fermi line is nontrivial. Furthermore, the
+configuration space's top form bundle has the holonomy of the
+alternating character iff $d$ is odd. This follows by considering the
+wedge product of the basis elements and noting that the parallel transport
+along a loop transposing two particles involves the exchange of 
+ $d$-pairs of vectors. Thus, \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{d}}}}\ is orientable iff $d$ is even.
+
+A useful tool in establishing the nontriviality of a vector bundle is
+its determinant line bundle. If $E$ is a vector bundle of dimension $l$,
+then its determinant line is $\det(E) \ensuremath{:=} \bigwedge^l (E) = (E^{\otimes
+l})_{Alt}$, the totally antisymmetric, 1-dimensional subbundle of the
+$l$-fold tensor product of $E$ with itself. If $E$ is a trivial
+bundle, then its determinant line is trivial. The converse fails to
+hold as the case of the nontrivial tangent bundle to the (orientable)
+2-sphere demonstrates. 
+We also have that the parallel transport operator on $E$ induces a
+parallel transport 
+operator on $\det(E)$. In fact, for a given path, the 
+holonomy operator for that path in $\det(E)$ is multiplication by the
+determinant of the corresponding holonomy operator acting on $E$. This
+is related to why it is called the determinant line bundle. Furthermore, if $E$
+is flat, then $\det(E)$ is flat. Hence our plan is to compute the
+determinant line bundle of our bundles. This is equivalent to computing
+the determinant of the matrices in the permutation and alternating
+ permutation representation. 
+
+Given any of the bundles, our candidate permutation matrix will be the
+one corresponding to an exchange of two particles. As is easy to
+see,\footnote{For $N=2$, decompose the tensor product into symmetric
+and antisymmetric elements. For $N>2$, consider a matrix representing
+a transposition. Then again decompose it into the symmetric and
+antisymmetric parts with respect to those two factors.} 
+we find that the determinant of the matrix for the Bose bundle is 
+$-1$ raised to the power $\binom{2s+1}{2}(2s+1)^{N-2}$ while the
+determinant for the 
+matrix for the Fermi bundle is $-1$ raised to the power $(2s+1 +
+\binom{2s+1}{2})(2s+1)^{N-2}$. By computing when the exponents are
+odd, we arrive at our claims about the non-triviality. 
+
+Our final effort will be to demonstrate the triviality assertions. To
+do this, we need to argue that
+the direct sum 
+of the Fermi line with itself, over ${}^2\ensuremath{\mathbb{R}^{3}}$, is trivial, i.e.\
+$F \oplus F \ensuremath{\simeq} {}^2\ensuremath{\mathbb{R}^{3}}\times \ensuremath{\mathbb{C}}^2 $. 
+The following proof was implied to exist in appendix D of \cite{MR97}.  
+The idea is to produce a trivialization. We start with writing the
+covering space as
+\[
+ \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}} \ensuremath{:=} \ensuremath{\mathbb{R}^{2,3}}_{\neq} = \ensuremath{\mathbb{R}^{3}} \times \ensuremath{\mathbb{R}^{+}} \times
+ S^2,
+\]  
+i.e.\   center of mass, distance between the particles, and the
+direction from particle 1 to particle 2. To create the base space, we
+identify antipodal points on $S^2$.
+To find a basis for our bundle, it is sufficient to find a global basis of
+$S^2 \times \ensuremath{\mathbb{C}}^2$ such that both sections of the basis satisfy the
+alternating periodicity condition. 
+Once we have such sections, we then extend them to \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}\ by
+defining them to be constant in the other coordinates.
+To obtain these sections over $S^2$,
+ we parameterize the sphere with spherical coordinates $(\theta, \phi)$:
+ $0
+\leq \theta \leq 2\pi$ and $0 
+\leq \phi \leq \pi$. Then the following 
+smooth, linearly independent sections 
+\[
+\ensuremath{\psi}_1 (\theta, \phi)= 
+\begin{pmatrix}
+\cos\phi\\
+e^{i\theta}\sin\phi
+\end{pmatrix}
+\quad
+\ensuremath{\psi}_2 (\theta, \phi) = 
+\begin{pmatrix} 
+e^{-i\theta} \sin\phi\\
+-\cos\phi
+\end{pmatrix}
+\]
+satisfy   
+\[
+\ensuremath{\psi}_i(\theta + \pi, \pi - \phi) = - \ensuremath{\psi}_i(\theta, \phi).
+\] 
+This is all we needed. This  comes from considerations in the
+spin-$\frac{1}{2}$ representation of $SO(3)$. Namely, the matrices 
+$A(\theta,
+\phi)$ with columns $\ensuremath{\psi}_1$ and $\ensuremath{\psi}_2$, represent a
+rotation of angle $\pi$ about the axis specified by $(\theta, \phi)$.
+The essential fact is that we have a double-valued representation,
+i.e.\  $A(\theta + \pi, \pi - \phi) = -A(\theta, \phi)$.
+
+The following works for $N=2$. 
+The idea is to decompose each bundle into a sum of Bose
+and Fermi lines. 
+We then take pairs of  Fermi lines and trivialize them. 
+If there are an even number of Fermi lines, then we have
+trivialized the whole bundle as the sum of trivial bundles is
+trivial. 
+ An odd number implies that it is
+nontrivial, a fact we have already established. 
+We start with the Bose bundles.
+Since we have only two particles,
+the bundle is the sum of a symmetric part and an antisymmetric
+part. The symmetric subbundle is trivial (a sum of Bose lines), 
+while the antisymmetric part
+is a sum of Fermi lines. Thus, the Bose bundle is trivial if and only
+if the number of Fermi lines is even i.e., iff  $\binom{2s+1}{2}$, the
+dimension of the  
+antisymmetric part, is even. 
+As for the
+Fermi bundle, its triviality depends upon the parity of $2s+1 +
+\binom{2s+1}{2}$, the dimension of the
+symmetric part, since upon tensoring with a Fermi line, the Fermi lines
+become Bose lines and the Bose lines become Fermi lines. 
+The results follow.
+
+
+\section{Another viewpoint for identical particles} \label{s:view}
+
+
+We have described 
+how a theory about identical particles should be formed in Bohmian mechanics. In
+this section, we shall pursue a different, very speculative, idea. The
+idea suggests
+how Bohmian mechanics\ can choose bosons and fermions even if we start on the
+wrong space. Furthermore, it demonstrates 
+the difficulties 
+in 
+ satisfying the intuition that permutation symmetry leads to
+only two classes of wave functions. It is also useful in revealing a certain
+strength of Bohmian mechanics. But we are not suggesting that this is the
+appropriate story for identical particles; that story has already been
+presented. 
+Unless otherwise stated, we will be discussing complex-valued
+wave functions even though spin does not substantially change the discussion. 
+The wave functions will be functions on \ensuremath{\mathbb{R}^{\ensuremath{d} N}}\ and the configurations will
+be elements of \ensuremath{\mathbb{R}^{\ensuremath{d} N}}. 
+
+We have a system of labelled particles. 
+In this context,  a system of identical particles 
+requires two things. The first is to define an action of the
+permutations on the state of the system. Once one has that, then the
+particles are identical iff the action of the permutation group
+commutes with the evolution of the system. In other words, if $A_t$ is
+the evolution operator for the 
+system, $\chi$
+is any initial condition, and $\sigma$ is a permutation,
+then we require that $\sigma(A_t(\chi)) = A_t(\sigma\chi)$. 
+
+The second condition is straightforward to understand, but the first
+condition can be tricky.  The action of a permutation on the particle
+positions is, of course, to exchange the positions. One must decide
+how the other objects
+in the theory should change. For this, we have two classes of
+objects. Roughly, objects considered as laws follow the particles while 
+state objects follow the positions.
+As that was a bit vague, let us look at classical mechanics.
+In classical
+mechanics, the state of the system is given by the position and
+velocity of the particles. When a permutation acts on the sate, the
+tangent vector associated with the given position stays associated
+with the same position. But both the position and tangent vector are
+now associated to a different particle. In contrast, 
+the law is given by the force which is a function of the state of the
+system. 
+We do not redefine the force in order
+to undo the permutation; rather, we take the state as it is after the
+action of the permutation and evaluate the force at that position. 
+We would therefore generally expect the
+initial force vectors to have changed when we act upon the initial
+state by a permutation. We can then see that the second condition will be
+satisfied in classical mechanics iff the force is invariant under
+permutations, i.e.\ we need, say for two particles, that 
+$F(\ensuremath{\boldsymbol{q}}_a, \dot{\ensuremath{\boldsymbol{q}}_a}, \ensuremath{\boldsymbol{q}}_b, \dot{\ensuremath{\boldsymbol{q}}_b})
+= F(\ensuremath{\boldsymbol{q}}_b, \dot{\ensuremath{\boldsymbol{q}}_b}, \ensuremath{\boldsymbol{q}}_a, \dot{\ensuremath{\boldsymbol{q}}_a}).$
+
+How do permutations act in Bohmian mechanics? That is the question which is central
+to this section. There are three objects in the theory: $Q = 
+(\boldsymbol Q_1, \ldots, \boldsymbol Q_N) \in \ensuremath{\mathbb{R}^{\ensuremath{d} N}}$, \ensuremath{\psi},
+$H$. The status of $Q$ is clear and permutations act on it by
+permuting the positions, i.e.\ $( \boldsymbol Q_1, \ldots, \boldsymbol
+Q_N) \mapsto \boldsymbol Q_{\sigma 1}, \ldots, \boldsymbol Q_{\sigma
+N}$. The Hamiltonian, being a law, is unchanged as an object acting on
+the wave functions. The question is how \ensuremath{\psi}\ should change. 
+The standard view of Bohmian mechanics, as stated in Section {\ref{s:sim}}, treats
+\ensuremath{\psi}\ as part of the state of the system. Thus, we have the freedom,
+and the obligation, to have the permutations act on it. Since  \ensuremath{\psi}\
+generates the velocity field, we want the permutation action to be
+such that the velocity vector at $\ensuremath{\boldsymbol{q}}$ is unchanged when we exchange
+the particles. That is to say, we want 
+$ v^{\sigma \ensuremath{\psi}}_{\sigma^{-1} i}  (\ensuremath{\boldsymbol{q}}_{\sigma 1}, \ldots
+\ensuremath{\boldsymbol{q}}_{\sigma N})  
+= v^{\ensuremath{\psi}}_i (\ensuremath{\boldsymbol{q}}_1, \ldots \ensuremath{\boldsymbol{q}}_N). 
+$ To understand the formula, 
+note that if $k = \sigma^{-1} i$, then 
+$\ensuremath{\boldsymbol{q}}_i = \ensuremath{\boldsymbol{q}}_{\sigma k} $ implying that the $\ensuremath{{k}^{th}}$
+particle has position $\ensuremath{\boldsymbol{q}}_i$ after the action of the
+permutation; hence, the velocity vector of the $\ensuremath{{k}^{th}}$ particle, after the
+permutation, should be the same as the velocity vector of the
+$\ensuremath{{i}^{th}}$ particle before the permutation. 
+As can be readily checked, if $\sigma \ensuremath{\psi} \ensuremath{:=} \ensuremath{\psi} \circ
+\sigma^{-1}$, then the above equality holds. Defining the permutation
+action on wave functions in this manner, we see that if $H$ is invariant under
+permutations, then the system satisfies the conditions for it to be a
+system of identical particles. We do not arrive at any constraint on
+the wave function. From this viewpoint, the experimental evidence of particles
+being either bosons or fermions must be incorporated as an additional
+postulate and is not a result of the particles being identical. 
+Succinctly, the problem is that the
+wave function\ changes covariantly under symmetries.\footnote{As far as we can
+tell, this is also a problem in standard quantum mechanics as
+evidenced by the symmetrization postulate. In the standard story,
+the wave function\ should change in the same way, resulting in the
+probability density changing in just the right way so as to be
+insensitive to a relabelling.} 
+
+The remedy of this problem, motivated by other reasons, is to consider
+the wave function\ as part of the law. 
+It is our contention that the
+wave function\ should be thought of as an analog of the Hamiltonian; that is to say,
+the wave function\ defines the law of motion and can be given before the
+evolution of the particles is considered.\footnote{
+This is true for isolated Bohmian\ systems or, more appropriately, for
+the universal wave function. For systems that are
+interacting  
+with their environment, the system's wave function, defined to be the composite
+wave function\ (system plus environment)
+evaluated at the actual configuration of the environment, can evolve
+in a way different from the Schr\"odinger\ evolution. This is the case  when
+a wave function\ collapses \cite{DGZ92}. Effectively, a subsystem is governed by two
+complementary evolutions: the Schr\"odinger\ evolution
+and an evolution based on
+the environment's configuration changing. 
+}
+For details on the wave function\ as a law, please see \cite{DGZ97}. This
+viewpoint implies that the velocity 
+field  is not a consequence of the dynamics, but rather defines the
+dynamics in the same way as the force does in classical mechanics. 
+The only initial conditions are the initial positions of the particles. 
+Accepting our assertion leads to the conclusion that the velocity
+field should be appropriately invariant under permutations of the
+configurations. This eventually leads to concluding that we have either
+bosons or fermions.
+
+
+A natural challenge to our invoking ``the wave function\ is a law'' argument is
+why we would still adhere to the usual policy of changing  the wave function\ under a
+rotation or gauge transformation, but not under a permutation
+symmetry. 
+The answer lies with the conditional wave function. If we have a
+wave function\ governing a system and its environment, we can write it as a
+function of two variables; namely, the wave function\ is a function of the
+configuration of the system and the configuration of the environment:
+$\ensuremath{\psi}(\text{sys, env})$. We 
+then define the conditional wave function\ of the system to be $\ensuremath{\psi}(\cdot,
+\text{ENV})$ where ENV stands for the actual configuration of the
+environment. In certain situations, the conditional wave function\ will satisfy
+its own Schr\"odinger's equation\ and give rise to a Bohmian\ system whose trajectories for
+the system will agree with the actual Bohmian\ trajectories. See
+\cite{DGZ92} for more details about the conditional wave function. 
+
+
+If we have a fundamental
+symmetry of the universal wave function, then there is, in general, no reason to
+assume that symmetry for a conditional wave function. For example, consider
+rotations. If our universal wave function\ is invariant under rotations of
+physical space, then rotating our initial universal configuration
+produces an equivalent motion. But now let us consider a
+smaller system. If we rotate the system's configuration, but not the
+environment's configuration, then there is no reason to assume
+invariance. Invariance only holds when both system and environment are
+transformed, not when just one of them is transformed. 
+
+Symmetry under exchange of particle positions is quite different. This
+symmetry is inherited by conditional wave functions. This is obvious; the
+exchange symmetries work for any subcollection of identical
+particles. Thus, if we believe that the particles are fundamentally
+identical, then we may assume this property for all systems. It is
+relevant to our earthly domain of physics and it is why our argument
+in this section ultimately works. 
+
+It should be quite clear that this is a Bohmian argument. In sharp
+contrast to 
+ the other approaches presented in this chapter, we can see no way of
+doing this argument in standard quantum mechanics.
+
+
+\section{Classical Mechanics and identical particles} \label{s:cm} 
+
+
+It is interesting to contrast the Bohmian\ story of identical
+particles with that of the classical story. For identical, classical particles,
+we would again use the natural configuration space. The initial
+conditions are the positions and velocities of the particles. The law
+is specified by an acceleration field on configuration space. 
+
+If we demand that  the acceleration field  comes from a potential,
+we might expect the covering space to be relevant. But lifting to
+\ensuremath{\ensuremath{\mathbb{R}^{d,N}}_{\neq}}\ does not achieve any greater generality. To explain why  \ensuremath{\ensuremath{\mathbb{R}^{d,N}}_{\neq}}\
+is not useful, 
+consider the periodicity condition\ for the proposed potential $V$:  
+\begin{equation*}
+V(\ensuremath{\sigma} \ensuremath{\hat{q}}) = V(\ensuremath{\hat{q}}) + \ensuremath{\gamma_{\ensuremath{\sigma}}}.
+\end{equation*}
+This is the general condition that will lead to the same gradient at
+each level of the covering fiber. 
+The map $\ensuremath{\sigma} \mapsto \ensuremath{\gamma_{\ensuremath{\sigma}}}$ forms an additive representation  of the
+fundamental group. It is impossible to form an additive
+representation, over the reals, 
+of a finite group. For example,  consider a
+transposition. Writing down the periodicity condition s leads to $2 \ensuremath{\gamma_{\ensuremath{\sigma}}} =
+0$. There is only one solution to that equation. 
+
+To put it succinctly, all closed 1-forms on \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{d}}}}, $d \geq 3$, are
+exact. In classical mechanics, the covering space of identical
+particles seems irrelevant except as a convenient setting for analysis.
+Incidentally, the natural configuration space is useful in classical
+mechanics and statistical mechanics. 
+Indeed, it answers the Gibbs paradox of thermodynamics; see
+\cite{LM77} for details.
+
+\section{Distinguished particles} \label{s:dpart}
+
+The question arises as to what the proper description of distinguished
+particles should be. The typical viewpoint is that the parameters are
+attached to the particles. In other words, there are electrons,
+protons, etc. with various charges and masses 
+and these are different types of particles. 
+In a typical approach, one would take the Cartesian product of 
+ the natural configuration spaces for the various particles, 
+possibly removing coincident
+points, and tensor the appropriate bundles together to form the bundle
+whose sections are the wave functions. 
+
+In classical mechanics, the Cartesian product seems to be the only
+option. We see no other way of giving the points different fundamental
+properties. But in  
+quantum mechanics, we do have another
+option, as hinted at by Bell in \cite{Bell87}. The idea is that the particle
+differences are all incorporated into the wave function\ itself. We shall
+describe the setup here. See \cite{GTuTaZ03} for more discussion. 
+
+We start with the scalar wave functions and the usual theory on \ensuremath{\ensuremath{\mathbb{R}^{d,N}}_{\neq}}. In
+general, the velocity field generated by a wave function\ on \ensuremath{\ensuremath{\mathbb{R}^{d,N}}_{\neq}}\ will have no
+particular symmetry properties. The simple idea is to symmetrize the
+probability current as well as the probabilties and then define the
+Bohmian velocity from that. We then have a well-defined velocity field on 
+\ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{d}}}}. Furthermore, if the wave function\ only has support in one ``level'' of
+\ensuremath{\ensuremath{\mathbb{R}^{d,N}}_{\neq}}, then this velocity field gives the usual motion for
+distinguished particles.  
+In particular, the particles will retain their distinctive
+motions. We also note that the corresponding equivariant density for
+this new motion is the symmetrized density; one could argue that this is
+the only position density that one has access to. Indeed, based on the
+position of particles at a single time, it would be hard, if not
+impossible, to distinguish an electron from a proton if they were
+indeed point particles. It is only
+through their paths that we see their differences. 
+
+We can write the above theory in a better way. In fact, on \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{d}}}}, we
+form the $N!$-dimensional bundle obtained by summing over the 
+covering fibers. More precisely, at $\ensuremath{q} \in \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{d}}}}$, we form the
+bundle $\bigoplus_{\ensuremath{\ensuremath{\rho}}^{-1}(\ensuremath{q})} \ensuremath{\mathbb{C}}$. We have in mind that a
+wave function\ $\hat{\ensuremath{\psi}}$ on \ensuremath{\ensuremath{\mathbb{R}^{d,N}}_{\neq}}\ defines $\ensuremath{\psi}(\ensuremath{q}) \ensuremath{:=}
+ \frac{1}{N!} \oplus_{\ensuremath{\hat{q}} \in \ensuremath{\ensuremath{\rho}}^{-1}(\ensuremath{q})} \ensuremath{\psi}(\ensuremath{\hat{q}})$.  
+Each component satisfies a Schr\"odinger\ equation and the sum over the
+probability currents leads to the correct symmetrized Bohmian velocity of
+$\hat{\ensuremath{\psi}}$. 
+
+We now give a much more general story about distinguishable
+particles. 
+Fix $K$ to be the number of different types of particles; we shall use
+$k$ to index the different particles.  Let
+$(E_k, \nabla_k, m_k, \ensuremath{\boldsymbol{S}}_k)$ be the data for particle type
+$k$ and we take $e_k$ to be the dimension of the fiber. 
+Then the one-particle bundle is $E \ensuremath{:=} \bigoplus_{k=1}^K E_k$ with
+the connection induced from a direct sum, e.g.\ $\nabla (\ensuremath{\psi}_1 \oplus
+\ensuremath{\psi}_2) \ensuremath{:=} \nabla_1 \ensuremath{\psi}_1 \oplus \nabla_2 \ensuremath{\psi}_2$. The Schr\"odinger\
+Hamiltonian is defined as $(G\otimes M + \sum_k \ensuremath{\boldsymbol{S}}_k ) \circ D^2 \ensuremath{\psi}$
+where $M$ is a diagonal matrix with the masses along the
+diagonal. In each component of the sum, it will look like the usual Pauli
+equation. Bohm's equation is dealt with in the same way, i.e. use $G
+\otimes M$ to make the conversion from a 1-form to a tangent vector. 
+It is necessary to do this before taking the
+inner product. 
+
+
+For many particles, the configuration space will be \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{d}}}}. Let \ensuremath{\mathcal{K}}\
+denote the set $\{1, \ldots K\}$. 
+Let $\ensuremath{A_{q/K}}$ be the set of partitions of $\ensuremath{q}$ into $K$ 
+sets. We shall use \ensuremath{\nu}\ to denote a partition which may also be
+viewed as a map $\ensuremath{\nu} : \ensuremath{q} \to \ensuremath{\mathcal{K}}$.  
+We denote the set of positions of type $k$, which is the set $\nu^{-1}
+(k)$,
+ by $\ensuremath{\ensuremath{q}_k^{\nu}}$. 
+The bundle
+for a theory just about bosons is $E^{\otimes \ensuremath{\mathcal{Q}}}$. The fiber at
+$\ensuremath{q}$ may be written as 
+\[
+E^{\otimes \ensuremath{\mathcal{Q}}}_{\ensuremath{q}} \ensuremath{:=} \otimes_{\ensuremath{\boldsymbol{q}} \in \ensuremath{q}}
+E_{\ensuremath{\boldsymbol{q}}} \ensuremath{\cong} \bigoplus_{\ensuremath{\nu} \in \ensuremath{A_{q/K}}} (\bigotimes_{k \in \ensuremath{\mathcal{K}}}
+\{E_k^{\otimes 
+\ensuremath{\ensuremath{q}_k^{\nu}}}\}).\]   
+The
+connection is defined in
+the same way as the spin bundle's connection: it
+is induced by the set bijections which 
+paths in \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{d}}}}\ provide. Parallel transport in terms of the 
+ sum over partitions requires taking into consideration that 
+ the bijection also maps one partition to another. 
+
+For a theory involving fermions, we must construct
+the appropriate bundles first. 
+Given a  subset $r$ of the point $\ensuremath{q} \in \ensuremath{\mathcal{Q}}$, we
+define the vector space 
+\[
+F_r \ensuremath{:=} \mathop{\wedge}_{r} \ensuremath{\mathbb{C}}^{\ensuremath{\lvert {r} \rvert}} \ensuremath{:=}
+(\ensuremath{\mathbb{C}}^{\ensuremath{\lvert {r} \rvert}})^{\otimes r}_{Alt}.\] We can therefore define
+$\bigwedge^i_{\ensuremath{\mathcal{Q}}}$ 
+as the bundle whose fiber is the direct sum of the $F_r$'s
+where $\ensuremath{\lvert {r} \rvert} =i$. If we have any path $\sigma$ in \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{d}}}}\ which gives a
+bijection between $r$ and itself, then we have that parallel transport
+around that path will be $(-1)^{{\alpha_r}}
+(1)^{{\alpha_{\ensuremath{q} \setminus r}}}$. That is to say, it is the
+sign of the permutation induced on the set $r$ by the bijection
+$\sigma$. In other words, we have, in a loose sense,  $i$
+fermions and $N-i$ bosons. As one can easily see, the subspace 
+of the points in $r$ being fermions. 
+is not invariant whereas the number of fermions is invariant under
+the parallel transport. 
+In three dimensions, this is equivalent to the $3i$-form bundle of
+Section {\ref{iss:beypri}}.  The
+direct sum over $i$ leads to the bundle of all mixed bosons and
+fermions; we denote it by $\bigwedge_{\ensuremath{\mathcal{Q}}}$. 
+
+The situation where the first $j$ of the $K$ type of
+particles are fermionic and the other types are bosonic may be easily
+described using these restricted Fermi lines. 
+
+
+The appropriate bundle is $J$ and it is defined at a point $\ensuremath{q}$ to
+be 
+\[
+J_{\ensuremath{q}} \ensuremath{:=} \bigoplus_{\ensuremath{\nu} \in \ensuremath{A_{q/K}}} (\{\bigotimes_{k =1}^j 
+F_{\ensuremath{\ensuremath{q}_k^{\nu}}} \otimes (E_k)^{\otimes \ensuremath{\ensuremath{q}_k^{\nu}} }\} 
+\otimes \{\bigotimes_{k =j+1}^K 
+ E_k^{\otimes \ensuremath{\ensuremath{q}_k^{\nu}}}\}).\]
+ Its dimension is 
+\[
+\sum_{\ensuremath{\nu} \in \ensuremath{A_{q/K}}}
+\binom{N}{l_1\cdots l_K} \{ \prod_{k \in \ensuremath{\mathcal{K}}} e_k^{l_k}\} = 
+(\sum_{k \in \ensuremath{\mathcal{K}} } e_k)^N.
+\] 
+The evolution 
+equations are the same as they always have been. Explicitly, we have
+\begin{subequations}
+\begin{align} 
+\ensuremath{\frac{d{\boldsymbol{Q}_t}}{d{t}}} =&  \hbar  \textrm{Im}
+\frac {\ensuremath{({\ensuremath{\psi}_t}, { (G_{\boldsymbol{Q}_t} \otimes M)^{\oplus\otimes} \circ
+D_{\boldsymbol{Q}_t} \ensuremath{\psi}_t})}}
+{\ensuremath{({\ensuremath{\psi}_t}, {\ensuremath{\psi}_t})}} (Q_t)
+  \quad \text{for each $\boldsymbol{Q}_t \in Q_t$,} \\ 
+i \hbar \ensuremath{\frac{\partial {\ensuremath{\psi}_t}}{\partial {t}}}  (\ensuremath{q}) =&  - \frac{\hbar^2}{2} \sum\limits_{ \ensuremath{\boldsymbol{q}} \in \ensuremath{q}}
+ \{ (G_{\ensuremath{\boldsymbol{q}}} \otimes M + \sum_{k \in \ensuremath{\mathcal{K}}} \ensuremath{\boldsymbol{S}}_{k, \ensuremath{\boldsymbol{q}}}
+)^{\oplus\otimes} 
+\circ D^2_{\ensuremath{\boldsymbol{q}}} \ensuremath{\psi}_t (\ensuremath{q}) \} + 
+V_{\ensuremath{q}} \ensuremath{\psi}_t (\ensuremath{q}) 
+. 
+\end{align}
+\end{subequations}
+If $A$ is an operator acting on $E_{\ensuremath{\boldsymbol{q}}}$, then by $A^{\oplus \otimes}$ we
+mean an operator defined to be the the direct sum over $\ensuremath{\nu} \in
+\ensuremath{A_{q/K}}$ of the operators defined on the tensor product as $A$
+acting on the \ensuremath{{\ensuremath{\boldsymbol{q}}}^{th}}\ component and the identity on the other
+components. 
+We can also write the evolution equations as 
+\begin{subequations}
+\begin{align} 
+\ensuremath{\frac{d{\boldsymbol{Q}_t}}{d{t}}} =& \frac{\hbar}{\ensuremath{({\ensuremath{\psi}_t}, {\ensuremath{\psi}_t})}} 
+\sum_{\ensuremath{\nu} \in \ensuremath{A_{q/K}}} \frac{1}{m_{\nu(\ensuremath{\boldsymbol{q}})}}  \textrm{Im}
+\ensuremath{({\ensuremath{\psi}_t^{\ensuremath{\nu}}}, { \nabla_{\boldsymbol{Q}_t}
+\ensuremath{\psi}_t^{\ensuremath{\nu}}})}   (Q_t) 
+  \quad \text{for each $\boldsymbol{Q}_t \in Q_t$,} \\ 
+\begin{split}
+i \hbar \ensuremath{\frac{\partial {\ensuremath{\psi}_t^{\ensuremath{\nu}}}}{\partial {t}}}  (\ensuremath{q}) =&  - \frac{\hbar^2}{2} 
+\sum\limits_{  \ensuremath{\boldsymbol{q}} \in 
+  \ensuremath{q}} \{ \frac{1}{m_{\nu(\ensuremath{\boldsymbol{q}})}} \ensuremath{\Delta}_{\ensuremath{\boldsymbol{q}}} +
+  \ensuremath{\boldsymbol{S}}_{\nu(\ensuremath{\boldsymbol{q}})} \circ (B_{\ensuremath{\boldsymbol{q}}}) \ensuremath{\psi}_t^{\ensuremath{\nu}} 
+(\ensuremath{q}) \} 
++ 
+(V_{\ensuremath{q}} \ensuremath{\psi}_t(\ensuremath{q}) )^{\ensuremath{\nu}} 
+\end{split}
+\end{align}
+\end{subequations}
+for each partition $ \ensuremath{\nu} \in \ensuremath{A_{q/K}}$.
+
+\clearpage
+
+\section{Appendix: the set-indexed tensor product}
+
+\subsection{The set-indexed tensor product} \label{s:setten} \label{a:tensor}
+
+
+Let $\ensuremath{T}$ be a finite set. For each element $\ensuremath{a} \in
+\ensuremath{T}$, we associate 
+a vector space $\ensuremath{W}_{\ensuremath{a}}$ to that element. We define the
+\ensuremath{T}-indexed Cartesian product 
+of these spaces to be 
+\begin{equation*}
+\ensuremath{\mathop{\times}_{\ensuremath{a} \in \ensuremath{T}}
+\ensuremath{W}_{\ensuremath{a}} } \ensuremath{:=} \ensuremath{\{f | f: \ensuremath{T} \to \bigcup_{\ensuremath{a}
+\in \ensuremath{W}}{\ensuremath{W}_{\ensuremath{a}} \text{ such that } f(\ensuremath{a}) \in
+\ensuremath{W}_\ensuremath{a} \} }}.\footnote{We could also say that the Cartesian
+product is the set of sections of 
+the bundle over the discrete space $T$ whose fiber at $\ensuremath{a}$ is
+$\ensuremath{W}_{\ensuremath{a}}$.  }
+\end{equation*} 
+Endowed with the usual vector space structure, this is the 
+\ensuremath{T}-indexed direct
+sum of the spaces.\footnote{
+As an example, the tangent space of \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{3}}}}\ is the \ensuremath{q}-indexed direct sum of
+the tangent 
+spaces in physical space.
+} 
+We define the \ensuremath{T}-indexed tensor product \ensuremath{\bigotimes_{\ensuremath{a} \in \ensuremath{T}} \ensuremath{W}_{\ensuremath{a}} }\ to be the set of
+multilinear
+functionals defined on \ensuremath{\mathop{\times}_{\ensuremath{a} \in \ensuremath{T}}
+\ensuremath{\ensuremath{W}^*}_{\ensuremath{a}} }, the \ensuremath{T}-indexed Cartesian product of the
+dual spaces.    
+
+If, as will be our case, the vector spaces $\ensuremath{W}_{\ensuremath{a}}$ are the
+same vector space, say \ensuremath{W}, then simplifications
+occur. Notationally, \ensuremath{{\ensuremath{W}}^{\ensuremath{T}}}\ denotes the Cartesian
+product; \ensuremath{{\ensuremath{W}}^{{\otimes}{\ensuremath{T}}}}\  denotes the tensor product. As for the definition of
+the Cartesian product, the
+union can be replaced with the vector space itself. The
+Cartesian product becomes
+\begin{equation*}
+\ensuremath{{\ensuremath{W}}^{\ensuremath{T}}} = \{f| f: \ensuremath{T} \to \ensuremath{W}\}.
+\end{equation*}
+From this point on, we will assume that we have only one vector
+space. The more general case does not substantially change any
+statements below, but it is irrelevant to the purpose of this paper. 
+
+Let us consider a different approach to \ensuremath{{\ensuremath{W}}^{{\otimes}{\ensuremath{T}}}}. We will use the
+standard equivalence class approach to tensors. We start by
+introducing some notation. For $f \in \ensuremath{{\ensuremath{W}}^{\ensuremath{T}}}$, we write
+\ensuremath{\mathop{\otimes}_{\ensuremath{a} \in \ensuremath{T}} \ensuremath{w}_{\ensuremath{a}} }, where $\ensuremath{w}_{\ensuremath{a}} \ensuremath{:=} f(\ensuremath{a})$. 
+Given a decomposition of \ensuremath{T}\ into the subsets $\ensuremath{T}_{\alpha}$, $\alpha
+\in A$, for some $A$, 
+then we
+certainly take as true 
+ \[\mathop{\otimes}_{\alpha \in A} (\mathop{\otimes}_{\ensuremath{a} \in
+\ensuremath{T}_{\alpha}} \ensuremath{w}_{\ensuremath{a}})
+= \ensuremath{\mathop{\otimes}_{\ensuremath{a} \in \ensuremath{T}} \ensuremath{w}_{\ensuremath{a}} } = f.
+\]
+A special case of the above, and one with a special abuse of notation,
+is when $A$ is a two element subset and one of the sets in the
+decomposition has only one element, say $\ensuremath{a}'$. Then we would write 
+\ensuremath{(\mathop{\otimes}_{ \substack{\ensuremath{a}
+ \in \ensuremath{T} \\
+ \ensuremath{a} \neq \ensuremath{a}'}} \ensuremath{w}_\ensuremath{a}) \otimes {{w_{\ensuremath{a}'}} }} which is equal to \ensuremath{\mathop{\otimes}_{\ensuremath{a} \in \ensuremath{T}} \ensuremath{w}_{\ensuremath{a}} }\ as well as
+$w_{\ensuremath{a}'} \otimes (\mathop{\otimes}_{\substack{\ensuremath{a} \in
+\ensuremath{T} \\ \ensuremath{a} \neq \ensuremath{a}'}} \ensuremath{w}_{\ensuremath{a}}) $.
+We can then view the 
+\ensuremath{T}-indexed tensor product as the equivalence classes of all formal
+linear combinations of the elements in the set \ensuremath{{\ensuremath{W}}^{\ensuremath{T}}}\ under the
+relations 
+\begin{align*}
+c(\ensuremath{\mathop{\otimes}_{\ensuremath{a} \in \ensuremath{T}} \ensuremath{w}_{\ensuremath{a}} }) &= \ensuremath{(\mathop{\otimes}_{ \substack{\ensuremath{a}
+ \in \ensuremath{T} \\
+ \ensuremath{a} \neq \ensuremath{a}'}} \ensuremath{w}_\ensuremath{a}) \otimes {{c\ensuremath{w}_{\ensuremath{a}'}} }} 
+\\
+\ensuremath{(\mathop{\otimes}_{ \substack{\ensuremath{a}
+ \in \ensuremath{T} \\
+ \ensuremath{a} \neq \ensuremath{a}'}} \ensuremath{w}_\ensuremath{a}) \otimes {{x_{\ensuremath{a}'}} }} + \ensuremath{(\mathop{\otimes}_{ \substack{\ensuremath{a}
+ \in \ensuremath{T} \\
+ \ensuremath{a} \neq \ensuremath{a}'}} \ensuremath{w}_\ensuremath{a}) \otimes {{y_{\ensuremath{a}'}} }} &= \ensuremath{(\mathop{\otimes}_{ \substack{\ensuremath{a}
+ \in \ensuremath{T} \\
+ \ensuremath{a} \neq \ensuremath{a}'}} \ensuremath{w}_\ensuremath{a}) \otimes {{(x
++y)_{\ensuremath{a}'}} }}.  
+\end{align*}
+These relations should hold for every $\ensuremath{a}' \in
+\ensuremath{T}$, $c \in \ensuremath{\mathbb{C}}$ and
+ $\ensuremath{w}_\ensuremath{a}$ $ \ensuremath{w}_{\ensuremath{a}'}$,  $x_{\ensuremath{a}'}$, $y_{\ensuremath{a}'} \in
+\ensuremath{W}$.    
+We should note the standard fact that
+the multilinear functionals acting on \ensuremath{{\ensuremath{W}}^{\ensuremath{T}}}\ extend to
+linear functionals acting on \ensuremath{{\ensuremath{W}}^{{\otimes}{\ensuremath{T}}}}; this is a third way of viewing \ensuremath{{\ensuremath{W}}^{{\otimes}{\ensuremath{T}}}}.
+ 
+If \ensuremath{W}\ has an inner product, then there is a natural inner
+product on \ensuremath{{\ensuremath{W}}^{{\otimes}{\ensuremath{T}}}}. Namely, for elements in \ensuremath{{\ensuremath{W}}^{\ensuremath{T}}}, we define the inner
+product to be 
+\begin{equation*}\ensuremath{({\ensuremath{\mathop{\otimes}_{\ensuremath{a} \in \ensuremath{T}} \ensuremath{w}_{\ensuremath{a}} }}, {\ensuremath{\mathop{\otimes}_{\ensuremath{a} \in
+\ensuremath{T}} {{v}_{\ensuremath{a}} }}})} \ensuremath{:=}
+\prod_{\ensuremath{a} 
+\in \ensuremath{T}} \ensuremath{({\ensuremath{w}_\ensuremath{a}}, {v_{\ensuremath{a}}})}.
+\end{equation*} 
+We then extend this definition to \ensuremath{{\ensuremath{W}}^{{\otimes}{\ensuremath{T}}}}\ by using the appropriate
+linearities.  
+
+ If we have a linear operator $C$ acting on \ensuremath{W}, then
+$C^{\ensuremath{a}}$ shall denote a linear operator acting on \ensuremath{{\ensuremath{W}}^{{\otimes}{\ensuremath{T}}}}\ such
+that, when acting 
+on product elements, it applies $C$ to the 
+  $\ensuremath{a}^{th}$
+factor while applying the identity to the other factors, i.e.\ 
+\begin{equation*}
+C^{\ensuremath{a}'} (\ensuremath{\mathop{\otimes}_{\ensuremath{a} \in \ensuremath{T}} \ensuremath{w}_{\ensuremath{a}} }) \ensuremath{:=} \ensuremath{(\mathop{\otimes}_{ \substack{\ensuremath{a}
+ \in \ensuremath{T} \\
+ \ensuremath{a} \neq \ensuremath{a}'}} \ensuremath{w}_\ensuremath{a}) \otimes {{C w_{\ensuremath{a}'}} }}
+\end{equation*} 
+
+We finish with a word about contractions. The set-indexed tensor product
+is excellent for use with contractions. Indeed, given $w \in
+\bigotimes_{a \in \alpha} E \otimes \bigotimes_{b \in \beta} E^{*}$,
+then the contraction of $w$ over the index pair $(\tilde a, \tilde b)$
+is denoted by $\ensuremath{\mathcal{C}}(\tilde a, \tilde b) w$ and is an element of
+$\bigotimes_{a \in \{\alpha \setminus \{\tilde a\} \}} 
+E \otimes \bigotimes_{b \in \{\beta \setminus \{\tilde b \}\} }
+E^{*}$. This allows one to notationally keep track of which indices
+were contracted. Using numbers as indices eliminates this
+information. Furthermore, one can also see that a type of unit
+analysis may be invoked. In other words, the expression $
+\ensuremath{\mathcal{C}}(\tilde a, \tilde b) w + \ensuremath{\mathcal{C}}(a', {b'}) w$ would seem to make
+no sense whereas 
+$\ensuremath{\mathcal{C}}(\tilde a, \tilde b) \ensuremath{\mathcal{C}}(a',  b') w + 
+\ensuremath{\mathcal{C}}(\tilde a,  b') \ensuremath{\mathcal{C}}( a', \tilde b) w$ would make sense. With
+numbers, this would be hard to indicate. As such, the set-indexed tensor
+product may be as
+helpful in formulating meaningful expressions
+ as dimensional analysis has historically been.
+
+\clearpage
+
+\section{Appendix: triviality of the Bose and Fermi bundles}
+
+\subsection{On the 
+question of the triviality of the Bose and Fermi
+bundles} 
+\label{a:triviality} \label{s:triv}
+
+
+The notation of this section is that \ensuremath{\mathcal{B}(N, s)}\ is the Bose bundle
+for spin-$s$ particles and \ensuremath{\ensuremath{\mathcal{F}}(N,s)}\ is the Fermi bundle. This is
+the notation for $\ensuremath{d} =3$. For $\ensuremath{d} > 3$, we replace $s$ with the
+dimension of the complex vector space. So $s$ is replaced with $2s
++1$. 
+
+Here are the results of this section: 
+\begin{enumerate} 
+\item For $N =2$, $\ensuremath{d} =3$,  the triviality of the bundles are as follows:  
+
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+& $s=2l$  &  $s=2l+\frac{1}{2}$ &  $s=2l+1$ &  $s=2l+\frac{3}{2}$\\
+\hline
+$\ensuremath{\mathcal{B}(2,s)}$ & trivial & nontrivial & nontrivial & trivial \\
+$\ensuremath{\ensuremath{\mathcal{F}}(2,s)} $ & nontrivial & nontrivial & trivial & trivial\\
+\hline
+\end{tabular}
+for $l \in \mathbb{N}$. 
+\item For $N \geq 2$, we have \ensuremath{\mathcal{B}(N, 2l+1)}\ is nontrivial and
+\ensuremath{\ensuremath{\mathcal{F}}(N, 2l)}\ is nontrivial. We do not know the 
+triviality or nontriviality of the other bundles.  
+\item The configuration space of \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{d}}}}\ is orientable if and only if
+\ensuremath{d}\ is even. 
+\end{enumerate}
+
+
+Throughout, $\ensuremath{d} \geq 3$. The nontriviality results apply for any
+such \ensuremath{d}. The triviality results only apply for $N=2, \ensuremath{d}=3$ and for
+the Bose line in any dimension. 
+
+
+\begin{lemma}
+A bundle is trivial iff it has a flat connection with trivial
+holonomy. 
+\end{lemma}
+
+\begin{proof}
+If it is trivial, say $M \times V$, then any basis of $V$ translates
+into a global basis. Hence, the coordinates provide the way to do 
+trivial transport. If a bundle has trivial holonomy, then
+construct a basis by parallel transporting it. As parallel transport
+along any closed path is, by assumption, the identity operation, the
+constructed basis is well-defined and smooth. Note that having trivial
+holonomy is the only way that a connection can  have a global parallel basis. 
+\end{proof}
+
+
+\begin{theorem}
+If $L$ is a real or complex line bundle over $\ensuremath{\mathcal{Q}} \ensuremath{:=} \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{d}}}}$, then it is
+nontrivial if there exists a flat connection $\nabla^L$ on $L$ 
+such that its
+holonomy is the alternating character of \ensuremath{\pi_1 ({\ensuremath{\mathcal{Q}}})}.
+\end{theorem} 
+
+\begin{proof}
+The heart of the proof is the following idea. The difference between
+two connections is a 1-form and for both of them to be flat, the
+1-form must be closed. Furthermore, to have a nontrivial holonomy, the
+1-form must be non-exact. Since all closed 1-forms on \ensuremath{\mathcal{Q}}\ are exact, we
+are done. 
+
+The details are the following.
+We need to recall a few basic bundle facts. 
+\begin{enumerate}
+\item The difference of
+two connections on the same bundle is a matrix-valued
+1-form. For complex (real, respectively) line bundles, 
+this means complex-valued
+(real-valued) 1-forms. 
+All we need to check is that it satisfies 
+ \[ (\nabla^1 - \nabla^2 )(f \ensuremath{\psi}) = \nabla^1 f\ensuremath{\psi} -
+\nabla^2 f\ensuremath{\psi} = f(\nabla^1 \ensuremath{\psi} -
+\nabla^2 \ensuremath{\psi}),\]
+i.e.\ it needs to be a tensor.
+ This follows from the  Leibniz rule imposed on all connections;
+ namely  
+$\nabla f\ensuremath{\psi} = df \ensuremath{\psi} + f \nabla \ensuremath{\psi}$.    
+\item Let $P_{\gamma}^2$ and $P_{\gamma}^1$ be the holonomy operators 
+for $\nabla^1$, $\nabla^2$ along the path $\gamma$. By definition,
+$\nabla^i_{\dot{\gamma}} P_{\gamma}^i = 0$. We define $C_{\gamma}$ to
+satisfy  $P_{\gamma}^2 = C_{\gamma}
+P_{\gamma}^1$. In particular, $C_{\gamma} = P_{\gamma}^2
+(P_{\gamma}^1)^{-1}$.
+If we further define $\omega \ensuremath{:=}
+\nabla^2 - \nabla^1$ then we have 
+\begin{equation} \label{se:cg}
+\nabla^1_{\dot{\gamma}} C_{\gamma} = -\omega(\dot{\gamma}) C_{\gamma}.
+\end{equation}
+\item If a connection is flat, then  its parallel transport
+operators depend only on the homotopy
+class of the curve. 
+\item For a line bundle, $\omega$ is a 1-form and $C_{\gamma}$ is
+just a number. Then the solution to equation
+\eqref{se:cg} is $C_{\gamma} = e^{-\int_{\gamma} \omega}$.
+If we   
+define $f(\gamma) = -\int_{\gamma} \omega$ and
+if $\gamma$ and   $\sigma$ are in the same
+homotopy class, then $f(\gamma)- f(\sigma)$  must be an integral
+multiple of $2\pi i$   
+in order that $C_{\gamma} = C_{\sigma}$. But the difference function
+ is a continuous function
+with a discrete set of values. Hence, it must be constant on any
+connected component. In particular, the integrals depend only on the
+homotopy class.    
+\end{enumerate}
+
+Assume that $L$ is trivial and let $\nabla^T$ be the implied trivial flat
+connection on $L$.  Then $\omega$ defined by 
+$\omega \ensuremath{:=} (\nabla^L - \nabla^T)$  is a 1-form on \ensuremath{\mathcal{Q}}. We have 
+$P_{\gamma}^L = e^{\int_{\gamma} -\omega}P_{\gamma}^T $. 
+By
+assumption, if $\ensuremath{\sigma}$ is a path in \ensuremath{\mathcal{Q}}\ exchanging two
+particles, then ${\int_{\ensuremath{\sigma}} -\omega} \equiv i \pi (\text{mod }
+2\pi),$ i.e. it is non-zero.  But 
+\[
+0 
+= \int_{\text{Id}} -\omega 
+= \int_{\ensuremath{\sigma}\ensuremath{\sigma}} -\omega 
+= 2 \int_{\ensuremath{\sigma}} -\omega. 
+\]
+Thus, we have that the integral must be zero which contradicts
+nontrivial holonomy.
+\end{proof}
+ 
+\begin{cor}
+The Fermi line on \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{d}}}}\ is nontrivial. 
+\end{cor}
+
+\begin{proof}
+The Fermi line's holonomy is the alternating character. Thus it is
+a nontrivial line bundle.
+\end{proof}
+
+\begin{cor}
+The configuration space of \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{d}}}}\ is orientable if and only if \ensuremath{d}\ is
+even. 
+\end{cor}
+
+\begin{proof}
+A space is orientable if and only if the determinant line of the
+tangent space is trivial. That is to say, we need to compute
+$\Lambda^{\ensuremath{d} N} (T\ensuremath{\mathcal{Q}})$. Let $\{e_i\}_{i=1}^{\ensuremath{d}}$ be the standard
+basis in \ensuremath{\mathbb{R}^{\ensuremath{d}}}. Then a basis element of $\Lambda^{\ensuremath{d} N}
+(T\ensuremath{\mathcal{Q}})$ is $\mathop{\wedge}\limits_{i=1}^{\ensuremath{d}} (\mathop{\wedge}\limits_{\ensuremath{\boldsymbol{q}} \in
+\ensuremath{q}} e_{i,\ensuremath{\boldsymbol{q}}}) $; this is defined up to a sign. In order to
+define a global basis, we must be able to choose the sign
+consistently. Rather than do that, we shall compute the holonomy of
+this bundle:
+\[
+ \mathop{\wedge}_{i=1}^{\ensuremath{d}} (\mathop{\wedge}_{\ensuremath{\boldsymbol{q}} \in \ensuremath{q}} e_{i,\ensuremath{\boldsymbol{q}}}) 
+\overset{\ensuremath{\Gamma_{\ensuremath{\sigma}}}}{\mapsto}  
+\mathop{\wedge}_{i=1}^{\ensuremath{d}} (\mathop{\wedge}_{\ensuremath{\boldsymbol{q}} \in \ensuremath{q}} e_{i,\ensuremath{\sigma}\ensuremath{\boldsymbol{q}}})  
+= (-1)^{\ensuremath{d} |\ensuremath{\sigma}|}\mathop{\wedge}_{i=1}^{\ensuremath{d}} (\mathop{\wedge}_{\ensuremath{\boldsymbol{q}} \in \ensuremath{q}} e_{i,\ensuremath{\boldsymbol{q}}}).
+\]
+That is to say, the induced flat connection has trivial holonomy if
+and only if \ensuremath{d}\ is even. By the above results, we therefore have that 
+$\Lambda^{\ensuremath{d} N} (T\ensuremath{\mathcal{Q}})$ is trivial if and only if \ensuremath{d}\ is
+even. 
+\end{proof}
+
+\begin{lemma}
+The following relations hold: $\ensuremath{\mathfrak{b}} \otimes \ensuremath{\mathfrak{b}} =
+\ensuremath{\mathfrak{b}}$,  $\ensuremath{\mathfrak{f}} \otimes \ensuremath{\mathfrak{f}} =
+\ensuremath{\mathfrak{b}}$, $\ensuremath{\mathfrak{f}} \otimes \ensuremath{\mathfrak{b}} =
+\ensuremath{\mathfrak{f}}$
+\end{lemma}
+
+\begin{proof}
+It immediately follows from the fact that the holonomy operators of a
+tensor product are the tensor products of the original holonomies.
+In other words, the characters multiply under tensoring of the bundles. 
+\end{proof}
+
+The following statement and argument is for $\ensuremath{d} =3$. 
+
+\begin{lemma}
+Let $F$ be the Whitney sum (direct sum) 
+of the 2 particle Fermi line with itself. 
+Then $F = \ensuremath{\mathfrak{f}} \oplus \ensuremath{\mathfrak{f}} \ensuremath{\simeq} {}^2\mathbb{R}^3
+\times \ensuremath{\mathbb{C}}^2$. 
+\end{lemma} 
+
+
+\begin{proof}
+We start by coordinatizing the covering space of $\ensuremath{\mathcal{Q}}
+\ensuremath{:=}{}^2\mathbb{R}^3 $: 
+\[
+ \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}} \ensuremath{:=} \ensuremath{\mathbb{R}^{2,3}}_{\neq} = \ensuremath{\mathbb{R}^{3}} \times \ensuremath{\mathbb{R}^{+}} \times S^2.
+\]
+ That is to say, we coordinatize the particle system  by the
+center of mass, the distance between the two particles, and the
+direction from particle 1 to particle 2. To create the base space, we
+identify antipodal points on $S^2$ which corresponds to not knowing which
+particle is particle 1. Our plan is to create two non-zero sections of the
+trivial bundle  $\ensuremath{\widehat{\ensuremath{\mathcal{Q}}}} \times \ensuremath{\mathbb{C}}^2$ that satisfy
+the alternating periodicity condition. We first do this 
+on the sphere and then extend it to the whole space by
+constancy in the other coordinates. 
+
+Although we shall write it down explicitly, the map from the sphere
+into sections of $\ensuremath{\mathbb{C}}^2$ will be the procedure of taking the
+columns of the unitary matrix which represents, in the
+spin-$\frac{1}{2}$ representation, a rotation about the line in the
+sphere, by an angle $\pi$. The point is that the representation is a
+double cover of the rotation group and the two differ by a minus
+sign. Since rotation about $\pi$ is the same rotation element for a
+point on the sphere and its antipode, we expect that this is what we
+want. Indeed, let the usual representation with the Pauli spin
+matrices, as generators of the representation, be given. 
+Then a rotation about an angle $\alpha$ about the line specified by
+the point in the sphere, written as a $(x, y, z)$ vector with the
+sphere  parametrized 
+ by the angles $0 \leq \theta \leq 2\pi$ and $0
+\leq \phi \leq \pi$, is
+$\boldsymbol{p}= (\sin\phi\cos\theta, \sin\phi\sin\theta, \cos\phi)$ 
+and it  maps to the unitary matrix, expressed in the basis of $\sigma_{z}$
+eigenstates,  
+\[ 
+\begin{split}
+e^{i \frac{\alpha}{2} \boldsymbol{\sigma} \cdot \boldsymbol{p}} 
+&= \cos\frac{\alpha}{2} + 
+i\boldsymbol{\sigma} \cdot \boldsymbol{p}\sin\frac{\alpha}{2} \\
+& =
+\cos\frac{\alpha}{2} + i\sin\frac{\alpha}{2} \begin{pmatrix}
+\cos\phi & \sin\phi\cos\theta - i\sin\phi\sin\theta \\ 
+\sin\phi\cos\theta - i\sin\phi\sin\theta &\cos\phi
+\end{pmatrix}.
+\end{split} 
+\]
+Thus, if we use the angle $\alpha = \pi$ and take the columns as the
+sections, we have, on $S^2\times \ensuremath{\mathbb{C}}^2$, 
+\[
+\ensuremath{\psi}_1 (\theta, \phi)= 
+\begin{pmatrix}
+\cos\phi\\
+e^{i\theta}\sin\phi
+\end{pmatrix}
+\quad
+\ensuremath{\psi}_2 (\theta, \phi) = 
+\begin{pmatrix} 
+e^{-i\theta} \sin\phi\\
+-\cos\phi
+\end{pmatrix}
+\]  
+Being the columns of a unitary matrix, or by direct computation, 
+the norm of $\ensuremath{\psi}_1$ and $\ensuremath{\psi}_2$ are both 1,
+they are orthogonal vectors, they are smooth 
+sections,
+and they satisfy 
+\[
+\ensuremath{\psi}_i(\theta + \pi, \pi - \phi) = - \ensuremath{\psi}_i(\theta, \phi).
+\] 
+More to the point, if we define a new bundle by 
+$(p, v) \sim (-p, -v)$ where $p$ and $-p$ are antipodal points, 
+then $[\ensuremath{\psi}_1]$ and $[\ensuremath{\psi}_2]$ form
+orthonormal sections of the new bundle.\footnote{There is another
+tempting map which is to take the eigenspinors of the spin angular
+momentum operator in the direction represented by $p$. This fails
+since under antipodal exchange, the vectors are exchanged. We wanted
+to only change the sign.} 
+
+To go back to the original problem, we define $\Psi_i (x, r, [p]) 
+\ensuremath{:=} [\ensuremath{\psi}_i]([p])$. These are sections of  $F$. Since
+they form a basis at every point, $F$ is trivial. 
+\end{proof}
+
+\begin{lemma}
+Let $C$ be the Whitney sum of the Fermi line for $N$ particles with
+the  trivial
+bundle $\ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{d}}}} \times \ensuremath{\mathbb{C}}^l$. 
+Then  $C$ is not a trivial bundle, i.e. 
+$ C  = \ensuremath{\mathfrak{f}} \oplus \ensuremath{\mathbb{C}}^l \ensuremath{\not\simeq} \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{d}}}} \times
+\ensuremath{\mathbb{C}}^{l+1}$.
+\end{lemma} 
+
+\begin{proof}
+This follows from the fact that the determinant line of a tensor
+product is the tensor product of the determinant lines, i.e 
+$\Lambda^{mn}(E \otimes F) \ensuremath{\cong} \Lambda^{n}(E)\otimes
+\Lambda^{m}(F)$ where $E$ has dimension $n$ and $F$ has dimension
+$m$.\footnote{This follows from the general identity 
+\[ 
+\Lambda^k(E\otimes F) \ensuremath{\cong} \sum_{i=0}^k \Lambda^i(E) \otimes
+\Lambda^{k-i}(F)
+\]    
+where $\Lambda^0(\cdot)$ is defined to be the trivial line bundle.} 
+Since the determinant line of a trivial bundle is \ensuremath{\mathfrak{b}}, we have that
+the determinant line of $C \ensuremath{\cong} \ensuremath{\mathfrak{f}} \otimes \ensuremath{\mathfrak{b}}$. 
+That is to say, $\Lambda^{l+1}(C) \ensuremath{\cong}
+\ensuremath{\mathfrak{f}}$. Hence it is nontrivial as the determinant line is
+nontrivial and any trivial bundle has a trivial determinant line.  
+\end{proof}
+
+\begin{theorem}
+For $N =2$,  the triviality of the bundles are as follows:  
+
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+& $s=2l$  &  $s=2l+\frac{1}{2}$ &  $s=2l+1$ &  $s=2l+\frac{3}{2}$\\
+\hline
+$\ensuremath{\mathcal{B}(2,s)}$ & trivial & nontrivial & nontrivial & trivial \\
+$\ensuremath{\ensuremath{\mathcal{F}}(2,s)} $ & nontrivial & nontrivial & trivial & trivial\\
+\hline
+\end{tabular}
+for $l \in \mathbb{N}$. 
+\end{theorem}
+
+\begin{proof}
+The idea of this proof is to decompose each bundle into a sum of Bose
+and Fermi lines. We then pair the Fermi lines to make trivial
+bundles. We are then either left with a completely trivial bundle or
+the sum of a trivial bundle with a single Fermi line. 
+
+Let us start with the Bose bundles. Since we have only two particles,
+the bundle is the sum of a symmetric part and an antisymmetric
+part. The symmetric subbundle is trivial (a sum of Bose lines), 
+while the antisymmetric part
+is a sum of Fermi lines. Thus, the Bose bundle is trivial if and only
+if the number of Fermi lines is even, i.e. if the dimension of the 
+antisymmetric part is even. 
+As for the
+Fermi bundle, its triviality depends upon the parity of the dimension of the
+symmetric part of the Bose bundle 
+since upon tensoring with a Fermi line, the Fermi lines
+become Bose lines and the Bose lines become Fermi lines. 
+
+More specifically, the Bose bundle \ensuremath{\mathcal{B}(N, s)}\
+ may be written as, using the basis
+$\ensuremath{w}^i$ of $\ensuremath{\mathbb{C}}^{2s+1}$,  
+\[\ensuremath{\mathcal{B}(N, s)} 
+= 
+\bigoplus_{i=1}^{2s+1} 
+sp\{\ensuremath{w}_{\ensuremath{q}}^i \otimes \ensuremath{w}_{\ensuremath{q}'}^i \} 
+\oplus 
+\bigoplus_{1 \leq i < j \leq 2s+1} 
+(sp\{
+\ensuremath{w}_{\ensuremath{q}}^i \otimes \ensuremath{w}_{\ensuremath{q}'}^j
++ 
+\ensuremath{w}_{\ensuremath{q}}^j \otimes \ensuremath{w}_{\ensuremath{q}'}^i
+\}
+\oplus 
+sp\{
+\ensuremath{w}_{\ensuremath{q}}^i \otimes \ensuremath{w}_{\ensuremath{q}'}^j
+-
+\ensuremath{w}_{\ensuremath{q}}^j  \otimes \ensuremath{w}_{\ensuremath{q}'}^i
+\}) 
+\]
+where $sp\{v\}$ means the linear span of the set of vectors; in this
+case these are all 1-dimensional subspaces.
+Thus it is the sum of $2s+1 + \binom{2s+1}{2}$ Bose lines and
+$\binom{2s+1}{2}$ Fermi lines. Since $\binom{2s+1}{2}$ is odd exactly
+when $s = 2l + \frac{1}{2}$ and $s= 2l+1$, we have the Bose bundle
+results.
+ For the Fermi bundle
+$\ensuremath{\ensuremath{\mathcal{F}}(N,s)} (= \ensuremath{\mathfrak{f}} \otimes \ensuremath{\mathcal{B}(n,s)})$ we have that it is a sum
+of 
+$\binom{2s+1}{2}$  Bose lines
+and $2s+1 + \binom{2s+1}{2}$   Fermi lines as 
+tensoring distributes
+over sums. Since $2s+1 + \binom{2s+1}{2}$ is odd exactly when $s= 2l$
+and  $s=2l+\frac{1}{2}$, we have our results. 
+\end{proof}
+
+ 
+\begin{lemma}
+The determinant line $\Lambda^n(E)$ of a flat bundle $E$ 
+has an induced connection whose
+holonomy representation is  multiplication by the determinant of
+the 
+corresponding holonomy operator on $E$. 
+\end{lemma} 
+
+\begin{proof}
+The claim follows immediately
+from the standard fact  that, for any matrix $A:V^n \to V^n$, we have
+that $\det A$ satisfies 
+\[ 
+\mathop{\wedge}_{i=1}^n A e_i = \det A (\mathop{\wedge}_{i=1}^n e_i)
+\]
+where each $e_i \in V$. Thus, if $\{e_i\}_{i=1}^n$
+forms a basis, then $\det A$ is determined by the above equation. 
+
+
+Thus, the determinant line's induced holonomy is
+given by the determinant map of the holonomy representation.  
+\end{proof} 
+
+\begin{theorem}
+ For $N \geq 2$ and $\ensuremath{d} \geq 3$, we have that $(\ensuremath{\mathbb{C}}^{4k +2})^{\otimes
+ \ensuremath{\mathcal{Q}}}$ and $\ensuremath{\mathfrak{f}} \otimes (\ensuremath{\mathbb{C}}^{4k +1})^{\otimes
+ \ensuremath{\mathcal{Q}}}$ are nontrivial bundles.
+ 
+
+\end{theorem}  
+
+\begin{proof}
+We will establish that their determinant lines are nontrivial. In
+fact, we will show that the determinant of the parallel transport
+operator which exchanges two particles is $-1$. By the above lemma and
+the first theorem, 
+that is sufficient to establish our result. Fix the two positions to
+be exchanged. Let $l$ be the dimension of the factor in the tensor
+product. Ignoring the Fermi line factor, 
+symmetrize and antisymmetrize on the two factors that
+are being exchanged. Count how many of each kind there are. The
+total number of symmetric elements is $(l +
+\binom{l}{2})*(l)^{N-2}$ while the total number of antisymmetric
+elements is $\binom{l}{2}*(l)^{N-2}$. Thus, the bundle without the
+Fermi line involved is
+nontrivial if $l$ is odd and $\binom{l}{2}$ is
+odd. This occurs when $l = 4k+2$; for $N=2$, we also have $l = 4k+3$. 
+Tensoring with the Fermi line 
+means the resultant bundle is nontrivial
+if $l$ is odd and $(l +
+\binom{l}{2})$  is odd. This occurs when $l = 4k+2$; for
+$N=2$, we also have $l= 4k+1$. 
+We are done.
+\end{proof}
+
+\clearpage
+\bibliographystyle{abbrv}
+\bibliography{references}
+\end{document}

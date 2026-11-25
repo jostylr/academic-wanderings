@@ -1,0 +1,1887 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts,amsthm,mathtools,bm}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{cor}{Corollary}
+\newtheorem{defn}{Definition}
+\newtheorem{principle}{Principle}
+\newtheorem{statement}{Statement}
+\theoremstyle{remark}
+\newtheorem{statementr}{Statement}
+
+\title{Taylor Expansions of Mappings between Manifolds}
+\author{James Taylor}
+\date{Working draft derived from the 2003 thesis}
+\begin{document}
+\maketitle
+
+\section{Taylor expansions of mappings between
+manifolds} \label{c:taylor}
+
+
+\section{Introduction} \label{s:intro}
+This chapter is somewhat different from the other chapters. The first
+half of the chapter is needed for Chapter \ref{c:algo}. The second
+half is answering a natural question that arose while exploring the
+first half. 
+
+
+Let $M$ and $N$ be two smooth manifolds with connections. Let $f: M
+\to N$ be smooth. In this chapter, we shall define how to expand $f$
+in the best polynomial expansion using the linear structure at hand. 
+A connection provides a notion of a local linear
+structure on a manifold. Using this linear structure, one can view $f$
+as a map between open subsets of vector spaces. Thus, we can expand
+$f$ using Taylor polynomials to obtain the Taylor expansion of $f$. 
+But a connection also provides a method
+for differentiating objects. The question then arises as to whether
+using the covariant derivatives in the usual Taylor formula will
+provide us with the Taylor expansion of $f$. The answer is no, but it
+does when the range is suitably flat.
+
+
+Given a manifold $M$ and a connection on $M$, $\nabla^M$, we
+have a natural identification between the tangent space of a point $p$
+and small neighborhoods about $p$ via the exponential map. 
+When we wish to view the
+neighborhood $U_p \subset M$ as a subset of $T_pM$  using this
+identification, then we 
+shall refer to  $U_p$ as a \emph{linearized neighborhood};
+putting linear coordinates on the tangent space leads to normal
+coordinates for our neighborhood. The
+identification  allows us to discuss the linearity of
+functions. Indeed, let us assume that we have a map $f: M \to N$ and
+that $N$ carries a connection, $\nabla^N$. Let $U_p$ be a
+linearized neighborhood about $p$ and let $U_{f(p)}$ be a linearized
+neighborhood about 
+$f(p)$. Then we can discuss linear mappings, quadratic mappings, and,
+in general, multilinear mappings between the neighborhoods. It
+therefore makes sense to expand $f$ itself into a Taylor series
+expansion. The expansion is a sum of multilinear functions, or
+\emph{tensors}, evaluated
+along the diagonal;  symbolically  we have $f(v) \approx \sum D_T^n
+([v]^n).$ We define the \emph{\ensuremath{{n}^{th}}\ Taylor
+derivative}\footnote{This is in honor of the usual Taylor expansions
+  and not in honor of the author.}
+ to be the tensor $D_T^n f$. The \ensuremath{{n}^{th}}\ covariant derivative,
+$D_C^n f$, and $D_T^n f $ are both sections of $(T^*M)^n\otimes f_{*}(TN)$,
+where $f_* (TN)$ is the pullback of the tangent bundle of $N$ to be
+explained later.  
+It makes sense to ask whether the symmetric parts agree. This would
+imply that using the covariant derivatives in the formulas from
+multi-variable calculus would be legitimate. If we have agreement, 
+then we say that $f$
+satisfies \emph{covariant normality} or is \emph{covariantly normal}.
+
+
+The following will be proven:  
+\begin{enumerate}
+\item If $N$ is flat, then all smooth mappings into it are
+covariant normality; 
+\item If the smooth mapping $f$ maps geodesics to
+geodesics, then $f$ is covariantly normal; and
+\item Let $N = V$ be a vector bundle
+carrying a bundle connection $\nabla^{V}$ over a base manifold $M$ carrying the
+manifold connection $\nabla^{M}$. Then those two connections induce a
+manifold connection, $\nabla^{N}$, on $N$. Using $\nabla^{N}$, all
+smooth sections
+of the vector bundle are covariantly normal. 
+\end{enumerate}
+
+Results that are about Taylor expansions of sections of a vector bundle
+are in the literature, but viewing them as 
+Taylor expansion of mappings between
+manifolds is not. 
+
+
+Even
+allowing for this weak connection, 
+this author could find few papers with a similar flavor to the
+material in this chapter.
+ An alternative idea to the Taylor expansions for tensors 
+is the notion of affine
+extensions. Roughly, an affine extension of a tensor 
+is defined by choosing normal
+coordinates and differentiating the coefficients in that coordinate
+system. One then assembles new tensors out of this construction. 
+This is different from what we ultimately do in such contexts in the
+sense that our basis for the tensor spaces can differ from the basis
+that the affine extension concept is based upon.
+
+
+It was first pursued in the 1920's and 1930's by O. Veblen, T. Thomas,
+and H. Ruse. 
+More recently, it was discussed in
+\cite{GRS98} in the context of symplectic manifolds with
+connections. If one is interested in this concept, then that recent
+paper  is the paper to learn the material from. It contains references
+to the original works as well.  
+
+
+\section{Covariant derivatives of mappings between manifolds}
+\label{s:map}
+
+We start by discussing the standard notions of the pullback bundle
+and the pullback 
+connection. Given a bundle $E$ over $N$, \ensuremath{{E} \overset{\pi}{\rightarrow} {N}}, and a
+manifold $M$ with a smooth map $f: M \to N$, then the pullback
+bundle, denoted by \ensuremath{{f}_{*}({E})}, is defined by $\ensuremath{{f}_{*}({E})}_{\ensuremath{q}} \ensuremath{:=}
+E_{f(\ensuremath{q})}$. It can be shown that this has the appropriate smooth
+structure. Notice that a section of $E$ pulls back to a section of
+\ensuremath{{f}_{*}({E})}, but the reverse is only guaranteed if $f$ is a
+diffeomorphism. 
+If $E$ has a connection, \ensuremath{\nabla^{E}_{} {}}, then the pullback
+connection, \ensuremath{\nabla^{fE}_{} {}}, is defined by demanding that the
+connection acting on a pulled back section in the direction $X \in TM$ 
+should agree with the connection on $E$ acting on the section in the
+direction $Df (X)$; $Df : TM \to TN$ is the differential of the map
+$f$.  Schematically, the definition demands 
+\begin{equation}
+\{ \ensuremath{{{\nabla}}_{X}^{fE}{[\ensuremath{{f}_{*}({e})}]}}\}_{p} 
+\ensuremath{:=} 
+\{\ensuremath{{{\nabla}}_{Df(X)}^{E}{[e]}}\}_{f(p)}
+\end{equation}
+where $e$ is a section of $E$ and \ensuremath{{f}_{*}({e})}\ is the pull-back
+of $e$. 
+By choosing a local frame field on $E$ and pulling the frame back, one can
+establish what the connection must be in these coordinates.
+
+
+One
+then must show, straightforwardly, that  the different coordinate expressions
+describe the same object.
+An informative example  is when $f$ maps
+$M$ into a single point of $N$. Then the pullback bundle is a trivial
+bundle and the pullback connection is a trivial connection.  
+
+Now that we have the general definition of the pullback of a bundle,
+we can specialize to the tangent bundles. Connections on the tangent
+bundles $TM$ and $TN$ of the manifolds $M$ and $N$ will be denoted by
+\ensuremath{\nabla^{M}_{} {}}\ and \ensuremath{\nabla^{N}_{} {}}. Note that if \ensuremath{{M} \overset{f}{\rightarrow} {N}}\ is a
+smooth map between $M$ and $N$, then $Df \in \ensuremath{T^* M} \otimes
+\ensuremath{{f}_{*}({TN})}$. The Leibniz (product) rule allows us to define the tensor
+product of two connections. Thus, we can differentiate $Df$ to obtain
+an element of $\ensuremath{T^* M} \otimes \ensuremath{T^* M} \otimes \ensuremath{{f}_{*}({TN})}$. 
+Repeating, we can compute the derivatives of all orders of DF.\footnote{ 
+It is useful to point out that 
+this is 
+different then repeatedly taking  differentials. Indeed, the second
+differential 
+is a map between $T(TM)$ and $T(TN)$ whereas the second covariant
+derivative goes from $TM \otimes TM$ to $TN$. 
+Using principal bundles, it can be show that there is a relation
+between the two versions of derivatives.} This material is from
+\cite{EL83}.
+
+
+The next section discusses the product rule, chain rule, and the
+abuses of the tensor world. 
+In section \ref{s:key} we discuss the key
+observations that makes the entire chapter doable. We then finally discuss
+various versions of Taylor expansions of mappings between manifolds. 
+
+\section{The chain rule} \label{s:chain}
+
+The chain rule for derivatives rests on two defining properties of
+derivatives: the Leibniz rule and the commutativity of contractions
+and derivatives. We first state the main results of this section 
+and then explain the
+notations and proofs. 
+
+
+The results of this section are:
+
+\begin{theorem}[Usual Chain Rule]
+Let \ensuremath{{M} \overset{F}{\to} {N}
+\overset{f}{\to} {P}}\ be smooth maps between connection carrying
+manifolds. Let $G$ denote their composition. Then 
+\begin{align*}
+\ensuremath{D^{n} [{G}] ({v_1, \ldots, v_n}) } = \ensuremath{D^{n} [{G}] ({\mathop{\otimes}_{i=1}^n v_i}) } 
+= &\sum_{\ensuremath{Z} \in \ensuremath{\mathcal{\ensuremath{Z}}}(n)} 
+\ensuremath{D^{ |\ensuremath{Z}|_R } [{f}] ({\mathop{\otimes}_{r \in R_{\ensuremath{Z}}} \{\ensuremath{D^{|r|} [{F}] ({
+\mathop{\otimes}_{c \in C_{r}} v_{\ensuremath{z}_{rc}}}) }\}}) } \\
+= & \sum_{k =1}^n \ensuremath{D^{k} [{f}] ({\sum_{\ensuremath{Z} \in \ensuremath{\mathcal{\ensuremath{Z}}}(n,k)}
+{\mathop{\otimes}_{r \in R_{\ensuremath{Z}}} \{\ensuremath{D^{|r|} [{F}] ({ 
+\mathop{\otimes}_{c \in C_{r}} v_{\ensuremath{z}_{rc}}  }) }\}}}) }.
+\end{align*}
+\end{theorem}
+
+\begin{theorem}[General Chain Rule]
+Let \ensuremath{\mathcal{W}}\ be a vector bundle over $M$, \ensuremath{\mathcal{V}}\ a bundle over $N$,
+and \ensuremath{\mathcal{X}}\ a bundle over $P$ and assume that all the bundles have a
+connection. Let 
+\ensuremath{{M} \overset{F}{\to} {N}
+\overset{f}{\to} {P}} be smoot maps between the base manifolds.
+Assume $B \in \ensuremath{\Gamma \{ \ensuremath{\mathcal{W}} \otimes \ensuremath{{F}_{*}({\ensuremath{\mathcal{V}}})} \}}$ and $A \in
+\ensuremath{\Gamma \{ \ensuremath{{\ensuremath{\mathcal{V}}}^{*}} \otimes \ensuremath{{f}_{*}({\ensuremath{\mathcal{X}}})} \}}$. Then $D[A(B)] = D[A](B,
+DF) + A(D[B])$. 
+\end{theorem}
+
+Those are the two main theorems. We will use the following two defining
+facts. 
+
+
+\begin{statementr}[Tensor Input]
+If A is a multilinear functional acting on $V \times W$, then A may be
+viewed as a
+linear functional acting on $V \otimes W$. Furthermore, the input
+$(v,w)$ into the multilinear A is the same as $v\otimes w$ into the
+linear version of A.
+\end{statementr}
+
+\begin{statementr}[The Product Rule] 
+If we have connections on the bundles $E$ and $F$, both over $M$, then
+we define the tensor product connection  on $E
+\otimes F$  by demanding the Leibniz rule and commutation
+with contractions. Specifically, 
+if $A \in \ensuremath{\Gamma \{ E \}}$ and $B \in \ensuremath{\Gamma \{ F \}}$ are any two sections,
+then 
+\begin{enumerate} 
+\item {Leibniz Rule:} 
+ $\ensuremath{{{\nabla}}_{X}^{}{[A\otimes B]}} = \ensuremath{{{\nabla}}_{X}^{}{[A]}} \otimes B + A \otimes
+\ensuremath{{{\nabla}}_{X}^{}{[B]}}$
+\item{Contraction Commutation:} If  $C( A \otimes B)$ indicates any kind of
+contraction, then 
+$ \ensuremath{{{\nabla}}_{X}^{}{[C(A\otimes B)]}} = C( \ensuremath{{{\nabla}}_{X}^{}{[A \otimes B]}})$. 
+\end{enumerate}
+\end{statementr}
+
+\begin{proof}[{Diagrams}] {
+It is convenient to introduce the notion of a chain rule diagram or 
+cr-diagram. It
+is a diagram similar to a Young tableaux, but there are important
+differences. In a cr-diagram, we left justify the diagrams so that the
+first entries lie in a column. The number of boxes in a row has no
+particular relation to the other rows i.e.\ the number can 
+increase, decrease, or stay the same as we move from row to
+row. Furthermore, it is a numbered diagram. We demand that the entries
+in the first column strictly increase as we go down the column and the
+entries in a row to 
+strictly increase as we move to the right. Thus, the number in the
+first box in the first column is 1.
+The numbers in a column other than the first column
+are not constrained to behave in a certain way. In particular, the
+numbers in the second column can either increase or decrease. 
+
+Here are several cr-diagrams: {\scriptsize \[ \boxed{\text{12345}} \quad
+\boxed{\text{1,2,3}} \quad \boxed{\text{15,2,34}} \quad \boxed{\text{15,24,3}} \quad
+\boxed{\text{1,2,345}} \quad \boxed{\text{15,234}}.\]} 
+Here are two objects which are not cr-diagrams:
+{\scriptsize\[  \boxed{\text{21,345}} \quad \boxed{\text{2,1345}} .\]}
+
+
+We now define terminologies and notations which will be extremely 
+helpful. A cr-diagram will be denoted by \ensuremath{Z}. The length of \ensuremath{Z},
+denoted by $ |\ensuremath{Z}| $, is the number of boxes in the diagram.  
+The collection of all cr-diagrams will be denoted by
+\ensuremath{\mathcal{\ensuremath{Z}}}\ and the set of cr-diagrams of length $n$ will be denoted by
+$\ensuremath{\mathcal{\ensuremath{Z}}}(n)$. The 
+height of the cr-diagram \ensuremath{Z}\ is the number of rows and it will be
+denoted by $ |\ensuremath{Z}|_{R} $. The set of cr-diagrams of length $n$ and height
+$m$, shall be denoted by $\ensuremath{\mathcal{\ensuremath{Z}}}(n,m)$. 
+The entry in row $r$ and column $c$ will be
+denoted by $\ensuremath{z}_{rc}$. The length of  row $r$ will be denoted by
+$ |r| $. The set of rows in $\ensuremath{Z}$ will be denoted by $R_{\ensuremath{Z}}$. The
+set of columns in row  $r$ will be $C_{ r}$. The diagram 
+{\scriptsize $ \ensuremath{Z}= {\boxed{\text{147,2356}}}$} 
+has the
+following properties: $ |\ensuremath{Z}| =7 $, $ |\ensuremath{Z}|_R = 2$, $ \ensuremath{z}_{12} = 4$.  
+Note that the cr-diagram of length $n$ and height $n$ is unique and is
+a single column. Also unique is the single row diagram which is of
+length $n$ and height $1$.
+
+
+A product rule diagram (pr-diagram) is a much simpler diagram. Each row must
+be strictly increasing, but there are no constraints for the first
+column. We also need to allow for rows with no entries. We do that by
+putting one box for the row and putting a zero in that entry. We use
+the same notations as before for the cr-diagram except we shall denote 
+such objects by $PR$ and the set of product rule diagrams with $m$
+rows as $\ensuremath{\mathcal{PR}}_m$. Notice that the number of rows, which includes
+empty rows, does not change as one increases the number of derivatives.
+}
+ \end{proof}
+\begin{proof}[{Notations}] {
+We shall use $[ \hspace{.05in}]$ to denote an object which is being
+differentiated. Hence, functions should not freely pass
+through. Parentheses shall be mainly used to indicate some kind of
+ contraction. The
+simplest case is  $A(B) = B(A)$ when $A \in \ensuremath{{E}^{*}}$ and $ B \in E$, then
+this is just usual composition. This also defines the kernel of the
+contraction 
+operation. Namely, \[C(A \otimes B) \ensuremath{:=} A(B).\] As contractions can
+be more general and ambiguous, caution and excellent notation is
+required. A discussion of what we shall eventually need is in the
+appendices. For other uses of parenthetical expressions, we shall use
+$\{ \}$. 
+
+
+We shall often employ
+$D^n[A]$ to denote the \ensuremath{{n}^{th}}\ covariant derivative acting on $A \in E$,
+where $E$ is some vector bundle. Note that to define the higher
+covariant derivatives, we essentially need a connection on the base
+space. Namely, 
+$\ensuremath{D^{} [{A}] {} } \in E \otimes \ensuremath{T^* M}$ and therefore $D^n[A]$ is 
+defined via the Leibniz rule 
+if we have a connection on the bundle and its base space. Note
+that $\ensuremath{D^{} [{A}] ({X}) } \ensuremath{:=} \ensuremath{{{\nabla}}_{X}^{E}{[A]}}$ and $\ensuremath{D^{} [{A}] ({B \otimes X}) }
+\ensuremath{:=} B(\ensuremath{{{\nabla}}_{X}^{E}{[A]}}) = \ensuremath{{{\nabla}}_{X}^{E}{[A]}}( B)$. Furthermore,
+$D_p [A]$ will denote
+ the covariant derivative evaluated at $p \in M$. It is
+useful to remark that $\ensuremath{D^{2} [{A}] ({X\otimes Y}) } \neq
+\ensuremath{{{\nabla}}_{Y}^{}{[\ensuremath{{{\nabla}}_{X}^{}{[A]}}]}}$ as the left-hand side is a tensor in
+both $X$ and $Y$ whereas the right-hand side is only a tensor in
+$Y$.
+
+The set of sections of a bundle $E$ shall be denoted by
+\ensuremath{\Gamma \{ E \}}. Recall that a section of a bundle is a smooth map from
+the base space into the bundle such that the projection map acting on
+the section is the identity map on the base space.  
+
+The tensor product will occur often and the ordering of the elements
+will be crucial. Therefore, unless otherwise noted, when we write the
+tensor product over an ordered set, we shall mean the tensor product
+in that order. In other words, 
+\[
+\mathop{\otimes}_{i = 1}^n v_i \ensuremath{:=} v_1 \otimes v_2 \otimes \dotsm \otimes v_n
+\]
+}
+ \end{proof}
+
+
+\begin{proof}[{Comment on tensor input}] {
+
+
+The fact to note is that the tensor takes over the role of
+multilinearity, enabling the function A to be viewed as linear. Notice
+that once we view the input as a tensor product, we can use the
+Leibniz rule on it. }
+ \end{proof}
+
+
+\begin{proof}[{Comment on product rule}] {
+ The product rule allows us to define the 
+covariant derivative on the dual bundle since, for $A \in
+ \ensuremath{\Gamma \{ \ensuremath{{E}^{*}} \}}$ and $B \in \ensuremath{\Gamma \{ E \}}$, they must satisfy 
+$\ensuremath{D^{} [{A}] ({B}) } = \ensuremath{D^{} [{A(B)}] {} } - A(\ensuremath{D^{} [{B}] {} })$. As $A(B)$ should be
+ a function over $M$, we know its derivative and, by assumption, the
+ derivative is defined on $E$. In particular a connection on the
+ tangent bundle provides a connection on all of the tensor product
+ bundles involving only the tangent and cotangent bundles of $M$.
+
+
+}
+ \end{proof} 
+
+
+\begin{proof}[Proof of the general chain rule]
+Since $A$ is a section of a bundle over $N$, we can pull it back to
+the pull-back bundle over $M$. Thus, \[\ensuremath{{F}_{*}({A})} \in
+\ensuremath{{F}_{*}({\ensuremath{\Gamma \{ \ensuremath{{\ensuremath{\mathcal{V}}}^{*}} \otimes \ensuremath{{f}_{*}({\ensuremath{\mathcal{X}}})} \}}})} \subset
+\ensuremath{\Gamma \{ \ensuremath{{\ensuremath{{F}_{*}({\ensuremath{\mathcal{V}}})}}^{*}} \otimes \ensuremath{{(fF)}_{*}({\ensuremath{\mathcal{X}}})} \}}. \]  
+Then $A(B)$ may be understood as contracting over the pulled back
+ $\ensuremath{\mathcal{V}}$ bundles. In
+particular, we have that $\ensuremath{{{\nabla}}_{X}^{M}{[A(B)]}} = \ensuremath{{{\nabla}}_{X}^{M}{[\ensuremath{{F}_{*}({A})}]}}(B) +
+A(\ensuremath{{{\nabla}}_{X}^{M}{[B]}})$. This is just the product rule for tensor product
+bundles. Since $\ensuremath{{{\nabla}}_{X}^{M}{[\ensuremath{{F}_{*}({A})}]}} \ensuremath{:=}
+\ensuremath{{{\nabla}}_{\ensuremath{D^{} [{F}] ({X}) }}^{N}{[A]}}$, we actually have our result.
+\end{proof}
+
+
+\begin{proof}[Proof of the usual chain rule]
+The starting
+case is the usual well-known chain rule.\footnote{The method of proof
+depends on the definition of tangent vector used. Coordinates and the
+multi-variable chain rule can always be used. If we use the notion of
+tangent vectors as equivalence classes of curves, then $D[F]$ is defined
+by taking $ v= [\gamma] \to [F(\gamma)] \ensuremath{:=} D[F](v)$; it is necessary to
+check that 
+this is independent of the representative $\gamma$. But then the basic
+chain rule is simply composition: $ [\gamma] \to [G(\gamma))] = D[G](v)$ is the
+same as $[ \gamma] \to [F \gamma] = D[F](v)  \to [f(F(\gamma))]=  
+D[f](D[F](v))$.} 
+Our inductive step goes as follows. We assume  
+\begin{equation*}
+\ensuremath{D^{n} [{G}] ({\mathop{\otimes}_{i=1}^n v_i}) } 
+= \sum_{\ensuremath{Z} \in \ensuremath{\mathcal{\ensuremath{Z}}}(n)} 
+\ensuremath{D^{ |\ensuremath{Z}|_R } [{f}] ({ \mathop{\otimes}_{r \in R_{\ensuremath{Z}}} \{\ensuremath{D^{ |r| } [{F}] {} }
+(\mathop{\otimes}_{c \in C_{r}} v_{\ensuremath{z}_{rc}} )\}}) } 
+\end{equation*}
+
+
+Let us take the $v_i$ to be vector fields and differentiate the
+resultant scalar field. The terms involving the derivatives of the
+vector field will cancel while the other remaining terms will be what
+we are interested in.
+The calculations follows from the product rule and general
+chain rule. 
+We start with what we want to find which is
+
+\begin{align*}
+\ensuremath{{{\nabla}}_{v_{n+1}}^{}{[\ensuremath{D^{n} [{G}] ({\mathop{\otimes}_{i=1}^n v_i}) }]}} &=
+\ensuremath{{{\nabla}}_{v_{n+1}}^{}{[\ensuremath{D^{n} [{G}] {} }]}}(\mathop{\otimes}_{i=1}^n v_i) 
++ \ensuremath{D^{n} [{G}] ({\ensuremath{{{\nabla}}_{v_{n+1}}^{}{[\mathop{\otimes}_{i=1}^n v_i]}}}) } \\
+ &=
+{\ensuremath{D^{n+1} [{G}] {} }}(\mathop{\otimes}_{i=1}^{n+1} v_i) 
++ \ensuremath{D^{n} [{G}] ({\ensuremath{{{\nabla}}_{v_{n+1}}^{}{[\mathop{\otimes}_{i=1}^n v_i]}}}) };
+\end{align*}
+
+the second term is an extra complication which will also appear
+in the following:
+
+\begin{align*}
+\ensuremath{{{\nabla}}_{v_{n+1}}^{}{[\ensuremath{D^{n} [{G}] ({\mathop{\otimes}_{i=1}^n v_i}) }]}}
+& = \sum_{\ensuremath{Z} \in \ensuremath{\mathcal{\ensuremath{Z}}}(n)} 
+\ensuremath{{{\nabla}}_{v_{n+1}}^{}{[\ensuremath{D^{ |\ensuremath{Z}|_R } [{f}] ({ \mathop{\otimes}_{r \in R_{\ensuremath{Z}}}
+\{\ensuremath{D^{|r|} [{F}] {} } 
+( \mathop{\otimes}_{c \in C_{r}} v_{\ensuremath{z}_{rc}} )\}}) } ]}} \\
+&=
+\sum_{\ensuremath{Z} \in \ensuremath{\mathcal{\ensuremath{Z}}}(n)} 
+\ensuremath{{{\nabla}}_{v_{n+1}}^{}{[\ensuremath{D^{ |\ensuremath{Z}|_R } [{f}] {]} }}}
+{( \mathop{\otimes}_{r \in R_{\ensuremath{Z}}} \{\ensuremath{D^{ |r| } [{F}] {} }
+( \mathop{\otimes}_{c \in C_{r}} v_{\ensuremath{z}_{rc}} )\})} \\
+&\quad+
+\sum_{\ensuremath{Z} \in \ensuremath{\mathcal{\ensuremath{Z}}}(n)} 
+\ensuremath{D^{ |\ensuremath{Z}|_R } [{f}] {(} }\sum_{\tilde r \in R_{\ensuremath{Z}}} 
+ \{\mathop{\otimes}_{r \in R_{\ensuremath{Z}}, r\neq \tilde r} 
+\ensuremath{D^{|r|} [{F}] {} }
+(\mathop{\otimes}_{c \in C_{r}} v_{\ensuremath{z}_{rc}} ) \} 
+\\& \hspace{1.5in}\otimes
+\ensuremath{{{\nabla}}_{v_{n+1}}^{}{[  
+\ensuremath{D^{|\tilde r|} [{F}] {} }]}}
+(\mathop{\otimes}_{c \in C_{\tilde r}} v_{\ensuremath{z}_{\tilde rc}} ) ) \\
+&\quad+
+\sum_{\ensuremath{Z} \in \ensuremath{\mathcal{\ensuremath{Z}}}(n)} 
+\ensuremath{D^{ |\ensuremath{Z}|_R } [{f}] {(} }\sum_{\tilde r \in R_{\ensuremath{Z}}} 
+ \{\mathop{\otimes}_{r \in R_{\ensuremath{Z}}, r\neq \tilde r} 
+\ensuremath{D^{|r|} [{F}] {} }
+(\mathop{\otimes}_{c \in C_{r}} v_{\ensuremath{z}_{rc}} ) \} 
+\\& \hspace{1.5in}\otimes  
+\ensuremath{D^{|\tilde r|} [{F}] {} }
+(\mathop{\otimes}_{c \in C_{\tilde r}} \ensuremath{{{\nabla}}_{v_{n+1}}^{}{[
+  v_{\ensuremath{z}_{\tilde{r}c}} ]}}) ) \\ 
+&\hspace{-.45in}=
+\sum_{\ensuremath{Z} \in \ensuremath{\mathcal{\ensuremath{Z}}}(n)} 
+\ensuremath{D^{ |\ensuremath{Z}|_R +1} [{f}] {(} }\{ \mathop{\otimes}_{r \in R_{\ensuremath{Z}}} \ensuremath{D^{ |r| } [{F}] {} }
+( \mathop{\otimes}_{c \in C_{r}} v_{\ensuremath{z}_{rc}} )\} \otimes \ensuremath{D^{} [{F}] ({v_{n+1}}) }) \\
+&\quad+
+\sum_{\ensuremath{Z} \in \ensuremath{\mathcal{\ensuremath{Z}}}(n)} 
+\ensuremath{D^{ |\ensuremath{Z}|_R } [{f}] {(} }\sum_{\tilde r \in R_{\ensuremath{Z}}} 
+ \{\mathop{\otimes}_{r \in R_{\ensuremath{Z}}, r\neq \tilde r} 
+\ensuremath{D^{|r|} [{F}] {} }
+(\mathop{\otimes}_{c \in C_{r}} v_{\ensuremath{z}_{rc}} ) \} 
+\\& \hspace{1.25in}\otimes
+\ensuremath{{{\nabla}}_{v_{n+1}}^{}{[  
+\ensuremath{D^{|\tilde r|} [{F}] {} }]}}
+(\{\mathop{\otimes}_{c \in C_{\tilde r}} 
+v_{\ensuremath{z}_{\tilde rc}}\} \otimes v_{n+1}) ) \\
+&\quad+
+\ensuremath{D^{n} [{G}] ({\ensuremath{{{\nabla}}_{v_{n+1}}^{}{[\mathop{\otimes}_{i=1}^n v_i]}}}) }.
+\end{align*}
+
+The first term, in the set of three terms, requires the use of the
+general chain rule.  That set of terms 
+ corresponds to cr-diagrams of length $n+1$
+obtained from those of length $n$ by attaching a new row at the
+bottom; the new row 
+contains exactly 
+one box whose entry is $n+1$. The second set of terms requires the use
+of the product
+rule. It corresponds to modifying the old cr-diagrams by appending a
+new box to the end of a row. For every cr-diagram of length $n$ and
+height $l$, we obtain $l$ new cr-diagrams with the same height but
+with length $n+1$ and $n+1$ is again the entry in the new box. The
+third set of terms is an extraneous set for which the product rule and
+linearity is of crucial importance for the manipulation of those
+terms. 
+\end{proof}
+
+
+\section{The primary tools} \label{s:key}
+
+In this section, we prove that a certain group of 1-forms, associated
+to a point p, have the property that the fully symmetrized version of the
+covariant derivatives of those forms are 
+zero at the point $p$. These forms  are the
+coordinate forms in normal coordinates. We then use them to prove that
+the fully symmetrized covariant derivatives of any $(0,l)$ tensor is
+given by Euclidean differentiation in normal coordinates.
+
+\begin{theorem}\label{tt:key}
+Let \ensuremath{\gamma_v}\ be a geodesic. Assume that both $\ensuremath{{{\nabla}}_{v}^{}{[A(B)]}}=
+0$ and $\ensuremath{{{\nabla}}_{v}^{}{[B]}} = 0$ along
+\ensuremath{\gamma_v}. Then \ensuremath{D^{n} [{A}] ({B, v^n}) } = 0  along \ensuremath{\gamma_v}.    
+\end{theorem}
+
+\begin{cor}\label{tc:da}
+Let \ensuremath{\gamma_v}\ be a geodesic. Assume that $\ensuremath{{{\nabla}}_{v}^{}{[A]}}=
+0$ along
+\ensuremath{\gamma_v}. Then \ensuremath{D^{n} [{A}] ({ v^n}) } = 0  along \ensuremath{\gamma_v}.   
+\end{cor}
+
+\begin{cor}\label{tc:geo}
+Let $(M,\nabla^{M})$ be a smooth manifold with connection. Let 
+$(x_1,
+\dots, x_m)$ be the coordinate functions for 
+ normal coordinates centered at $p \in M$. Then
+\ensuremath{D_{p}^{n} {[dx^i]} ({v^{n+1}}) } = 0.
+\end{cor}
+
+\begin{cor}\label{tc:imp}
+Let $(M,\nabla^M)$ be a smooth manifold with connection.  Let 
+$(x_1,
+\dots, x_m)$ be the coordinate functions for 
+ normal coordinates centered at $p \in M$. 
+
+
+Let
+$\omega$ be a $(0,l)$ tensor. If we view the coordinates as providing a
+linear structure, we can compute the $\ensuremath{{n}^{th}}$ 
+Euclidean derivative of $\omega$, $\tilde{D}^n_{p}[\omega]$.
+Then
+$\ensuremath{D_{p}^{n} {[\omega]} ({v^{l+n+1}}) } = \tilde{D}^n_{p}[\omega](v^{l+n+1})$.
+\end{cor}
+
+\begin{proof}[Proof of Theorem~\ref{tt:key}]
+It is a simple induction using the product rule. Assume that
+$\ensuremath{D^{n-1} [{A}] ({B, v^{n-1}}) } = 0$ along \ensuremath{\gamma_v}. Notice $n=1$
+is our assumption. Then 
+
+
+\begin{align*}
+(\ensuremath{{{\nabla}}_{v}^{}{[\ensuremath{D^{n-1} [{A}] {} }]}})(B, v^{n-1})  =&
+\ensuremath{{{\nabla}}_{v}^{}{[(\ensuremath{D^{n-1} [{A}] {(B, v^{n-1})} })]}} \\ 
+&- \ensuremath{D^{n-1} [{A}] ({\ensuremath{{{\nabla}}_{v}^{}{[B]}}, v^{n-1}}) }
+- \ensuremath{D^{n-1} [{A}] {(B, \ensuremath{{{\nabla}}_{v}^{}{[v^{n-1}]}})} }.
+\end{align*}
+
+
+By assumption, the objects being differentiated along the geodesic is 
+zero along the geodesic; thus, the first two terms vanish. 
+first and second terms are zero. Since, along a geodesic,
+$\ensuremath{{{\nabla}}_{v}^{}{[v]}} = 0$ and $v^{n-1}$ is the $(n-1)$-fold tensor power of
+$v$ with itself, 
+we have that the third term is zero by the Leibniz rule. It is the
+vanishing of the third term which requires $\ensuremath{\gamma_v}$ to be a geodesic.
+\end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{tc:da}]
+Since $A(\ensuremath{\text{Id}}) = A$, we may apply Theorem~\ref{tt:key} with $B=\text{Id}$.  
+All we need to establish
+is that $\ensuremath{D^{} [{\text{Id}}] {} } =0 $. The quick statement is that this
+must be true for consistency's sake. Indeed, 
+\[\ensuremath{D^{} [{\ensuremath{\text{Id}}(\ensuremath{\text{Id}})}] {} } = \ensuremath{D^{} [{\ensuremath{\text{Id}}}] ({\ensuremath{\text{Id}}}) } + \ensuremath{\text{Id}}(\ensuremath{D^{} [{\ensuremath{\text{Id}}}] {} }.\]
+Since it is the identity, this says that 
+\[\ensuremath{D^{} [{\ensuremath{\text{Id}}}] {} } = 2 \ensuremath{D^{} [{\ensuremath{\text{Id}}}] {} }\]
+which immediately implies that it is a zero 
+tensor.\footnote{A coordinate proof would go as follows. Pick a frame
+  field, say 
+ $\{e_i\}$,  and its dual frame field $\{e^i\}$. Then we
+have that $e^i(e_j)$ is a constant function in the neighborhood and
+therefore its 
+derivative is zero. Thus, the product rule implies that
+$\ensuremath{{{\nabla}}_{v}^{}{[e^i]}}(e_j) = -e^i(\ensuremath{{{\nabla}}_{v}^{}{[e_j]}})$. Since 
+ $I = e^i \otimes e_i$, we have 
+\begin{align*}
+\ensuremath{D^{} [{\ensuremath{\text{Id}}}] ({e_j, v}) } & = \\
+& = \sum_i\{ (\ensuremath{D^{} [{e^i}] ({e_j, v}) }) \otimes e_i + 
+(e^i)(e_j) \otimes (\ensuremath{D^{} [{e_i}] ({v}) })\} \\
+& = \sum_i\{-e^i(\ensuremath{D^{} [{e_j}] ({v}) }) \otimes {e_i}\} +
+ (\ensuremath{D^{} [{e_j}] ({v}) }) \\
+& = - \ensuremath{\text{Id}}(\ensuremath{D^{} [{e_j}] ({v}) }) + \ensuremath{D^{} [{e_j}] ({v}) } = 0.
+\end{align*}
+Thus we have that the identity tensor always has a zero covariant
+derivative.}
+\end{proof}
+
+
+\begin{proof}[Proof of Corollary~\ref{tc:geo}]
+In normal coordinates, the image of $v \in T_p M$ under the
+exponential map $\ensuremath{\exp_{p}{}} : T_p M \to M$ is labelled $v$. 
+We also have 
+$tv = \ensuremath{\exp_{p}{tv}}= \gamma_{tv}(1) = \gamma_{v}(t)$,  
+( $t$ between 0 and 1). 
+In particular, \ensuremath{{\overset{\cdot}{\gamma}}_{v}({t})} is simply $v$ where \ensuremath{\gamma_v}\ is a geodesic
+starting at $p$ with $\ensuremath{{\overset{\cdot}{\gamma}}_{v}({0})} = v$.  
+As \ensuremath{{\overset{\cdot}{\gamma}}_{v}({t})} is constant along \ensuremath{\gamma_v}, it can be extended to a
+constant vector field in
+the normal neighborhood. Thus, $dx^i(v)$ is a constant
+function. We have $\ensuremath{{{\nabla}}_{v}^{}{[dx^i(v)]}} = 0 $ and $\ensuremath{{{\nabla}}_{v}^{}{[v]}}
+=0$. Since $\ensuremath{{{\nabla}}_{v}^{}{[dx^i]}} (v) =  
+\ensuremath{{{\nabla}}_{v}^{}{[(dx^i(v))]}} + dx^i(\ensuremath{{{\nabla}}_{v}^{}{[v]}})=0$, we are in the
+situation where Theorem~\ref{tt:key} applies. Thus, we have that
+$\ensuremath{D^{n} [{dx^i}] ({v, v^n}) } = 0$ along \ensuremath{\gamma_v}\ and, in particular, at $p$. 
+\end{proof}
+
+\begin{proof}[{Warning}] { Although the parallel transport of $v$ along its geodesic is
+simply a constant in these coordinates, in general the other
+coordinate vector fields will
+not have this property on \ensuremath{\gamma_v}. If they did, then this would be a
+locally trivial
+connection. 
+Indeed, if the connection was the Levi-Civita connection for a metric,
+ then, as the metric is preserved by
+parallel transport, the metric would be a flat metric. 
+}
+ \end{proof}
+
+\begin{proof}[Proof of Corollary~\ref{tc:imp}]
+Using coordinates, we have  $\omega \ensuremath{:=} \omega_{i_1 \cdots i_n}
+dx^{i_1} \cdots dx^{i_n}$ where summation is implied over repeated
+indices. 
+To compute the derivatives, we use the product rule repeatedly. 
+Indeed, we can take the above coordinate expression and rewrite it as 
+$\omega_{i_1 \cdots i_n}\otimes
+dx^{i_1} \otimes\cdots \otimes dx^{i_n}$. From Corollary~\ref{tc:geo},
+we have that when we evaluate $\ensuremath{D^{n} [{\omega}] ({v^{n+l+1}}) }$, the terms
+involving the derivatives of the coordinate forms vanish. Thus, we are
+only left with the derivative of the coefficient, which is exactly
+what the Euclidean derivative is. 
+\end{proof}
+ 
+
+
+\section[Vector expansions]{Taylor expansions of mappings between
+finite dimensional  
+vector spaces} \label{s:tay}
+
+In this section, we shall formulate the question properly. We start by
+recalling the usual facts about the Taylor expansion in vector
+spaces which may be found, for example, in \cite{AMR89}. 
+The \ensuremath{{n}^{th}}\ Taylor function of $f$, $T^n f$, is the best $n$-polynomial
+approximation to 
+$f$ up to terms of order $o(\epsilon^n)$. 
+
+This means, precisely, the following. We start with the finite
+dimensional vector spaces
+$V$, $W$, and a smooth map $f:V \to W$. Then the Taylor
+function $T^nf$ at $x_0$ 
+should be an \ensuremath{{n}^{th}}-degree polynomial,
+i.e. 
+\[
+T^nf \in \{\bigoplus_{i=0}^n (\ensuremath{{V}^{*}})\ensuremath{^{\otimes i} }\} \otimes W.\footnote{
+A vector space raised to the \ensuremath{{0}^{th}}-power is defined to be the field
+itself. Also, polynomials are always taken to be symmetric
+objects. That is to say, one mainly wants to evaluate them on the diagonal.}
+\]
+We require that $T^nf$ satisfies 
+\begin{equation} \label{te:tay}
+ \lim_{x \to x_0} 
+\frac{\lVert f(x) - T^nf(\oplus_{i=0}^n \{x-x_0\}^i) \rVert_W } 
+{\lVert x-x_0 \rVert_V^{n}} = 0
+\end{equation}
+
+
+This statement is
+independent of which norm is chosen since, in finite dimensions, all
+norms are equivalent.
+
+We shall take $x_0$ to be 0 and
+write $v$ for the vector $x-x_0$. 
+
+
+We first establish that the symmetric part is unique. Indeed,
+let $A$ and $B$ be two polynomials satisfying \eqref{te:tay}. We will be
+done if we show that for any vector $v \in V$, 
+\[(A-B)(\oplus_{i=1}^n \{v\}^i) = 
+(A-B)(v \oplus \{v\otimes v\} \oplus \dotsb \oplus \{\otimes_{i=1}^n v
+ \})
+ = 0. \] 
+ But this is easy. We first note that 
+\begin{equation} \label{te:unt}
+\lim_{v \to 0} 
+\frac{\lVert (A-B)(v) \rVert_W } 
+{\lVert v \rVert_V^{n}} = 0;
+\end{equation}
+this follows by inserting 0 in the form of $f-f$ into the numerator, 
+using the triangle inequality, and then using \eqref{te:tay}.
+Let $A_i$ and $B_i$ be the $i$-linear parts of $A$ and $B$,
+respectively. 
+
+
+By replacing $v$ with
+$hv$, $h \in \mathbf{R}$, we have 
+\begin{equation} 
+0 = \lim_{h \to 0} 
+\frac{\lVert \sum_{i=1}^n (A_i-B_i)(\{hv\}^i) \rVert_W } 
+{\lVert hv \rVert_V^{n}}  = \lim_{h \to 0^+} 
+\frac{ \lVert \sum_{i=1}^n \frac{1}{h^{n-i}} (A_i-B_i)(v^i) \rVert_W } 
+{ \lVert v \rVert_V^{n}}.
+\end{equation}
+Thus, $\lVert (A_i-B_i)(v^i) \rVert_W$ must be zero for every $i$
+which implies  uniqueness. 
+
+We now prove that 
+\[
+T^n f (v) = \sum_{i=0}^n \frac{1}{i!} \ensuremath{D_{0}^{i} {[f]} ({v}) }.
+\] 
+All we need
+is the fundamental theorem of calculus and integration by parts. The
+fundamental theorem of calculus is   
+\[ f(u + v) - f(u) = \int_{0}^1 \ensuremath{D_{u+tv}^{} {[f]} ({v}) } dt.\]
+We now use integration by parts which is the reverse of the product
+rule. 
+Specifically, we claim that 
+\[
+\int_{0}^1 \frac{(1-t)^{i-1}}{(i-1)!} \ensuremath{D_{u+tv}^{i} {[f]} ({v^{i}}) } dt = 
+\frac{1}{i!} \ensuremath{D_{u}^{i} {[f]} ({v^{i}}) } + 
+\int_{0}^1 \frac{(1-t)^i}{i!} \ensuremath{D_{u+tv}^{i+1} {[f]} ({v^{i+1}}) }   dt.
+\]
+
+This follows immediately from 
+\[\begin{split}
+0 - (-\frac{1}{i!} \ensuremath{D_{u}^{i} {[f]} ({v^{i}}) }) &= \int_{0}^1
+\ensuremath{\frac{d{}}{d{t}}}[\frac{-(1-t)^i}{i!}
+\ensuremath{D_{u+tv}^{i} {[f]} ({v^{i}}) }] dt \\
+&=  \int_{0}^1 \frac{(1-t)^{i-1}}{(i-1)!} \ensuremath{D_{u+tv}^{i} {[f]} ({v^{i}}) } dt 
+\\&\quad+ \int_{0}^1 \frac{-(1-t)^i}{i!} \ensuremath{D_{u+tv}^{i+1} {[f]} ({v^{i+1}}) }   dt.
+\end{split}
+\]
+Since $f$'s  derivatives are continuous both as operator-valued
+functions over $M$, we have that 
+\[
+\lVert D^{l}_{q} [f] (v^{l}) \rVert_W \leq C_l \lVert v^{l}  \rVert_V
+\]
+for  $q$ in a small enough neighborhood.
+This immediately leads to  
+\[
+{\lVert f(x) - \sum_{i=0}^n \frac{1}{i!} \ensuremath{D_{0}^{i} {[f]} ({v}) } \rVert_W }
+=  \lVert \int_{0}^1 \frac{(1-t)^n}{n!} \ensuremath{D_{u+tv}^{n+1} {[f]} ({v^{n+1}}) }
+dt
+\rVert_W \leq K_{n+1} \lVert v \rVert_V^{n+1}  
+\]
+for some constant $K_{n+1}$ and $v$ in the appropriate neighborhood of
+the origin.
+Thus, we have our limit. 
+
+Having discussed the vector space case, we now formulate
+the question for manifolds. If $M$ and $N$ have connections, then
+there is a canonical identification via the exponential map 
+between a neighborhood of $0\in
+T_pM$ and a neighborhood of $p \in M$. The same is true for $N$. Thus
+any mapping $f$ between $M$ and $N$ can be viewed as a mapping between
+some neighborhood of $0 \in T_pM$ and $T_{f(p)}N$. We can then Taylor
+expand that map. Since these are vector spaces, their tangent spaces
+are canonically identifiable with themselves. Thus, we end up with a
+polynomial mapping from the tangent space of $M$ to that of the
+tangent space of $N$. 
+The Taylor polynomial of $f$ is the polynomial between the tangent
+spaces obtained through the Taylor expansion of $f$ as a mapping
+between the two tangent spaces. The \ensuremath{{i}^{th}}\ monomial of the
+polynomial is indepedent of $n$; we shall call this the \ensuremath{{i}^{th}}\
+Taylor derivative.
+We could also construct a polynomial out of the
+covariant derivatives of these mappings. Are these polynomials the
+same? That is the question. The answer is that, loosely
+speaking, they  agree when the range is appropriately 
+flat. 
+
+A map $f$ is \emph{covariantly normal at $p$} iff its
+symmetrized covariant derivatives at $p$ agree with the Taylor
+derivatives. If $f$ is covariantly normal at all points of $M$, then
+$f$ is \emph{covariantly normal}. 
+
+\section{Taylor expansions of mappings into flat spaces}
+
+In this section we discuss mappings into a flat space. As we shall
+prove, these maps are always covariantly normal. 
+
+
+Let $(N, \nabla^N)$ 
+be a flat cc-manifold. This means that both the torsion and the
+curvature of the connection vanishes. In this section, the following
+standard lemma is of crucial importance.
+
+\begin{lemma} \label{tl:flat}
+Let $(N, \nabla^N)$ 
+be a flat cc-manifold and $(U, (x^1, \ldots x^n))$ be normal
+coordinates for $U$ centered at $p$. 
+Then $\nabla^N [\ensuremath{\frac{\partial {}}{\partial {x^i}}}] =0 $ everywhere in
+$U$ for every $i$, i.e.\ the coordinate vector fields are parallel.  
+\end{lemma}
+
+
+\begin{proof}
+Let $(U, (y_1,\ldots, y_n))$ be a coordinate neighborhood such that 
+the coordinate vector fields are parallel and such that $\ensuremath{\frac{\partial {}}{\partial {y^i}}}\vert_p =
+\ensuremath{\frac{\partial {}}{\partial {x^i}}}\vert_p$. Existence of such a
+neighborhood follows from 
+flatness as in the proof of Theorem 7.3 in the text \cite{Lee98}. 
+The claim is that $y^i = x^i$. As the $x^i$'s are normal coordinates,
+we know, by definition, that in these coordinates 
+ $\gamma (t) \ensuremath{:=} t\sum_{i=1}^n a_i x^i$
+is a geodesic such that $\gamma(0) = 0 (=p)$ and 
+ $\dot{\gamma}(0) = a_i \ensuremath{\frac{\partial {}}{\partial {x^i}}}\vert_p$. But if we define
+$\phi(t) \ensuremath{:=} t\sum_{i=1}^n a_i y^i$, then we claim that this is a
+geodesic.  Once we establish that claim, then we are done by
+uniqueness results since
+$\gamma$ and $\phi$ do have the same initial conditions; hence, the
+coordinates are the same (the point represented by $\sum a_i x^i$ is
+the same, through the geodesics, as $\sum a_i y^i$).
+
+We now need to establish the $\phi(t)$ is a geodesic. We thus need to
+show that $\ensuremath{{{\nabla}}_{\dot{\phi}}^{N}{[\dot{\phi}]}} = 0$. We know that
+$\dot{\phi} (t) = \sum_{i=1}^n a_i \ensuremath{\frac{\partial {}}{\partial {y^i}}} \vert_{\phi(t)}$. Thus
+the vector field along the curve agrees with the vector field
+$\sum_{i=1}^n a_i \ensuremath{\frac{\partial {}}{\partial {y^i}}}$. And therefore, by definition, 
+$\ensuremath{{{\nabla}}_{\dot{\phi}}^{N}{[\dot{\phi}]}} = \ensuremath{{{\nabla}}_{\sum_{i=1}^n a_i
+\ensuremath{\frac{\partial {}}{\partial {y^i}}}}^{N}{[\sum_{i=1}^n a_i \ensuremath{\frac{\partial {}}{\partial {y^i}}}]}}$. But this is zero as all
+of the $\ensuremath{\frac{\partial {}}{\partial {y^i}}}$ are parallel and the $a_i$ are constants. 
+\end{proof}
+
+The above proof was rather indirect. Indeed, in the proofs of the
+existence of the $y$ coordinates, all of them that the author  has seen 
+requires the construction
+of a new coordinate system out of a given coordinate
+system. Even more galling,  in \cite{Lee98}, one starts with some
+coordinate system; that author suggests that normal coordinates is a
+possible choice. Then the proof constructs that coordinate system
+using theorems about integrability of systems. But, as we just showed,
+this constructs normal coordinates. Thus, one uses an elaborate
+machinery to construct coordinates that one already has. 
+
+With the lemma, we may now prove the following theorem.
+\begin{theorem} \label{t:sim}  
+Let f be a map from $(M, \nabla^M)$ into the flat cc-manifold
+$(N, \nabla^N)$. 
+Then $f$ is covariantly normal. 
+\end{theorem}
+
+\begin{proof}
+Choose normal coordinate neighborhoods
+about $p \in M$ and $f(p) \in N$. 
+Using these coordinates, we write 
+$Df = df^j \partial_j$ where $df^j$ is a $(0,1)$ tensor and
+$\partial_j$ is the pull-back of the coordinate fields on $N$.  
+By repeatedly applying the product rule, we have, for all $l$, 
+\[\ensuremath{D^{l} [{f}] {} } = \ensuremath{D^{l-1} [{df^j}] {} }\partial_j + 
+\sum_{\substack{Z \in \ensuremath{\mathcal{PR}}_{2}(l-1)\\ r_1 \neq l-1}} 
+\ensuremath{D^{r_1} [{df^j}] {} } \otimes 
+\ensuremath{D^{r_2} [{\partial_j}] {} }
+\]
+where the derivative on the coordinate vector fields on $N$ is the
+pull-back derivative. In any event, the terms in the sum vanish
+by applying Lemma~\ref{tl:flat}.
+Applying Corollary~\ref{tc:imp}, we find that we have the Euclidean
+derivatives of $Df$ when we evaluate the derivative acting on $v^n$ at
+$p$. By viewing the coordinates as providing the linear structure, we
+have that this is also what appears in the Taylor formula. Thus, $f$
+is covariantly normal.
+\end{proof}
+
+
+\section{The exponential map and its derivatives}
+\label{s:exp} 
+
+Let $M$ be a cc-manifold. 
+Recall that the exponential map at $p \in M$ maps the
+tangent space at $p$ into $M$, i.e.\ $\ensuremath{\exp_{p}{}}:\ensuremath{T_p M} \to M$. It
+is actually restricted to a neighborhood about the origin such that
+its restriction is
+a diffeomorphism. Its inverse, \ensuremath{\exp^{-1}_{p}{}}, is a map from an open subset of
+$M$ into a flat space.
+
+
+\begin{theorem} \label{tt:exps}
+Let $M$ be a cc-manifold. Then for every $p \in M$, 
+we have, for $n >1$, that  $\ensuremath{D_{p}^{n} {[\ensuremath{\exp^{-1}_{p}{}}]} ({v^{n}}) } = 0$ 
+and $\ensuremath{D_{0}^{n} {[\ensuremath{\exp_{p}{}}]} ({v^{n}}) } = 0$. For $n=1$, the maps are
+essentially the identity.
+\end{theorem}
+
+\begin{proof}
+By definition, $\ensuremath{\exp^{-1}_{p}{}}:M \to \ensuremath{T_p M}$ is defined such that, when expressed in
+normal coordinates, it is the identity map. By Theorem~\ref{t:sim},
+we have that  $\ensuremath{D_{p}^{} {[\ensuremath{\exp^{-1}_{p}{(p)}}]} ({v}) } = v$  and, for $n > 1$,  
+$\ensuremath{D_{p}^{n} {[\ensuremath{\exp^{-1}_{p}{(p)}}]} ({v^n}) } = 0$. It is immediate that 
+$\ensuremath{D_{p}^{} {[\ensuremath{\exp_{p}{(0)}}]} ({v}) } = v$.
+
+To obtain the $n>1$ result for \ensuremath{\exp_{p}{}}, we shall use the chain rule. We
+start with the defining relation $\ensuremath{\exp_{p}{(\ensuremath{\exp^{-1}_{p}{(q)}})}} = q$. Thus,  
+$\ensuremath{D^{n} [{(\ensuremath{\exp_{p}{\ensuremath{\exp^{-1}_{p}{}}}})}] {} } = \ensuremath{D^{n} [{\mathrm{Id}}] {} }=0$. 
+We expand using the chain rule. 
+We end up with 
+\[
+0 = \ensuremath{D_{0}^{n} {[(\ensuremath{\exp_{p}{(\ensuremath{\exp^{-1}_{p}{}})}})]} ({v^n}) } 
+=  \sum_{k =1}^n \ensuremath{D^{k} [{\ensuremath{\exp_{p}{}}}] ({\sum_{\ensuremath{Z} \in \ensuremath{\mathcal{\ensuremath{Z}}}(n,k)}
+{\mathop{\otimes}_{r \in R_{\ensuremath{Z}}} \ensuremath{D^{|r|} [{\ensuremath{\exp^{-1}_{p}{}}}] ({ 
+ v^{|r|}}) }}}) }.
+\]
+If $ |r| >1$, then  $\ensuremath{D^{|r|} [{\ensuremath{\exp^{-1}_{p}{}}}] ({  v^{|r|}}) } =0$ as
+we just established. Just as importantly, if $ |r| =1$, then $\ensuremath{D^{|r|} [{\ensuremath{\exp^{-1}_{p}{}}}] ({
+v^{|r|}}) } =v$. The only cr-diagram to survive is the one such that each
+row has exactly one column. 
+We therefore find that the only term we have
+left is $\ensuremath{D^{n} [{(\ensuremath{\exp_{p}{\ensuremath{\exp^{-1}_{p}{}}}})}] ({v^n}) }$ which therefore must
+be zero.
+\end{proof}
+
+To put it succinctly, the symmetric part of the 
+higher derivatives of the exponential map
+vanish at the point whose tangent space is being exponentiated. 
+
+Although we do not need the following, it may be useful to remark that
+the antisymmetric part of the second derivative of the exponential map
+is the torsion. The third derivative decomposes into the symmetric
+part, the derivative of the torsion, and the curvature tensor. Both
+facts 
+can be seen by writing the map in coordinates and looking at the appropriate
+symmetry types. We should also mention that if the space is flat, all
+the derivatives of the exponential map vanish everywhere. As before,
+it is not clear how to prove this statement directly. 
+
+\section{Geodesic submanifolds}
+
+We need one more ingredient before we can give much broader 
+sufficient conditions
+for covariant normality. In this section, we discuss submanifolds that
+ have a connection on them which agree with the ambient manifold's
+connection. It
+is rare for a submanifold to have this property. For example, the
+sphere in \ensuremath{\mathbb{R}^{3}}\ does not have this property. For a Riemannian manifold,
+ submanifolds inherit a metric and a connection 
+although the inherited connection may be quite different as is the
+case  for the sphere as the 
+flat metric in \ensuremath{\mathbb{R}^{3}}\ leads to a curved metric on the sphere. 
+
+
+For the rest of this section, let $M$ be a cc-manifold. 
+
+
+\begin{defn}
+A \emph{geodesic submanifold} $Q$ of a cc-manifold $M$ is a
+submanifold which carries a connection that agrees with that of $M$. 
+In other words, if $v\in \ensuremath{\Gamma \{ TQ \}}$ and $X \in T_pQ$, then
+$\ensuremath{{{\nabla}}_{X}^{Q}{[v]}} = \ensuremath{{{\nabla}}_{X}^{M}{[v]}} \in T_pQ$.
+\end{defn}
+
+This notion is
+explained in \cite{On83} under the name of totally geodesic submanifold and
+in the context of semi-Riemannian manifolds. 
+At the heart of the definition is the idea that if $\ensuremath{{{\nabla}}_{x}^{M}{[v]}}
+\in T_pQ$ for every $v \in TQ$, then the connection on $Q$ making it
+into a geodesic submanifold is just the restriction. In contrast, if
+the connection on $M$ does not preserve the tangent space of $Q$ in
+the above sense, then one could try to fix this up by using a
+projection operator onto the tangent space of $Q$. But, of course,
+there is a choice of such projections; a metric does provide such a
+choice. 
+
+\begin{theorem}
+$Q$ is a geodesic submanifold iff  given any curve $\gamma$ in $Q$, 
+parallel transport along $\gamma$ using $M$'s connection is a map
+from $T_{\gamma(0)}Q$ into $T_{\gamma(t)}Q$. 
+\end{theorem}
+
+\begin{proof}
+This is almost immediate. If $Q$ is geodesic, then the defining equations for
+parallel transport in $M$ along $\gamma$ are exactly the same as
+parallel transport in $Q$ along $\gamma$. Thus, the solutions are the
+same. As for the other direction, since the covariant derivative 
+ may be defined by
+the difference quotient using parallel transport, we see that $Q$ is
+geodesic.     
+\end{proof}
+
+\begin{theorem}
+If $Q$ is a geodesic submanifold, then 
+\begin{enumerate}
+\item for every $v \in T_pQ$, the geodesic in \ensuremath{\gamma_v}\ in $M$ with
+initial tangent vector $v$ is contained in $Q$,
+at least for a short while; 
+\item $Q$ can be recovered locally by the exponentiation of
+neighborhoods in its
+tangent spaces. 
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The tangent vector field of a curve in $Q$ is contained in its tangent
+space. By looking at what the acceleration of a curve is, it is clear
+that both $M$ and $Q$ give the same acceleration. Thus, we define the
+geodesics using the connection on $Q$ and then note that
+these are geodesics under $M$'s connection. 
+The exponentiation statement
+follows immediately from the geodesic result. 
+\end{proof}
+
+
+\begin{defn}
+Let $p \in M$. 
+Then a \emph{flat subspace of \ensuremath{T_p M}} is  a subspace $V_p$ such that  
+$\ensuremath{D^{n} [{\ensuremath{\exp_{p}{}}}] {} }$ vanishes on $V_p\ensuremath{^{\otimes n} }$.  
+\end{defn}
+
+
+\begin{defn}
+A \emph{flat submanifold} is a geodesic submanifold whose tangent spaces are
+flat.  
+\end{defn}
+
+We mention a few examples.
+All 1-dimensional subspaces are flat. A geodesic is a geodesic
+submanifold which is flat. 
+ $M$ is flat iff every tangent space to $M$ is flat. This is the remark we made
+at the end of the previous section. For vector bundles as manifolds, 
+as we shall
+explain later, the vertical fiber direct summed with a 1-dimensional
+horizontal fiber is a flat subspace. This corresponds to the flat
+submanifold of a geodesic on the base space coupled with the fiber
+above its points. 
+
+
+\begin{lemma}
+If $Q$ is a geodesic submanifold such that the curvature
+and torsion 
+of the induced connection vanishes everywhere, then $Q$ is a flat
+submanifold.
+\end{lemma}
+
+\begin{proof}
+This follows by regarding $Q$ as a manifold. Hence any tangent space
+of $Q$ is flat. 
+\end{proof}
+
+Conceptually, one way to establish that a subspace $V_p$ is flat is to
+exponentiate a neighborhood about $0$ and ask whether it is a flat
+submanifold. If it is, then $V_p$ is flat. Note that the exponential
+image need not even be a geodesic submanifold. How well this captures
+the picture of a flat subspace is not known to the author.
+
+We conclude with a reasonable lemma which we shall use in the next
+section. 
+
+\begin{lemma} \label{tl:curve}
+If $\gamma$ is a curve in a geodesic submanifold $Q$, then all of its
+derivatives are contained in the tangent bundle of $Q$. 
+\end{lemma}
+
+\begin{proof}
+By definition, the \ensuremath{{n}^{th}}\ derivative of $\gamma$ is 
+$\nabla_{\dot{\gamma}} \cdots \nabla_{\dot{\gamma}}
+\dot{\gamma}$. Since this is the connection evaluated on sections of
+$TQ$, we have, by assumption of $Q$ being a geodesic submanifold, that
+it is contained in the tangent space of $Q$. 
+\end{proof}
+
+
+\section{Covariant normality} \label{s:maptay}
+
+We may now formulate the positive results of covariant normality.
+
+
+\begin{lemma} \label{tl:sub}
+Let $M$, $N$ be cc-manifolds and $f$ be a smooth map from $M$ into
+$N$. Then $f$ is covariantly normal at $p$ if, for each $v \in T_pM$, 
+the subspace $ V(f,v) \ensuremath{:=} \text{span}\{ \ensuremath{D_{p}^{n} {[f]} ({v^n}) } \} $ is a
+flat subspace of $T_{f(p)}N$. 
+\end{lemma}
+
+\begin{proof}
+Let $\ensuremath{\tilde{f}}: T_pM \to T_{f(p)}N$ be the following 
+map induced on the tangent spaces using the exponential
+maps and $f$:
+ \[\ensuremath{\tilde{f}}(v) \ensuremath{:=} \ensuremath{\exp^{-1}_{f(p)}{(f(\ensuremath{\exp_{p}{v}}))}}.\] 
+Thus, $f(q) = \ensuremath{\exp_{f(p)}{(\ensuremath{\tilde{f}}(\ensuremath{\exp^{-1}_{p}{q}}))}}$. 
+Essentially by definition, $\ensuremath{D^{n} [{\ensuremath{\tilde{f}}}] {} }$ 
+are the Taylor derivatives. Furthermore,
+we also know that $\ensuremath{D_{0}^{n} {[\ensuremath{\exp_{f(p)}{(\ensuremath{\tilde{f}})}}]} ({v^n}) } =
+\ensuremath{D_{p}^{n} {[f]} ({v^n}) }$ 
+since  
+\begin{align*}
+\ensuremath{D^{n} [{\ensuremath{\exp_{f(p)}{(\ensuremath{\tilde{f}})}}}] ({v^n}) } =& \ensuremath{D^{n} [{f(\ensuremath{\exp_{p}{v}})}] ({v^n}) } 
+\\ =&\sum_{\ensuremath{Z} \in \ensuremath{\mathcal{\ensuremath{Z}}}(n)} 
+\ensuremath{D^{|\ensuremath{Z}|_R} [{f}] ({\mathop{\otimes}_{r \in R_{\ensuremath{Z}}} \ensuremath{D^{|r|} [{\ensuremath{\exp_{p}{}}}] ({
+v^{|r|}}) }}) } \\
+ = & \ensuremath{D^{n} [{f}] ({\{\ensuremath{D^{} [{\ensuremath{\exp_{p}{}}}] ({v}) }\}^{n}}) } = \ensuremath{D^{n} [{f}] ({v^{n}}) }
+\end{align*}
+where the vanishing of the terms is due to applying
+Theorem~\ref{tt:exps}.
+We therefore only need to compute the derivatives of $\ensuremath{\exp_{f(p)}{(\ensuremath{\tilde{f}})}}$.
+We need to show that
+\[
+\ensuremath{D^{n} [{\ensuremath{\exp_{f(p)}{(\ensuremath{\tilde{f}})}}}] ({v^n}) }= \ensuremath{D^{n} [{\ensuremath{\tilde{f}}}] ({v^n}) }.
+\]
+We again use the chain rule. In particular, we have that 
+\begin{align*}
+\ensuremath{D^{n} [{\ensuremath{\exp_{f(p)}{(\ensuremath{\tilde{f}})}}}] ({v^n}) }  = & 
+\sum_{\ensuremath{Z} \in \ensuremath{\mathcal{\ensuremath{Z}}}(n)} 
+\ensuremath{D^{|\ensuremath{Z}|_R} [{\ensuremath{\exp_{f(p)}{}}}] ({\mathop{\otimes}_{r \in R_{\ensuremath{Z}}} \ensuremath{D^{|r|} [{\ensuremath{\tilde{f}}}] ({
+v^{|r|}}) }}) } \\
+= &  \ensuremath{D^{} [{\ensuremath{\exp_{f(p)}{}}}] ({ \ensuremath{D^{n} [{\ensuremath{\tilde{f}}}] ({v^n}) }}) }  \\
+&\quad + \sum_{i=2}^{n} \ensuremath{D^{i} [{\ensuremath{\exp_{f(p)}{}}}] ({\sum_{\ensuremath{Z} \in \ensuremath{\mathcal{\ensuremath{Z}}}(n,i)}
+{\mathop{\otimes}_{r \in R_{\ensuremath{Z}}} \ensuremath{D^{|r|} [{\ensuremath{\tilde{f}}}] ({ v^{|r|}}) }}}) }
+\end{align*}
+Since $\ensuremath{D^{} [{\ensuremath{\exp_{f(p)}{}}}] {} } = \ensuremath{\text{Id}}$, the first term is what we want.
+Thus, the sum must
+vanish in order to obtain the result. 
+In general, this will not happen as the input into the derivatives of
+the exponential map are not symmetric. 
+However, by
+the hypothesis, the
+derivatives  $\ensuremath{D^{i} [{\ensuremath{\tilde{f}}}] ({v^{i}}) }$ are all elements of the flat
+subspace $V(f,v)$. Thus, as the \ensuremath{{n}^{th}}\ derivative of the exponential map
+vanishes on $V(f,v)\ensuremath{^{\otimes n} }$, we have that the sum vanishes.   
+\end{proof}
+
+
+\begin{lemma}
+Fix $p \in M$. 
+Assume that for every geodesic $\gamma$ in $M$ starting at $p$, there
+is a {\bf flat}
+submanifold $Q_{\gamma}$ 
+of $N$ such that $f$ maps the image of $\gamma$ into $Q_{\gamma}$, at
+least for some interval about $t=0$.  
+Then $f$ is
+covariantly normal at $p$.  
+\end{lemma}
+
+\begin{proof}
+Let $v \in T_pM$ be given and $\ensuremath{\gamma_v}$ be the unique geodesic
+corresponding to $v$. Let $V_v$ be the vector space at $p$ tangent to the flat
+submanifold $Q_{\ensuremath{\gamma_v}}$ which contains the image of $\ensuremath{\gamma_v}$. Note $V_v$
+is a flat subspace implying that 
+all we need to establish is that, for each $n$, 
+$\ensuremath{D^{n} [{f}] ({v^n}) }$ is an element of $V$. 
+Note that $f(\ensuremath{\gamma_v})$ is a curve in a flat submanifold. Thus its
+derivatives, of all orders, are elements of $V_v$
+i.e.\ $\ensuremath{\frac{{d}^{{n}}
+{}}{{d}{{t}^{n}}}}[f(\ensuremath{\gamma_v})] \in V_v$. This follows from Lemma~\ref{tl:curve}.
+We also have 
+\[
+\begin{split}
+\ensuremath{\frac{{d}^{{n}}
+{f(\ensuremath{\gamma_v})}}{{d}{{t}^{n}}}} &= \sum_{\ensuremath{Z} \in \ensuremath{\mathcal{\ensuremath{Z}}}(n)} 
+\ensuremath{D^{ |\ensuremath{Z}|_R } [{f}] ({\mathop{\otimes}_{r \in R_{\ensuremath{Z}}}
+\ensuremath{D^{|r|} [{\ensuremath{\gamma_v}}] ({\ensuremath{\frac{\partial {}}{\partial {t}}}^{|r|}}) }}) }\\
+  &= \ensuremath{D^{n} [{f}] ({\dot{\ensuremath{\gamma_v}}^n}) }
+\end{split}
+\]
+as the higher derivatives of a geodesic vanish. Since $V_v$ is a flat
+subspace and $v$ was arbitrary,
+the lemma applies and we have covariant normality of $f$. 
+\end{proof}
+
+
+\begin{theorem} \label{t:gcov}
+Assume that for every geodesic $\gamma$ in $M$, there is a flat
+submanifold $Q_{\gamma}$ 
+of $N$ such that $f$ maps the image of $\gamma$ into $Q_{\gamma}$.  
+Then $f$ is
+covariantly normal. 
+\end{theorem}
+
+\begin{proof}
+Apply the lemma at every point $p$ in the manifold.
+\end{proof}
+
+
+\begin{cor}
+If $N$ is flat, then all maps $f: M \to N$ are covariantly normal. 
+\end{cor}
+
+\begin{proof}
+This was actually deduced before and is actually used in the
+theorem. Nevertheless, as a means to unification, it is convenient to
+note that this follows immediately from the theorem. 
+\end{proof}
+
+\begin{cor}
+If $N =E$ is a vector bundle over $M$ and $f$ is a section, then $f$
+is covariantly normal. 
+\end{cor}
+
+\begin{proof}
+The proof is delayed until the next section. The main insight is that
+the flat submanifold that the geodesic $\gamma$ is mapped into is the
+submanifold consisting of the fiber over $\gamma$.
+\end{proof}
+
+\begin{cor} \label{tc:geo2}
+If $f$ maps geodesics into geodesics, then $f$ is covariantly normal.
+\end{cor}
+
+\begin{proof}
+A geodesic is a flat submanifold and therefore this is an immediate
+application of the theorem.
+\end{proof}
+
+\begin{cor} \label{tc:scal}
+Let $f: M \to N$. Assume that for every $p\in M$ and $v\in \ensuremath{T_p M}$,  
+$f$ satisfies $\ensuremath{D_{p}^{2} {[f]} ({v^2}) } = \alpha_2(v)\ensuremath{D_{p}^{} {[f]} ({v}) }$ for
+some $\alpha_2: \ensuremath{T_p M} \to \ensuremath{\mathbb{R}^{}}$.  
+Then $f$ is covariantly normal. 
+\end{cor}
+
+\begin{proof}
+This will follow immediately from Lemma~\ref{tl:sub}, where the subspace
+will be 1-dimensional and therefore flat. We shall show that 
+$\ensuremath{D^{n} [{f}] ({v^n}) } = \alpha_n(v^{n-1}) \ensuremath{D^{} [{f}] ({v}) }$.
+
+
+We shall use induction. Fix $p\in M$ and $v_p \in \ensuremath{T_p M}$. 
+Extend $v_p$ to a vector
+field whose covariant derivative vanishes at $p$; this can be done by
+parallel transporting along the geodesics originating at $p$. 
+We start with  $\ensuremath{D^{n+1} [{f}] ({v^{n+1}}) } \ensuremath{:=}
+\ensuremath{{{\nabla}}_{v}^{}{[\ensuremath{D^{n} [{f}] {} }]}}(v^n)$. 
+By  using the product rule, we find
+\begin{align*}
+\ensuremath{{{\nabla}}_{v}^{}{[\ensuremath{D^{n} [{f}] {} }]}}(v^n) 
+& = \ensuremath{{{\nabla}}_{v}^{}{[\ensuremath{D^{n} [{f}] {v^n} }]}} - 
+\ensuremath{D^{n} [{f}] {\ensuremath{{{\nabla}}_{v}^{}{[v^n]}}} } \\
+& = \ensuremath{{{\nabla}}_{v}^{}{[\alpha_n(v^{n-1}) \ensuremath{D^{} [{f}] ({v}) }]}} - 0 \\
+& = \ensuremath{D^{} [{\alpha_n}] ({v^{n-1}, v}) } \ensuremath{D^{} [{f}] ({v}) }  + 0 
++ \alpha_n(v^{n-1}) \ensuremath{D^{2} [{f}] ({v,v}) } +0 \\
+&= ( \ensuremath{D^{} [{\alpha_n}] ({v^{n-1}, v}) } + \alpha_n(v^{n-1})
+\alpha_2(v))  \ensuremath{D^{} [{f}] ({v}) } \\
+& \ensuremath{:=} \alpha_{n+1} (v^n) \ensuremath{D^{} [{f}] ({v}) }.
+\end{align*}
+This is all we needed to show. Incidentally, the $\alpha$'s are
+multilinear functionals. 
+\end{proof}
+
+We now show that Corollary~\ref{tc:geo2} and Corollary~\ref{tc:scal} actually
+describe the same kind of map. 
+
+\begin{lemma} \cite{EL83}
+A map $f: M \to N$ satisfies 
+$\ensuremath{D^{2} [{f}] ({[v]^2}) } = \alpha_2(v)\ensuremath{D^{} [{f}] ({v}) }$ if and only if f maps
+geodesics of M into geodesics on N. Furthermore,  $\alpha_2$ is
+identically zero everywhere if and only if the mapping preserves
+parametrizations.  
+\end{lemma}
+
+\begin{proof}
+The proof is just the chain rule. Let $\ensuremath{\gamma_v}$ be a geodesic on $M$ such that
+$\ensuremath{\gamma_v}(0) = p$ and $\ensuremath{{\overset{\cdot}{\gamma}}_{v}({0})} = v$. Then define $\phi$ to be the curve
+on $N$ which is the image of $\ensuremath{\gamma_v}$. By the chain rule, we have
+\[
+\ddot{\phi} = \ensuremath{D^{2} [{f}] ({\dot{\ensuremath{\gamma_v}},\dot{\ensuremath{\gamma_v}}}) } + \ensuremath{D^{} [{f}] ({\ddot{\ensuremath{\gamma_v}}}) }.
+\]
+Since \ensuremath{\gamma_v}\ is a geodesic, the second term vanishes. The first term
+vanishes iff the symmetric part of the second covariant derivative
+vanishes. For the full statement, one has to understand that a curve
+is a reparametrization of a geodesic iff its acceleration vector is a
+multiple of its tangent vector. More precisely, if $\ddot{\phi} (t) =
+\alpha(t) \dot{\phi}(t)$, then there is a function $g: \ensuremath{\mathbb{R}^{}} \to
+\ensuremath{\mathbb{R}^{}}$ 
+such that $\phi(h(s))$ is a geodesic and conversely. The proof follows by
+differentiating using the chain rule to arrive at 
+\[\ddot{\phi}(h) = \dot{h}^2 \ddot{\phi}(h) + \ddot{h} \dot{\phi}(h).
+\]
+The only way to have that vanish, without $g$ being a constant, is for
+$\ddot{\phi}$ to be a multiple of $\dot{\phi}$ and, furthermore,  $g$
+needs to satisfy
+$\ddot{h} = - \dot{h}^2 \alpha(t)$, $\dot{h}(0) =1$, $h(0) =0$.
+ Assuming that $\alpha$ is
+differentiable, we do have local existence of the solution.  That is
+all we needed to claim that the symmetric part of the second
+ derivative had to be a multiple of the first derivative.
+\end{proof}
+
+
+\section{The failure of covariant normality}
+
+Having established certain situations in which we have covariant
+normality, it is rather important to investigate situations in which
+we do not have covariant normality which we shall call covariant
+abnormality. 
+We shall content ourselves with
+showing that there are manifolds and maps between those manifolds
+which are not covariantly normal. When one looks at what needs to
+vanish in order to have covariant normality, one gets the feeling that
+a  covariant abnormality should be the generic case.
+Unfortunately, it becomes quite complicated to take a brute force
+approach  as 
+there are many terms that  cancel and/or
+are immediately zero. Nevertheless, I would conjecture that given a
+manifold map $f : M \to N$, if there exists a tangent 
+vector $v \in
+T_pM$ such that the 
+span of $\{D^n[f] (v)\}$ is not a flat subspace, then $f$ is 
+covariantly abnormal at $p$. This is a conjecture with no evidence, but
+it seems a natural guess. 
+
+To establish what we want, we shall use normal coordinates. Let $f: M
+\to N$ be a map between cc-manifolds. Let $p \in M$ and take a
+neighborhood about $p$ small enough so that it 
+ can be identified with the tangent space at $p$. Take a basis 
+$\{ \partial_i\} $ of the tangent space leading to a coordinatization
+ of the neighborhood in $M$.
+  We shall use the summation
+convention of summing over repeated indices and shall omit summation
+symbols. Then the coordinate representation of $f$ is $f \ensuremath{=:} f^i
+\partial_i$. Then the first four covariant derivatives of $f$ expressed in
+this coordinate system and evaluated on a given vector $v$, are
+
+\begin{align*}
+D[f] (v) =& 
+D[f^i](v) \partial_i
+\\
+D^2[f] (v^2) =& 
+D^2[f^i](v^2) \partial_i 
++D[f^i](v) D[\partial_i](D[f](v))
+\\
+\begin{split}
+D^3[f] (v^3) =& 
+D^3[f^i](v^3) \partial_i 
++2D^2[f^i](v^2) D[\partial_i](D[f](v))\\
+&+D[f^i](v) D[\partial_i](D^2[f] (v^2))
++D[f^i](v) D^2[\partial_i](\{D[f](v)\}^2)
+\end{split}
+\\
+\begin{split}
+D^4[f] (v^4) =& 
+D^4[f^i](v^4) \partial_i 
++3D^3[f^i](v^3) D[\partial_i](D[f](v)) 
+\\&
++3D^2[f^i](v^2) D[\partial_i](D^2[f] (v^2))
+\\&
++3D^2[f^i](v^2) D^2[\partial_i](D[f](v)\otimes D[f](v))
+\\&
++D[f^i](v) D^2[\partial_i](2D^2[f](v^2)\otimes D[f](v) +D[f](v)\otimes
+D^2[f](v^2))
+\\&
++D[f^i](v) D[\partial_i](D^3[f](v^3))
++D[f^i](v) D^3[\partial_i](\{D[f](v)\}^3) 
+\end{split}
+\end{align*}
+
+In order to have covariant normality, we need all of the terms to
+vanish except the first term, i.e.\ the only term that should survive
+is what one would have from Euclidean differentiation in this
+coordinate system. 
+
+In order to clean this up a bit, we shall assume that, at $p$, 
+ $D[f](v) \ensuremath{=:} \partial_1$ and $D^2[f](v^2) \ensuremath{=:}
+ \partial_2$.\footnote{The only loss of generality is assuming that
+ $ D^2[f](v^2)$ is not a multiple of $D[f](v)$. If we cannot find a
+ point $p$ and a vector $v \in T_pM$ which satisfies this assumption,
+ then the map
+ is, in fact, covariantly normal.}  
+Then the above equations become
+\begin{subequations}
+\begin{align}
+D_p[f] (v) =& \partial_1
+\\
+D^2_p[f] (v^2) =& \partial_2
+\label{te:fcov2}
+\\
+\begin{split}
+D^3_p[f] (v^3) =& 
+D^3_p[f^i](v^3) \partial_i 
++2 D_p[\partial_2](\partial_1)\\
+&+D_p[\partial_1](\partial_2)
++ D^2_p[\partial_1](\partial_2^2)
+\end{split}
+\label{te:fcov3}
+\\
+\begin{split}
+D^4_p[f] (v^4) =& 
+D^4_p[f^i](v^4) \partial_i 
++3D^3_p[f^i](v^3) D[\partial_i](\partial_1) 
+\\&
++3 D_p[\partial_2](\partial_2)
++3 D^2_p[\partial_2](\partial_1^2)
+\\&
++ D^2_p[\partial_1](2\partial_2\otimes \partial_1 + \partial_1\otimes
+\partial_2)
+\\&
++ D_p[\partial_1](D_p^3[f](v^3))
++D^3_p[\partial_1](\{\partial_1\}^3) 
+\end{split}
+\label{te:fcov4}
+\end{align}
+\end{subequations} 
+ 
+Please note that since $D_p[\partial_1] (\partial_1) = 0$ at $p$, we
+have that \eqref{te:fcov2} implies
+\[
+D^2_p[f^i] (v^2)= 
+\begin{cases} 
+0 & \text{if $i \neq 2$} \\ 
+1 & \text{if $i = 2$}
+\end{cases}  . 
+ \]
+Furthermore, we have that $D^n_p[w] (w^n) = 0$ for any vector field $w$
+which is a sum of the coordinate vector fields with constant
+coefficients. This is what normal coordinates accomplish. Taking this
+into account in the above expressions, we are left with 
+\begin{subequations}
+\begin{align}
+\begin{split}
+D^3_p[f] (v^3) =& 
+D^3_p[f^i](v^3) \partial_i 
+\\&
++ D_p[\partial_2](\partial_1)
++ D^2_p[\partial_1](\partial_2^2)
+\end{split}
+\label{te:ffcov3}
+\\
+\begin{split}
+D^4_p[f] (v^4) =& 
+D^4_p[f^i](v^4) \partial_i 
++3D^3_p[f^i](v^3) D[\partial_i](\partial_1) 
+\\&
++3 D^2_p[\partial_2](\partial_1^2)
++ D^2_p[\partial_1](\partial_2\otimes \partial_1)
+\\&
++ D_p[\partial_1](D_p^3[f](v^3)) 
+\end{split}
+\label{te:ffcov4}
+\end{align}
+\end{subequations} 
+From this point on, we leave generalities. We shall choose $f$ to have
+the properties that we wish it to have. Our goal is to establish that
+   there exists a map which is not covariantly normal. At some point,
+   we shall also make a further assumption on the manifold, but that
+   has not come yet. The argument is consideration of certain cases;
+   this is a bit distasteful and may largely be the result of the
+   author's ignorance as to what constraints are actually placed upon
+   the derivatives of these objects. Nevertheless, whatever the facts
+   are, we shall be successful in establishing that which we have
+   claimed. 
+
+
+We first show that if torsion does not vanish, then we can choose $f$
+such that it is covariantly abnormal. In normal coordinates, we have
+that $\tau(x, y) = 2D[x] (y)$ where $x$ and $y$ are sums of the
+coordinate vector fields (constant coefficients), 
+and the equality is only up to a
+sign.\footnote{The ingredients to establish this are:
+ $\tau(x,y) \ensuremath{:=} D[x](y) - D[y](x) + [x,y]$; 
+  the Lie bracket of coordinate vector fields vanish; and
+   normal coordinates imply that the fully symmetric expression for
+   covariant derivatives of the coordinate vector fields vanish which
+   in turn implies that $D[x] (y) = -D[y](x)$. }
+Strangely, the most efficient analysis of the cases involves focussing
+on the fourth derivative and assuming that the second covariant derivative
+vanishes at $p$ when evaluated at $v$. 
+When one makes this assumption, then the third
+covariant derivative is the coordinate derivative. The fourth
+derivative reduces to 
+\[
+D^4_p[f] (v^4) = 
+D^4_p[f^i](v^4) \partial_i 
++3 D[\partial_3](\partial_1) 
++ D_p[\partial_1](\partial_3) 
+\]
+where $\partial_3 \ensuremath{:=} D^3[f](v^3)$. 
+After applying the vanishing of symmetric expressions, we have 
+\[
+D^4_p[f] (v^4) = 
+D^4_p[f^i](v^4) \partial_i 
++2 D[\partial_3](\partial_1)
+\]
+Choosing $D_p[f](v) = \partial_1$
+and $D^3_p[f](v^3) 
+\partial_3$ to be such that the torsion acting on them does not
+vanish, we see that the fourth covariant derivative is  not the fourth
+coordinate derivative. Hence $f$ is not covariantly normal. Note that
+the span of the covariant derivatives is not a flat subspace of the
+tangent space. 
+
+If torsion does vanish, then the third covariant derivative will be
+the coordinate derivative if and only if 
+$D^2_p[\partial_1](\partial_2^2) =0$. I do not know if this vanishes
+or not. If it does not, then we are done. If it does vanish, then we must go
+to the fourth derivative. For the fourth derivatve to be the
+coordinate derivative, we find, after taking into account the
+terms we have assumed to vanish,  that we need 
+$ D^2_p[\partial_1] (\partial_2 \otimes \partial_1) =0$. Due to the
+symmetries already discussed, this is the curvature operator applied
+to those vectors. Although such an expression could vanish,
+if we assume that $N$ is a curved, two dimensional manifold, then this
+cannot vanish. 
+
+As an example, take the sphere and take a curve on the sphere. Then
+its acceleration in normal coordinates is the covariant
+acceleration. But the higher covariant derivatives of the curve will
+not, in general, match  the coordinate derivatives. In particular,
+either the third or 
+fourth derivative will differ if the acceleration is not zero. Thus,
+we have a map which is not covariantly normal. 
+
+As I said in the beginning,  I expect that much stronger statements
+can be made, but I do not know how to prove such assertions.
+
+
+\section{Vector bundles as manifolds} \label{s:vecman}
+
+We now explain why sections of a bundle are covariantly normal. 
+ The first item to explain is how a
+connection on a vector bundle and the base space give a connection on
+the vector bundle as a manifold. Once we have that, then we can view a
+section as a map from the base manifold into the bundle manifold and
+use linear approximations induced by the normal coordinates. 
+
+We start by recalling the standard fact that on a vector bundle, there
+are three equivalent notions of a connection. The first is that of
+covariant differentiation and the second is that of parallel
+transport. These we have used before. The new one that we need is that
+a connection is a choice of horizontal spaces, as we shall now
+explain. A reference for this is Addendum 3 of Chapter 8 in \cite{Sp299}. 
+Let the vector bundle be $B \ensuremath{:=} (E,\pi, M, V)$  
+where $E$ is the total space and it is a manifold;  $M$ is the base
+space; $\pi: E \to M$ is the projection map; and $V$ is the fiber,
+i.e.\ for every $p$,  $\pi^{-1} (p)$ is isomorphic to $V$.  
+For a vector bundle, we also have the (smooth) 
+multiplication map: for every $\alpha
+\in \ensuremath{\mathbb{R}^{}}$, we have $\tilde{\alpha}: E \to E$ defined by $(p, v)
+\mapsto (p, \alpha v)$. For each $\alpha \neq 0$, this mapping is an 
+automorphism, i.e.\ a diffeomorphism of $E$ which preserves the bundle
+structures. 
+
+Fix a point $e
+\in E$ and define $p \ensuremath{:=} \pi(e)$. Then the map $D_e \pi : T_e E \to
+T_pM$ is a map between two linear spaces and thus it has a kernel. We
+define the  vertical space at $e$, $V_e$, to be the kernel.   
+It is natural to try to  decompose
+each tangent space into the direct sum $T_e E = V_e \oplus H_e$ where
+$H_e$ should be  the horizontal space at $e$. 
+We note that any complementary space of $V_e$ is isomorphic 
+to $T_p M$ under $D_e \pi$.
+The problem is that we have
+no canonical way of finding a complementary subspace to the vertical
+space. A connection is the assignment of a horizontal space for each
+point. 
+More
+specifically, a distributional connection $H$ in $E$ is a $C^\infty$
+distribution such that  $T_eE = H_e \oplus V_e$ 
+and that $D_e \tilde{\alpha} (H_e) = H_{\tilde {\alpha}(e)}$ 
+for every point $e \in E$
+and non-zero $\alpha \in \ensuremath{\mathbb{R}^{}}$. 
+As for notation, if $X \in T_e E$, then we define $\tilde{h}_X \in H_e$ and
+$\tilde{v}_X \in V_e$ to 
+be the horizontal and vertical projections of $X$, respectively; 
+thus,  $X = \tilde{h}_X +
+\tilde{v}_X$. By using the isomorphism $D_e \pi$, we can view 
+$\tilde{h}_X$ as a tangent vector. We shall generally do this and
+write $h_X$ for that.  
+
+For vector bundles, as opposed to more general fiber bundles, we are
+able to abuse the $v$ term as well. 
+Indeed, $V_p \ensuremath{:=} \pi^{-1} (p)$ is a vector space which is also a submanifold
+of $E$. At the point $e \ensuremath{:=} (p, v) \in E$, the tangent space of the
+fiber is $V_e$. 
+But we also know that a vector space is canonically identifiable with
+its tangent space. Let $F_e : V_e \to V_p$ be this canonical
+isomorphism. We shall use the notation $v_X$ for  $F_e(\tilde{v}_X)$. 
+
+Having setup the basic notations and definitions, we are in a position
+to sketch the equivalence of the connections. 
+\begin{theorem}
+The following notions are equivalent:
+\begin{enumerate}
+\item
+A connection as covariant derivative $(\nabla: T_pM \times
+\ensuremath{\Gamma \{ B \}} \to \ensuremath{\Gamma \{ B \}})$ ; 
+\item A connection as parallel transport $(P_{\gamma_t}:
+V_{\gamma_0} \to V_{\gamma_t} )$; 
+\item A connection as a distribution of horizontal spaces $(e \mapsto
+H_e)$. 
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}[Sketch of proof]
+We shall only highlight what the source of the relation is; the
+details may be found in \cite{Sp299}.
+
+\begin{itemize}
+
+\item[$(1 \Rightarrow 2)$] Given a curve $\gamma$ and a vector $v$ to
+be parallel transported, the following ODE, for the function $v_t \in
+V_{\gamma_t}$, defines the parallel transport operator: $\dot{v}_t =
+0$; roughly written this means $\nabla_{\dot{\gamma}_t} [v(\gamma_t)] =0$.
+
+\item[$(2 \Rightarrow 1)$] Given $v \in \ensuremath{\Gamma \{ B \}}$ and a tangent
+vector $y \in T_p M$, let $\gamma$ be a curve through $p$ 
+whose tangent vector at $p$ is $y$. Then the covariant derivative is
+defined to be $\lim_{t \to 0} \frac{1}{t}
+(P_{\gamma_t}^{-1} v(\gamma_t) - v_0)$.
+
+\item[$(1 \Rightarrow 3)$] Let $(p,v) \ensuremath{:=} e \in E$ and
+ $\sigma \in \ensuremath{\Gamma \{ B \}}$ such that $\sigma(p) = v$ and $\nabla_y
+[\sigma] (p) = 0$ for all $y \in T_pM$. This can be done (at least
+locally) by
+parallel transporting $v$ along the geodesics emanating
+from $p$. Then $H_e$ is the image of $T_pM$ under $D \sigma : T_pM \to T_eE$.  
+
+\item[$(3 \Rightarrow 1)$]
+Given a tangent
+vector $y \in T_p M$ and a section $\sigma \in \ensuremath{\Gamma \{ B \}}$, 
+then $D [\sigma] (y) = \tilde{v}_e + \tilde{h}_e$; we need to have
+chosen the horizontal space in order to define
+$\tilde{v}_e$.\footnote{Only if $\tilde{h}_e = 0$ would this be
+canonical; this, however, never occurs for a section as $p$ is what varies.}  
+Thus, the covariant derivative is $v_e$, the canonical isomorphic
+image of $\tilde{v}_e$. 
+
+\end{itemize}
+\end{proof}
+
+
+With this information, it is relatively straightforward to setup a
+manifold connection on $E$. We shall do this by describing how to parallel
+transport tangent vectors.  
+Let $\tilde{\gamma}$ be a curve in $E$ going from the point $e_0$ to
+$e_1$. Define $\gamma \ensuremath{:=} \pi(\tilde{\gamma})$. This is a curve in
+$M$ (although it may only be piecewise smooth, i.e.\ its tangent
+vector may vanish). 
+
+
+Let $X
+\in T_{e_0} E$ be the tangent vector we wish to parallel
+transport. Let $X = \tilde{h}_X +\tilde{v}_X$, 
+the direct sum decomposition of $X$. 
+Of course, we now use the isomorphisms to obtain $h_X$ and $v_X$. We
+parallel transport those objects along $\gamma$. We 
+do this piecewise. We need both connections in this step. Once we have
+the transported objects at $e$, we use the isomorphisms to return to a
+tangent vector of E. Schematically, we have
+\[
+X \overset{H_{e_0} \oplus V_{e_0}}{\longmapsto} \tilde{h}_X + \tilde{v}_X 
+\overset{D_{e_0} \pi, F_{e_0}}{\longmapsto} (h_X, v_X)
+\overset{\gamma}{\mapsto} (g \ensuremath{:=} P_{\gamma}^M h_X, w \ensuremath{:=} P_{\gamma}^B v_x)
+{\mapsto} \tilde{g}+
+\tilde{w} \in T_{e_1} E  .
+\]
+One can easily verify linearity, smoothness, invertibility, etc., of
+this operation which we define to be the parallel transport operator 
+$P_{\gamma}^E$. 
+
+What are the geodesics of $E$? The short answer is that these are the
+parallel transport of the bundle's vectors along the geodesics of $M$. 
+
+\begin{lemma}  Let $e = (p,z) \in E$, 
+ $X \in T_eE$ and $\gamma$ the geodesic in $M$ with tangent vector
+$h_X$.
+ Then the
+curve defined by $\alpha(t) = \ensuremath{P_{{p},{\gamma(t)}}({tv_X + z})}$ is a
+geodesic starting at $e$ whose initial tangent vector is $X$.
+\end{lemma}
+
+\begin{proof} 
+We shall use the following coordinates. Let $U$ be a 
+neighborhood in $M$ centered at $p$ and use normal coordinates. 
+Parallel transport  $V_p$ along the geodesics emanating from $p$. This
+will locally trivialize the bundle.
+
+
+With these coordinates, we have $\alpha(t) = (th_X, tv_X +z)$. 
+Its time derivative is
+$\dot{\alpha}(t) = (h_X, v_X)$. We must now ask whether this vector is
+the parallel transport of $(h_X, v_X)$ along $\alpha$. By definition of
+the coordinate system, $v_X$ is transported to $v_X$ 
+along the geodesic $\gamma(t) = th_X$.  
+And the tangent vector of a geodesic is the parallel transport of
+itself along the geodesic, so $h_X$ is correct as well. And this is
+exactly how we defined parallel transport for the manifold $E$. 
+\end{proof}
+
+
+Thus, we  know the normal neighborhood about a point $e \in
+E$ and the exponential map. In fact, we have $\exp{(p,z)}{(\tilde{h},0)}$ is
+the parallel transport of $z$ along the geodesic starting at $p$ with
+tangent vector $h$. This is the same as $\exp{(p,0)}{(\tilde{h},
+\tilde{z})}$. 
+
+We may finally establish covariant normality of sections of $B$ using
+the viewpoint that they are maps from $M$ into $E$. Let $\sigma \in
+\ensuremath{\Gamma \{ B \}}$. We need to show that it maps geodesics of $M$ into flat
+submanifolds of $E$. Then we may apply \ref{t:gcov}. 
+
+\begin{lemma}
+Let $Q$ be a geodesic submanifold of $M$. Then $E_Q \ensuremath{:=} \cup_{q
+  \in Q} E_q$ is a geodesic submanifold of $E$. 
+\end{lemma}
+
+\begin{proof}
+First note that $E_Q$ is a submanifold as well as a subbundle of $B$.
+Let $\tilde{\alpha}$ be a curve in $E_Q$ and let $\alpha$ be its
+projection to $M$ which is actually a curve in $Q$. Parallel transport
+of a tangent vector of $Q$ along $\alpha$ stays within the tangent
+bundle of $Q$ by assumption of $Q$ being geodesic. Parallel
+transporting a vector in $E_p$ to $q$ is definitely an operation which
+takes the vector into an element of $E_q$. By looking at the
+definition of parallel transport of tangent vectors to $E$, we see
+that the parallel transport does preserve  $T E_Q$; thus $E_Q$ is geodesic.   
+\end{proof}
+
+
+\begin{lemma}
+Let $Q \ensuremath{:=} \gamma$ be a geodesic. Then $E_Q$ is a flat submanifold. 
+\end{lemma}
+
+\begin{proof}
+We shall show that parallel transport in $E_Q$ is independent of the
+path. First note that parallel transport is independent of the
+parametrization of the path. Given a path $\tilde{\alpha}$ in $E_Q$,
+Then the projection of $\alpha$ is $\gamma$ parametrized in a
+different way; in particular, $\alpha$ can change directions along
+$\gamma$. The parallel transport operators multiply together and even
+can cancel each other if the path goes forwards and backwards. Thus,
+the parallel transport of a tangent vector along $\tilde{\alpha}$ is
+just the parallel transport of the appropriate objects along $\gamma$
+from the beginning point of $\alpha$ to the terminating point.  
+\end{proof}
+
+In contrast, if we assume $Q$ is some higher dimensional flat
+submanifold of $M$, we do not have this result unless the curvature of
+the bundle connection vanishes on $B_Q$. 
+
+Noting that the image of the geodesic $\gamma$,  under the manifold map
+$\sigma \in \ensuremath{\Gamma \{ B \}}$, is contained in the flat submanifold 
+$E_{\gamma}$, i.e.\ the set of fibers over $\gamma$, we find that sections of
+a bundle are covariantly normal by applying \ref{t:gcov}. 
+
+We make a further remark that the \ensuremath{{n}^{th}} 
+Taylor approximation of the section
+is the following:
+\[
+T_p^n[\sigma] (q,\ensuremath{\psi}) = P_{\gamma_{p\to q}}^B (\sum_{i=0}^{n}
+D_p^i[\sigma] (\{\ensuremath{\exp^{-1}_{p}{q}} \}^i)
+\]
+where $P_{\gamma_{p\to q}}^B$ is the parallel transport operator along
+the unique geodesic connecting $p$ and $q$ in this small
+neighborhood and the covariant derivatives of $\sigma$ are the
+bundle's covariant derivatives. This claim follows from considering the
+normal coordinates for the manifold $E$; these coordinates correspond
+to the basis field described in Appendix \ref{a:difgeom}.
+
+\clearpage
+
+\section{Appendix: a useful frame field}
+
+\subsection{A very useful frame field} \label{a:difgeom} 
+
+
+In this part, we shall explain how to find sections satisfying
+constraints on the symmetric part of their covariant derivative. 
+Let $M$ be a manifold with connection and $E$ be a vector bundle over $M$
+whose fiber is either isomorphic to \ensuremath{\mathbb{R}^{k}} or $\ensuremath{\mathbb{C}}^k$. Fix $p
+\in M$. This appendix relies upon the work of Chapter \ref{c:taylor}
+and is used in Chapter \ref{c:geom}
+
+
+Choose a coordinate neighborhood about $p$ such that for every point
+$q$ in the neighborhood, there is a unique
+geodesic between $p$ and $q$. Choose a basis $\{e_i\}_{i=1}^{k}$
+of the fiber $E_p$ for the rank $k$ bundle $E$  
+over $M$. Parallel transport these vectors along the geodesics
+emanating from $p$, defining a basis field  also denoted by 
+$\{e_i\}_{i=1}^{k}$. 
+
+Let $q$ be any point in the neighborhood. Take
+\ensuremath{\gamma_v}\ to be the unique geodesic between $p$ and $q$. Then, by
+definition, for each $i$, $\nabla_v [e_i] = 0$ along $\ensuremath{\gamma_v}$. Thus,
+Corollary~{\ref{tc:da}} applies and we may conclude that the {\bf symmetric}
+ part of  $D^n_p [e_i]
+=0$ for all $i$.\footnote{It is true that the diagonal part of a
+  tensor determines its symmetric values. One proof is based on the
+  following. Define $f(a_1, \ldots,a_k) \ensuremath{:=} A(\{\sum_i a_i e_i \}^n)$.
+Notice that we know $f$ for all values of the $a_i$'s. Expand the
+right-hand side. Taking the appropriate \ensuremath{\text{n}^{\text{th}}}-order partial derivatives
+with respect to the 
+$a_i$'s and evaluating the derivatives at $(0,\ldots, 0)$, we can
+generate any symmetric expression in the $e_i$'s of length $n$ that we
+wish.} 
+ We emphasize that this is only true at $p$.
+
+Now define $A := \sum_{i=1}^k f^i e_i$ where the $f^i$ are
+scalar functions defined on the neighborhood. Then the symmetric part
+of the covariant
+derivatives of $A$ are the symmetric covariant derivatives of the $f^i$'s. 
+Using Corollary~{\ref{tc:imp}}, we know that the symmetric part of the
+higher order covariant derivatives of the $f^i$'s are  the
+Euclidean derivatives when expressed in 
+ normal coordinates. Thus, it is reasonably
+easy to specify the symmetric part of various higher order covariant
+derivatives. 
+
+The other parts of the covariant derivatives are part of the geometric
+structure of the connection. For example, the second covariant
+derivative's antisymmetric part is the curvature tensor, at least if
+the connection on $M$ has no torsion. More specifically, we claim
+\[
+\ensuremath{{{\nabla}}_{x}^{}{[\ensuremath{{{\nabla}}_{y}^{}{[A]}}{}]}} - \ensuremath{{{\nabla}}_{y}^{}{[\ensuremath{{{\nabla}}_{x}^{}{[A]}}{}]}}
+- \ensuremath{{{\nabla}}_{[x,y]}^{}{[A]}} 
+=
+D^2[A] (y\otimes x -x \otimes y) - D[A] (\tau(x, y))
+\]
+where $\tau$ is the torsion; torsion, acting on a function $f$, is 
+\[
+\tau(x,y)f = (\ensuremath{{{\nabla}}_{x}^{}{[y]}} - \ensuremath{{{\nabla}}_{y}^{}{[x]}} -[x,y])f 
+= D^2[f](x\otimes y -y \otimes x).
+\]
+These assertions may be verified using the chain rule. A typical fact
+to use, for example, is
+\[
+\ensuremath{{{\nabla}}_{x}^{}{[\ensuremath{{{\nabla}}_{y}^{}{[A]}}{}]}} =  
+D^2 [A] (y \otimes x) + D[A](\ensuremath{{{\nabla}}_{x}^{}{[y]}}).
+\]
+The formulas involving the differentiation of the vector fields are
+the usual formulas for the curvature and torsion of a
+connection. Writing it in this fashion demonstrates that curvature is
+independent of the connection on the manifold. But writing it using
+the higher covariant derivatives allows us to immediately see that the
+objects are tensors in the tangent vector slots involving $x$ and
+$y$. As for the curvature being a tensor in $A$, that is why the
+torsion term is necessary. Indeed, multiply $A$ by a function $f$, and
+one sees that cross terms cancel when computing the antisymmetric part
+leaving the expression in $A$ that we want plus a torsion
+term. Subtracting the torsion therefore eliminates the contribution of
+$f$. 
+
+Another way to view the subtraction of the torsion
+ is to think of torsion as a type of
+curvature and that multiplication of a scalar function times a section
+is actually the tensor product of the section of $E$ with a section of
+the trivial one-dimensional bundle over $M$. Then, as is easily seen,
+the curvature of the tensor product connection  is a sum of the two
+ curvatures. Thus, we subtract the function's curvature to obtain the
+ curvature of the bundle $E$. 
+
+In any event, when we use our special basis, we are only left with the
+antisymmetric part  as the symmetric part of
+the basis fields vanish at $p$. Thus the second covariant derivatives of these
+fields is the curvature tensor applied to field that we are
+differentiating, assuming that there is no torsion. 
+
+As an application of this, we can prove that if $E$ is a complex
+bundle with a connection and a parallel inner product $\ensuremath{({}, {})}$,
+then the curvature tensor is anti-self-adjoint. Let $R$ be the
+curvature tensor. Then, to establish our claim, we need to show that 
+\[
+\ensuremath{({\ensuremath{\psi}}, {R\phi})} = - \ensuremath{({R \ensuremath{\psi}}, {\phi})}
+\]
+for any sections $\ensuremath{\psi}$ and $\phi$ of $E$. Fix a point $p \in M$. 
+Given $\ensuremath{\psi}_p, \phi_p \in
+E_p$, define $\ensuremath{\psi}$ and $ \phi$  by parallel transporting the value at
+$p$ to all the other points in an appropriately small neighborhood
+about $p$. As just explained, $D^2 \ensuremath{\psi} = R\ensuremath{\psi}$ and similarly for
+$\phi$ where we use a torsionless connection on $M$ to compute the
+second covariant derivative. Since the inner product is parallel, we
+have that $\ensuremath{({\ensuremath{\psi}}, {\phi})}_q = \ensuremath{({\ensuremath{\psi}}, {\phi})}_p$ for all $q$ in the
+neighborhood. More to the point, we have $D[\ensuremath{({\ensuremath{\psi}}, {\phi})}] =0$ and,
+more importantly, 
+\[
+D^2 [\ensuremath{({\ensuremath{\psi}}, {\phi})}] = 0.
+\]
+But notice that 
+\[
+D^2_p[\ensuremath{({\ensuremath{\psi}}, {\phi})}] = \ensuremath{({D_p^2[\ensuremath{\psi}]}, {\phi})} + \ensuremath{({\ensuremath{\psi}}, {D_p^2[\phi]})}
+= \ensuremath{({R \ensuremath{\psi}}, {\phi})}_p + \ensuremath{({\ensuremath{\psi}}, {R\phi})}_p;
+\]
+note that only at $p$ do we have the vanishing of the first derivative
+terms in addition to the second derivative terms being the curvature tensor. 
+As one can see, we have our result.
+
+\clearpage
+\bibliographystyle{abbrv}
+\bibliography{references}
+\end{document}

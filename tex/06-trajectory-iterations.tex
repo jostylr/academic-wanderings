@@ -1,0 +1,970 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts,amsthm,mathtools,bm}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{cor}{Corollary}
+\newtheorem{defn}{Definition}
+\newtheorem{principle}{Principle}
+\newtheorem{statement}{Statement}
+\theoremstyle{remark}
+\newtheorem{statementr}{Statement}
+
+\title{Two Algorithms for Exact Quantum Dynamics from Trajectories}
+\author{James Taylor}
+\date{Working draft derived from the 2003 thesis}
+\begin{document}
+\maketitle
+
+\section{Two 
+algorithms for exact quantum dynamics from trajectories} \label{c:algo}
+
+
+In this chapter, we shall discuss a new idea for 
+solving Schr\"odinger's equation. The results are few, but the potential for more is
+extremely high. 
+We start by rewriting Schr\"odinger's equation into the usual pair of
+the modified 
+Hamilton-Jacobi equation and the continuity equation. Then a
+natural iterative process suggests itself. Namely, ignore the quantum
+potential, solve the H-J equation, use the continuity equation to get a new
+density, use that density to obtain an approximate quantum potential, and
+repeat. The fixed point of this scheme is the solution. We are
+particularly interested in an equivalent 
+formulation involving trajectories.
+ An important fact is that if we had the Bohmian\
+trajectories and the initial wave function, then we could produce the solution
+to Schr\"odinger's equation. But to find the Bohmian\ trajectories,  we need to already have
+the solution to Schr\"odinger's equation. The two
+algorithms we will be discussing provide a separation. We start with
+an initial set of trajectories, using them to construct an approximate
+wave function. We then use that new wave function\ to find new trajectories. We
+continue. Pictorially, we have 
+\[
+Q_0 \to \ensuremath{\psi}_1 \to Q_1 \to \cdots \to Q_n \to \ensuremath{\psi}_{n+1} \to Q_{n+1}
+\to \cdots 
+\]
+Convergence is a central question of any such proposal. Unfortunately,
+we have no general answer to that question. We do, however, have some examples
+of beautiful convergence. Unfortunately, these are restricted to only
+quadratic
+potentials in 1 dimension. Additionally, we have used the process on
+the fixed point to derive a PDE that the family of Bohmian
+trajectories satisfies. That is to say, we can actually find the
+Bohmian trajectories before solving Schr\"odinger's equation. We explicitly do this in the
+special case of when the Bohmian trajectories are linear in the
+initial configuration; we
+do this only in 1 dimension. 
+
+\section{Background material}
+
+In chapter 3, we derived the Hamilton-Jacobi equation and the
+continuity equation from Schr\"odinger's equation. In this section, we write down what the
+solutions are to these equations in terms of the characteristics. 
+It is convenient to start with some
+definitions and notations. Appendix \ref{a:app7} contains the proofs
+of these assertions as well as a discussion of the derivatives of the
+determinant of the differential of a map. 
+
+We start with some definitions. 
+By \emph{family of trajectories}, we shall mean
+essentially a flow although we do not make assumptions about
+invertibility. If $Q$ is a family of trajectories, then we shall write
+$Q(x_0, t)$  to denote the configuration at time $t$ of a system whose
+initial configuration was $x_0$. We also define the action
+functional. Given a family of trajectories $Q$, a potential $U$, and 
+an initial function $T$, we define 
+
+
+\[ 
+\ensuremath{\mathcal{S}}[Q, U, T] (x_0, t) \ensuremath{:=}   T(x_0) + \int_0^t [
+\frac{\dot{Q}^2}{2}(x_0, s) -
+U(Q(x_0,s), s)] ds.
+\]
+Our last definition is for the amplitude functional. Given the family
+$Q$ and an initial function $P$, we define 
+\[
+\ensuremath{\mathcal{R}}[Q, P](x_0, t) = P(x_0) |DQ(x_0,t) |^{-\frac{1}{2}}. 
+\]
+As we shall discuss, these are essentially the solutions to the
+Hamilton-Jacobi and continuity equations, respectively. 
+
+In this chapter, all wave functions will be complex-valued wave function
+s over a given manifold \ensuremath{\mathcal{Q}}; the examples will all be for the
+simple manifold 
+$\ensuremath{\mathcal{Q}} = \ensuremath{\mathbb{R}^{}}$. 
+We generally demand these functions to be smooth elements of
+$L^2(\ensuremath{\mathcal{Q}})$. We start 
+by writing the wave function, \ensuremath{\psi}, in polar form;   
+$
+\ensuremath{\psi} = Re^{\frac{iS}{\ensuremath{\hbar}}}, 
+$
+where the amplitude $R \geq 0$, and the phase, $S$, is real. The
+quantum density, \ensuremath{\rho}, is $\ensuremath{|\ensuremath{\psi}|^2}  = R^2.$ 
+We first think about the setup for $N$ particles moving in
+$\ensuremath{\mathbb{R}^{k}}$; we shall use the usual setup for this rather than the one
+we discussed in Chapter \ref{c:manpart}. 
+Solving Schr\"odinger's equation\ is
+equivalent to solving the coupled equations  
+
+
+\begin{align*}
+\ensuremath{\frac{\partial {S}}{\partial {t}}} &= -\sum_{k=1}^N \frac{1}{2m_k}(\nabla_k S \cdot \nabla_k
+S) - {V} + \sum_{k=1}^N \frac{\ensuremath{\hbar}^2}{2m_k} \frac{\ensuremath{\Delta}_k R}{R} 
+\\
+\ensuremath{\frac{\partial {\ensuremath{\rho}}}{\partial {t}}} &= - \sum_{k=1}^N  \nabla_k \cdot (\ensuremath{\rho} \frac{1}{m_k}\nabla_k S)
+.\\
+\end{align*}
+
+For a general manifold, one immediately has the same thing using the
+Riemannian metric. One can also formulate $N$ particles moving in
+\ensuremath{\mathcal{Q}}. The masses can be absorbed into the metric as described in
+Chapter \ref{c:geom}. Thus, we can drop the masses and the
+summations. We could also write the above equations explicitly using
+the metric: 
+\begin{align*}
+\ensuremath{\frac{\partial {S}}{\partial {t}}} &= -\frac{1}{2}G(DS, DS)  - {V} + \frac{\ensuremath{\hbar}^2}{2}
+\frac{G\circ D^2 R}{R} = - \frac{1}{2} \nabla S \cdot \nabla S - V + 
+\tag{H-J}  \frac{\ensuremath{\hbar}^2}{2}
+\frac{\ensuremath{\Delta} R}{R}
+\\
+\ensuremath{\frac{\partial {\ensuremath{\rho}}}{\partial {t}}} &= - G\circ(D(\ensuremath{\rho} DS)) = -\nabla \cdot (\ensuremath{\rho} \nabla S).
+ \tag{C}
+\\
+\end{align*}
+We shall absorb the mass into the metric except possibly when we do
+the examples. 
+
+
+Equation (H-J) is almost the Hamilton-Jacobi equation for classical motion
+under the potential $V$; it differs by the  
+ quantum potential,  
+ $ -\frac{\ensuremath{\hbar}^2}{2}\frac{\ensuremath{\Delta} R}{R} $.
+Classically, the velocity field is $\nabla S$, which is just the
+Bohmian\
+velocity field. Equation  
+(C) is the continuity equation; this describes how \ensuremath{\rho}\
+evolves under the flow corresponding to configurations
+moving with the Bohmian\ velocities.  The trajectory of the system is a single
+integral curve of the Bohmian\ 
+velocity field.  
+
+Let $Q(x_0,t)$ be the family of
+trajectories solving $\dot{Q} (x_0,t)  = \nabla S (Q(x_0,t))$ 
+with inverse $Q^{-1}$ and  $\ensuremath{\lvert {DQ^{-1}} \rvert} \neq 0$.  Let $\ensuremath{\rho}_0$ and
+$S_0$ be the amplitude and phase of the initial wave function. Then in the
+appendix, we show that $(\ensuremath{\mathcal{R}}[Q, \ensuremath{\rho}_0] (Q^{-1})(x,t)))^2$ is the solution
+to (C) while $\ensuremath{\mathcal{S}}[Q, V -\frac{\ensuremath{\hbar}^2}{2}\frac{\ensuremath{\Delta} R}{R}, S_0]
+(Q^{-1}(x,t))$ is the solution to (H-J). 
+
+
+\section{The algorithms}
+
+
+We start by describing the algorithms in terms of the approximating
+PDEs.
+We
+shall begin with algorithm A1. At the beginning
+of the \ensuremath{\text{n}^{\text{th}}}\ step, we have 
+$\ensuremath{\rho}_{n-1} \ensuremath{:=} R_{n-1}^2$ and $S_{n-1}$. We demand that $S_n$ satisfies
+\[ \ensuremath{\frac{\partial {S_n}}{\partial {t}}} =  -\nabla S_n \cdot \nabla S_{n-1} +
+\frac{1}{2} \nabla S_{n-1} \cdot \nabla S_{n-1} - V  +
+\frac{\ensuremath{\hbar}^2 \ensuremath{\Delta} R_{n-1}}{2 R_{n-1}} \tag{H-J:A1, $n$}
+\]
+and that $\ensuremath{\rho}_{n}$ satisfies 
+\[
+\ensuremath{\frac{\partial {\ensuremath{\rho}_n}}{\partial {t}}} = - \nabla \cdot (\ensuremath{\rho}_n \nabla S_{n}) \tag{C:A1, $n$}.
+\]
+For algorithm A2, we have a similar setup, but we demand that $S_n$
+satisfies 
+\[
+ \ensuremath{\frac{\partial {S_n}}{\partial {t}}} = -\frac{1}{2} \nabla S_{n} \cdot \nabla S_{n} - V  +
+\frac{\ensuremath{\hbar}^2 \ensuremath{\Delta} R_{n-1}}{2 R_{n-1}} \tag{H-J:A2, $n$}
+\]
+and that $\ensuremath{\rho}_{n}$ satisfies 
+\[
+\ensuremath{\frac{\partial {\ensuremath{\rho}_n}}{\partial {t}}} = - \nabla \cdot (\ensuremath{\rho}_n \nabla S_{n}) \tag{C:A2, $n$}.
+\]
+We denote by $U_{n-1}$  the potential $V  - \frac{\ensuremath{\hbar}^2}{2}\frac{\ensuremath{\Delta}
+R_{n-1}}{ R_{n-1}}$. 
+
+There are several comments that may be made. First, the fixed point of
+both algorithms provides the solution of Schr\"odinger's equation. Second, both equations in
+A1 are linear, understood as solved in the appropriate order, 
+ whereas  (H-J:A2) is quadratic in the spatial
+derivative. Third, in the limit 
+$\ensuremath{\hbar} \to 0$, A2 becomes classical mechanics whereas A1 does
+not. Indeed, if $\ensuremath{\hbar} =0$, A2 does not iterate and the only step becomes a
+quasiclassical approximation. But for A1, this is not the case. In
+fact, if $\ensuremath{\hbar} =0$, then A1 still iterates. It becomes an algorithm for
+computing the solution to the classical H-J equation. 
+
+
+On the \ensuremath{\text{n}^{\text{th}}}\ step of either algorithm, we define $\dot{Q}_n \ensuremath{:=}
+\nabla S_n$. With this definition, $Q_n$  corresponds to the characteristics
+of (H-J:A1, 
+$n+1$), (C:A1, $n$), (H-J:A2,
+$n$) and (C:A2, $n$); \emph{characteristics} are trajectories that
+convert a PDE to an ODE. Indeed, in A1, it can be shown that 
+\[ S_{n} (x,t) = \ensuremath{\mathcal{S}}[Q_{n-1}, U_{n-1}, S(\cdot, 0)] (Q_{n-1}^{-1} (x, t), t) 
+\]
+ and 
+\[R_n = \ensuremath{\mathcal{R}}[Q_n, R(\cdot, 0)] (Q_n^{-1} (x,t), t).
+\]
+In A2, we have 
+\[ S_{n} (x,t) = \ensuremath{\mathcal{S}}[Q_{n}, U_{n-1}, S(\cdot, 0)] (Q_n^{-1} (x, t), t) 
+\]and \[
+R_n = \ensuremath{\mathcal{R}}[Q_n, R(\cdot, 0)] (Q_n^{-1} (x,t), t).
+\]
+From this perspective, A1 is close to Bohmian mechanics\ in spirit. At every stage,
+we start with $S_n$ and compute the integral curves of its gradient
+thereby forming the family $Q_n(x_0,t)$. 
+Then  we compute the Jacobian of $Q_n$ to obtain $R_{n+1}$ and
+the action integral using the new potential $U_{n+1}$to obtain $S_{n+1}$. In
+contrast, A2 is 
+closer to the spirit of classical mechanics. To find $Q_n$,
+we actually solve the classical equations with the force being
+$-\nabla U_{n-1}$. We then use the Jacobian of $Q_n$ to define $R_n$ and
+$U_n$. This sets us up to calculate the next set of trajectories. In A2, we
+do not need to compute $S_n$ in order to complete the step. 
+
+
+In algorithm A2, we encounter the issue that $S_n$ may not be
+well-defined for all time; this generally corresponds to $Q_n$ not being
+invertible. Following \cite[pages~438--445]{Arn89},  we define
+ an approximate wave function\ by 
+\[
+{\ensuremath{\psi}}_n (x, t)  \ensuremath{:=} \sum_{ \{y_j | Q_n(y_j, t) = x \} } \ensuremath{\mathcal{R}} [Q_n,
+ R(\cdot,0)] (y_j,  t)  
+e^{i(\ensuremath{\mathcal{S}}[Q_n, U_{n-1}, S(\cdot, 0)] (y_j, t) -
+ \frac{\pi}{2} \mu_j)}.
+\]
+We then obtain $R_n$ and $S_n$ from the polar form of that wave function. 
+ The Maslov
+index $\mu_j$ gives us an appropriate phase for the summation. 
+ Appendix  \ref{a:app7} gives a slighly more informative discussion of this. 
+
+\subsection{The algorithms in short} \label{as:short}
+
+We now describe the algorithms in a more mechanical fashion. Given $T(x)$,
+$P(x)$, $V(x,t)$, and $Q(x,t)$, the two algorithms may be viewed as generating
+different ODEs to solve involving the function $q(x,t)$ once the
+initial $x$ is fixed. 
+
+We shall denote the following procedure as $A1(T, P, V, Q)$; it
+produces a family of trajectories $q(x, t)$.
+\begin{enumerate}
+\item Compute $H \ensuremath{:=} Q^{-1}$. 
+\item Define $R \ensuremath{:=} P(H) \ensuremath{\lvert {DQ^{-1}} \rvert}^{\frac{1}{2}}$.
+\item Compute $\tilde{S} \ensuremath{:=} T + \int_0^t [\frac{\dot{Q}^2}{2} -
+V(Q,s) -  \frac{\ensuremath{\hbar}^2}{2}\frac{\ensuremath{\Delta} R}{R} (Q,s)] ds$.
+\item Define $S \ensuremath{:=} \tilde{S} (H)$.
+\item Define $q(x,t) \ensuremath{:=} \gamma_x(t)$ where $\gamma_x$ the solution of
+$\dot{\gamma}_x (s) = (\nabla S)(\gamma_x(s), s)$ with initial condition
+$\gamma_x(0) = x$ .  
+\end{enumerate}
+For an algorithm, fix $T$, $P$, $V$ and define $B(Q) \ensuremath{:=}
+A1(T,P,V,Q)$. 
+The \ensuremath{{n}^{th}}\ step of A1 is then the same as $B^n(Q_0)$. To start, one
+can choose a best guess, $Q_0(x,t) = x$, or the solution to 
+$\dot{Q}_0(x,t) =
+\nabla S_0(Q)$.
+
+We do a similar iteration for A2. We first describe the version when
+$Q$ is invertible. 
+We shall denote the following procedure as $A2(T, P, V, Q)$; it
+produces a family of trajectories $q(x, t)$.
+\begin{enumerate}
+\item Compute $H \ensuremath{:=} Q^{-1}$. 
+\item Define $R \ensuremath{:=} P(H) \ensuremath{\lvert {DQ^{-1}} \rvert}^{\frac{1}{2}}$.
+
+
+\item Define $q(x,t) \ensuremath{:=} \gamma_x(t)$ where $\gamma_x$ the solution of
+$\ddot{\gamma}_x (s) = -(\nabla (V  -  \frac{\ensuremath{\hbar}^2}{2m}\frac{\ensuremath{\Delta}
+R}{R}) )(\gamma_x(s), s)$ with initial condition 
+$\gamma_x(0) = x$, $\dot{\gamma}_x(0) = \nabla T (x)$.  
+\end{enumerate}
+For an algorithm, fix $T$, $P$, $V$ and define $C(Q) \ensuremath{:=}
+A2(T,P,V,Q)$. 
+The \ensuremath{{n}^{th}}\ step of A1 is then the same as $C^n(Q_0)$. To start, one
+can choose a best guess, $Q_0(x,t) = x$, the solution to $\dot{Q}_0(x,t)=
+\nabla S_0(Q)$, or the classical trajectories using the initial $S$ to
+for the initial conditions. 
+
+
+Finally, we have the case when the trajectories are not invertible, but are
+generated in a classical way. In particular, we shall let $U$ be the
+potential which generated the trajectories. In the above algorithm,
+it was not necessary to have this information.
+As the above is mostly a special case of what is below, 
+we shall denote the following procedure  as $A2(T, P, V, Q,U)$; it
+produces a family of trajectories $q(x, t)$ and the potential $u$ that
+generated those trajectories.
+\begin{enumerate}
+\item Define the set of inverse points $H_{y,t} \ensuremath{:=} Q^{-1} (y,t)$. 
+\item Define $\mu(x,t)$ to be the Maslov index of the curve $Q (x,t)$
+under the flow of $Q$. In particular, it is the number of signed zeroes that
+the trajectory has crossed of the function $\ensuremath{\lvert {DQ} \rvert} (x, t)$.
+\item Compute $S (x,t) \ensuremath{:=} T(x) + \int_0^t [\frac{\dot{Q_x}^2}{2}(s) 
+- U(Q_x(s),s)] ds - \frac{\pi}{2} \mu(x,t)$  where $U$ is the
+  potential which generated the  trajectories. 
+\item Define $\tilde{R} (x,t) \ensuremath{:=} P(x) \ensuremath{\lvert {DQ} \rvert}^{-\frac{1}{2}} (x,t)$.
+\item Define 
+\[  
+R(y,t) \ensuremath{:=} 
+\sqrt{\sum_{x \in H_{y,t}} \tilde{R}^2 (x,t) + 2 \sum_{\{x_1,
+  x_2\}\subset H_{y,t}} \!\tilde{R}(x_1, t)\tilde{R}(x_2,t) 
+\cos(S(x_1,t)
+  -S(x_2,t))}.
+\]
+
+
+\item Define $u \ensuremath{:=} V  -  \frac{\ensuremath{\hbar}^2}{2}\frac{\ensuremath{\Delta} R}{R}$ 
+\item Define $q(x,t) \ensuremath{:=} \gamma_x(t)$ where $\gamma_x$ the solution of
+$\ddot{\gamma}_x (s) = -(\nabla u )(\gamma_x(s), s)$ with initial condition 
+$\gamma_x(0) = x$, $\dot{\gamma}_x(0) = \nabla T (x)$.  
+\end{enumerate}
+For an algorithm, fix $T$, $P$, $V$ and define $C(Q,U) \ensuremath{:=}
+A2(T,P,V,Q,U)$.
+The \ensuremath{{n}^{th}}\ step of A1 is then the same as $C^n(Q_0,U_0)$. Perhaps the
+most natural possibility for $Q_0$ in this setting is 
+the set of classical trajectories although one could also use a free
+motion or a best guess.  
+
+
+\section{Simple examples}
+
+We shall now work out an  example. 
+The potential is $V(x) = \frac{1}{2}x^2$ with initial wave function\
+$\ensuremath{\psi} (x,0) \ensuremath{:=} e^{-\frac{1}{2}(x-c)^2+iax}$. Thus, $S(x,0) = ax$ and $R(x,0)
+= e^{-\frac{1}{2}(x-c)^2}$. We take $\hbar =1$ throughout this section
+and it is more convenient to reindex the iteration  in such a way  that $Q_N$
+generates $R_N$ and $S_N$. The actual family of Bohmian trajectories for this
+system is  $Q(x,t) = x_0 + c(\cos(t)-1) + a \sin(t) $
+
+
+Assume that $Q_N(x,t) = x + f_N(t)$ for $f_N \in \ensuremath{C^{\infty}}(\ensuremath{\mathbb{R}^{}})$ such that
+$f_N(0) =0$ and $\dot{f_N}(0) = a$. Immediately, we have $Q^{-1}_N (x,t) =
+x -f_N(t)$.    
+Whether we use A1 or A2, we compute $R_N$ in the same way. We find
+that, since $DQ_N^{-1} = 1$,
+\[
+R_N(x,t) \ensuremath{:=} R(Q^{-1}(x,t), 0) \ensuremath{\lvert {DQ^{-1} (x,t)} \rvert}^{\frac{1}{2}}
+= e^{-\frac{1}{2}(x -f_N(t) -c)^2}.
+\] The corresponding
+quantum potential is 
+\[ - \frac{\ensuremath{\Delta} R_N}{2R_N} =
+-\frac{1}{2}((x-f_N(t)-c)^2 + 1) =
+-\frac{1}{2} (x^2 -2x(f_N(t)+c)
++(f_N(t)+c)^2 +1) .\] 
+Thus, we have that the new potential is \[
+U_N 
+= \frac{1}{2}(2x(f_N(t)+c) - (f_N(t)+c)^2 -1).
+\]
+
+For A1, we compute the action integral along $Q_N$ using the potential
+$U_N$. 
+ We have 
+\[
+\begin{split} \ensuremath{\mathcal{S}}[Q_N, U_N, S(x,0)](x_0,t)
+& = ax_0 + \frac{1}{2}\int_0^t [\dot{f_N}^2(s) - 
+  2(x_0+f_N(s))(f_N(s)+c) \\&\quad+ (f_N(s)+c)^2 -1 ]ds \\
+& = ax_0 + \frac{1}{2}\int_0^t [-2x_0(f_N(s)+c) + 
+ \dot{f_N}^2(s) \\&\quad- f_N(s)^2 +c^2 -1]ds .
+\end{split}
+\]
+To obtain $S_N(x, t)$, we insert $Q_N^{-1}(x,t)$ for $x_0$
+in the above formula. To calculate $Q_{N+1}$, we take the gradient of
+$S_N$. We compute that  $\nabla S_N(x,t) = a -\int_0^t (f_N(s)+c) ds $
+
+
+Let $f_{(i), N}$ be the \ensuremath{{i}^{th}} 
+antiderivative of $f_N$ such that $f_{(i),N}^{(j)}(0)= 0$ for all $0 \leq j
+< i$. 
+ We find that
+\[
+\dot{Q}_{N+1} (x,t) = \nabla S_N (Q_{N+1}(x,t),t) = a - f_{(1),N}(t) - ct .
+\] 
+The solution to the above equation, with initial condition $Q_{N+1}(x,0) =
+x$, is 
+\[
+Q_{N+1} (x, t) = x+ a t - f_{(2),N}(t) - \frac{1}{2} ct^2  
+\] 
+
+
+As for A2, we do not compute $S_N$ at all. Instead, we compute the
+trajectories directly from having the quantum potential.
+Indeed, we need to solve
+\[
+\ddot{Q}_{N+1} (x,t) = -\nabla U_N (Q_{N+1}(x,t), t)
+= -(f(t) + c)
+\]
+with the initial conditions $Q_{N+1}(x,0)= x$ and $\dot{Q}_{N+1}(x,0)
+= a$. The solution is 
+\[
+Q_{N+1} (x,t) = x+ a t - f_{(2),N}(t) - \frac{1}{2} ct^2  
+\]
+
+In this example, we have that the two algorithms produce the same
+trajectories. Furthermore, the produced solutions are again of the
+same form. Starting with $Q_0(x,t) =x_0 +f(t)$ and iterating this
+scheme, we find
+
+
+\[
+Q_N (x,t) = x + 
+c \sum_{m =1}^{N} \frac{(-1)^m t^{2m}}{(2m)!} +
+a \sum_{m =0}^{N} \frac{(-1)^m t^{2m+1}}{(2m+1)!}
++ (-1)^Nf_{(2N)} (t)
+.\]
+The convergence of the algorithm in terms of trajectories is that of
+uniform convergence on $\ensuremath{\mathbb{R}^{}}\times [0,T]$ to the actual Bohmian
+trajectories. 
+
+
+\section{Propagators and the classical algorithm}
+
+We now discuss an application of A2. The idea is to compute the
+propagator, or Green's function, for Schr\"odinger's equation 
+using this algorithm. If we have a
+quadratic potential, then A2 will compute the propagator exactly. The
+fixed point trajectories are the classical trajectories. We exemplify
+this with the one-dimensional system whose potential is 
+ $V(x, t) = \frac{1}{2} a(t) x^2 + b(t) x +c(t)$. 
+
+
+The Green's function is the integral kernel, $G(x, t; y_0,
+0)$, for which 
+\[
+ \psi (x, t) \ensuremath{:=} \int G(x, t; y_0, 0) \psi(y_0, 0) dy_0
+\] is a solution to the Schr\"odinger's equation\ with initial condition $\psi(x,0)$. 
+Finding $G(x, t; y_0, 0)$ is equivalent to
+solving Schr\"odinger's equation\ with the initial wave function\ being  $\delta (x - y_0)$.  Such a
+wave function\ may be thought of as 
+representing a swarm of particles located at $y_0$  with a uniform spread of
+initial velocities, then we may attempt to use A2 to solve the
+problem. Let the uniform distribution be $R(v,0) = \sqrt{\gamma}$
+where $\gamma$ is a constant to be discussed later.
+
+Let the initial family of trajectories, which are
+now functions of the initial velocity, be of the form
+\begin{subequations}
+\begin{align} \label{ae:clas}
+Q_0(v, t) &= f(t) v + g(t)y_0 +h(t)\\
+f(0) = \dot{g}(0) &= h(0) = \dot{h}(0) =  0 \label{ae:clai1}\\
+ \dot{f}(0) = & g(0) = 1 \label{ae:clai2}
+\end{align}
+\end{subequations}
+wher $f$, $g$, and $h$ are independent of $y_0$. Then 
+\[ Q_0^{-1}(x, t) = \frac{1}{f(t)} (x - y_0 g(t) -h(t) ) .\]
+Ignoring the issue for now of when $f(t) = 0$, we find that 
+\[
+R_0(x,t) \ensuremath{:=} R(Q_0^{-1}(x,t), 0)
+\ensuremath{\lvert {\ensuremath{\frac{\partial {Q_0}}{\partial {v}}}} \rvert}^{-\frac{1}{2}}(Q_0^{-1}(x,t)) 
+= \sqrt{\frac{\gamma}{f(t)}}.
+\] 
+We therefore have that the quantum potential vanishes as $R_0$ does
+not depend on $x$.  
+Thus, $U_0$ is the classical potential and $Q_1$
+will be the classical trajectories. 
+For a quadratic potential, the classical trajectories are
+of the same form as $Q_0$. Thus, the
+classical trajectories are the fixed point of the algorithm. 
+Therefore, let $f$, $g$, and $h$
+be the appropriate functions for the solutions to the classical
+system according to \eqref{ae:clas}.
+The equations they satisfy, in addition to the initial conditions
+\eqref{ae:clai1}, \eqref{ae:clai2} are
+\begin{subequations} \label{ae:cla}
+\begin{align}
+m\ddot{g}(t) &= - a(t)g(t) \\
+m\ddot{f}(t) &= - a(t)f(t) \\
+m\ddot{h}(t) &= - h(t)a(t) - b(t). 
+\end{align} 
+\end{subequations}
+Note that $h$ vanishes if $b$ vanishes. 
+
+
+Given $f$, we can immediately write down  $R$  for the Green's
+function. 
+It is possible for $f$ to have zeros. A zero of $f$, 
+which is a very singular caustic, 
+  can be dealt with as we suggested before. 
+We are essentially  using the square root to see the correction in the phase
+appearing as the Maslov index tells us. Since the Maslov index will
+increase by 1 through a generic caustic, if we start in the middle of a
+caustic, then we take the index to be $\frac{1}{2}$. 
+What we need to do is to compute the action $S$; once we have that,
+then the solution will be 
+\[G(x,t, y_0, 0) = R(t) e^{-i{\pi}{4} - \mu(t)\frac{\pi}{2}}
+e^{i\frac{S_{y_{t_{0}}}}{\ensuremath{\hbar}}}. 
+\] We
+can do this using either the action integral or the fact that $\nabla
+S$ is the velocity field, i.e.\ $\nabla S (x,t) = m \dot{Q}(Q^{-1}(x,t),
+t)$.  
+Define $k_t \ensuremath{:=} y_0 g(t) + h(t)$ and let $f_t$ denote $f(t)$.
+ The second method yields 
+\[S(x,t) = m(\tilde{S}_{y_0}(t) +
+\frac{\dot{f}_t}{f_t}\frac{x^2}{2} 
+- \frac{\dot{f}_t}{f_t}(k_t  x
++ (\dot{k}_t x)) \] 
+where $\tilde{S}_{y_0}$ is an unknown function for which one needs the first
+method to compute. To do so, we write down the action integral, which
+is 
+\begin{equation*} 
+\int_0^t [\frac{m}{2}(\dot{f}_s v + \dot k_s )^2  -(
+\frac{1}{2} a_s (f_s v + k_s)^2 +  b_s (f_s v + k_s)
++c_s )] ds.
+\end{equation*} 
+Replacing $v$ with $\frac{x}{f_t} - \frac{k_t}{f_t}$, 
+simplifying, and only retaining the terms not involving $x$, we find 
+\begin{equation} \label{ae:int}
+\int_0^t [\frac{m}{2}(-\dot{f}_s\frac{k_t}{f_t} +\dot{k}_s)^2
+-\frac{1}{2} a(s) (-{f}_s\frac{k_t}{f_t} +{k}_s)^2 +b(s)
+ (-{f}_s\frac{k_t}{f_t} +{k}_s) +c(s)] ds
+\end{equation}
+In summary, we have reduced the computation of the propagator to
+computing the above integral and the set of ODEs \eqref{ae:cla}. And,
+to simplify even more, the terms not involving $y_0$ are common to all
+of the Green's functions and do not have to be computed. Indeed, $c(s)$ is
+largely irrelevant and could even be thought of as 
+ a free parameter to be chosen to cancel such
+terms. 
+  
+There is also an argument, based on quantum mechanical heuristics, 
+which establishes what $\gamma$ should be.
+ We want a measure on the velocity space which corresponds
+to a delta function in the position space. We therefore take the
+Fourier transform of the delta function, finding that
+$\frac{1}{\sqrt{2\pi}}e^{iky} \ensuremath{=:} \hat{\ensuremath{\psi}}$ 
+with density $\ensuremath{\lvert {\hat{\ensuremath{\psi}}} \rvert}^2 =
+\frac{1}{2\pi}$. But this is momentum space and the relation to the
+velocity space is $k = \frac{mv}{\ensuremath{\hbar}}$. Taking the differential of that
+relation, we find that $\frac{dk}{2\pi} = \frac{m dv}{2\pi\ensuremath{\hbar}}$
+implying that $\gamma = \frac{m}{2\pi \ensuremath{\hbar}}$. 
+
+We finish by explicitly computing the propagators for the
+free potential and the harmonic oscillator. The free potential, $V(x)
+=0$, has $f(t) = t$, $g(t) = 1$, and $h(t) = 0$.  We
+find that the propagator is 
+\[
+ G(x,t, y_0, 0) = 
+\sqrt{\frac{\gamma}{t}} e^{-i\frac{\pi}{4}} e^{i \frac{m}{\ensuremath{\hbar}} 
+\frac{(x-y_0)^2}{2t}}
+\]
+for $t > 0$. For $t<0$ multiply the above by $e^{i\frac{\pi}{2}}$ as
+the Maslov index indicates. It is a fact that 
+\[
+\delta (x-y_0) = \lim_{a \to +\infty} \frac{a}{\sqrt{\pi}} e^{i(a^2
+(x-y_0)^2 - \frac{\pi}{4})} . 
+\]
+Thus, this confirms that the initial condition is satisfied, that the
+Maslov index is contributing the correct factor, and that
+ $\gamma$ is $ \frac{m}{2\ensuremath{\hbar}
+\pi}$.
+   
+ 
+As for the harmonic oscillator, the following comes out. Let the
+potential be $V(x) = \frac{m\omega^2}{2} x^2$. Then $f(t) =
+\frac{1}{\omega} \sin(\omega t)$, $g(t) = \cos(\omega t)$, and $h(t) = 0$.  
+The integral \eqref{ae:int} becomes 
+\[
+\begin{split}
+\tilde {S}_{y_0}(t) =& 
+\int_0^t [\frac{m}{2}(\cos(\omega s) \frac{\omega y_0 \cos(\omega
+t)}{\sin(\omega t)} + y_0 \omega \sin(\omega s) )^2
+\\& -\frac{m \omega^2}{2}  (-\frac{\sin(\omega s)}{\omega} 
+ \frac{\omega y_0 \cos(\omega
+t)}{\sin(\omega t)}+y_0 \cos(\omega
+s))^2 ] ds \\
+=&\frac{m \omega ^2 y_0}{2} \int_0^t[(\cos^2 (\omega s) - \sin^2(\omega
+s))  \cot(\omega t)^2 
+\\& \hspace{.5in} +4 (\cos(\omega s) \sin(\omega s)) \cot(\omega t)   
+\\& \hspace{.5in} -( \cos^2 (\omega s) - \sin^2(\omega s) )]ds \\ 
+\\=&  \frac{m \omega ^2 y_0}{2} (\frac{1}{\omega}(\sin (\omega
+t)\cos(\omega t)  (\cot(\omega t)^2 -1) 
++2 (\frac{1}{\omega} \sin^2(\omega t)) \cot(\omega t)   
+\\=& 
+\frac{m \omega y_0}{2} \cot(\omega t) 
+\end{split}
+\]
+Thus, when we put it all together, we find 
+\[
+G(x,t, y, 0) = 
+\sqrt{\ensuremath{\lvert {\frac{\gamma \omega}{\sin(\omega t)}} \rvert}} e^{-i(\frac{\pi}{4}
++ \mu(t) \frac{\pi}{2})}  
+e^{i \frac{m \omega}{2\ensuremath{\hbar}} 
+(x^2+y^2)\cot(\omega t) - 2 xy \csc(\omega t)}.
+\]
+The Maslov index, $\mu(t)$, starts at $0$ and is incremented by one at
+the end of every half period; this incrementation corresponds to when
+all of the trajectories come together and 
+form a very singular caustic. 
+The Maslov index produces the correct
+phase as the trajectories move through the singularity. 
+Explicitly, we have $\mu(t) = k $ for $t \in [k\frac{\pi}{\omega},
+(k+1) \frac{\pi}{\omega})$. Computing the limits as $t$
+approaches a singular point, we find that 
+\[
+G(x, k\frac{\pi}{\omega}, y, 0) = e^{i \frac{\pi}{2} k} 
+\begin{cases}
+\delta (x-y) &\text{if $k$ is even} \\
+\delta (x+y) &\text{if $k$ is odd}  
+\end{cases}.
+\]
+This is a complete description of the propagator for the harmonic
+oscillator.
+
+
+\section{Some calculations involving the chain rule}
+
+We wish to provide a succinct formula for computing the quantities in
+these algorithms. The basic quantity to compute is the quantum force
+and this involves three derivatives of an object created by
+composition.  These are all simple calculations using the chain rule. We shall
+use the notations of Section \ref{as:short}
+
+
+We start with $R$. This is the object for which much computation must
+be done. First, we define $\ensuremath{\tilde R} (x,t) \ensuremath{:=} P(x)
+\ensuremath{\lvert {DQ} \rvert}^{-\frac{1}{2}}$ and then $R \ensuremath{:=} \ensuremath{\tilde R} (H)$. We will have to compute
+up to three derivatives of $R$. Using the chain rule,
+we find that
+\begin{align*}
+DR (v_1) =& D\ensuremath{\tilde R}(DH(v_1)) \\
+D^2 R (v_1 \otimes v_2) =& 
+D^2\ensuremath{\tilde R} (DH(v_1)\otimes DH(v_2)) +D\ensuremath{\tilde R}(D^2H(v_1 \otimes v_2) )  
+\\
+\begin{split}
+D^3 R (v_1 \otimes v_2 \otimes v_3)  =& 
+D^3\ensuremath{\tilde R} (DH (v_1) \otimes DH (v_2 ) \otimes DH (v_3) )  \\
+& +D^2\ensuremath{\tilde R} \{
+(D^2H(v_1\otimes v_2) \otimes DH (v_3)) \\& 
+\hspace{.43in}+(D^2H(v_1\otimes v_3) \otimes DH (v_2)) 
+\\&\hspace{.43in}+
+D_3H (v_1) \otimes (D^2H(v_2\otimes v_3)) \} \\
+& + D\ensuremath{\tilde R}(D^3H (v_1\otimes v_2 \otimes v_3)) .
+\end{split}
+\end{align*}
+
+In our equations, we need to compute the quantum force which is the gradient of
+the Laplacian of $R$ divided by $R$. 
+
+
+We have that 
+\[
+D( \frac{\ensuremath{\Delta} R}{R})(v) = \frac{D^3 R (G\otimes v)}{R} - \frac{D^2 R (G)
+DR(v)}{R^2} 
+\]
+where $G \in TM^{\otimes 2}$ is the dual of $g$; in coordinates, $G =
+\sum_{(i,j) \in \ensuremath{\mathfrak{n}}^2} G^{ij} v_i \otimes v_j $ and $G^{ij}$ are the
+components of the inverse matrix of $g_{ij}$.
+
+The derivatives of \ensuremath{\tilde R}\ can in turn be computed using the product rule,
+the chain rule and the differentiation formulas for the determinant
+developed in Appendix \ref{a:app7}. 
+
+
+Both for implementing
+ the algorithms and for an application of A2 described in the
+next section, we need to compute $D^i_{Q(x,t)} [Q^{-1}]$ in terms  of the
+derivatives of $DQ$. Yet again we use the chain rule.  We need it up
+to the third order. Let $y \ensuremath{:=} Q(x)$; alternatively, define $x \ensuremath{:=}
+Q^{-1} (y)$. We also define $\ensuremath{B} \ensuremath{:=} (D_x [Q])^{-1}$. For
+$i=1,2,3$, let  $v_i
+\in T_yM$ be arbitrary. 
+ We then find that
+\begin{align}
+Q^{-1} (Q(x)) =& \ensuremath{\text{Id}} \\
+D_{y} [Q^{-1}] (v_1) =& B (v_1) \\
+D_{y}^2 [Q^{-1}](v_1 \otimes v_2)
+ =& -B (D^2_x [Q] (B (v_1) \otimes B (v_2))) \\
+\begin{split}
+D_{y}^3 [Q^{-1}] (v_1\otimes v_2\otimes v_3)  =& 
+-B (D^3_x [Q] \{B(v_1)\otimes B(v_2) \otimes
+B(v_3) \} ) \\ 
+& + B (D^2_x [Q] (B(  
+D_x^2 [Q] ( B (v_1) \otimes B (v_2)))  \otimes B(v_3)   \\
+& \hspace{.68in} + B(D_x^2 [Q] ( B (v_1) \otimes B (v_3)))  \otimes
+B(v_2)  \\ 
+& \hspace{.68in} + B( v_1) \otimes B(D_x^2 [Q] ( B (v_2) \otimes B (v_3) ))) 
+\end{split}
+\end{align}
+These are routine calculations. For example, to
+compute the second derivative, the chain rule leads to $D^2_Q
+[Q^{-1}](D_x [Q] \otimes D_x[Q]) + D_Q [Q^{-1}] (D^2_x Q) = 0$. One then
+solves for the second derivative of the inverse and then composes
+with the inverse of the first derivative using 
+the equation
+for the first derivative to substitute in $B$.
+
+In total, we can see what we need. Before starting the algorithms, we
+compute the first derivative of $T$, i.e.\ 
+the 1-form dual to the initial Bohmian velocity field. We also compute three
+derivatives of $P$. The rest of the information is mainly computed
+from $Q$. 
+We need to compute four derivatives of $Q$ although 
+the fourth derivative appears only in the determinant derivative. 
+To finish the computations, $Q^{-1}$ and $DQ^{-1}$ need to be
+computed. We then simply plug the objects into the correct places.  
+
+
+\section{The Bohmian velocity partial differential equation}
+
+From the previous section, we discussed some ways in which the
+essential computations can be organized. We apply these ideas here, at
+the fixed point, to derive a PDE for the family of Bohmian trajectories. 
+One advantage of this is that it is not necessary to compute the
+inverse of a given family of trajectories; the disadvantage is that
+we are again facing a PDE. 
+
+The idea is that one writes down the family of ODE's generated by the
+algorithm  A2. One then assumes that the fixed point has been
+achieved. The ODE for A2 is 
+\[
+g(\ddot{q} (x,t), ) = -dV(q(x,t)) + QF(Q^{-1}(q(x,t),t),t)
+\]
+where the quantum force, $QF$, is thought of as being a function of
+the initial $x_0$. When we evaluate along the fixed point, we
+have that $Q^{-1}$ and $Q$ cancel, just leaving the quantum force evaluated
+at $x$. 
+
+We have the following PDE for $Q$, the family of Bohmian trajectories
+for a given $\ensuremath{\psi}(x,0)$ and potential $V$. We write it in terms of
+1-forms acting on a vector $v$. 
+$C$ is the determinant of $DQ$, $B$ is $(D[Q])^{-1}$. We
+sometimes employ subscripts to denote which objects are being contracted.  
+A rough schematic of the quantum force expression is quite helpful in
+understanding the PDE; the schematic is
+\[
+\frac{1}{\ensuremath{\tilde R}}\{D^3 [Rq] (\cdot) +D^2[\ensuremath{\tilde R}] (\cdot) +D[\ensuremath{\tilde R}] (\cdot) \}
+- \frac{1}{\ensuremath{\tilde R}^2} \{D^2[\ensuremath{\tilde R}](\cdot) +D[\ensuremath{\tilde R}](\cdot)  \}\{D[\ensuremath{\tilde R}](\cdot) \}.
+\]
+One task is to compute, somewhat explicitly, the derivatives of
+\ensuremath{\tilde R}. The other task is to compute the various different tensors that
+are composed into the $\cdot$ slots. It can get quite messy.
+
+\[
+\begin{split}
+g(\ddot{Q}(x,t),v ) = & -dV_{Q} (v) + \frac{\ensuremath{\hbar}^2}{2}(
+\frac{1}{P} \{
+\\&
+ (D^3 P - \frac{15}{8} P C^{-3} D^3C 
+\\ &
+- \frac{1}{2} C^{-1} D^2 P_{12} \otimes DC_3 
+- \frac{1}{2} C^{-1} D^2 P_{13} \otimes DC_2 
+- \frac{1}{2} C^{-1} DC_1 \otimes D^2P_{23} 
+\\ & 
++ \frac{3}{4}  C^{-2} D^2C_{12} \otimes DP_3 
++ \frac{3}{4}  C^{-2} D^2C_{13} \otimes DP_2 
++ \frac{3}{4}  C^{-2} DP_1 \otimes D^2C_{23} )
+\\&\qquad \circ ( \{(B\otimes B)\circ G\} \otimes B(v) )
+\\ & 
++( D^2 P 
++ \frac{3}{4} P C^{-2} D^2C
+\\ &
+- \frac{1}{2} C^{-1} DP \otimes DC 
+- \frac{1}{2} C^{-1} DC \otimes DP )
+\\&\qquad \circ 
+( -\{ B \circ (D^2 [Q])\circ (B
+\otimes B)   \circ G \} \otimes B(v)  
+\\ &\qquad \quad
+- \{B \circ (D^2 [Q])\circ (B (G_1)
+\otimes B( v))\} \otimes B(G_2)  
+\\ & \qquad \quad
+- B(G_1) \otimes \{B \circ (D^2 [Q])\circ (B (G_2)
+\otimes B(v)) \}  )
+\\ &
++(C^{-\frac{1}{2}} DP -
+\frac{1}{2} P C^{-1} DC)
+\\&
+\qquad \circ (
+ -B \circ (D^3 [Q]) \circ \{(B \otimes B) \circ G\} \otimes
+B(v)
+\\ & 
+\qquad \quad + B \circ D^2 [Q] \circ B\otimes B \circ (
+\{ D^2 [Q] \circ ( B \otimes B) \circ G\} \otimes v   \\
+& \hspace{2.05in} + \{D^2 [Q] \circ ( B(G_1) \otimes B (v) )\}  \otimes
+G_2  
+\\& \hspace{2.05in} +  G_1 \otimes \{ D^2 [Q] ( B (G_2) \otimes B
+(v)\}  ) ) )\}
+\\ &
+- \frac{1}{P^2}   
+\{
+( D^2 P 
+- \frac{1}{2} C^{-1} DP \otimes DC 
+- \frac{1}{2} C^{-1} DC \otimes DP 
++ \frac{3}{4} P C^{-2} D^2C )
+\\&\qquad\circ(B\otimes B)\circ G
+\\ &
++ ( DP -\frac{1}{2} P C^{-1} DC) \circ (-B) \circ (D^2 [Q])\circ (B
+\otimes B) \circ G  \} 
+\\ &
+\{  DP -
+\frac{1}{2} P C^{-1} DC) (B (v)) \}   
+\end{split}   
+\]
+
+with the initial conditions
+\begin{align*}
+Q(x,0) =& x \\
+\dot{Q}(x,0) =& \nabla T (x).  
+\end{align*}
+For the algorithms, the only change in the quantum force 
+is the evaluation which takes place at 
+$Q^{-1} (q(x,t))$ instead of at $x$;
+ appearances of $Q$ outside the quantum force term
+are replaced with $q$.  
+
+There is not much to say about this PDE. Notice that if $C$ is
+constant, then many of the terms vanish. The equation, however is
+still rather unapproachable.
+
+
+A key simplification occurs when  $D^2Q = 0$ everywhere which
+  geometrically is when the mapping $Q$ preserves geodesics as
+  proven in Chapter \ref{c:taylor}. 
+The PDE becomes the relatively simple
+\[
+\begin{split}
+g(\ddot{Q}(x,t),v ) = & -dV_{Q} (v) + \frac{\ensuremath{\hbar}^2}{2}(
+\frac{1}{P} 
+ D^3 P \circ ( \{(B\otimes B)\circ G\} \otimes B(v) )
+\\ &
+- \frac{1}{P^2}   
+\{ D^2 P 
+\circ(B\otimes B)\circ G
+ \} 
+\{ DP  (B (v)) \}.   
+\end{split}   
+\]
+
+
+Notice that $C$ has disappeared entirely from the equation. 
+
+
+\subsection{The one-dimensional case}
+
+If $M$ is just \ensuremath{\mathbb{R}^{}}, then $G$ becomes $\frac{1}{m}$, the
+derivatives become numbers, and we use primes to denote
+spatial differentiation. The full PDE 
+simplifies slightly,  but it is still brutal. 
+
+If $Q'' = 0$ identically, then we can solve the equation. We have
+\[
+m \ddot{Q}(x,t)  =  - V_{Q}'  + \frac{\ensuremath{\hbar}^2}{2}(
+\frac{P'''}{m P (Q')^{3} } 
+- \frac{P''P'}{m P^2 (Q')^3}.)   
+\]
+
+
+Furthermore, $Q'' =0$ implies that $Q(x,t) = f(t) x + k(t)$. 
+
+Let $H_n (x)$ denote the \ensuremath{{n}^{th}}\ Hermite polynomial. 
+We claim that if $V(x) = \frac{m}{2} \omega^2 x^2 + m \gamma x
+$ and 
+\[\ensuremath{\psi}(x,0) =
+H_n(\sqrt{md/\ensuremath{\hbar}}(x-c))  e^{-\frac{md}{2\ensuremath{\hbar}} (x-c)^2} e^{i\frac{m}{\ensuremath{\hbar}}
+(\frac{a}{2} (x-c)^2 +b(x-c))},\] ($d>0$), 
+then the trajectory solutions are of the above affine form and this PDE can be
+solved quite explicitly; it actually becomes two decoupled ODEs.  We shall
+use  that $y(x) \ensuremath{:=} H_n(x)e^{-\frac{x^2}{2}}$ satisfies $y'' = (x^2- 2n
+-1)y$; this comes from the Schr\"odinger\ equation for the harmonic oscillator. 
+For us, the useful imphlication of the Hermite differential equation is 
+\[
+y y''' -y'' y' = 2x y^2 +(x^2 -2n-1)y'y -(x^2 -2n-1)yy' = 2xy^2
+\]
+When we use it, $x$ will be $\sqrt{md/\ensuremath{\hbar}}(x-c)$ and we shall
+also be using the chain rule which produces a multiplicative factor of 
+$\sqrt{md/\ensuremath{\hbar}}^{3}$.
+
+It is convenient to take $Q(x,t) = f(t) (x-c) + k(t)$. Then we have
+that 
+\[ 
+\frac{PP''' -P''P'}{P^2} =2(\sqrt{md/\hbar}
+(x-c)\sqrt{md/\hbar}^3 
+\] 
+The PDE becomes
+\[
+\begin{split}
+m(\ddot{f}(t) (x-c)  + \ddot{k}(t)) =& \frac{\ensuremath{\hbar}^2}{2m f(t)^3}
+(2(md/\ensuremath{\hbar})^2(x-c)) 
+\\& - m\omega^2 (f(t) (x-c)  + k(t)) - m\gamma 
+\\
+= & \frac{m d^2}{f(t)^3} (x-c)-  
+m\omega^2 f(t) (x-c) - m \omega^2 k(t) -m\gamma.  
+\end{split}
+\]
+This decouples into the two independent ODEs
+\begin{align}
+\ddot{f} =& \frac{d^2}{f^3} - \omega^2 f \label{ae:fode} \\
+\ddot{k} =& -\omega^2 k - \gamma \label{ae:kode}
+\end{align}
+with the initial conditions
+\[
+f_0 = 1, \dot{f}_0  = a , k_0 = c, \dot{k}_0 = b . 
+\]
+
+The ODE \eqref{ae:kode} is an easy equation to solve; its solution is 
+\[
+k(t) = (c + \frac{\gamma}{\omega^2})\cos(\omega t) +
+\frac{b}{\omega} \sin(\omega t) - 
+\frac{\gamma}{\omega^2} .
+\]
+The other ODE is not as easy to solve. The inspiration is
+that \eqref{ae:fode} is actually the ODE that the radius function
+satisfies in a 2-dimensional, classical, harmonic oscillator
+system. More precisely, let $u$ and $v$ satisfy 
+\begin{align*} 
+\ddot{u} = - \omega^2 u,\quad & \ddot{v} = -\omega^2v \\
+u(0) = 1, \dot{u}(0) = a ,\quad& v(0) = 0, \dot{v}(0) = d.
+\end{align*}
+Define $r \ensuremath{:=} \sqrt{u^2 +v^2}$. Then, by differentiating and using
+the conservation of $J^2 = (\dot{u}v -\dot{v}u)^2 = d^2$, 
+we find that $r$
+satisfies 
+\[
+\ddot{r} = \frac{d}{r^3} - \omega^2 r 
+\]
+with the initial conditions
+\[
+r(0) = 1, \dot{r}(0) =  a.
+\]
+Thus, $r$ and $f$ satisfy the same equations implying that they are
+the same function. But we know how to
+solve the harmonic oscillator. Doing so and finding the radial
+function, we have
+\[
+f(t) = r(t) = \sqrt{\cos^2 (\omega^2 t) + 2 \frac{a}{\omega} \cos(\omega
+t) \sin (\omega t) + \frac{a^2 + d^2}{\omega^2} \sin^2 (\omega t)}.
+\]
+For both $f$ and $k$, if we take the limit as $\omega$ goes to zero,
+then the correct solution for $\omega =0$ is the limiting solution. 
+ 
+
+We have just computed the Bohmian trajectories. An immediate
+consequence is that we have the
+amplitude. Namely, 
+\[
+\begin{split}
+R(x,t) =& P( \frac{x -k(t)}{f(t)} + c)\ensuremath{\lvert {f(t)} \rvert}^{-\frac{1}{2}}
+\\ &
+= \frac{1}{\sqrt{f(t)}}
+H_n(\sqrt{md/\ensuremath{\hbar}}(\frac{x -k(t)}{f(t)})) e^{-\frac{md}{2\ensuremath{\hbar}}
+(\frac{x -k(t)}{f(t)})^2}.
+\end{split}
+\] 
+The phase is 
+\[
+S(x,t) = \frac{m}{\ensuremath{\hbar}} (\frac{1}{2} \dot{f}(t) (\frac{x -k(t)}{f(t)})^2 +
+\dot{k}(t) (\frac{x-k(t)}{f(t)}) +h(t)) 
+\]
+where $h(t)$ is a function for which one needs to do the action
+integral in order to determine it. We shall not compute $h(t)$.
+
+\clearpage
+\bibliographystyle{abbrv}
+\bibliography{references}
+\end{document}

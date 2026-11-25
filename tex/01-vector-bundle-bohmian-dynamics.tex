@@ -1,0 +1,1112 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts,amsthm,mathtools,bm}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{cor}{Corollary}
+\newtheorem{defn}{Definition}
+\newtheorem{principle}{Principle}
+\newtheorem{statement}{Statement}
+\theoremstyle{remark}
+\newtheorem{statementr}{Statement}
+
+\title{Geometrically Formulating Bohmian Theories on Hermitian Vector Bundles}
+\author{James Taylor}
+\date{Working draft derived from the 2003 thesis}
+\begin{document}
+\maketitle
+
+\section{Geometrically formulating Bohmian
+  theories} \label{c:geom} 
+
+
+In this chapter, we shall formulate a Bohmian dynamics defined on a general
+Riemannian manifold  \ensuremath{\mathcal{Q}}\ with the wave function\ being a section of a 
+cc-Hermitian
+vector bundle $E$ over \ensuremath{\mathcal{Q}}. 
+ We begin with scalar wave functions over \ensuremath{\mathcal{Q}}\ and then 
+ generalize 
+to vector bundles. This sets up the general 
+non-relativistic 
+Bohmian framework. The Pauli equation may be viewed as both a special
+case as well as a generalization of this
+setup.
+We explain how to view the equation as expressing a generalized
+version of the Laplacian. After making a few standard observations, 
+we finish this chapter with a discussion of how a desire for an
+ultralocal Bohmian theory  leads to the Dirac equation. 
+It is rooted in a structure which we call the square-root of
+the tangent space. 
+It is intimately related to the role of Clifford algebra in the Dirac
+equation. 
+
+\section{A quick review of tensor analysis}
+
+In this section, we shall give a review of the uses and abuses of
+tensor analysis. An appreciation of these methods is essential for an
+understanding of this chapter. For most of this section and the rest
+of the chapter, the statements can either be thought of as in terms of
+the whole bundle or just at a point. Even though it is best to think
+of all the structures as just at a point, we shall write our notations
+without denoting the point. For example, we shall write
+$T\ensuremath{\mathcal{Q}}$ instead of $T_q \ensuremath{\mathcal{Q}}$ even though we will actually be 
+discussing the tangent space at the point $q$. 
+
+We start with a metric $g$ on the manifold \ensuremath{\mathcal{Q}}. It is a 
+$(0,2)$-tensor meaning that it is an element of $(\ensuremath{T^{*} \ensuremath{\mathcal{Q}}})\ensuremath{^{\otimes 2} }$. It acts
+on $(\ensuremath{T \ensuremath{\mathcal{Q}}})\ensuremath{^{\otimes 2} }$; alternatively one could say that it is a bilinear form
+acting on tangent vectors. In coordinates, $ g = g_{\ensuremath{j} \ensuremath{k}}
+dx^{\ensuremath{j}} \otimes dx^{\ensuremath{k}}$ where the summation convention on
+repeated indices is implied. An important use of $g$ is to lower an index,
+i.e.\ $g$ may be viewed as a linear map  from $\ensuremath{T \ensuremath{\mathcal{Q}}}$ to $\ensuremath{T^{*} \ensuremath{\mathcal{Q}}}$. Indeed,
+given a tangent vector $v$, $g(v, \cdot)$ is a 1-form. If it is
+necessary, we will denote the role of $g$ as a loweing operator by
+writing $g_{\flat}$. In other words, $g_{\flat}(v) \ensuremath{:=} g(v,
+\cdot)$. Even more compactly, one may write $v_{\flat}$ indicating
+that $v$ has been converted to a 1-form using $g$.
+
+An assumption
+on a metric is that it is nondegenerate which means that given a
+vector $v$, there is a $w$ such that $g(v,w) \neq 0$. This assumption
+is equivalent to demanding that $g$ as a lowering operator has an
+inverse. We denote the raising operator as $G^{\sharp}$ and it is a map from
+\ensuremath{T^{*} \ensuremath{\mathcal{Q}}}\ to \ensuremath{T \ensuremath{\mathcal{Q}}}. One can then define $G$ as a bilinear form acting on
+$\ensuremath{T^{*} \ensuremath{\mathcal{Q}}}$ by defining $G(\omega, \nu) \ensuremath{:=} \omega(G^{\sharp}(\nu))$ where
+$\omega$ and $\nu$ are 1-forms. Such a bilinear form is the same as a
+$(2,0)$-tensor i.e.\ it is an elment of $(\ensuremath{T \ensuremath{\mathcal{Q}}}) \ensuremath{^{\otimes 2} }$. In coordinates,
+$G = G^{\ensuremath{j} \ensuremath{k}} \partial_{\ensuremath{j}} \otimes \partial_{\ensuremath{k}}$
+where $(G^{\ensuremath{j} \ensuremath{k}})$ is the inverse matrix to $(g_{\ensuremath{j}
+  \ensuremath{k}})$. 
+
+Most of our use of $G$ is to contract it with $(0,2)$-tensors. On
+product elements, $G(\omega \otimes \nu) \ensuremath{:=} G(\omega, \nu)$; it is
+then extended by linearity to all of $\ensuremath{T^{*} \ensuremath{\mathcal{Q}}}\ensuremath{^{\otimes 2} }$. Let $\beta$ be a
+$(0,2)$-tensor. Then the notations that may be used are $G(\beta) = G
+\circ \beta = \beta(G) = G^{\ensuremath{j} \ensuremath{k}} \beta_{\ensuremath{j} \ensuremath{k}}$.    
+
+
+We introduce some more notation. The
+symmetric subspace of a $i$-fold tensor product of a vector space $W$
+with itself is denoted by $\ensuremath{\bigodot^{i}{W}}$. The antisymmetric part of such
+a tensor product is $\ensuremath{\bigwedge^{i}{W}}$. The direct sum over $i$ of the antisymmetric
+parts is the exterior algebra where the product is the wedge product
+which may be defined as the antisymmetrization of the tensor product
+of the terms. 
+
+
+A metric is a symmetric tensor, i.e. $g \in \ensuremath{\bigodot^{2}{\ensuremath{T^{*} \ensuremath{\mathcal{Q}}}}}$. Its dual,
+$G$, is also symmetric. This means that $G$, when acting on a $(0,2)$
+tensor, will only notice the symmetric part of the tensor. In
+particular, if $\beta \in \ensuremath{\bigwedge^{2}{\ensuremath{T^{*} \ensuremath{\mathcal{Q}}}}}$, then $G(\beta) = 0$. 
+
+The final element of a metric on a manifold is that it should be
+parallel. This requires choosing a connection on the tangent
+bundle. A connection can be viewed in various ways. In this chapter,
+we shall be using two viewpoints. The first is that a connection 
+ provides a means for parallel
+transporting vectors along paths. To say it in another way, it
+provides an isomorphism of the local structures at different points on
+the manifold although the isomorphism may depend on the path. The
+second viewpoint is that it provides a method for differentiating
+vectors. We shall use $D$ to denote the covariant differentiation
+operator.  This discussion works equally for any vector bundle. 
+ As part of the definition of a connection, the connection must
+ satisfy the Leibiniz rule for tensor products, i.e.\ $D(v \otimes w)
+ \ensuremath{:=} Dv \otimes w + v \otimes Dw$ where $v$ and $w$ are sections of
+ two vector bundles.\footnote{A 
+section of $E$
+is a map \ensuremath{\psi}\ from $\ensuremath{\mathcal{Q}}$ into $E$ such that $\ensuremath{\psi}(\ensuremath{q}) \in
+E_{\ensuremath{q}}$, i.e. it maps a point \ensuremath{q}\  of \ensuremath{\mathcal{Q}}\ into elements of the
+vector fiber over \ensuremath{q}.} It should also commute with contraction, e.g.\ 
+if $\omega$ is a section of the dual bundle in which $v$
+ is a section of, then $D[\omega(v)] = D[\omega] (v) + \omega(D[v])$. 
+In particular, once you have defined a connection on a vector bundle,
+then there is an induced connection on its dual space and all of the
+various tensor bundles that one can form from these spaces. 
+
+
+For a metric, 
+the connection which is chosen is the Levi-Civita
+connection. It is uniquely specified by demanding that the metric is
+parallel and that the torsion of the connection vanishes. The fact
+that the metric vanishes leads to the commutation of differentiation
+and contraction with
+either $g$ or $G$. 
+For example, if $v$ and $w$ are vector fields, then $D[g(v,w)] =
+g(D[v],w) +G(v,D[w])$.
+
+ 
+For more
+general vector bundles, one can also have an inner product on the
+fibers. One almost always has a connection on the bundle and demands
+that the inner product on the fibers is parallel. This does not define
+the connection uniquely. Therefore, we shall call such a bundle a
+cc-Hermitian vector bundle where ``cc'' stands for connection-carrying
+indicating that a connection has been chosen and the inner product
+will always be assumed to parallel under that connection. We shall
+generally use $\ensuremath{({\cdot}, {\cdot})}$ to denote the inner product. We
+will always use $D$ for the covariant derivative regardless of which
+bundles are being discussed. 
+
+We shall now get into the heart of what we need. Given a section \ensuremath{\psi}\ 
+of a
+cc-Hermitian vector bundle $E$ over the Riemannian manifold \ensuremath{\mathcal{Q}},
+we have that $D\ensuremath{\psi}$ is an element of $E \otimes \ensuremath{T^{*} \ensuremath{\mathcal{Q}}}$ which is often
+called an $E$-valued 1-form. We might also call this a 1-form valued
+section of $E$ which, although literally incorrect, is often useful
+terminolgy. The gradient of $\ensuremath{\psi}$ is $\nabla \ensuremath{\psi} \ensuremath{:=} G^{\sharp} (D
+\ensuremath{\psi})$. It is an element of $E \otimes \ensuremath{T \ensuremath{\mathcal{Q}}}$ and we might call it a
+tangent vector valued section of $E$. For Bohmian mechanics, the
+velocity field is a multiple of $\textrm{Im} \ensuremath{({\ensuremath{\psi}}, {\nabla \ensuremath{\psi}})}$ which is
+  indeed a section of the tangent bundle. 
+
+The Laplacian of $\ensuremath{\psi}$ is defined to be the metric trace of the second
+covariant derivative of $\ensuremath{\psi}$. In symbols, we have $\ensuremath{\Delta} \ensuremath{\psi} \ensuremath{:=} 
+G(D^2 \ensuremath{\psi})$.  Note that the second covariant derivative requires the
+use of the connection on the cotangent bundle induced by the metric.
+This is the divergence of the gradient. Indeed, given a
+tangent vector valued section, one can take the contraction of the
+derivative with the tanget vector value. In symbolds, $D \cdot \phi
+\ensuremath{:=} D_{\ensuremath{j}} \phi^{\ensuremath{j}}$ which one could also view as $\nabla
+\cdot \phi \ensuremath{:=} g(\nabla \phi)$. Thus, the divergence of the gradient
+is 
+\[
+\nabla \cdot (\nabla \ensuremath{\psi}) = g(G^{\sharp} D (G^{\sharp}( D \ensuremath{\psi}))) =
+g(G^{\sharp} (G^{\sharp} (D^2 \ensuremath{\psi}))) = G(D^2 \ensuremath{\psi}) = \ensuremath{\Delta} \ensuremath{\psi} .
+\]
+It is a fact that this is equivalent to the Laplace-Beltrami operator
+acting on sections of a vector bundle \cite{EL83}. The
+Laplace-Beltrami operator is defined on $E$-valued forms by using
+Hodge-$*$ duality and the exterior derivative. In the case of a
+section, this agrees with the Laplacian described above. For other
+forms, it does not. They differ by some curvature terms.  
+
+As a final note, many of the very useful computational tools of
+Euclidean analysis do carry over into Riemannian manifolds and
+bundles. An important difference is in the coordinate expressions
+although one can choose coordinates so that at one particular point,
+the expressions look Euclidean. In general, if
+$\{e_i\}$ is a local basis for $E$ and $\{dx^l\}$ is a local basis for
+\ensuremath{T^{*} \ensuremath{\mathcal{Q}}}, then  the Laplacian of $\ensuremath{\psi} \ensuremath{:=} \ensuremath{\psi}^i e_i$ is
+\[
+\ensuremath{\Delta} \ensuremath{\psi} = G^{\ensuremath{j} \ensuremath{k}} (\frac{\partial^2 \ensuremath{\psi}^i}{\partial{x^{\ensuremath{j}}}
+  \partial{x^{\ensuremath{k}}}} e_i + \ensuremath{\psi}^i D^2 [e_i](\partial_{\ensuremath{j}}
+  \otimes \partial_{\ensuremath{k}})  +  \frac{\partial \ensuremath{\psi}^i}{\partial{x^{\ensuremath{j}}}}
+   D_{\partial_{\ensuremath{k}}} [e_i] +\frac{\partial \ensuremath{\psi}^i}{\partial{x^{\ensuremath{k}}}}
+   D_{\partial_{\ensuremath{j}}} [e_i] 
++ \frac{\partial \ensuremath{\psi}^i}{\partial{x^\ensuremath{j}}}
+  e_i 
+D_{\partial_{\ensuremath{k}}} [dx^{\ensuremath{j}}] .      
+\]
+
+
+\section{Bohmian dynamics on manifolds} 
+A Bohmian dynamics exists in more general situations than the one
+described in Chapter \ref{c:bohmint}. In this section, the wave functions will
+still be complex-valued functions over the configuration space. 
+In fact, we can 
+let the configuration space, \ensuremath{\mathcal{Q}}, be an arbitrary Riemannian manifold.
+Given a 
+metric $g$ on a manifold, the Laplacian may be defined to be
+the metric trace of the  
+second derivative as explained above. 
+The    
+ gradient $\nabla \ensuremath{\psi}$  is the (complex) tangent vector
+metrically equivalent  to  
+ the 1-form $D\ensuremath{\psi}$. Then  $v^{\ensuremath{\psi}}$, the Bohmian velocity field associated to a
+wave function\ $\ensuremath{\psi}$,  is  
+\begin{equation} \label{ie:rbv}
+v^{\ensuremath{\psi}} \ensuremath{:=} \ensuremath{\hbar}\, \textrm{Im} \frac{\ensuremath{({\ensuremath{\psi}}, {\nabla \ensuremath{\psi}})}}{\ensuremath{({\ensuremath{\psi}}, {\ensuremath{\psi}})}}
+\end{equation} 
+where we have absorbed the mass into the metric.
+The time evolution of 
+the state $(Q_t, \ensuremath{\psi}_t)$ is given by
+\begin{subequations} \label{ie:re}
+\begin{align} 
+\ensuremath{\frac{d{Q_t}}{d{t}}} =& v^{\ensuremath{\psi}_t}(Q_t)\label{ie:rbe} \\
+i \ensuremath{\hbar} \ensuremath{\frac{\partial {\ensuremath{\psi}_t}}{\partial {t}}}  = &- \frac{\ensuremath{\hbar}^2}{2} \ensuremath{\Delta} \ensuremath{\psi}_t  + V \ensuremath{\psi}_t
+ \ensuremath{=:} H \ensuremath{\psi}_t.\label{ie:rse}
+\end{align}
+\end{subequations}
+Thus, given $(\ensuremath{\mathcal{Q}}, g, V)$, we have formally specified 
+a Bohmian theory.  
+
+The above is suitable for any Riemannian manifold. A primary example
+ is
+ when the configuration space describes multiple particles moving 
+in physical
+space. Let the Riemannian manifold $M$, with
+metric $g$, be the physical space. Then the configuration space for $N$
+distinguished particles moving in $M$ is 
+$\ensuremath{\mathcal{Q}} \ensuremath{:=} M^{N}$. 
+Let the masses of
+the particles be $m_i$. Then the relevant metric on $M^N$, acting
+on the tangent space $T_{(q_1, \ldots q_N)} M^N =
+ \bigoplus_{i=1}^{N} T_{q_i} M$, is  
+\begin{equation*} 
+g^N(v_1 \oplus \cdots \oplus v_N, w_1 \oplus \cdots \oplus w_N )
+\ensuremath{:=} \sum_{i=1}^N m_i g(v_i,w_i).
+\end{equation*} 
+Using $g^N$ for the metric,  the Bohmian velocity field 
+is given by  \eqref{ie:rbv} and the system evolves according to 
+ \eqref{ie:re}.  In Chapter \ref{c:manpart}, we give a more
+interesting discussion of many particle systems.
+ 
+\section{The Hamilton-Jacobi equation on manifolds} \label{s:hjman}
+
+As there is no analogue of this for theories whose wave functions are sections
+of a bundle, we pause here to establish the standard fact that the modified
+Hamilton-Jacobi equation is  a consequence of the Schr\"odinger\ evolution.
+Let $\ensuremath{\psi} \ensuremath{=:} R e^{i\frac{S}{\hbar}}$ where $R$ is positive and $S$
+is real. Then, the Schr\"odinger\ equation
+becomes, after dividing by $e^{i\frac{S}{\hbar}}$, 
+\[
+i \hbar \ensuremath{\frac{\partial {R}}{\partial {t}}} - R \ensuremath{\frac{\partial {S}}{\partial {t}}} 
+= -\frac{\hbar^2}{2}( \ensuremath{\Delta} R + \frac{2 i}{\hbar} \nabla R \cdot \nabla
+S + \frac{i}{\hbar} \ensuremath{\Delta} S - 
+\frac{1}{\hbar^2} \nabla S \cdot \nabla S) + V R.
+\]
+
+Taking the real part of that equation and dividing by $-R$, we have 
+\[
+\ensuremath{\frac{\partial {S}}{\partial {t}}} = -\frac{1}{2} \nabla S \cdot \nabla S - V 
++\frac{\hbar^2 \ensuremath{\Delta} R}{2R}   
+\]
+which is the Hamilton-Jacobi equation for the potential $V -
+\frac{\hbar^2 \ensuremath{\Delta} R}{2R}$ on the Riemannian manifold \ensuremath{\mathcal{Q}}\ with 
+ metric $g$.    
+
+\section{Bohmian dynamics involving bundles} \label{s:bbun}
+
+More generally, we can consider a Bohmian dynamics for wave functions taking
+values in some complex vector bundle $E$ over the Riemannian
+configuration space \ensuremath{\mathcal{Q}}. 
+
+
+Our bundles will always be cc-Hermitian vector bundles.
+The ``wave functions''
+then become smooth sections of the vector bundle; $C^{\infty}
+(\ensuremath{\mathcal{Q}}, E)$ will denote the smooth sections while  $C^{\infty}_0
+(\ensuremath{\mathcal{Q}}, E)$ will denote the smooth sections with compact
+support. 
+The local inner
+product acting on the vectors $v_q, w_q$ will be denoted by
+\ensuremath{({v_q}, {w_q})}. The global inner product on the Hilbert space of wave function
+s is the local inner product integrated against the 
+Riemannian volume element associated with the metric
+$g$; we denote the Hilbert space by $\ensuremath{L^{2}}(\ensuremath{\mathcal{Q}}, E)$.
+
+
+The potential $V$ is now a 
+self-adjoint section of the matrix, or more properly
+endomorphism, bundle 
+acting on the 
+vector bundle's fibers.\footnote{For us, the terms matrix and 
+endomorphism will be synonymous; the use of the term matrix does not
+imply that we are using a particular basis. We avoid the term linear
+operator as that may be confused with an operator acting on the 
+Hilbert
+space of wave functions. } In the context of a theory involving just spin, 
+$V$ is restricted to being a pointwise linear combination of the spin
+matrices and 
+the identity;  this does exclude a variety of 
+ potentials in the case of many particles and generally in the case of
+ 1 particle where spin-$\frac{1}{2}$ happens to be an exception. 
+
+The equations are the same. Indeed,  $v^{\ensuremath{\psi}}$, 
+the Bohmian velocity field associated to a
+wave function\ $\ensuremath{\psi}$,  is
+\begin{equation} \label{ie:vbv}
+v^{\ensuremath{\psi}} \ensuremath{:=} \ensuremath{\hbar}\, \textrm{Im} \frac{\ensuremath{({\ensuremath{\psi}}, {\nabla \ensuremath{\psi}})}}{\ensuremath{({\ensuremath{\psi}}, {\ensuremath{\psi}})}}.
+\end{equation}
+The time evolution of 
+the state $(Q_t, \ensuremath{\psi}_t)$ is given by
+\begin{subequations} \label{ie:ve}
+\begin{align} 
+\ensuremath{\frac{d{Q_t}}{d{t}}} =& v^{\ensuremath{\psi}_t}(Q_t) \label{ie:vbe} \\
+i \ensuremath{\hbar} \ensuremath{\frac{\partial {\ensuremath{\psi}_t}}{\partial {t}}} = &- \frac{\ensuremath{\hbar}^2}{2} \ensuremath{\Delta} \ensuremath{\psi}_t  + V \ensuremath{\psi}_t
+ \ensuremath{:=} H \ensuremath{\psi}_t. \label{ie:vse}
+\end{align}
+\end{subequations}
+
+
+The wave function\ \ensuremath{\psi}\ will always be assumed to be in \ensuremath{L^{2}}\ and  smooth, 
+i.e.\ $\ensuremath{\psi}_t \in
+C^{\infty}(\ensuremath{\mathcal{Q}}, E) \cap \ensuremath{L^{2}}(\ensuremath{\mathcal{Q}}, E)$.
+We shall generally assume that the formal
+Hamiltonian, $H$, is essentially 
+self-adjoint on the domain of compactly-supported, smooth wave function
+s.\footnote{Appendix \ref{a:functan}
+ gives an extremely brief discussion about
+situations in which 
+the Hamiltonian is not essentially self-adjoint on
+the domain $C_0^{\infty} (\ensuremath{\mathcal{Q}}, E)$. 
+As a particular example, when \ensuremath{\mathcal{Q}}\ is \ensuremath{\mathbb{R}^{3}}\ with
+the $z$-axis  removed, the
+Laplacian is not essentially self-adjoint on 
+$C_0^{\infty}(\ensuremath{\mathcal{Q}}, \ensuremath{\mathbb{C}})$ \cite{AT98}. A choice of a self-adjoint
+extension is required corresponding to boundary conditions on the z-axis.
+
+
+} We shall often use $-\ensuremath{\Delta} +V$ to indicate that we are discussing
+the formal Schr\"odinger-type Hamiltonians.
+It has been shown that
+$-\ensuremath{\Delta} +V$ is essentially self-adjoint on the domain $\ensuremath{C^{\infty}_0}(\ensuremath{\mathcal{Q}}, E)$
+ for cc-Hermitian\ vector bundles whose base space
+is a complete Riemannian manifold with suitable restrictions on the 
+potential $V$;
+see \cite{Sh01, Le00} for details. 
+
+\section{The continuity equations for bundle-valued Bohmian dynamics}
+
+
+We shall now establish the continuity equation for the Bohmian dynamics
+descrubed by \eqref{ie:ve}. This is just the standard argument.
+The density $\ensuremath{\rho}$ is actually $\ensuremath{\lvert {\ensuremath{\psi}} \rvert}^2 \nu$ where $\nu$ is the
+Riemannian volume element. The probability current $\ensuremath{\rho} v^{\ensuremath{\psi}}$ may then be
+considered as a $(n-1)$-form and the divergence is the exterior
+derivative of the current. In terms of establishing the continuity
+equation, 
+one can also view $\ensuremath{\rho}$ as a function and then $\ensuremath{\rho} v^{\ensuremath{\psi}}$ would be
+a vector field. The divergence is then the contraction of the
+derivative of the vector
+field. In any event, we want to show that      
+\[
+\ensuremath{\frac{\partial {\ensuremath{\rho}}}{\partial {t}}} + \nabla \cdot (\ensuremath{\rho} v^{ \ensuremath{\psi}}) = 0.
+\]
+
+
+As a starting point, we can compute from Schr\"odinger's equation that
+\[
+\begin{split}
+\ensuremath{\frac{\partial {\ensuremath{\rho}}}{\partial {t}}} =& \ensuremath{({\ensuremath{\frac{\partial {\ensuremath{\psi}}}{\partial {t}}}}, {\ensuremath{\psi}})} +
+\ensuremath{({\ensuremath{\psi}}, {\ensuremath{\frac{\partial {\ensuremath{\psi}}}{\partial {t}}}})} 
+\\  = & 
+\ensuremath{({\frac{1}{i\ensuremath{\hbar}}(-\frac{\ensuremath{\hbar}^2}{2} \ensuremath{\Delta} \ensuremath{\psi} + V \ensuremath{\psi})}, {\ensuremath{\psi}})} +   
+\ensuremath{({\ensuremath{\psi}}, {\frac{1}{i\ensuremath{\hbar}}(-\frac{\ensuremath{\hbar}^2}{2} \ensuremath{\Delta} \ensuremath{\psi} + V \ensuremath{\psi})})}
+\\ = &
+ \frac{1}{i\ensuremath{\hbar}} \{\frac{\ensuremath{\hbar}^2}{2}(\ensuremath{({\ensuremath{\Delta} \ensuremath{\psi}}, {\ensuremath{\psi}})} - \ensuremath{({\ensuremath{\psi}}, {\ensuremath{\Delta}
+ \ensuremath{\psi}})}) + (-\ensuremath{({V \ensuremath{\psi}}, {\ensuremath{\psi}})} + \ensuremath{({\ensuremath{\psi}}, {V \ensuremath{\psi}})})\}.
+\end{split}
+\]
+
+The potential term automatically vanishes since $V$ is
+a self-adjoint matrix-valued function. 
+The Laplacian terms may be compactly written as
+ $-\ensuremath{\hbar} \textrm{Im} \ensuremath{({\ensuremath{\psi}}, {\ensuremath{\Delta}
+\ensuremath{\psi}})} = -\ensuremath{\hbar} \textrm{Im}\{\nabla \cdot \ensuremath{({\ensuremath{\psi}}, {\nabla \ensuremath{\psi}})} - g(\ensuremath{({\nabla
+  \ensuremath{\psi}}, {\nabla \ensuremath{\psi}})}) $. Since the last term does not contribute to the
+imaginary part, we are  left with the divergence of the probability
+current.  
+
+
+\section{The Pauli equation}
+
+
+Let \ensuremath{\mathcal{Q}}\  be a Riemannian manifold, with metric $g$, and let $E$
+be a cc-Hermitian vector bundle. Physics often requires an additional
+structure. This strucutre may be viewed as an entanglement of the
+spatial structure with the bundle structure; it comes in the form of a
+representation. 
+
+\subsection{A bit of representation theory}
+Recall that  a Lie algebra 
+representation is a linear map from
+a Lie algebra into the set of matrices acting on a vector space
+satisfying that the image of a Lie bracket is the commutator of the
+images. For a Riemannian manifold, the relevant Lie group is $SO(g)$,
+the matrices that preserve the inner product; its 
+ Lie algebra is $\ensuremath{\mathfrak{so}(g)}$. We also note that $Spin(g)$ is the
+double cover of $SO(g)$ and has the same Lie algebra since the Lie
+algebra is the tangent space to the identiy. 
+
+We will assume that our bundle and manifold come equipped with a
+Lie algebra representation of $\ensuremath{\mathfrak{so}(g)}$ induced by a representation of
+either $SO(g)$ or $Spin(g)$. We shall denote the Lie algebra 
+representation as $S: \ensuremath{\mathfrak{so}(g)} \to E\otimes \ensuremath{{E}^{*}}$.  A representation of
+a Lie algebra is
+a linear map which  preserves Lie brackets. We shall assume that the
+Lie group representation is a unitary representation; this does  imply that $S$
+takes values in the anti-self-adjoint valued matrices.
+
+We now explain the very standard statement that 
+$\ensuremath{\bigwedge^{2}{\ensuremath{T^{*} \ensuremath{\mathcal{Q}}}}}$ is canonically isomorphic, up to a choice of sign, to 
+the Lie algebra \ensuremath{\mathfrak{so}(g)}. 
+Indeed, the Lie group $SO(g)$ is the set of matrices
+$A \in \ensuremath{T^{*} \ensuremath{\mathcal{Q}}} \otimes \ensuremath{T \ensuremath{\mathcal{Q}}}$ which preserve
+the metric $g$. That is to say, if $A \in SO(g)$, then for every 
+$v, w \in \ensuremath{T \ensuremath{\mathcal{Q}}}$, we have the defining property 
+\begin{equation} \label{e3:son}
+g(Av, Aw) =
+g(v,w).
+\end{equation}
+This group of matrices is a manifold and the 
+Lie algebra is the tangent space to the identity operator. 
+More to the point, if we take a path $A(t) \in SO(g)$ 
+such that $A(0) = \text{Id}$,  then $\ensuremath{\frac{\partial {A}}{\partial {t}}}$ defines an element of the
+Lie algebra;  every such element of the Lie algebra arises in this
+way. 
+By computing
+the derivative of \eqref{e3:son}, we find $
+g(\dot A v, w) + g(v, \dot A w) = 0$ which, using the symmetry of $g$,
+leads to 
+\[
+g(\dot A v, w) = -g(\dot A w, v).
+\]
+The isomorphism between the 2-forms and the Lie algebra is given by
+ the map $\dot A \mapsto \omega$ defined by
+ $\omega (v, w) \ensuremath{:=}  g(\dot A v, w)$.  By the above
+equation, $\omega \in \ensuremath{\bigwedge^{2}{\ensuremath{T^{*} \ensuremath{\mathcal{Q}}}}}$. By using the non-degeneracy of
+$g$, we can make a bijective correspondence to the set of antisymmetric
+matrices. Thus, given a 2-form $\omega$, one can map it to an antisymmetric
+ matrix $A$ and then exponentiate $tA$ to obtain a path $\alpha$ in
+ the Lie group such that $\dot{\alpha}(0) = A$. 
+ 
+
+We may therefore view an element of the Lie algebra \ensuremath{\mathfrak{so}(g)}\ as an element of 
+$\ensuremath{\bigwedge^{2}{\ensuremath{T^{*} \ensuremath{\mathcal{Q}}}}}$. The dual
+of this space is $\ensuremath{\bigwedge^{2}{\ensuremath{T \ensuremath{\mathcal{Q}}}}}$. We conclude that a
+representation may be viewed as a special element of
+$\ensuremath{\bigwedge^{2}{\ensuremath{T \ensuremath{\mathcal{Q}}}}} \otimes \ensuremath{{\ensuremath{E}}^{*}} \otimes \ensuremath{E}$.  
+
+\subsection{A generalization of the Laplacian}
+ 
+We start with the already stated observation that 
+\[
+\ensuremath{\Delta} \ensuremath{\psi} \ensuremath{:=} G \circ (D^2 \ensuremath{\psi}).\] 
+It is critical to appreciate this statement. Accepting it almost 
+immediately leads to the Pauli equation as an obvious extension. 
+Just
+to be clear,  $D^2 \ensuremath{\psi} \in (T^*M)^{\otimes
+2} \otimes \ensuremath{E}$ is the second covariant derivative, i.e.\ it is a
+$(0,2)$ $E$-valued tensor.  The symmetric 
+$(2,0)$ tensor $G \in \ensuremath{T \ensuremath{\mathcal{Q}}}^{\otimes 2}$ 
+is the dual of the metric $g \in (T^*M)^{\otimes
+2}$. We may therefore plug the tensor $G$ into
+the tensor $D^2 \ensuremath{\psi}$ to obtain a section of $E$. Note that in the
+definition of the Laplacian, we actually should say that $G$ means
+ $G \otimes \ensuremath{\text{Id}}$. 
+
+There is an obvious way to modify this definition. We can contract the
+second covariant derivative with any matrix-valued $(2,0)$ tensor. 
+That is to say,
+let $T \in  \ensuremath{T \ensuremath{\mathcal{Q}}}^{\otimes 2} \otimes \ensuremath{E} \otimes \ensuremath{{\ensuremath{E}}^{*}}$. Then $T
+\circ D^2 \ensuremath{\psi}$ makes sense and defines the $T$-Laplacian which shall
+be denoted by $\ensuremath{\Delta}_T$.
+
+
+What should $T$ be? 
+Since $G$ is
+part of the given local information, 
+we may assume that the symmetric
+part of $T$ 
+is $G \otimes \ensuremath{\text{Id}} \in \ensuremath{\bigodot^{2}{\ensuremath{T \ensuremath{\mathcal{Q}}}}} \otimes \ensuremath{E} \otimes \ensuremath{{\ensuremath{E}}^{*}}$. 
+This choice is  simple, does
+not lead to any new objects, and is certainly invariant under
+transformations preserving the metric. This leaves us with the task of
+specifying the antisymmetric part of $T$. The easiest possibility, as
+originally done, is to take the antisymmetric part to be zero. Assume that we
+do not do this. Since the antisymmetric part is an element of 
+ $\ensuremath{\bigwedge^{2}{\ensuremath{T \ensuremath{\mathcal{Q}}}}} \otimes \ensuremath{E} \otimes
+\ensuremath{{\ensuremath{E}}^{*}}$, we see that the representation $S$ is the same kind of
+tensor as the antisymmetric part of $T$. The same reasoning that leads
+to choosing $G$ leads us to choosing $S$.
+
+
+To understand what happens with $T$, we need to understand the second
+covariant derivative of a section $\ensuremath{\psi}$. 
+The second derivative of $\ensuremath{\psi}$ decomposes into a symmetric part and an
+antisymmetric part. The symmetric part is what it is; this is the term
+that contributes to the usual Laplacian and is the only part that $G$ notices.
+The antisymmetric part is the curvature of the
+connection applied to $\ensuremath{\psi}$; this is what $S$ will contract with. 
+It is a tensor in $\ensuremath{\psi}$ meaning that it
+depends only on $\ensuremath{\psi}$ through its value at that point. It turns out
+that if a connection preserves a Hermitian inner product, then its
+derivative is anti-self-adjoint in its action on the bundle. See
+Appendix \ref{a:difgeom} for an explanation of this fact. We shall use
+$F$ to denote the curvature and
+ $F$ is an element of $\ensuremath{\bigwedge^{2}{\ensuremath{T^{*} \ensuremath{\mathcal{Q}}}}} \otimes E \otimes
+\ensuremath{{E}^{*}}$. 
+
+Let us look at what we have. Taking $\ensuremath{\Delta} \ensuremath{\psi}$ to mean
+the metric trace of the second covariant derivative, we see that 
+\[
+\ensuremath{\Delta}_T \ensuremath{\psi} = \ensuremath{\Delta} \ensuremath{\psi} + \ensuremath{S}(F(\ensuremath{\psi})) 
+\]
+where $\ensuremath{S}(F)$ is a contraction which leaves a self-adjoint
+matrix. Thus, we can write 
+\[
+\ensuremath{\Delta}_T \ensuremath{\psi} = \ensuremath{\Delta} \ensuremath{\psi} + V \ensuremath{\psi}
+\]
+for some self-adjoitn $V$ depending on the representation and the
+curvature. We do end up with a Pauli-type equation. We also see that
+the Bohmian motion is still equivariant with respect to $\ensuremath{\Delta}_T$ for
+this choice of $T$. We also mention that one can easily multiply both
+$G$ and $S$, independently, in the definition of $T$.  
+
+As an illuminating example, let $\ensuremath{\mathcal{Q}}  = \ensuremath{\mathbb{R}^{3}}$ and $E = \ensuremath{\mathbb{R}^{3}} \times \ensuremath{\mathbb{C}}^2$. We have as a background connection, the trivial
+connection denoted by $D$. We are considering the case of 
+a spin-$\frac{1}{2}$ particle. Let $S$ be the representation and $\boldsymbol{S}$ its
+vector version using the duality between
+$(1,0)$ tensors  and antisymmetric $(2,0)$ tensors 
+ special to three
+dimensions. In particular, $\boldsymbol{S}_x = \frac{\ensuremath{\hbar}}{2} \sigma $ 
+is what comes from $S(y\wedge z)$. 
+ The curvature is the magnetic field. It is most naturally
+a 2-form, but it becomes a vector under duality. The usual Paulie
+equation is 
+\[
+i \ensuremath{\hbar} \ensuremath{\frac{\partial {\ensuremath{\psi}}}{\partial {t}}} 
+= -\frac{\ensuremath{\hbar}^2}{2} (\nabla +i\boldsymbol{A})\cdot (\nabla +i\boldsymbol{A}) 
+ \ensuremath{\psi} + \mu \boldsymbol{S} \cdot \boldsymbol{B} \ensuremath{\psi}
+\]
+for some constant $\mu$ and vector potential $\boldsymbol{A}$. The way it
+would be written above is the following. Let $\omega$ be the 1-form
+equivalent to $A$ under the metric and $\beta$ the 2-form equivalent
+to $B$; the 2-form is equal to the exterior derivative of
+$\omega$. Then the $T$-based Laplacian equation is 
+\[
+i \ensuremath{\hbar} \ensuremath{\frac{\partial {\ensuremath{\psi}}}{\partial {t}}} = -\frac{\ensuremath{\hbar}^2}{2} (G + S)(D+i\omega)^2 \ensuremath{\psi}
+                   \]
+which is the same as the Pauli equation after converting the objects
+and expanding. 
+
+
+\section{Other equivariant motions?}
+
+
+We shall now ask  whether $T$ leads to a different, yet equivariant, 
+ motion for the particle.  The answer is yes. Finding other
+ equivariant and invariant motions is not new; see \cite{DG98a, BH95}.
+This section is a bit technical and can be skipped without loss of
+information. 
+
+Let $T \in \ensuremath{T \ensuremath{\mathcal{Q}}} \otimes \ensuremath{{E}^{*}} \otimes \ensuremath{T \ensuremath{\mathcal{Q}}}  \otimes E$. Then, viewing
+$D\ensuremath{\psi} \in \ensuremath{T^{*} \ensuremath{\mathcal{Q}}} \otimes  E$, we can contract on the first two
+tensor factors 
+of $T$ with $D \ensuremath{\psi}$ to obtain $T \circ D\ensuremath{\psi} \in \ensuremath{T \ensuremath{\mathcal{Q}}} \otimes E$. We
+then use the inner product  to obtain a complex tangent vector. Taking
+the imaginary part leaves us with a real tangent vector.  Multiplying
+by \ensuremath{\hbar}\ and dividing by $\ensuremath{\rho} \ensuremath{:=} {\ensuremath{({\ensuremath{\psi}}, {\ensuremath{\psi}})}}$ leads to a
+velocity field, $v^{T, \ensuremath{\psi}}$. 
+
+
+When do $\ensuremath{\rho}$ and
+$v^{T, \ensuremath{\psi}}$ lead to an equivariant motion? In symbols, we are
+defining 
+ \[
+v^{T, \ensuremath{\psi}} \ensuremath{:=} \ensuremath{\hbar} \textrm{Im} \frac{\ensuremath{({\ensuremath{\psi}}, {T\circ D\ensuremath{\psi}})}}{\ensuremath{({\ensuremath{\psi}}, {\ensuremath{\psi}})}}  
+\]
+and trying to find out what conditions guarantee that the continuity equation
+\[
+\ensuremath{\frac{\partial {\ensuremath{\rho}}}{\partial {t}}} + \nabla \cdot (\ensuremath{\rho} v^{T, \ensuremath{\psi}}) = 0
+\]
+is satisfied? 
+ 
+As a starting point, we can compute from Schr\"odinger's equation that
+\[
+\begin{split}
+\ensuremath{\frac{\partial {\ensuremath{\rho}}}{\partial {t}}} =& \ensuremath{({\ensuremath{\frac{\partial {\ensuremath{\psi}}}{\partial {t}}}}, {\ensuremath{\psi}})} +
+\ensuremath{({\ensuremath{\psi}}, {\ensuremath{\frac{\partial {\ensuremath{\psi}}}{\partial {t}}}})} 
+\\  = & 
+\ensuremath{({\frac{1}{i\ensuremath{\hbar}}(-\frac{\ensuremath{\hbar}^2}{2} \ensuremath{\Delta} \ensuremath{\psi} + V \ensuremath{\psi})}, {\ensuremath{\psi}})} +   
+\ensuremath{({\ensuremath{\psi}}, {\frac{1}{i\ensuremath{\hbar}}(-\frac{\ensuremath{\hbar}^2}{2} \ensuremath{\Delta} \ensuremath{\psi} + V \ensuremath{\psi})})}
+\\ = &
+ \frac{1}{i\ensuremath{\hbar}} (-\frac{\ensuremath{\hbar}^2}{2}(-\ensuremath{({\ensuremath{\Delta} \ensuremath{\psi}}, {\ensuremath{\psi}})} + \ensuremath{({\ensuremath{\psi}}, {\ensuremath{\Delta}
+ \ensuremath{\psi}})}) + (-\ensuremath{({V \ensuremath{\psi}}, {\ensuremath{\psi}})} + \ensuremath{({V \ensuremath{\psi}}, {\ensuremath{\psi}})}));
+\end{split}
+\]
+we include the spin terms into the potential $V$.
+The potential term automatically vanishes since $V$ is
+a self-adjoint matrix-valued function. 
+The Laplacian terms may be compactly written as
+ $-\ensuremath{\hbar} \textrm{Im} \ensuremath{({\ensuremath{\psi}}, {\ensuremath{\Delta}
+\ensuremath{\psi}})}$.  
+Explicitly, we need
+\[
+\nabla \cdot (\ensuremath{\rho} v^{T, \ensuremath{\psi}}) = \ensuremath{\hbar} \textrm{Im} \ensuremath{({\ensuremath{\psi}}, {G\circ D^2 \ensuremath{\psi}})}.
+\]
+Computing the divergence term, we find
+\[
+\begin{split}
+\nabla \cdot (\ensuremath{\rho} v^{T, \ensuremath{\psi}}) &= 
+\ensuremath{\hbar} \textrm{Im} (\nabla \cdot \ensuremath{({\ensuremath{\psi}}, {T\circ D\ensuremath{\psi}})}) \\
+&= 
+\ensuremath{\hbar} \textrm{Im} (\ensuremath{({D_{\ensuremath{k}}\ensuremath{\psi}}, {T^{\ensuremath{j} \ensuremath{k}} D_{\ensuremath{j}}\ensuremath{\psi}})} +
+\ensuremath{({\ensuremath{\psi}}, {(D_{\ensuremath{k}}T^{\ensuremath{j} \ensuremath{k}})  D_{\ensuremath{j}}\ensuremath{\psi}})} + 
+\ensuremath{({\ensuremath{\psi}}, {T \circ D^2 \ensuremath{\psi}})})
+\end{split}
+\]
+where we use $A_{\ensuremath{j}}B^{\ensuremath{j}}$ to indicate a contraction over the
+indices when there may be ambiguity; the 
+last term has essentially an unambiguous contraction. We can think
+of $\ensuremath{\psi}$, $D\ensuremath{\psi}$ and the symmetric part of $D^2 \ensuremath{\psi}$ 
+as  independent of each other. In particular, 
+we may choose some to be zero and the others 
+non-zero.
+We therefore find that we need
+\begin{subequations}
+\begin{align}
+\textrm{Im} \ensuremath{({D_{\ensuremath{k}}\ensuremath{\psi}}, {T^{\ensuremath{j} \ensuremath{k}} D_{\ensuremath{j}}\ensuremath{\psi}})}
+ &= 0 \label{e:ce1}\\
+\textrm{Im} \ensuremath{({\ensuremath{\psi}}, {(D_{\ensuremath{k}}T^{\ensuremath{j} \ensuremath{k}})  D_{\ensuremath{j}}\ensuremath{\psi}})}
+ & = 0 \label{e:ce2}\\
+\textrm{Im} \ensuremath{({\ensuremath{\psi}}, {T \circ D^2 \ensuremath{\psi}})}  &= \textrm{Im} \ensuremath{({\ensuremath{\psi}}, {G\circ D^2 \ensuremath{\psi}})}
+\label{e:ce3} .
+\end{align}
+\end{subequations}
+Whenever these equations are satisfied, we have an equivariant
+motion. 
+
+
+These equations  rule out many possibilities, but we shall find that
+we do have more possibilities than just the usual Bohmian velocity.
+The main equation is \eqref{e:ce1}. The essential trick is that we
+have complete freedom over the covariant derivatives of \ensuremath{\psi}. Indeed,
+as discussed in Chapter \ref{c:taylor}, we can create a \ensuremath{\psi}\ whose
+symmetric covariant derivatives are specified at a single point. In
+particular, we can choose the first derivatives anyway we like. Pick a
+basis of the tangent space at a point \ensuremath{q}; although this discussion only
+holds for \ensuremath{q}, since \ensuremath{q}\ is arbitrary, this is sufficient and
+we shall suppress the dependency on \ensuremath{q}. 
+For a basis element $x$, we 
+choose $D [\ensuremath{\psi}] (x) = \phi$ and $D [\ensuremath{\psi}] (y) = 0$ for all the other basis
+elements. With this choice, \eqref{e:ce1} becomes 
+\[
+\textrm{Im} \ensuremath{({\phi}, {T^{xx} \phi})} =0 
+\]
+which evidently implies that $T^{xx}$ is self-adjoint as this hold for
+all $\phi$.
+We now choose $D[ \ensuremath{\psi}] (x) = \phi$, $D[ \ensuremath{\psi}](y) =\tau$ and all of the other
+basis directional derivatives to vanish. Then \eqref{e:ce1} becomes
+\[
+\begin{split}
+0 =& \textrm{Im}\{ \ensuremath{({\phi}, {T^{xx} \phi})} + \ensuremath{({\tau}, {T^{xy} \phi})}+
+\ensuremath{({\phi}, {T^{yx} \tau})} + \ensuremath{({\tau}, {T^{yy} \tau})}\}
+\\=&
+  \textrm{Im}\{ \ensuremath{({\tau}, {T^{xy} \phi})}+
+\ensuremath{({\phi}, {T^{yx} \tau})}\}.
+\end{split}
+\] 
+If we now take $\tau = \phi$, we complete the argument that the
+ symmetric part of $T$ is self-adjoint. If we take $\tau = i\phi$,
+ then we end up with
+\[
+0 =  \textrm{Im}\{-i \ensuremath{({\phi}, {T^{xy} \phi})}+
+i\ensuremath{({\phi}, {T^{yx} \phi})}= Re \ensuremath{({\phi}, {T^{xy} - T^{yx}  \phi})}
+\]
+which indicates that the antisymmetric part of $T$ is anti-self-adjoint.
+We now move on to \eqref{e:ce3}. The symmetric part of the second
+derivative is an object that we can specify arbitrarily at a
+point. Thus, repeating an argument  similar to the above, 
+we have that the symmetric part of $T$ is equal to $G
+\otimes \ensuremath{\text{Id}}$. The antisymmetric part of the second derivative is an
+object that we do not have control over. Indeed, it is the curvature
+operator. Therefore, if $T$'s antisymmetric part is anti-self-adjoint,
+then it couples with the curvature operator in a way to ensure
+self-adjointness. That is to say, if $T_A$ is the antisymmetric part of
+$T$ and $F$ is the curvature operator, then  
+\[
+\ensuremath{({\ensuremath{\psi}}, {T\circ D^2 \ensuremath{\psi}})} = \ensuremath{({\ensuremath{\psi}}, {G \circ D^2 \ensuremath{\psi}})} +
+\ensuremath{({\ensuremath{\psi}}, {T_A\circ F \ensuremath{\psi}})}.
+\]
+As $T_A \circ F$ is self-adjoint, its imaginary part vanishes. 
+
+We conclude that the only choice for $T$ is $G \otimes
+\ensuremath{\text{Id}} +S$ where $T_A$ is a linear map of the Lie algebra of
+\ensuremath{\mathfrak{so}(g)}\ taking values in the Lie algebra of anti-self adjoint
+matrices. It is therefore natural to take $T_A \ensuremath{:=} S$ 
+to be the representation
+map.  Equation \eqref{e:ce2} will be satisfied if $T$ is
+parallel which it is if it is composed of $G$ and $S$.
+
+
+\subsection{The addition of a curl}
+
+For equivariance, we could always add on a divergence-free vector
+field to the probability current. 
+This will not change the empirical equivalence with standard
+quantum mechanics. One can then ask the question as to
+whether there is a divergence free velocity field that arises from the
+structures at hand. Indeed there is. 
+
+As we have said, $S$ is a anti-self-adjoint matrix-valued 
+antisymmetric (2,0) tensor. If we define
+\[ \nu \ensuremath{:=} 
+\ensuremath{\hbar} \textrm{Im} \ensuremath{({\ensuremath{\psi}}, {S \ensuremath{\psi}})} = -\ensuremath{\hbar} \textrm{Im} \ensuremath{({S\ensuremath{\psi}}, { \ensuremath{\psi}})},
+\] 
+then we have an antisymmetric (2,0) tensor. 
+Such an object can always be used to define a divergence free vector
+field. Indeed, take the derivative of $\nu$ and contract; one of the
+two vector slots must be chosen which is really a choice of a sign. 
+This leaves a vector field.  More explicitly, we note that 
+\[
+(D [\nu])^{\ensuremath{j}\cdot}_{\ensuremath{j}} 
+=    \frac{\ensuremath{\hbar}}{i} (D [\textrm{Im} \ensuremath{({\ensuremath{\psi}}, {S^{\ensuremath{j} \cdot} \ensuremath{\psi}})}])_{\ensuremath{j}}
+= \ensuremath{\hbar} \textrm{Im} \ensuremath{({\ensuremath{\psi}}, {S \circ D \ensuremath{\psi}})}
+\]
+which is essentially what we had in the last section. Thus, adding this to
+the probability current will not change the equivariance. 
+
+But we wish to demonstrate that it is equivariant just because $\nu
+\in \bigwedge^2 \ensuremath{T \ensuremath{\mathcal{Q}}}$. Let $v$ be the vector field obtained by
+contracting the first derivative of $\nu$ with one of its tangent
+vector's components. 
+To compute the divergence, take the
+derivative of the vector field and contract again. We claim that zero
+is the answer. 
+
+There are at least two ways to understand this. The first is to view an element
+of $\bigwedge^2 (\ensuremath{T \ensuremath{\mathcal{Q}}})$, which $\nu$ is, as an $(n-2)$-form using the
+volume form. Then
+compute the exterior derivative  to obtain a $(n-1)$-form and this is
+equivalent to a tangent vector field. The divergence is computed by
+taking the exterior derivative of the $(n-1)$-form and comparing the
+resultant $n$-form to the volume form. Since $d^2 =0$, we have that
+the divergence vanishes.
+
+The other way is to use the covariant derivative. The only reason to
+consider this method is that we are using covariant derivatives and
+sometimes this use conflicts with a differential form approach. But in
+this case, we end up with the same result.
+
+
+It is important to
+recall
+ that covariant differentiation preserves symmetry
+types, i.e.\ $D^2 [\nu]$ is an element of $\bigwedge^2(\ensuremath{T \ensuremath{\mathcal{Q}}}) \otimes \ensuremath{T^{*} \ensuremath{\mathcal{Q}}}
+\otimes \ensuremath{T^{*} \ensuremath{\mathcal{Q}}}$.   
+By computation, we have
+\[
+(D^2[f \nu])_{{\ensuremath{j}}{\ensuremath{k}}}^{{\ensuremath{j}}{\ensuremath{k}}} = (D^2
+[f])_{{\ensuremath{j}}{\ensuremath{k}}} \nu^{{\ensuremath{j}}{\ensuremath{k}}} + 
+(D[f])_{\ensuremath{j}} (D[\nu])_{\ensuremath{k}}^{{\ensuremath{j}}{\ensuremath{k}}} + (D[f])_{\ensuremath{k}}
+(D[\nu])_{\ensuremath{j}}^{{\ensuremath{j}}{\ensuremath{k}}} + f (D^{\ensuremath{k}} 
+[\nu])^{{\ensuremath{j}}{\ensuremath{k}}}_{{\ensuremath{j}}{\ensuremath{k}}} .
+\]
+The second derivative of a function for a symmetric connection is
+symmetric which implies, in conjunction with the antisymmetry of
+$\nu$,  that the first term vanishes. The mixed terms
+vanish since we clearly have 
+\[
+(D[f])_{\ensuremath{k}} (D[\nu])_{\ensuremath{j}}^{{\ensuremath{j}}{\ensuremath{k}}} = -
+(D[f])_{\ensuremath{k}} (D[\nu])_{\ensuremath{j}}^{{\ensuremath{k}}{\ensuremath{j}}} =  
+- (D[f])_{\ensuremath{j}} (D[\nu])_{\ensuremath{k}}^{{\ensuremath{j}}{\ensuremath{k}}}.\]
+ Thus,  multiplication by a function commutes with the
+divergence operator on antisymmetric 2-tensors.
+
+Let $e$ and $f$ be two vector fields forming part of a local
+basis at a point \ensuremath{q}. Then 
+\[
+\begin{split}
+(D^2 [e \otimes f - f \otimes e])_{{\ensuremath{j}}{\ensuremath{k}}}^{{\ensuremath{j}}{\ensuremath{k}}}  =  &
+D^2[e]_{{\ensuremath{j}}f}^{\ensuremath{j}} - D^2[f]_{{\ensuremath{j}}e}^{\ensuremath{j}}  
++ 
+D[e]_{\ensuremath{j}}^{\ensuremath{j}}  D[f]_{\ensuremath{k}}^{\ensuremath{k}} -
+D[f]_{\ensuremath{j}}^{\ensuremath{j}}  D[e]_{\ensuremath{k}}^{\ensuremath{k}} 
+\\ &+ 
+D[e]_{\ensuremath{k}}^{\ensuremath{j}}  D[f]_{\ensuremath{j}}^{\ensuremath{k}} -
+D[f]_{\ensuremath{k}}^{\ensuremath{j}}  D[e]_{\ensuremath{j}}^{\ensuremath{k}} 
++
+D^2[f]_{e{\ensuremath{k}}}^{\ensuremath{k}} - D^2[e]_{f{\ensuremath{k}}}^{\ensuremath{k}} .
+\end{split}
+\]
+Clearly, the middle terms, involving the first derivatives, 
+vanish since multiplication is commutative. 
+The other terms vanish because essentially we are left with  Ricci
+curvature terms but in such a way that they cancel. Specifically, 
+\[
+(D^2[e]_{{\ensuremath{j}}f}^{\ensuremath{j}} - D^2[e]_{f{\ensuremath{k}}}^{\ensuremath{k}}) 
+-
+( D^2[f]_{{\ensuremath{j}}e}^{\ensuremath{j}}  - D^{\ensuremath{k}}[f]_{e{\ensuremath{k}}}^{\ensuremath{k}})
+= 
+Ric(e,f) - Ric(f,e).
+\]
+As Ricci is a symmetric tensor, we have that the right hand side
+vanishes. Thus, the divergence vanishes. 
+
+Therefore, one can add this spin-based 
+velocity field to the usual Bohmian velocity and still maintain
+equivariance. There would seem to be no way to distinguish between
+these theories. As described in \cite{BH95}, the non-relativistic limit
+of the Bohm motion for the Dirac equation seems to include this
+term. We conclude with remarking that if we chose $G\otimes \ensuremath{\text{Id}} +S$
+for computing the velocity field, then we are using the same tensor to
+compute the Laplacian as well as the velocity field. In other words,
+instead of choosing $G$ and $S$, we can view the whole specification
+of the theory as choosing the connection (curvature), the object $T$
+($G$ and $S$), and the
+inner product. 
+
+
+\section{The Dirac equation}
+
+
+In this section, we will argue that the structure of the Dirac
+equation is based upon what may be called a  square-root of the
+tangent bundle. It is this structure which is suggested by the
+Bohmian viewpoint. In order to minimize additional structures on
+space-time, we actually require our square-root of the tangent bundle
+to be a square-root of the metric. We shall see that this puts a severe
+constraint on the choices and leads to the Dirac equation being a
+square-root of the Klein-Gordon equation. We shall assume we have a
+Lorentz metric on space-time and shall denote it by $g$ and its dual
+by $G$. As throughout this chapter, almost all statements are about
+the local structure and one should have in mind the tangent space at a
+point and the fiber at a point rather than the bundle
+although we shall omit the reference to the point.
+
+\subsection{Brief background material}
+
+
+Let \ensuremath{W}\ be a complex vector space. Its dual space, \ensuremath{{\ensuremath{W}}^{*}}, is the
+space of complex-linear functionals acting on \ensuremath{W}. The conjugate
+dual of $\ensuremath{W}$ is the space of
+conjugate-linear functionals acting on \ensuremath{W}; it is denoted  by 
+\ensuremath{{\ensuremath{\overline{\ensuremath{W}}}}^{*}} and it is also the
+conjugate space of \ensuremath{{\ensuremath{W}}^{*}}. The
+dual of \ensuremath{{\ensuremath{W}}^{*}}\ is canonically 
+isomorphic to \ensuremath{W}\ under the mapping 
+ $\ensuremath{\psi} \mapsto \ensuremath{\psi}(\omega) \ensuremath{:=}
+\omega(\ensuremath{\psi})$ where $\ensuremath{\psi} \in \ensuremath{W}$ and $\omega \in \ensuremath{{\ensuremath{W}}^{*}}$. 
+The dual of \ensuremath{{\ensuremath{\overline{\ensuremath{W}}}}^{*}}\ is the conjugate space
+\ensuremath{\overline{\ensuremath{W}}}\ of \ensuremath{W}. It is the same as the conjugate dual of \ensuremath{{\ensuremath{W}}^{*}}. It
+is canonically isomorphic to \ensuremath{W}\ under the  mapping 
+$\ensuremath{\psi} \mapsto \ensuremath{\overline{\ensuremath{\psi}}} (\omega) \ensuremath{:=} \ensuremath{\overline{\omega(\ensuremath{\psi})}}$ 
+and under the
+multiplication that takes $c \odot \ensuremath{\psi} \mapsto \ensuremath{\overline{c}}\ensuremath{\psi}$. This
+multiplication allows the appropriate conjugate-linearity to be
+expressed in the tensor products. Heuristically, the conjugate space
+corresponds to the other choice of what $i$ could mean.
+
+
+\subsection{Square-roots of tangent spaces and metrics}
+
+From a Bohmian perspective, we want to have a theory of particles
+moving on space-time. We restrict our attention to one particle. 
+The idea is to try to define a covariant vector field on
+space-time in terms of \ensuremath{\psi}. In the non-relativistic theory, one uses the first
+derivative of \ensuremath{\psi}\ to do this. But what if the mapping between wave functions
+and velocity fields were ultralocal, i.e.\ did not depend on
+derivatives, and yet it is still covariant? 
+
+Such maps do exist; we call such a map a  
+ square-root of the tangent space. As a starting point, 
+the map should be a sesquilinear-quadratic form
+taking values in the tangent space; it should be conjugate linear in the
+first slot and 
+linear in the second. Abstractly, 
+$\ensuremath{\nu} \in \ensuremath{{\ensuremath{\overline{\ensuremath{W}}}}^{*}} \otimes \ensuremath{{\ensuremath{W}}^{*}}
+\otimes \ensuremath{\mathbb{C}}\ensuremath{T \ensuremath{\mathcal{Q}}}$ which we few as a linear mapping $\ensuremath{\nu}: \ensuremath{\overline{\ensuremath{W}}} \otimes
+\ensuremath{W} \to \ensuremath{\mathbb{C}}\ensuremath{T \ensuremath{\mathcal{Q}}}$.  
+Given a $\ensuremath{\psi} \in \ensuremath{W}$, we immediately
+have that  
+$\ensuremath{\nu}(\ensuremath{\overline{\ensuremath{\psi}}}, \ensuremath{\psi}) \in \ensuremath{\mathbb{C}}\ensuremath{T \ensuremath{\mathcal{Q}}}$. 
+ We want a real velocity field and therefore demand
+that $\ensuremath{\nu}(\ensuremath{\overline{\ensuremath{\psi}}}, \ensuremath{\psi}) $ is a real tangent vector. Then the
+Bohmian trajectories are the integral curves of the velocity field. 
+ Note that the
+parametrization is irrelevant; all we need are the 
+ 1-dimensional submanifolds whose tangent
+spaces correspond to the span of $\ensuremath{\nu}(\ensuremath{\overline{\ensuremath{\psi}}}, \ensuremath{\psi})$.\footnote{As 
+we are working in space-time rather than just
+space, we know that the position in the manifold is all that should be
+relevant.}
+From this we can deduce that both \ensuremath{\nu}\ and \ensuremath{\psi}\ should be
+thought of as projective objects. We also demand that \ensuremath{\nu}\ be
+non-degenerate in the
+sense that 
+$\ensuremath{\nu}(\ensuremath{\overline{\ensuremath{\psi}}}, \ensuremath{\psi})  =
+0 $ if and only if $\ensuremath{\psi} = 0$. In summary, given $\ensuremath{\nu}$ acting on the
+ bundle and a
+section $\ensuremath{\psi}$, we  have a velocity field for the
+law of motion for the particle. 
+
+Before we call $\ensuremath{\nu}$ a square-root of the tangent space, we also
+demand that it be covariant. As part of this, we shall need a
+representation $R$ of the Lorentz group acting on the bundle. 
+To be a square root of the tangent space, \ensuremath{\nu}\ must satisfy, for
+every Lorentz
+transformation $\Lambda$ acting on the tangent space and every $\ensuremath{\psi}$,
+$\phi \in \ensuremath{W}$.
+\[
+\Lambda (\ensuremath{\nu}(\ensuremath{\psi}, \phi) ) = \ensuremath{\nu} (R(\Lambda) \ensuremath{\psi}, R(\Lambda) \phi). 
+\]
+Given a covariant $\ensuremath{\nu}$, we then have a covariant law of motion for
+the particle.
+
+
+To form a law that the wave functions must satisfy, we shall need one
+more structure, which we call $\mu$,  an appropriately linear
+mapping  $\ensuremath{{\ensuremath{\overline{\ensuremath{W}}}}^{*}} \to \ensuremath{W}$. Thinking of \ensuremath{\nu}\ as a
+mapping from $\ensuremath{W} \to \ensuremath{{\ensuremath{\overline{\ensuremath{W}}}}^{*}} \otimes \ensuremath{T \ensuremath{\mathcal{Q}}}$, we see that $\mu \circ
+\ensuremath{\nu}$ leads to a mapping $\gamma : \ensuremath{W} \to \ensuremath{W} \otimes
+\ensuremath{\mathbb{C}} \ensuremath{T \ensuremath{\mathcal{Q}}}$. Assuming that $\mu$ is invertible, which we do, we can define a,
+not necessarily positive definite, 
+sesquilinear product $\ensuremath{\langle \ensuremath{\psi}, \ensuremath{\psi} \rangle} \ensuremath{:=} \{\mu^{-1} (\ensuremath{\psi})\}
+(\ensuremath{\overline{\ensuremath{\psi}}})$. 
+Thus, we have that $\ensuremath{\nu}(\ensuremath{\overline{\ensuremath{\psi}}}, \ensuremath{\psi}) =
+\ensuremath{\langle \ensuremath{\overline{\ensuremath{\psi}}}, \gamma \ensuremath{\psi} \rangle}$. As this should be real for all \ensuremath{\psi}\, we
+have that $\gamma$ should be appropriately self-adjoint with
+respect to $\ensuremath{\langle \cdot, \cdot \rangle}$. We also demand that $\mu$ be
+covariant or, equivalently, that 
+$\ensuremath{\langle R(\Lambda) \ensuremath{\psi}, R(\Lambda) \phi \rangle} =
+\ensuremath{\langle \ensuremath{\psi}, \phi \rangle}$. 
+
+What else can we generate with these structures? With \ensuremath{\langle \cdot, \cdot \rangle}\ and
+$\gamma$, we can construct more tensor objects. For example,
+$T \ensuremath{:=} \ensuremath{\langle \ensuremath{\overline{\ensuremath{\psi}}}, \gamma^2 \ensuremath{\psi} \rangle}$ 
+is a $(2,0)$ tensor. If we wish to minimize
+new structures on space-time, then it would seem reasonable to demand
+that the symmetric part of $T$ is actually $G
+\ensuremath{\langle \ensuremath{\overline{\ensuremath{\psi}}}, \ensuremath{\psi} \rangle}$ which immediately means that
+ the symmetric part of $\gamma^2$ is 
+$G \otimes \ensuremath{\text{Id}}$. Making
+this one  choice leads to very few possibilities,
+after taking into account equivalences, of
+what the pair $(\ensuremath{\nu}, \mu)$ represent.\footnote{The 
+author does not know whether covariance of $\ensuremath{\nu}$ and $\mu$ are
+sufficient to deduce this.} Indeed, $\gamma$ is a
+representation map for a Clifford algebra as we shall now explain. 
+
+
+The refrence for this material is \cite{GW98}. 
+A Clifford algebra for the vector space $V$, endowed with the metric
+$\beta$,  is a an associative algebra with unit 1 equipped with a linear
+mapping $\alpha : V \to \ensuremath{\mathrm{Cliff}(V, \beta)}$ such that $\alpha(V)$
+generates the algebra and the anticommutator of the images is a multiple of the
+identity, i.e.\ $\{\alpha(x), \alpha(y)\} =  \alpha(x) \alpha(y) +
+ \alpha(y) \alpha(x) =\beta(x,y) 1$
+for all $x, y \in V$.\footnote{One also requires a universality
+  property which we shall not state.} It is a fact that a Clifford
+algebra is unique up to isomorphism. It is constructed from the tensor
+algebra of $V$ by essentially viewing $x \otimes y + y\otimes x$ as
+$\beta(x,y) 1$, i.e.\ mod out by the ideal generated by that
+equation. If we allow $\beta$ to be identically zero, then the
+Clifford algebra generated is the exterior algebra. For us, the vector
+space $W$ is $\ensuremath{\mathbb{C}} \ensuremath{T^{*} \ensuremath{\mathcal{Q}}}$ and the inner product $\beta$ is $G$. 
+
+A space of spinors for $(V, \beta)$ is a vector space $W$ equipped with
+a linear map $\gamma : V \to W\otimes \ensuremath{{W}^{*}}$ such that the only
+invariant subspaces of $W$ under $\gamma(V)$ is $W$ and 0 and that 
+$\{ \gamma(x), \gamma(y)\} = \beta(x,y) \ensuremath{\text{Id}}$. The map $\gamma$ then
+extends to an irreducible representation of the Clifford algebra and
+all irreducible representations arise in this way.
+ For us, $\gamma$
+is the same $\gamma$ we were discussing before once we convert the
+spinor $\gamma$ to a map of the form $W \to V^* \otimes W$. It is a
+fact that for even dimensions, there is exactly one space of spinors
+while for odd dimensions, there is two inequivalent spaces of spinors.  
+
+ We therefore have a
+complete specification of the additional structures in four dimensions
+if the Clifford algebra representation is irreducible. Furthermore,
+$\gamma^2 = G \otimes \ensuremath{\text{Id}} + \ensuremath{S}$, where $\ensuremath{S}$ is a
+particular 
+ representation, up to equivalence, of the
+Lorentz Lie algebra, \ensuremath{\mathfrak{{so}}}(g). For even dimensions, the Lie algebra
+representation decomposes into     the two, inequivalent, half-spin
+representations of $\ensuremath{\mathfrak{so}(g)}$. For odd dimensions, the Lie algebra
+representation is irreducible. Notice that the covariance plays no
+role in determining the uniqueness of these structures; covariance even seems
+to be implied from demanding that the symmetric part of $\gamma^2$ 
+is the metric.   
+
+The pair $(\ensuremath{\nu}, \mu)$, or equivalently $(\gamma, \ensuremath{\langle \cdot, \cdot \rangle})$,  is
+what we call a square-root of the metric since, when we square
+$\gamma$, the symmetric part is the metric. 
+
+
+The usual Gamma matrices also give rise to an irreducible
+representation of the Clifford algebra for $G$. By the uniqueness
+cited above, we find that a square-root of the Lorentz metric
+on four-dimensional space corresponds to an equivalent representation
+as the usual Gamma matrices. 
+
+\subsection{Formulating the Dirac equation}
+
+We shall continue to use $D$ for the covariant derivative and it shall
+be used for differentiating any object such as vector fields or
+sections of the bundle $E$. 
+
+
+We start by noting that $\ensuremath{\nu}$ and $\mu$ should be
+parallel. Equivalently, we demand that, for any section $\ensuremath{\psi}$, we have
+\begin{align}
+D \ensuremath{\nu}(\ensuremath{\overline{\ensuremath{\psi}}}, \ensuremath{\psi}) &= \ensuremath{\nu} (D \ensuremath{\overline{\ensuremath{\psi}}}, \ensuremath{\psi}) + \ensuremath{\nu}(\ensuremath{\overline{\ensuremath{\psi}}}, D \ensuremath{\psi}) \\
+D \ensuremath{\langle \ensuremath{\overline{\ensuremath{\psi}}}, \ensuremath{\psi} \rangle} &= \ensuremath{\langle D \ensuremath{\overline{\ensuremath{\psi}}}, \ensuremath{\psi} \rangle} + \ensuremath{\langle \ensuremath{\overline{\ensuremath{\psi}}}, D\ensuremath{\psi} \rangle}.
+\end{align}
+
+
+Using the irreducibility of the Clifford algebra representation, it
+can be shown that the set of possible connections is characterized by
+the class of 1-forms rather than general matrix-valued 1-forms.  
+
+
+To obtain the Dirac equation, one could try to formulate the simplest
+equation with the structures at hand. What do we have? We have a
+mapping $\gamma$ taking wave functions to elements of $\ensuremath{\mathbb{C}} \ensuremath{T \ensuremath{\mathcal{Q}}} \otimes \ensuremath{W}$. The
+covariant derivative takes wave functions to elements of $\ensuremath{\mathbb{C}} \ensuremath{T^{*} \ensuremath{\mathcal{Q}}} \otimes
+\ensuremath{W}$. Both are covariant operations. If we contract
+with these two operators, then we have an invariant operator taking
+sections of $E$ to sections of $E$. 
+This is 
+the Dirac operator which is defined to be $\ensuremath{ \slash \! \! \!} \partial \ensuremath{\psi} \ensuremath{:=}
+\gamma^{\ensuremath{j}} D_{\ensuremath{j}} \ensuremath{\psi}$. Seeking an invariant equation for
+the wave function\ using the Dirac operator, we see that the Dirac equation is
+an obvious candidate:
+\begin{equation}
+\frac{\hbar}{i} \ensuremath{ \slash \! \! \!} \partial \ensuremath{\psi} = a \ensuremath{\psi}.
+\end{equation}
+
+
+There is another way to argue for this equation.   
+As before, we want to minimize the structures placed on space-time. 
+Given a vector field, one can take its derivative. Demanding that this
+vanishes leads to a rather uninteresting vector field. If we demand,
+on the other hand, that only the divergence vanishes, then a natural
+candidate is 
+ the Dirac equation. This is the space-time version of
+equivariance. 
+The velocity field being divergence-free is the equation 
+\[
+0 = D_{\ensuremath{j}}\ensuremath{\langle \ensuremath{\overline{\ensuremath{\psi}}},  \gamma^{\ensuremath{j}} \ensuremath{\psi} \rangle} = \ensuremath{\langle D_{\ensuremath{j}}
+  \ensuremath{\overline{\ensuremath{\psi}}},  
+\gamma^{\ensuremath{j}} \ensuremath{\psi} \rangle} + \ensuremath{\langle \ensuremath{\overline{\ensuremath{\psi}}},  \ensuremath{ \slash \! \! \!} \partial
+  \ensuremath{\psi} \rangle}
+= \ensuremath{\overline{\ensuremath{\langle \ensuremath{\overline{\ensuremath{\psi}}}, \ensuremath{ \slash \! \! \!} \partial \ensuremath{\psi}  \rangle}}} 
++ \ensuremath{\langle \ensuremath{\overline{\ensuremath{\psi}}},  \ensuremath{ \slash \! \! \!} \partial
+  \ensuremath{\psi} \rangle}
+\]
+where we have used the previously mentioned 
+fact that $\ensuremath{\langle \ensuremath{\overline{\tau}}, {\gamma \phi} \rangle} =
+\ensuremath{\langle \ensuremath{\overline{\gamma \tau}}, \phi \rangle}$ for all $\tau, \phi \in \ensuremath{W}$.
+Thus, 
+we need the
+real part of $\ensuremath{\langle \ensuremath{\overline{\ensuremath{\psi}}},  \ensuremath{ \slash \! \! \!} \partial  \ensuremath{\psi} \rangle}$ to
+vanish. This 
+certainly follows if  $i b \ensuremath{\psi} = \ensuremath{ \slash \! \! \!} \partial
+\ensuremath{\psi}$ for some 
+real constant $b$ which is the Dirac equation. 
+
+A final fact is  that the Dirac operator is the square root of a
+Pauli-type Laplacian. Indeed, 
+\[
+a^2 \ensuremath{\psi} = (\frac{\hbar}{i} \ensuremath{ \slash \! \! \!} \partial) 
+(\frac{\hbar}{i} \ensuremath{ \slash \! \! \!} \partial) \ensuremath{\psi} 
+= - \hbar^2 (\gamma^2)^{{\ensuremath{j}}{\ensuremath{k}}} D^2_{{\ensuremath{j}}{\ensuremath{k}}} \ensuremath{\psi} 
+= - \hbar^2 (\ensuremath{\Delta} \ensuremath{\psi} + \ensuremath{S}(
+F) \ensuremath{\psi})
+\]
+where $
+F$ is the curvature of the connection. 
+Thus, a solution to the Dirac equation also satisfies the
+Klein-Gordon-Pauli equation.
+
+\clearpage
+\bibliographystyle{abbrv}
+\bibliography{references}
+\end{document}

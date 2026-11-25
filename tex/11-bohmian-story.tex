@@ -1,0 +1,1046 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts,amsthm,mathtools,bm}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{cor}{Corollary}
+\newtheorem{defn}{Definition}
+\newtheorem{principle}{Principle}
+\newtheorem{statement}{Statement}
+\theoremstyle{remark}
+\newtheorem{statementr}{Statement}
+
+\title{The Bohmian Story: Mechanics, Measurement, and Objections}
+\author{James Taylor}
+\date{Working draft derived from the 2003 thesis}
+\begin{document}
+\maketitle
+
+\begin{quote}\small This is a thesis-derived expository draft. It preserves the original presentation as a baseline; its historical discussion and references will need updating before publication.\end{quote}
+
+\section{A brief word about Bohmian Mechanics}
+
+
+Briefly, Bohmian mechanics is a quantum theory which considers the
+state of an $N$-particle system to be the wave function and the
+locations of the $N$ particles. The dynamics is specified by Schr\"odinger's equation\ and
+a first-order equation for the evolution of the positions. Simply put,
+the particles are guided by the wave which is why wave behavior is
+seen. The particle behavior occurs because there are
+particles. Although not an obvious fact, it is true that the 
+ entire quantum measurement formalism
+can be derived from an analysis of Bohmian mechanics \cite{DGZ92, DGZ03}.
+ One of the advantages of 
+ Bohmian mechanics is that it is easy to understand the starting
+point. There are no axioms about measurements. The whole theory is the
+dynamical system mentioned above. Although Bohmian mechanics is
+different from classical mechanics as its laws of motion are
+different, it is not a philosophically radical departure from the
+starting point of mechanics. That is to say, it is still based on a particle
+ontology.
+
+\clearpage
+
+\section{Bohmian mechanics} \label{s:sim}
+
+
+Bohmian mechanics is a theory about 
+ particles with definite locations. The fundamental objects to specify
+ are  the trajectories in physical space of these particles. 
+The object which
+ defines the trajectories is 
+the wave function, familiar from quantum
+ mechanics. More precisely,  the state of the system in Bohmian mechanics\ is given by the
+ pair $(Q, \ensuremath{\psi})$; $Q = 
+(\boldsymbol Q_1, \ldots, \boldsymbol Q_N) \in \ensuremath{\mathbb{R}^{\ensuremath{3} N}}$
+is the configuration of the $N$ particles in our system  and \ensuremath{\psi}\ is
+a  wave function\ 
+on the configuration space \ensuremath{\mathbb{R}^{\ensuremath{3} N}}, as usual in a quantum theory.
+The state of the system changes according to Bohm's equation and Schr\"odinger's equation: 
+\begin{equation} \label{e:bohm}
+\ensuremath{\frac{d{\boldsymbol{Q}_{k}}}{d{t}}} = \ensuremath{\frac{\hbar}{m_{k}}} \textrm{Im}
+\frac {\ensuremath{({\ensuremath{\psi}}, {\nabla_{k} \ensuremath{\psi}})}}{ \ensuremath{({\ensuremath{\psi}}, {\ensuremath{\psi}})}}
+(\boldsymbol{Q}_1,\ldots, \boldsymbol{Q}_N) \ensuremath{=:} v_k^{\ensuremath{\psi}} (Q) 
+ \quad  k= 1,\ldots,N
+\end{equation} 
+\begin{equation}
+\ensuremath{i \hbar \ensuremath{\frac{\partial {\ensuremath{\psi}}}{\partial {t}}} = - \sum_{k =
+1}^{N} \ensuremath{\frac{\hbar^2}{2m_{k}}} \ensuremath{\Delta}_{k} \ensuremath{\psi} + V \ensuremath{\psi}   } = H\ensuremath{\psi},
+\end{equation}
+where $V$ is the potential function and \ensuremath{({\phi}, {\ensuremath{\psi}})} is the 
+inner product on the value space, which we call the local inner
+product, in distinction from the inner product on the Hilbert space of
+wave functions. For complex-valued wave functions, the
+potential is  a real-valued
+function on configuration space and the inner product is 
+$\bar{\phi}{\ensuremath{\psi}}$, where the bar denotes complex conjugation. 
+
+
+\section{Spinor Bohmian mechanics}
+
+To incorporate spin, the story barely changes.  
+The value space for the wave function\  changes
+from \ensuremath{\mathbb{C}}\ to 
+the spinor space, \ensuremath{W}. By assumption, for one particle, \ensuremath{W}\ is a
+complex, irreducible representation space of $SU(2)$, the covering
+group of the rotation group $SO(3)$. If it is the spin $s$
+representation  then $\ensuremath{W} = \ensuremath{\ensuremath{\mathbb{C}}^{2s +1}}$. The representation of the group
+$SU(2)$ leads to a representation of the group's Lie algebra which is
+the same Lie algebra as that of $SO(3)$. 
+The operators   \ensuremath{{S_{x}}}, \ensuremath{{S_{y}}},
+\ensuremath{{S_{z}}} are the three generators of the representation that
+correspond to the 
+infinitesimal rotations about the $x$-axis, $y$-axis, and $z$-axis,
+respectively. They
+form the spin vector  $\ensuremath{\boldsymbol{S}}_s = (\ensuremath{{S_{x}}}, \ensuremath{{S_{y}}},
+\ensuremath{{S_{z}}})_s$. 
+For $N$ particles, the value space becomes $ \ensuremath{\mathbb{C}}^{2s_1 +1}
+\otimes \cdots \otimes \ensuremath{\mathbb{C}}^{2s_N +1}$,
+
+
+ where the $i^{th}$ particle has spin $s_i$.  
+The spin vector for each particle, $\ensuremath{\boldsymbol{S}}^{(i)}:= \ensuremath{\text{Id}} \otimes
+\ldots \otimes  \ensuremath{\text{Id}}
+\otimes S_{s_i} \otimes \ensuremath{\text{Id}} \otimes \ldots \otimes \ensuremath{\text{Id}} $, is the 1-particle
+spin vector for spin $s_i$ acting only on the
+ $i^{th}$ factor: 
+\begin{equation*} 
+\ensuremath{\boldsymbol{S}}^{(i)} (w_1 \otimes \cdots \otimes w_N)
+\ensuremath{:=}
+w_1 \otimes \cdots \otimes w_{i-1} \otimes \ensuremath{\boldsymbol{S}}_{s_i} (w_i) \otimes
+w_{i+1} \otimes \cdots \otimes w_{N}.
+\end{equation*}
+The potential $V$ takes the form 
+\begin{equation*}
+U(q) + \sum_{i = 1}^{N} \ensuremath{\mu}_i \ensuremath{\boldsymbol{S}}^{(i)} \cdot \boldsymbol{B}(\ensuremath{\boldsymbol{q}}_i)
+\end{equation*}
+where $U$ is a real-valued function and $\boldsymbol{B}$ is the
+magnetic field. Bohm's equation is unchanged, except we now interpret
+\ensuremath{({\psi}, {\phi})} as a spinor inner product. The elements of the spin
+spaces are spinors, a terminology we use even in the case of
+the many particle spin space. 
+
+
+\section[The quantum story]{The
+emergence of the 
+quantum formalism}
+
+In this section, we shall give a rough explanation
+for how the quantum formalism emerges
+from Bohmian mechanics. The full explanation may be found in
+\cite{DGZ92, DGZ03}.
+The collapse of the wave function\ is the simplest part
+of the story. The hardest part, and the one which we shall not say
+very much about, is the emergence of the correct empirical statistics
+in measurements. Somewhere in between in difficulty is the
+understanding of why self-adjoint operators are related to
+measurements. The discussion in this section is only for spinless
+particles. 
+
+We start with the notion of the conditional wave function. The wave function\ in Bohmian
+mechanics is the wave function\ for the entire universe. What about wave functions for a
+subsystem? A subsystem is some collection of particles. We shall use
+$X$ for the system's actual configuration and use $x$ as a variable on
+the configuration space of those particles. The particles not involved in
+the subsystem will be called the environment and we shall use $Y$ for
+its actual configuration and $y$ as the variable. The wave function\ of the
+universe, $\Psi$, may then be written in terms of those two variables: 
+$\Psi(x,y)$. The Bohmian velocity for the universal configuration is
+$v^{\Psi} (X,Y)$. To obtain a wave function\ for the subsystem, we define the
+conditional wave function\ $\ensuremath{\psi}(x) \ensuremath{:=} \Psi(x,Y)$.\footnote{For particles with
+  spin, R. Tumulka has recently pointed out that density matrices
+  replace the conditional wave function.} Immediately, one sees that
+the Bohmian velocity of the conditional wave function\ at $X$ agrees with the
+actual Bohmian velocity. The conditional wave function's evolution is governed
+by the evolution of $\Psi$ as well as the evolution of the environment
+$Y$. In certain situations, the conditional wave function\ will evolve according
+to a Schr\"odinger\ equation defined on the subsystem; we then say that the
+conditional wave function\ is an
+effective wave function. In other situations, the
+conditional wave function\ will not evolve according to Schr\"odinger's equation. 
+
+In a
+measurement situation, the system under consideration is assumed to
+have an effective wave function.
+ During a measurement, the
+environment's evolution is influenced by the evolution of the
+system. This generally will lead to the system's wave function\ no longer
+evolving according to a Schr\"odinger\ equation. Instead, it evolves in a
+completely different manner. This is the process of collapse. After
+the measurement is over, the conditional wave function\ often returns to
+being an effective wave function. This is how collapse occurs in Bohmian
+mechanics. In terms of the actual Bohmian evolution of the universe,
+nothing special happens when collapse occurs. Furthermore, collapse is
+not a precise statement; although the conditional wave function\ exists and
+changes as it changes, the length of collapse is presumably the
+period of time in which conditional wave function\ is not
+considered to be an effective wave function. This, of course, depends on the
+level of approximation desired in the evolution of the conditional
+wave function.  
+
+In quantum mechanics, self-adjoint operators are related to
+measurements. What do these very abstract mathematical objects have to
+do with measurements? Mathematically, self-adjoint operators
+bijectively correspond to projection-valued measures (PVM); this is
+the spectral theorem of functional analysis. The measure is a measure
+on the results of the experiments. They encapsualte the relevant
+behavior of the environment. The projection implements the collapse of
+the wave function. This is true for repeatable measurements. In more general
+measurements, such as when the measurement cannot be repeated, 
+the projections are replaced
+with positive operators.   
+
+There remains the question of the probabilities. That is to
+say, we need to explain why $\ensuremath{\lvert {\ensuremath{\psi}} \rvert}^2$ gives the distribution of
+the results of measurements. 
+In short, 
+the empirical agreement between Bohmian mechanics\ and standard quantum mechanics is
+grounded in equivariance. 
+  In Bohmian mechanics,  if the 
+configuration is initially randomly distributed according to $|\ensuremath{\psi}_0|^2$,
+then the evolution is such that the configuration will 
+be distributed according to $|\ensuremath{\psi}_t|^2$ at time $t$. 
+This is
+equivariance. More precisely, the measure $\ensuremath{\rho}_0 = 
+|\ensuremath{\psi}_0|^2$ can evolve either according to the evolution of \ensuremath{\psi}\ under
+the Schr\"odinger\ evolution or as a density evolving according to the Bohmian
+flow. Equivariance is the statement that those two evolutions agree.  
+The continuity equation, a consequence of Schr\"odinger's equation, is 
+\begin{equation}
+\ensuremath{\frac{\partial {\ensuremath{\rho}}}{\partial {t}}} + \nabla \cdot (\ensuremath{\rho} v^{\ensuremath{\psi}}) = 0 
+\end{equation}
+and it guarantees equivariance.  
+
+This answer 
+is rather lacking in usefulness, even though it may seem satisfying. 
+ Bohmian mechanics is a deterministic
+dynamics. In particular, the initial
+configuration of the universe is whatever it is. A satisfactory
+statement, and a true statement,
+ would be that for a typical initial configuration of the
+universe, the universe evolves in such a way that the experimental
+results of quantum mechanics emerges. Typicality is with respect to
+$\ensuremath{\lvert {\Psi_0} \rvert}^2$. This is what is explained in \cite{DGZ92} and I
+cannot find a short way of explaining it appropriately. 
+
+
+\section{Particular experiments}
+
+
+Any theory, no matter how beautiful its mathematics or sound its
+explanations in abstract terms, must give a convincing explanation of
+important experiments. We collect here some of the most prominent
+experiments in quantum mechanics and explain the picture as presented
+by Bohmian mechanics. We emphasize that this is technically unnecessary
+as the experimental information is encoded in \ensuremath{|\ensuremath{\psi}|^2}. Thus the
+quantum analysis of the system is sufficient even from a Bohmian
+perspective. Indeed, the point of the
+quantum formalism, as seen from the Bohmian perspective, is as a
+thermodynamical-type formalism which allows one to predict the outcome of
+experiments without having to do a detailed analysis of the, rather
+complicated, Bohmian motions. Nevertheless, it is important to
+appreciate what the measurements are or, more appropriately, are not 
+measuring. 
+
+All of the experiments below
+are described in very rough terms; our intention is to only give a
+rough story of the situation and not a detailed analysis beyond the
+need for an informative and plausible argument. 
+
+\subsection{A measurement of ``momentum''}
+
+Let us consider a free particle. The experiment is the following. We
+start with a wave function\ essentially supported around a position
+$\boldsymbol{q}_0$; this 
+can be created by
+a nondestructive measurement of position. We then let
+the system evolve and measure the position at some later time
+$t$. A wave packet, with wabe vector $\boldsymbol k$, will evolve
+so that its center is approximately $\boldsymbol{q}_0 +
+\frac{\ensuremath{\hbar}}{m}\boldsymbol k 
+t$, i.e.\ if $\ensuremath{\psi}_0 \approx A(\boldsymbol{q}) e^{{i}
+  \boldsymbol k \cdot \boldsymbol{q}}  $ 
+with $A(\boldsymbol{q})$ slowly varying for most of its support and
+the support 
+being relatively small centered around $\boldsymbol{q}_0$, 
+then it will approximately evolve to $\ensuremath{\psi}_t \approx A_t(\boldsymbol{q})
+e^{{i} \boldsymbol k \cdot \boldsymbol{q}} $ where 
+$A_t$ has a somewhat larger support with  center 
+$\boldsymbol{q}_t \ensuremath{:=} (\boldsymbol{q}_0
++\frac{\hbar}{m}\boldsymbol k t)$. If we do a position measurement at time
+$t$, we
+shall find the particle in the packet i.e.\ near $q_t$. Thus,
+ it might seem natural to regard as the particle's momemtum 
+ $m \frac{\boldsymbol{q}_t -
+   \boldsymbol{q}_0}{t} = \hbar \boldsymbol{k} $. For
+a general wave function\ we then consider a superposition of such  initial wave
+packets. Given enough time, they will separate into different wave
+packets whose centers are quite distant. The particle will be
+distributed according to the norm squared of the coefficients in the
+original superposition. That is to say, we shall see the distribution
+of the Fourier transform when we do repeated measurements. Notice that
+all we needed to do in order to measure momentum in this sense 
+is to be able to
+measure the approximate position of the particle.
+
+
+Is this a measurement of the initial momentum of the actual Bohmian
+particle? Absolutely not. There is no reason to believe that the
+particle which ends up in the wave packet for momentum $\hbar \boldsymbol k$
+actually has that as an initial momentum. Additionally, we do not
+have conservation of the quantity $m \ensuremath{\boldsymbol{v}}$.  
+
+
+\subsection{Scattering experiments} 
+
+The above momentum measurements lead to a nice explanation of  
+ scattering
+experiments. Shoot at a system of interest a particle in
+ a wave packet, one with a
+prescribed momentum $\hbar \boldsymbol{k}_0$. It will interact
+with the system and then separate from the system and again proceed
+ freely. By setting up detectors, one can find the position of the
+ particle and use the momentum measurement idea to deduce
+ $\hbar \boldsymbol{k}_t$. By repeating this, one can find the distribution
+ of the Fourier transform of the resultant wave function\ after interacting with
+ the system.
+
+What does this tell us about the scatterer and what does it do to the
+scatterer? To answer this, we should write down the Hamiltonian of the
+combined system. We have the Hamiltonian of the target, $H_o$, and of
+the projectile, $H_p$. There also needs to be an interaction term
+$H_{int}$ which should be localized so that it is significant 
+only when the projectile is
+near the target. The projectile's
+Hamiltonian shall be assumed to be free. We wish to determine what
+$V_o$ is. Let us assume that $H_o$ has eigenstates and that $\psi_0$
+is a product of an eigenstate of $H_o$ with a wave packet of momentum
+$\hbar \ensuremath{\boldsymbol{k}}$ directed towards the interaction region. That is to say, assume
+ $\psi_0 = \lvert E_M \rangle \otimes \lvert \phi_{\ensuremath{\boldsymbol{k}}} \rangle$
+ where $H_o \lvert E_M \rangle = E_M
+\lvert E_M \rangle$. Let $H$ be the Hamiltonian of the system, i.e.\ 
+$ H\ensuremath{:=} H_o +H_p +H_{int}$.
+
+
+We then have that $H
+\psi_0 \approx E_M \psi_0
+ -\frac{\ensuremath{\hbar}^2 \ensuremath{\boldsymbol{k}} \cdot \ensuremath{\boldsymbol{k}}}{2m} \psi_0$ where the approximation is coming from
+ assuming that the wave packet is essentially a plane wave on its
+ support and that the initial wave function\ is such that $H_{int}$ is
+ irrelevant.  
+The evolution is such that the
+ packet travels into the target, interacts with it, and then leaves the
+ interaction region. 
+ Let $U_t$ be the unitary evolution operator; thus  $H U_t \psi_0 = U_t
+ H \psi_0$. When the wave function\ is supported away from the interaction
+ region, then $H \approx H_o + H_p$. Thus, if $\ensuremath{\psi}_t$ is such that
+ this is a good approximation, then $(H_o +H_p) U_t \psi_0 = U_t
+ (H_o +H_p) \psi_0$ and we see that 
+ $\psi_t$ is  an approximate
+ eigenstate of the system with the same eigenvalue. Thus, $H \psi_t \approx
+ (E_M -\frac{\ensuremath{\hbar}^2 \ensuremath{\boldsymbol{k}} \cdot \ensuremath{\boldsymbol{k}}}{2m} )\psi_t$. After the
+ interaction with the object, the state can be represented
+ approximately as $\psi_t \approx \sum_{n, \ensuremath{\boldsymbol{l}}} C_{n, \ensuremath{\boldsymbol{l}}} 
+\lvert E_n \rangle \otimes
+ \lvert \phi_{\ensuremath{\boldsymbol{l}}, t} \rangle$ where $\phi_{\ensuremath{\boldsymbol{l}}}$ is a wave
+ packet  has
+ momentum $\ensuremath{\hbar} \ensuremath{\boldsymbol{l}}$, evolves under the free evolution, and
+ originates at the target's location.
+ Applying $H$ to this state, we find $H \psi_t
+ \approx \sum_{n, \ensuremath{\boldsymbol{l}}} (E_n - \frac{\ensuremath{\boldsymbol{l}} \cdot \ensuremath{\boldsymbol{l}}}{2}) C_{n, \ensuremath{\boldsymbol{l}}} \lvert E_n \rangle \otimes
+ \lvert \phi_{\ensuremath{\boldsymbol{l}}, t} \rangle$. Since the terms in the sum are
+ approximately orthogonal (approximately 
+disjoint supports in configuration space
+ because of the wave packets), we find that $E_M -\frac{\ensuremath{\hbar}^2\ensuremath{\boldsymbol{k}} \cdot \ensuremath{\boldsymbol{k}}}{2m} = E_n - \frac{\ensuremath{\hbar}^2\ensuremath{\boldsymbol{l}} \cdot \ensuremath{\boldsymbol{l}}}{2m}$ for every term in the sum such that $C_{n, \ensuremath{\boldsymbol{l}}} \neq 0$. That is to say, the eigenvalue differences in the initial
+ and final state of the target are equal to the
+ differences in the energy of the projectile, 
+as provided by a momentum measurement.
+  By using the
+ superposition principle, one sees that this measurement procedure
+ will only yield the eigenvalue differences; the differences are the only
+ physically relevant information since the ground state energy
+ corresponds to an irrelevant choice of a constant in the potential. 
+
+This explains the
+ discrete values obtained when we measure energy for systems with bound
+ states. In particular, thinking of photons as particles, if we have
+ various atoms and have photons interacting with them, then 
+ the energy differences in the photons lie in a prescribed set of values
+ which depends on the particular type of atom that they are interacting
+ with.
+
+
+As a final note about scattering experiments, observe that in Bohmian
+mechanics we may also analyze time-of-arrival experiments. Such
+experiments do not quite fit the quantum formalism, but physicists, of
+course, do
+have methods for obtaining the correct predictions.
+An analysis of such
+experiments may be found in \cite{DGTeZ00}.
+
+\subsection{The double-slit experiment}
+
+
+The double slit experiment is one of the most famous experiments in
+all of quantum mechanics. It is often taken to be the example of all
+the quantum mysteries. Bohmian mechanics accounts for the phenomena in a
+trivial manner.
+
+The setup is that of particles being directed towards a system with
+two slits and a position detector, e.g.\ a screen,  
+placed a distance away from the
+slits. The system is arranged so that the wave function\ is approximately a plane
+wave when it hits the two slits. After it passes through the slits,
+there will be interference from the two emerging waves. The interference
+pattern can be seen on the screen, built up out of many dots. 
+If the particles are sent one at a
+time, this pattern is built up over time. This is often considered to be
+rather mysterious. Bohmian mechanics explains
+that the dots on the screen occur because there are particles hitting
+the screen; the pattern develops as a result of  the
+particles being guided by a wave. 
+
+If one of the slits is closed, then the interference pattern
+disappears. This follows since there is now only one wave and thus
+there is no interference, ignoring diffraction. The particle, being
+guided by the wave, will also not reflect any interference. 
+
+There is a
+final modification of this experiment and this is supposed to be the
+most troubling aspect of the experiment. 
+Place a detector in such a way that the slit
+which the particle goes through is identified, but arrange it so that,
+classically at least, one would expect no disruption in the motion of
+the particle. It happens that there is a disruption in the
+motion. The reason is that the wave function\ is not  a wave in physical space,
+but rather it is a wave in configuration space; detection changes the
+relevant configuration space. 
+In this experiment, as in all experiments, we are
+using the effective wave function\ of the system. This is the actual wave function\ of the
+entire universe with the irrelevant degrees of freedom conditioned
+on. Furthermore, we are assuming that this conditioned wave function\ is
+evolving according to Schr\"odinger's equation for the system. When we detect
+the position of the particle,  more degrees of freedom become
+relevant; in particular, the positions of the particles in the
+detector. This separates the two parts of the projectile's wave function. That
+is, the conditional wave function\ ceases to be an effective wave function. We can no
+longer use the Schr\"odinger\ evolution of the system to evolve the original wave function. But,
+once we take into account that the two parts of the wave function\ have
+separated and that only one portion is relevant, the one with the
+actual particle as reflected in the environment, 
+then we can return to evolving that portion according to Schr\"odinger's
+equation for the system. The conditional wave function\ automatically takes into
+account the separation and collapse; all that one needs to check is
+that the conditional wave function\ is effective. 
+
+
+\subsection{Schr\"odinger's cat}
+
+Picking up from the end of the double slit experiment discussion, we
+can ask about Schr\"odinger's cat. The experiment is  to hook up a
+quantum system to the fate of a cat. That is, do some measurement of
+some quantum mechanical quantity, such as a spin measurement, and
+decide the fate of a cat based on the outcome of that experiment. The
+dilemma comes from the axioms of quantum mechanics. When is the cat's
+fate decided? Does the collapse of the system occur only when someone
+with a PhD comes along \cite{Bell87}? Or can a cat collapse itself because
+it is alive or because it is a big system? 
+
+
+Bohmian mechanics resolves it by stating that the cat has a definite
+state because there are actual particles with definite positions. But
+predicated upon this is that the state is recognizable. This really
+means that the wave function's support decomposes into two, essentially disjoint,
+supports. This is where size matters. Indeed, imagine a
+cat which is alive versus one which is dead. Just by breathing, having
+the blood flowing, wagging the tail, etc.,  many particles are in a different
+position than they would be if the cat was dead. Let us say that the
+average separation of each particle in the live cat versus the dead cat is
+about 1 cm. Making the assumption that there about $10^{23}$ particles
+in the cat, we find that the separation distance in configuration space
+is roughly $\sqrt{10^{23}}$ cm; this is a rather large distance. 
+One would therefore expect that the configurations corresponding to the
+live or dead cat remain separated.
+ That is, we have an effective collapse. 
+
+The cat is illustrative of a different side of collapse. For a
+microscopic system, it is the entanglement of the environment which
+causes the collapse. But if one enlarges the system to include the
+relevant environmental degrees of freedom, then the collapse does not
+happen. Instead, one has a very large separation between the different
+possibilties. It is the location of the particle which then determines
+the relevant packet. But it is only an approximation to discard the
+other parts of the wave function. For the conditional wave function, there is no
+approximation except for when to consider it an effective wave function. For
+macroscopic systems, the system itself evolves in such a way that
+portions of the wave function\
+will have negligible influence on the configuration's evolution.
+
+
+\subsection{Position measurements}
+
+We now describe a measurement of the position operator which does not
+accurately measure the position of the particle. By a measurement of
+the operator, we mean an experiment whose statistical information is
+encapsulated in the associated PVM. In the case of position, given a
+wave function\ \ensuremath{\psi}, a measurement of position is one in which the result $R$ is
+distributed according to $\ensuremath{\lvert {\ensuremath{\psi}} \rvert}^2$ as the measurement is repeated
+on identically prepared systems. 
+
+
+The measurement described in this section will satisfy that
+ criterion, but whether physicists 
+ would accept the measurement or not as a measurement of
+position is not clear to this author. But, from a Bohmian perspective,
+ it is definitely not a measurement of position. Bohmian mechanics
+provides a way of actually determining whether the experiment did
+measure what it was supposed to have measured. 
+
+Before discussing the measurement, we need to mention some important
+facts about Bohmian mechanics. It is a first-order theory. This
+implies that trajectories do not cross. We have already mentioned that
+it is equivariant. In one dimension, this means that if $q_0$ is the
+initial starting point, then $q_t$ is, more or less, uniquely defined by 
+\[
+\int_{-\infty}^{q_0} \ensuremath{\lvert {\ensuremath{\psi}_0} \rvert}^2 (x) dx = 
+\int_{-\infty}^{q_t} \ensuremath{\lvert {\ensuremath{\psi}_t} \rvert}^2 (x) dx  .
+\] 
+As a particular application,  if
+$\ensuremath{\lvert {\ensuremath{\psi}_t} \rvert}^2$ is periodic in time, then the Bohmian velocities are
+periodic in time with the same period. We emphasize that this is
+special to one dimension.
+
+
+Our example is in one dimension with the harmonic oscillator potential $V(x) =
+x^2$, ignoring constants. The evolution of any wave function\ 
+is fully periodic in time with 
+period $4 \pi$ and periodic up to a sign in $2\pi$ units of time. 
+In $\pi$ units of time, the wave function\ $\psi$ will be $i \psi(-x)$. Let $x_m$ be
+the median of the probability distribution $\ensuremath{\lvert {\psi} \rvert}^2$.  If a particle
+starts to the left of the median, then it remains to the left of the median. 
+Thus, if it begins to the left of $x_m$, 
+then at time $t = \pi$, it is to the left of
+the median at that time which is $-x_m$. 
+
+If we look at the probability
+distribution, we will see that it has been reflected across the
+origin. The position operator at $t = \pi$, $\hat{Q}_{\pi}$, is
+therefore the same as minus the position operator at $t=0$, 
+$- \hat{Q}_{0}$. 
+This means that we can measure the initial position operator by
+measuring the position operator at time $t=\pi$ and then taking
+minus that result as the result for measuring the initial position 
+operator. If we assume that the measurement of the operator at time
+$t=\pi$ accurately measures the position of the particle at that time,
+then the above measurement for $\hat{Q}_0$ disagrees with the actual
+initial position except if the particle initially started at the
+median. 
+
+
+We thus have a ``measurement'' of
+position which disagrees with the Bohmian position.\footnote{Another 
+example, in a certain sense simpler, is the two-dimensional
+oscillator. For that example, the wave function\ evolution is still periodic in
+time, but the different trajectories do not have a common period. See
+\cite{DGZ03} for details.}
+
+
+\subsection{Measurements of ``spin''}
+
+Measurements of spin are the canonical measurements to discuss in
+foundational matters. The basic experiment involves the Stern-Gerlach
+device. Essentially, a  neutral spin-$\frac{1}{2}$ particle is shot into a
+region with an inhomogeneous magnetic field. This magnetic field
+interacts with the spin of the particle and forces the particle to
+move up or down depending on whether the spin is up or down in the
+appropriate direction. This is a repeatable
+experiment. And, as is well known, a particle that has been measured spin up in
+the $x$ direction and then spin up in the $z$ direction and is then
+measured in the spin $x$ direction, will have spin up only 50\% of
+the time. 
+
+Bohmian mechanics adds just a little to the picture. The Stern-Gerlach
+device splits the wave function\ into two pieces.  The particle travels in the
+support of just one piece. If a measurement of the position of this
+particle is made, then the conditional wave function\ changes; the ``empty''
+packet is discarded. 
+But if the system is kept
+isolated, then the conditional wave function\ remains effective. In particular,
+one might be able to arrange it so that the two pieces recombine. 
+This is why
+collapse can be a tricky concept and best discussed in the context of
+Bohmian mechanics, a theory in which collapse 
+can be analyzed. 
+
+The most interesting aspect of the Bohmian story of spin measurements
+is the following, as suggested in \cite{A92}. Prepare a system  with
+sufficient symmetry and the particle will go up or down based on
+whether it is above or below the line of symmetry. This is due to
+the fact that Bohmian mechanics is a first-order theory.
+One can setup the
+Stern-Gerlach device so that going up registers as the particle being
+spin up in the $z$ direction. One can also arrange the magnets, e.g.\
+reverse the polarities, so that going up
+represents being in the spin down state of the $z$ direction. Thus,
+depending on the setup of the magnets, the very same Bohmian initial
+conditions for the system
+will give different results for the two experiments. This 
+implies that the spin observable 
+is not an intrinsic property of the system; rather, the spin
+observable intimately depends on
+the details of the experiment being done. That is essentially why the
+theorems proving Bohmian mechanics impossible do not work. The
+theorems assume  a
+naive realist view towards the operators. But the operators are just
+compact descriptions of the probability measure for the outcomes of
+experiments. There does not have to be an underlying quantity common
+to experiments measuring the same ``observable''.
+
+
+\section{Global existence and uniqueness}
+
+There are global existence results for complex-valued wave functions where the
+configuration space is an open subset of \ensuremath{\mathbb{R}^{n}}.  
+Although the
+dynamics is undefined at the nodes, 
+ it has been shown that typically the particle
+evolution does not reach the nodes.  Indeed, it was shown 
+in \cite{BDGZ95} that 
+there is  
+ global existence in time for typical 
+ initial conditions where typicality is with respect 
+to the measure $|\ensuremath{\psi}|^2$. This includes showing that the particles do
+not reach, in finite time,  the nodes, the singularities of the
+potential, or
+ spatial
+infinity.  
+
+The proof is rooted in equivariance although equivariance only holds
+once the existence results are established. Nevertheless, 
+the basic idea is that the density vanishes at the places where the
+particle dynamics ceases to exist. Since particles flow with the
+density, this suggests that only a set of measure zero will reach the nodes,
+singularities or infinity. The proof requires a series of estimates
+involving the flux around these points. That typicality is all that
+can be expected is demonstrated with a variety of examples.
+These results do need to be extended to a more general setting, but
+the expectation is that this is just a straightforward extension of
+the arguments. 
+
+\section{The historical story, hidden variables, and nonlocality}
+
+Here is a rough sketch of the history. As I am not a qualified
+historian, nor did I do any personal research into the story, please
+take it only as my personal viewpoint. 
+
+Bohmian mechanics has its roots at the very start of quantum
+theory. Indeed, the folklore is that Einstein originally envisioned
+the electromagnetic wave as guiding the particulate photons. Although
+this came to nothing, it is not that distant from the Bohmian
+viewpoint.  Bohmian mechanics was presented by Louis
+de Broglie to the distinguished physicists of the Solovay
+Congress. The lore has it that de Broglie's model was a bit overly
+complicated and that he did not answer a question from Pauli in a
+satisfactory manner. Thus, they dismissed the
+theory. Also around this time, Madelung came up with a hydrodynamic
+picture which chemists enjoy citing. It was also pretty close to Bohmian
+mechanics. Nevertheless, the idea did not take hold. 
+
+Instead, the quantum orthodoxy decided that such attempts were
+impossible. They called such models hidden variable models. The idea
+is that the state of the system is the wave function, and that  any
+attempt to 
+add additional variables, i.e.\ the hidden variables, in 
+order to deduce the
+measurement axioms  is doomed to failure. The first ``proofs'' were
+given by von Neumann in the early 1930's. As usual, the mathematics
+was fine, but the assumptions of what a hidden variable
+theory had to satisfy were too restrictive. 
+
+In the early 1950's, Bohm wrote a book on quantum theory, a book which
+is still cited today as a good quantum book. In his book, he presented
+a ``no hidden variables'' argument. Rumor has it that 
+Bohm said that Einstein had convinced Bohm that
+Bohm's argument did not work. His faith shaken in the standard dogma, 
+Bohm came up with a counterexample to the ``no hidden variables''
+theorem of von Neumann which we now call Bohmian mechanics. 
+ Excitedly, he published his work. The physics community 
+responded  negatively, but not convincingly. 
+
+
+One mistake that Bohm made was this emphasis on the quantum
+potential. This was an attempt to make the theory appeal to classical
+intuitions. But as Bohmian mechanics is not at all a classical theory,
+this made the theory rather complicated and it was deemed to be ad
+hoc. Nevertheless, the physics community now had a counterexample to
+the ``no hidden variables'' theorems. Instead 
+of resolving the contradictions,  the physicists not only ignored
+it, but continued to teach students that the type of theory that Bohm
+had formulated was necessarily incompatible with quantum predictions.
+
+
+Indeed, it seems that even Bohm abandoned his theory for a long while. It lay
+dormant until J. S. Bell came across Bohm's theory. This was a
+revelation to Bell, resulting in one of the most shocking 
+theoretical and experimental results of the latter half of the \ensuremath{{20}^{th}}\
+century. When Bell saw Bohm's theory, he realized two things. One was
+the simple fact that it worked. Rather than focussing on the
+              quantum potential,  he focussed on the density's being
+equivariant. This allowed him to easily formulate the theory for
+spin. 
+But, more importantly, he realized that the theory was
+nonlocal. This is obvious as the wave function is defined on the
+configuration space, not on physical space. In fact, when evaluating 
+the Bohmian velocity of a particle, one must, in general,
+ take into account
+ the positions of all the particles which seems inherently nonlocal. 
+Bell 
+asked whether one could remove the nonlocality. He also asked what
+went wrong with the hidden variables arguments. 
+
+The result of these considerations was Bell's famous inequalities. They
+pertain to Bohm's version of the EPR experiment
+ spins are used rather than position and momentum. 
+The essential idea is that particles can be setup in such a way that
+the measurement on one particle tells us the value of a relevant
+observable for the other particle; the correlation is verifiable. 
+The particles are to be widely
+separated so that no local influences can intervene. By measuring
+an incompatible observable on the second particle, one has results for
+two incompatible observables. With only local influences propagating,
+one would conclude that the values must already be predetermined. 
+Bell's inequalities then showed that it is impossible for such values
+to be predetermined assuming the quantum mechanical predictions. 
+ The conclusion is not that hidden variables are
+impossible. Rather, quantum mechanics is, fundamentally, nonlocal. To be sure,
+the nonlocality seems benign enough to avoid signalling paradoxes, but
+it is still true that the fundamental theory seems to be nonlocal. One
+of the advantages of Bohmian mechanics is that it forces one to deal
+with nonlocality in an honest way. 
+
+Sadly, Bell's work was not a clarion call to embrace Bohmian
+mechanics. Although Bell seems to have taken Bohmian mechanics
+as the sensible version of quantum theory, he was invariably
+misunderstood by the physics community. They would cite his work as
+proof that hidden variables could not explain the results of
+quantum measurements. His work actually shows that no local theory 
+can explain it. But the point of particle motion is neither to
+have locality nor to eliminate probabilities. Rather the point of
+Bohmian mechanics is that it avoids the mysticism of quantum
+mechanics.  For example, instead of postulating collapse,
+
+
+one derives 
+ collapse of the wave function\ from the theory. 
+
+
+\section{Objections to Bohmian mechanics}
+
+It seems that the objections to Bohmian mechanics come in four
+generic varieties. The first is a misunderstanding of the facts of the
+situation. To put it straight, Bohmian mechanics is a consistent
+theory whose predictions agree with those of quantum mechanics. There
+can be no disagreement. Thus, any evidence in support of orthodox
+quantum theory is evidence for support of Bohmian mechanics.
+
+This naturally leads to ``Who cares?'' There is not much to
+say about this. We have already explained the clarity that Bohmian
+mechanics gives to the measurement problem. That itself should be
+sufficient. 
+
+I would add that standard quantum mechanics appears as pure magic while 
+Bohmian mechanics is the mechanism behind the show. The relevance of
+this statement is in the teaching of quantum mechanics. The standard
+approach mystifies students beyond the common mystification associated
+with abstract mathematics. Fundamentally, many thoughtful 
+students are not comfortable
+with the measurement axioms. Unlike other areas of physics in which
+explanations are offered,  quantum mechanics lends no explanations to
+collapse or the special role of measurement. Adopting a Bohmian point
+of view leads to a clear picture and, at the very least, one can cite
+that the axioms mathematically follow from the evolution equations.  
+
+
+There are many
+objections to standard quantum theory that one can raise, but the
+problem is that there is no actual standard quantum theory when
+measurements are discussed. And it is exactly at the point of
+measurements, at the contact with reality, that Bohmian mechanics is
+relevant. It explains, in an obvious manner, what this mathematical
+theory has to do with reality. More fundamentally, one should start,
+when developing a theory, with an idea of what the primitive variables
+are for the formulation of this theory. 
+Primitive variables should not be a deduction of a theory,
+although experiments may suggest suitable variables to choose. 
+ Presumably the primitive variables should not be
+results of measurements which are rather complicated objects centered
+upon human existence. 
+One does not want a human-centered theory; rather, one  wants
+a clear theory in which certain behavior of the variables would give a
+reasonable explanation of why the world behaves as it does. 
+
+Bohmian mechanics postulates the existence of particles with
+definite positions which evolve according to a prescribed dynamics. It happens
+that this dynamics involves a wave function evolving according to
+Schr\"odinger's equation. As we shall now explain, demanding a particle ontology almost
+immediately leads to Bohmian mechanics.
+
+
+\subsection{Where does Bohmian mechanics come from?}
+The third objection to Bohmian mechanics is that it is cooked up. We
+shall state five different derivations of Bohmian mechanics.
+
+
+\begin{enumerate}
+\item The starting place for deriving 
+Bohm's equation is the same as for deriving
+ Schr\"odinger's equation. We start with the idea that a wave is
+involved. In particular, we assume we have a generic plane wave, i.e.\
+\begin{equation} \label{bie:gp}
+ \ensuremath{\psi}(\ensuremath{\boldsymbol{q}}, t) \ensuremath{:=} e^{i(\ensuremath{\boldsymbol{k}}
+\cdot \ensuremath{\boldsymbol{q}} - \omega t)}.
+\end{equation}
+The empirical data somehow suggested that the momentum of the particle
+was given by the de Broglie relation
+\begin{equation} \label{bie:pk}
+\ensuremath{\boldsymbol{p}} = \ensuremath{\hbar} \ensuremath{\boldsymbol{k}} . 
+\end{equation}
+The energy of the particle was related to the frequency via the Planck
+formula 
+\begin{equation} \label{bie:ew}
+ E = \hbar \omega.
+\end{equation}
+We now look for an equation of motion for the particle as well as for the wave
+equation. 
+
+To obtain $\ensuremath{\boldsymbol{k}}$ from $\ensuremath{\psi}$, we take the spatial derivative
+and divide by $i$ and $\ensuremath{\psi}$. Thus, \eqref{bie:pk} and \eqref{bie:gp}
+suggests
+that 
+\[ m \ensuremath{\boldsymbol{v}} = \ensuremath{\boldsymbol{p}} = \ensuremath{\hbar} \ensuremath{\boldsymbol{k}} = \frac{\ensuremath{\hbar}}{i} \frac{\nabla \ensuremath{\psi}}{\ensuremath{\psi}}.\]
+Considering, instead of \eqref{bie:gp}, a general complex-valued wave function, 
+we find that we would end up
+with a complex velocity vector. The simplest choice is to take the real
+part of the expression above which, since we divided by $i$,
+translates into taking the imaginary part. 
+We have thus derived Bohm's equation:
+\[
+\ensuremath{\boldsymbol{v}}^{\ensuremath{\psi}} \ensuremath{:=} \frac{\ensuremath{\hbar}}{m} \textrm{Im} \frac{\nabla \ensuremath{\psi}}{\ensuremath{\psi}}.
+\]
+
+What about Schr\"odinger's equation? Well, classically, 
+the energy of a particle is 
+\[
+E = \frac{\ensuremath{\boldsymbol{p}} \cdot \ensuremath{\boldsymbol{p}}}{2m} + V \label{bie:en} .
+\]
+We look for the simplest wave equation whose plane wave solutions
+\eqref{bie:gp} are consistent with \eqref{bie:pk}, \eqref{bie:ew}, and
+\eqref{bie:en}. 
+We find that \eqref{bie:ew} implies for plane waves, that  
+\[E = -\frac{\hbar}{i\ensuremath{\psi}} 
+\ensuremath{\frac{\partial {\ensuremath{\psi}}}{\partial {t}}}.\] 
+As for the $\ensuremath{\boldsymbol{p}}$ term, we have two possibilities:
+\begin{align} 
+\ensuremath{\boldsymbol{p}}
+\cdot  \ensuremath{\boldsymbol{p}} =&  - \hbar^2
+\frac{\nabla \ensuremath{\psi}}{\ensuremath{\psi}} \cdot \frac{\nabla \ensuremath{\psi}}{\ensuremath{\psi}}  \label{bie:p2a}
+\end{align}
+or 
+\begin{align}
+\label{bie:p2b}
+ \ensuremath{\boldsymbol{p}}
+\cdot  \ensuremath{\boldsymbol{p}} =&
+-\hbar^2 \frac{\ensuremath{\Delta} \ensuremath{\psi}}{\ensuremath{\psi}}.
+\end{align}
+Choosing \eqref{bie:p2b}
+ leads to  
+\[
+-\frac{\hbar}{i\ensuremath{\psi}} 
+\ensuremath{\frac{\partial {\ensuremath{\psi}}}{\partial {t}}} = -\frac{\hbar^2}{2m} \frac{\ensuremath{\Delta} \ensuremath{\psi}}{\ensuremath{\psi}} +V,
+\]
+which becomes Schr\"odinger's wave equation after multiplying through by $\ensuremath{\psi}$.
+As for \eqref{bie:p2a}, this is not a linear equation. For a linear
+equation, knowing the solutions for any initial plane wave actually
+ specifies the
+evolution for any function. This is not true for nonlinear equations. 
+
+We have arrived at Bohmian mechanics. We shall discuss in the companion manuscript on geometrically formulating Bohmian theories how to arrive at the Pauli equation. 
+
+\item Briefly, if we start with Schr\"odinger's equation, then we can derive a
+continuity equation for $\ensuremath{\rho} = \ensuremath{|\ensuremath{\psi}|^2}$. By dividing the probability
+current by $\ensuremath{\rho}$, we obtain a velocity field, 
+the Bohm velocity field. Equivariance is then immediate, and with it
+the 
+empirical agreement with quantum mechanics. In terms of
+finding Bohmian laws of motion, this has been a successful and easy
+method for determining appropriate laws.
+ But as a derivation, it has a
+feeling of fitting theory to given data. Thus, it is best if we have
+other methods. But we do note that 
+ one of the guiding principles in forming quantum
+theories is to establish that there is an appropriate 
+probability current associated with the equation. This suggests that
+we should perhaps formulate the Bohmian law of motion and then find a
+wave equation based on demanding equivariance.
+
+\item Schr\"odinger's equation also implies a Hamilton-Jacobi equation. This
+is Bohm's method of derivation. It
+describes particles moving under a force consisting of the classical
+force and a new quantum force. 
+But we have to
+supplement the force with the constraint on the initial velocity field 
+ given by
+the wave function according to Bohm's equation. The strange feature
+about this is that the constraint is actually the law of motion one
+wants. 
+
+
+\item In \cite{DGZ92}, the authors give a rather convincing derivation
+of Bohm's equation based on symmetry considerations. The quantity 
+$\nabla \ensuremath{\psi}$ is a natural quantity for a rotation invariant way of
+obtaining a vector. Dividing by \ensuremath{\psi}\ comes from noting that it is only
+the ray in Hilbert space which is physically relevant. 
+The imaginary part arises from time reversal invariance. Under time
+reversal, the wave function\ is sent to its complex conjugate and velocity
+fields change sign. 
+To obtain the
+factor of $\frac{\ensuremath{\hbar}}{m}$, we must consider Galilean boosts. Under a
+boost, we have that $\ensuremath{\psi} \mapsto e^{-i\frac{m}{\ensuremath{\hbar}} \ensuremath{\boldsymbol{w}} \cdot \ensuremath{\boldsymbol{q}}} \ensuremath{\psi}$ 
+where $\ensuremath{\boldsymbol{w}}$ is the velocity of the new frame with respect to the old frame. A
+velocity $\ensuremath{\boldsymbol{v}}$ should tansform to $\ensuremath{\boldsymbol{v}} - \ensuremath{\boldsymbol{w}}$ in the new
+frame and the
+Bohm velocity will become $\ensuremath{\boldsymbol{v}}^{\ensuremath{\psi}}_{old} - \ensuremath{\boldsymbol{w}}$ if and only if the
+factor in front is $\frac{\ensuremath{\hbar}}{m}$. 
+
+\item A new derivation is in \cite{DGTuZ03a}. It seems to apply to a
+  wide variety of cases, such as the non-relativistic case, 
+quantum field theory, and the Dirac equation. In some situations, it
+must be interpreted correctly. We shall only show here that it agrees
+in the non-relativistic case. The idea is that a tangent vector is a
+first-order differential operator acting on functions and obeying the
+Leibniz rule. Thus, $v$ is defined if we know what $v(f)$ is for all
+$f$. In particular, if we have coordinates, then the tangent vector
+$v$ has coordinate components $v^j = v(x^j)$. We also note that if
+$q(t)$ is a trajectory whose tangent vector is $v$ at time $0$, then
+defining $g \ensuremath{:=} f \circ q$, we have
+$\dot{g} (0) = v(f)$. 
+
+From a quantum perspective, functions can be thought of as
+multiplication operators acting on the Hilbert space of wave functions. In
+general, an operator $A$'s time evolution, in the Heisenberg picture, is
+given by\footnote{
+This follows by shifting from the Schr\"odinger\ picture, in which $A$ does
+not evolve and the expected value of the operator at time $t$ is given
+by \ensuremath{({\ensuremath{\psi}_t}, {A \ensuremath{\psi}_t})}, to the Heisenberg picture in which only the
+operator evolves and the expected value at time $t$ is \ensuremath{({\ensuremath{\psi}_0}, {A_t
+\ensuremath{\psi}_0})}. Indeed, let $U_t = e^{-\frac{i}{\hbar}Ht}$ be the (unitary) Schr\"odinger\
+evolution operator. Then to 
+obtain the same answer in both cases, we need $A_t = U_t^{-1} A
+U_t$.
+By differentiating with respect to time, we find that 
+\[\dot{A}_t =
+\frac{i}{\hbar} H A_t + A_t (-\frac{i}{\hbar} H)= \frac{i}{\hbar}
+[H,A_t].\]
+} 
+\[ \dot{A}_t = \frac{i}{\ensuremath{\hbar}} [H, A_t].
+ \]
+Thus, transform $f$ into a multiplication operator: $(\hat{f} \ensuremath{\psi}
+)(q) \ensuremath{:=} f(q) \ensuremath{\psi}(q).$ We shall assume that $f$ is smooth and is
+compactly supported, as local information is all that we care about. Then
+the Bohmian velocity field $v$ with a given $\ensuremath{\psi}$ 
+can be defined as the differential
+operator whose action satisfies
+\[ 
+(v (f))(q) = \dot{f} (q) = \textrm{Re}
+\frac{\ensuremath{({\ensuremath{\psi}}, {\dot{\hat{f}} \ensuremath{\psi}})}}{\ensuremath{({\ensuremath{\psi}}, {\ensuremath{\psi}})}} (q) 
+=  \textrm{Re} 
+\frac{\ensuremath{({\ensuremath{\psi}}, {\frac{i}{\hbar} [H,\hat f] \ensuremath{\psi}})}}{\ensuremath{({\ensuremath{\psi}}, {\ensuremath{\psi}})}} (q).
+\]
+
+We shall now investigate this for Schr\"odinger's equation. First, note that any
+potentials in $H$ commute with $f$ and thus they contribute nothing to
+the velocity field. Let us therefore take $H$ to be $-\frac{\ensuremath{\hbar}^2}{2m}
+\ensuremath{\Delta}$. 
+The commutator is easy to compute; we find
+\[
+[\ensuremath{\Delta}, \hat{f}] \ensuremath{\psi} =  \ensuremath{\Delta} f \ensuremath{\psi} + 2 \nabla \ensuremath{\psi} \cdot \nabla f . 
+\]
+Thus, we have that 
+\[
+v(f) = v \cdot \nabla f
+\]
+where $v$ is the Bohm velocity field.
+
+
+\end{enumerate}
+
+\subsection{Relativistic extensions of Bohmian mechanics}
+The fourth objection is that it is irreconcilable with quantum field
+theory and with relativity. These claims are false as recent work has
+demonstrated. 
+
+Nonlocality is often assumed to be problematical for a hidden variable
+perspective. There are two responses to this. As stated previously, it is a
+problem for standard quantum theory as well, but due to the shiftiness
+of what is being described, the problem can be hidden for a long
+time. The second point is that there is no inherent inconsistency with
+nonlocal influences in a relativistic theory, as discussed at length
+in \cite{M94}. More to the point, there are relativistic,
+nonlocal Bohmian models \cite{BDGZ99, GTu03}.\footnote{One might
+  argue as to what Bohmian means; in this section, we take it to mean
+  a theory in which there is a clear ontology with prescribed dynamics
+  and no reference to measurements in the formulation of the theory.}
+The configuration space for $N$ particles moving in the space-time
+manifold $M$ might
+be taken to be $M^N$. Then  
+the wave function\ in a relativistic setting
+would seem to be a function on $M^N$. That
+is to say, it is a  multi-time wave function. When
+evaluating the Bohmian evolution, one must evaluate the wave function\ by using
+the 
+positions of the other particles. The problem is that we no longer
+have simultaneity to tell us what the full configuration is. 
+One model involves a foliation of space-time. That is to say,
+simultaneity surfaces are built into the structure. Although perhaps
+distasteful, if a compelling Lorentz-invariant 
+law for the foliation can be found, then this should be
+acceptable. With the foliation method, the empirical predictions are
+transparent and they are equivalent to those of quantum theory. In
+particular, the foliation is unobservable. Another idea involves no
+additional structure. It uses the light cones to accomplish what the
+simultaneity surfaces do. To have a chance at agreeing with
+experiments, it is necessary to use the forward light cones. Thus, one
+might say there are two different arrows of time involved. But 
+the probabilistic import of the model is still unclear. Existence of
+the dynamics is also rather unclear.
+
+
+Quantum field theory is perhaps the object most pointed towards when
+decrying the Bohmian point of view. Bohm took the approach of giving
+ontological status to the fields. A recent approach \cite{DGTuZ02} is to retain
+particles as the ontology with the wave function\ retaining its role as guiding
+the particles. Describing the evolution of the wave function\ is the primary
+concern of quantum field theory and it is difficult.  Understanding
+the role of particles is quite easy. The wave function\ is a function on the
+disjoint union of all of the configuration spaces for the various
+number of particles. That is, there is no fixed number of
+particles. The Bohmian motion consists of two parts. One is the usual
+part in which the particles evolve deterministically guided 
+the wave function. 
+The other part is stochastic. In a random fashion, particles
+are created or annihilated. The motion
+proposed is equivariant implying that this model
+gives the same empirical 
+predictions as standard quantum field theory. But it is
+a theory in which no discussion about measurements is necessary in
+order to make this a theory about reality. It is true that this is not
+deterministic, but that was never the issue driving Bohmian
+mechanics. The real issue was the demand for a simple,
+well-defined theory of reality.
+
+\clearpage
+\bibliographystyle{abbrv}
+\bibliography{references}
+\end{document}

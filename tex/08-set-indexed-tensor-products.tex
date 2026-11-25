@@ -1,0 +1,157 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts,amsthm,mathtools,bm}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{cor}{Corollary}
+\newtheorem{defn}{Definition}
+\newtheorem{principle}{Principle}
+\newtheorem{statement}{Statement}
+\theoremstyle{remark}
+\newtheorem{statementr}{Statement}
+
+\title{The Set-Indexed Tensor Product}
+\author{James Taylor}
+\date{Working draft derived from the 2003 thesis}
+\begin{document}
+\maketitle
+
+\section{The set-indexed tensor product} \label{s:setten} \label{a:tensor}
+
+
+Let $\ensuremath{T}$ be a finite set. For each element $\ensuremath{a} \in
+\ensuremath{T}$, we associate 
+a vector space $\ensuremath{W}_{\ensuremath{a}}$ to that element. We define the
+\ensuremath{T}-indexed Cartesian product 
+of these spaces to be 
+\begin{equation*}
+\ensuremath{\mathop{\times}_{\ensuremath{a} \in \ensuremath{T}}
+\ensuremath{W}_{\ensuremath{a}} } \ensuremath{:=} \ensuremath{\{f | f: \ensuremath{T} \to \bigcup_{\ensuremath{a}
+\in \ensuremath{W}}{\ensuremath{W}_{\ensuremath{a}} \text{ such that } f(\ensuremath{a}) \in
+\ensuremath{W}_\ensuremath{a} \} }}.\footnote{We could also say that the Cartesian
+product is the set of sections of 
+the bundle over the discrete space $T$ whose fiber at $\ensuremath{a}$ is
+$\ensuremath{W}_{\ensuremath{a}}$.  }
+\end{equation*} 
+Endowed with the usual vector space structure, this is the 
+\ensuremath{T}-indexed direct
+sum of the spaces.\footnote{
+As an example, the tangent space of \ensuremath{{}^N\ensuremath{\mathbb{R}^{\ensuremath{3}}}}\ is the \ensuremath{q}-indexed direct sum of
+the tangent 
+spaces in physical space.
+} 
+We define the \ensuremath{T}-indexed tensor product \ensuremath{\bigotimes_{\ensuremath{a} \in \ensuremath{T}} \ensuremath{W}_{\ensuremath{a}} }\ to be the set of
+multilinear
+functionals defined on \ensuremath{\mathop{\times}_{\ensuremath{a} \in \ensuremath{T}}
+\ensuremath{\ensuremath{W}^*}_{\ensuremath{a}} }, the \ensuremath{T}-indexed Cartesian product of the
+dual spaces.    
+
+If, as will be our case, the vector spaces $\ensuremath{W}_{\ensuremath{a}}$ are the
+same vector space, say \ensuremath{W}, then simplifications
+occur. Notationally, \ensuremath{{\ensuremath{W}}^{\ensuremath{T}}}\ denotes the Cartesian
+product; \ensuremath{{\ensuremath{W}}^{{\otimes}{\ensuremath{T}}}}\  denotes the tensor product. As for the definition of
+the Cartesian product, the
+union can be replaced with the vector space itself. The
+Cartesian product becomes
+\begin{equation*}
+\ensuremath{{\ensuremath{W}}^{\ensuremath{T}}} = \{f| f: \ensuremath{T} \to \ensuremath{W}\}.
+\end{equation*}
+From this point on, we will assume that we have only one vector
+space. The more general case does not substantially change any
+statements below, but it is irrelevant to the purpose of this paper. 
+
+Let us consider a different approach to \ensuremath{{\ensuremath{W}}^{{\otimes}{\ensuremath{T}}}}. We will use the
+standard equivalence class approach to tensors. We start by
+introducing some notation. For $f \in \ensuremath{{\ensuremath{W}}^{\ensuremath{T}}}$, we write
+\ensuremath{\mathop{\otimes}_{\ensuremath{a} \in \ensuremath{T}} \ensuremath{w}_{\ensuremath{a}} }, where $\ensuremath{w}_{\ensuremath{a}} \ensuremath{:=} f(\ensuremath{a})$. 
+Given a decomposition of \ensuremath{T}\ into the subsets $\ensuremath{T}_{\alpha}$, $\alpha
+\in A$, for some $A$, 
+then we
+certainly take as true 
+ \[\mathop{\otimes}_{\alpha \in A} (\mathop{\otimes}_{\ensuremath{a} \in
+\ensuremath{T}_{\alpha}} \ensuremath{w}_{\ensuremath{a}})
+= \ensuremath{\mathop{\otimes}_{\ensuremath{a} \in \ensuremath{T}} \ensuremath{w}_{\ensuremath{a}} } = f.
+\]
+A special case of the above, and one with a special abuse of notation,
+is when $A$ is a two element subset and one of the sets in the
+decomposition has only one element, say $\ensuremath{a}'$. Then we would write 
+\ensuremath{(\mathop{\otimes}_{ \substack{\ensuremath{a}
+ \in \ensuremath{T} \\
+ \ensuremath{a} \neq \ensuremath{a}'}} \ensuremath{w}_\ensuremath{a}) \otimes {{w_{\ensuremath{a}'}} }} which is equal to \ensuremath{\mathop{\otimes}_{\ensuremath{a} \in \ensuremath{T}} \ensuremath{w}_{\ensuremath{a}} }\ as well as
+$w_{\ensuremath{a}'} \otimes (\mathop{\otimes}_{\substack{\ensuremath{a} \in
+\ensuremath{T} \\ \ensuremath{a} \neq \ensuremath{a}'}} \ensuremath{w}_{\ensuremath{a}}) $.
+We can then view the 
+\ensuremath{T}-indexed tensor product as the equivalence classes of all formal
+linear combinations of the elements in the set \ensuremath{{\ensuremath{W}}^{\ensuremath{T}}}\ under the
+relations 
+\begin{align*}
+c(\ensuremath{\mathop{\otimes}_{\ensuremath{a} \in \ensuremath{T}} \ensuremath{w}_{\ensuremath{a}} }) &= \ensuremath{(\mathop{\otimes}_{ \substack{\ensuremath{a}
+ \in \ensuremath{T} \\
+ \ensuremath{a} \neq \ensuremath{a}'}} \ensuremath{w}_\ensuremath{a}) \otimes {{c\ensuremath{w}_{\ensuremath{a}'}} }} 
+\\
+\ensuremath{(\mathop{\otimes}_{ \substack{\ensuremath{a}
+ \in \ensuremath{T} \\
+ \ensuremath{a} \neq \ensuremath{a}'}} \ensuremath{w}_\ensuremath{a}) \otimes {{x_{\ensuremath{a}'}} }} + \ensuremath{(\mathop{\otimes}_{ \substack{\ensuremath{a}
+ \in \ensuremath{T} \\
+ \ensuremath{a} \neq \ensuremath{a}'}} \ensuremath{w}_\ensuremath{a}) \otimes {{y_{\ensuremath{a}'}} }} &= \ensuremath{(\mathop{\otimes}_{ \substack{\ensuremath{a}
+ \in \ensuremath{T} \\
+ \ensuremath{a} \neq \ensuremath{a}'}} \ensuremath{w}_\ensuremath{a}) \otimes {{(x
++y)_{\ensuremath{a}'}} }}.  
+\end{align*}
+These relations should hold for every $\ensuremath{a}' \in
+\ensuremath{T}$, $c \in \ensuremath{\mathbb{C}}$ and
+ $\ensuremath{w}_\ensuremath{a}$ $ \ensuremath{w}_{\ensuremath{a}'}$,  $x_{\ensuremath{a}'}$, $y_{\ensuremath{a}'} \in
+\ensuremath{W}$.    
+We should note the standard fact that
+the multilinear functionals acting on \ensuremath{{\ensuremath{W}}^{\ensuremath{T}}}\ extend to
+linear functionals acting on \ensuremath{{\ensuremath{W}}^{{\otimes}{\ensuremath{T}}}}; this is a third way of viewing \ensuremath{{\ensuremath{W}}^{{\otimes}{\ensuremath{T}}}}.
+ 
+If \ensuremath{W}\ has an inner product, then there is a natural inner
+product on \ensuremath{{\ensuremath{W}}^{{\otimes}{\ensuremath{T}}}}. Namely, for elements in \ensuremath{{\ensuremath{W}}^{\ensuremath{T}}}, we define the inner
+product to be 
+\begin{equation*}\ensuremath{({\ensuremath{\mathop{\otimes}_{\ensuremath{a} \in \ensuremath{T}} \ensuremath{w}_{\ensuremath{a}} }}, {\ensuremath{\mathop{\otimes}_{\ensuremath{a} \in
+\ensuremath{T}} {{v}_{\ensuremath{a}} }}})} \ensuremath{:=}
+\prod_{\ensuremath{a} 
+\in \ensuremath{T}} \ensuremath{({\ensuremath{w}_\ensuremath{a}}, {v_{\ensuremath{a}}})}.
+\end{equation*} 
+We then extend this definition to \ensuremath{{\ensuremath{W}}^{{\otimes}{\ensuremath{T}}}}\ by using the appropriate
+linearities.  
+
+ If we have a linear operator $C$ acting on \ensuremath{W}, then
+$C^{\ensuremath{a}}$ shall denote a linear operator acting on \ensuremath{{\ensuremath{W}}^{{\otimes}{\ensuremath{T}}}}\ such
+that, when acting 
+on product elements, it applies $C$ to the 
+  $\ensuremath{a}^{th}$
+factor while applying the identity to the other factors, i.e.\ 
+\begin{equation*}
+C^{\ensuremath{a}'} (\ensuremath{\mathop{\otimes}_{\ensuremath{a} \in \ensuremath{T}} \ensuremath{w}_{\ensuremath{a}} }) \ensuremath{:=} \ensuremath{(\mathop{\otimes}_{ \substack{\ensuremath{a}
+ \in \ensuremath{T} \\
+ \ensuremath{a} \neq \ensuremath{a}'}} \ensuremath{w}_\ensuremath{a}) \otimes {{C w_{\ensuremath{a}'}} }}
+\end{equation*} 
+
+We finish with a word about contractions. The set-indexed tensor product
+is excellent for use with contractions. Indeed, given $w \in
+\bigotimes_{a \in \alpha} E \otimes \bigotimes_{b \in \beta} E^{*}$,
+then the contraction of $w$ over the index pair $(\tilde a, \tilde b)$
+is denoted by $\ensuremath{\mathcal{C}}(\tilde a, \tilde b) w$ and is an element of
+$\bigotimes_{a \in \{\alpha \setminus \{\tilde a\} \}} 
+E \otimes \bigotimes_{b \in \{\beta \setminus \{\tilde b \}\} }
+E^{*}$. This allows one to notationally keep track of which indices
+were contracted. Using numbers as indices eliminates this
+information. Furthermore, one can also see that a type of unit
+analysis may be invoked. In other words, the expression $
+\ensuremath{\mathcal{C}}(\tilde a, \tilde b) w + \ensuremath{\mathcal{C}}(a', {b'}) w$ would seem to make
+no sense whereas 
+$\ensuremath{\mathcal{C}}(\tilde a, \tilde b) \ensuremath{\mathcal{C}}(a',  b') w + 
+\ensuremath{\mathcal{C}}(\tilde a,  b') \ensuremath{\mathcal{C}}( a', \tilde b) w$ would make sense. With
+numbers, this would be hard to indicate. As such, the set-indexed tensor
+product may be as
+helpful in formulating meaningful expressions
+ as dimensional analysis has historically been.
+
+\clearpage
+\bibliographystyle{abbrv}
+\bibliography{references}
+\end{document}

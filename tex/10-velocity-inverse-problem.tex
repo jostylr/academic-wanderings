@@ -1,0 +1,77 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts,amsthm,mathtools,bm}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{cor}{Corollary}
+\newtheorem{defn}{Definition}
+\newtheorem{principle}{Principle}
+\newtheorem{statement}{Statement}
+\theoremstyle{remark}
+\newtheorem{statementr}{Statement}
+
+\title{On Recovering a Wave Function from Bohmian Velocities}
+\author{James Taylor}
+\date{Working draft derived from the 2003 thesis}
+\begin{document}
+\maketitle
+
+\section{On bijective 
+correspondences between Bohmian velocity fields
+  and wave functions} \label{a:ubvel}
+
+The PDE for the Bohmian trajectories in Chapter \ref{c:algo}
+ simplified greatly in
+the situations in which the second derivative of $Q$ vanished.
+ Indeed, we find in that situation that we can have
+multiple initial wave functions which have the same Bohmian velocity
+fields. They must have the same phase and their amplitudes must
+satisfy $\frac{\ensuremath{\Delta} R_1}{R_1} = \frac{\ensuremath{\Delta} R_2}{R_2} +C$, where $C$ is a
+ constant. It is possible to have multiple \ensuremath{L^{2}}\ solutions of this
+ equation. These
+include all  known cases in which the system has the
+ property that the same velocity
+field corresponds to different initial wave functions. 
+
+If the second derivative of $Q$ does not vanish, then the PDE becomes
+pretty intractable. The right hand side has to be the same in order to
+produce the same quantum forces. But now we see that the requirement on
+$R$ is more intensive
+than just that equation above, which still must be satisfied. 
+We therefore could speculate
+that it can no longer happen. Although we do not see how to derive it
+from this PDE, we do know of some other arguments. Two arguments have
+been done by others; see \cite{S95, Bac03}. We shall give yet another
+argument. Although lacking in rigor, it may give an appropriate
+picture as to when and why the claim holds.
+
+
+First, for two positive functions to satisfy the same stationary state
+equation, we essentially need one of them to have codimension one with
+respect to the other. This follows from energy arguments, i.e. the
+ground state is positive and the only such wave function. If there were two,
+then they could be combined in such a way as to lower the
+energy. Actually, one first argues that they must have the same
+energy; that is to say, there can only be one energy value with
+positive solutions. This is easy; indeed, the functions must be
+orthogonal if they are eigenstates for the same energy value. But two
+positive functions cannot be orthogonal. That is essentially it. Then,
+one can demonstrate that at the same eigenvalue, one can create states
+of lesser energy. Therefore, if the potential, the one defining the stationary
+state equation, is such that it has a
+lowest energy state, then we are done.
+
+Second, typically a wave function's nodal set has codimension 2 since it
+requires the vanishing of both the real and imaginary
+parts. Therefore, for a typical evolution, one would expect the Schr\"odinger\
+evolution to instantly take a codimension 1 wave function\ into a codimension 2
+wave function. There can, of course, be exceptions, but these must be
+explained. We therefore expect that the full-time Bohmian velocity field is
+generically in bijective correspondence with the initial wave function.
+
+\clearpage
+\bibliographystyle{abbrv}
+\bibliography{references}
+\end{document}

@@ -1,0 +1,517 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts,amsthm,mathtools,bm}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{cor}{Corollary}
+\newtheorem{defn}{Definition}
+\newtheorem{principle}{Principle}
+\newtheorem{statement}{Statement}
+\theoremstyle{remark}
+\newtheorem{statementr}{Statement}
+
+\title{Volume Vectors, Determinants, Trace, and Characteristic Equations}
+\author{James Taylor}
+\date{Working draft derived from the 2003 thesis}
+\begin{document}
+\maketitle
+
+\section{Supplement to Chapter \ref{c:algo}} \label{a:app7}
+
+
+We start with some useful notations. 
+We denote the set of the first $n$ numbers of the
+natural numbers, i.e.\ $\{1, \ldots n\}$, by \ensuremath{\mathfrak{n}}.
+We use \ensuremath{\ensuremath{\mathfrak{n}}^{k}_{\neq}}\ for the set of
+$k$-tuples, each entry being distinct, with the entries being
+elements of \ensuremath{\mathfrak{n}} while  \ensuremath{{}^{k}\!\ensuremath{\mathfrak{n}}} is the set of $k$-element subsets
+of \ensuremath{\mathfrak{n}}. We shall use the notation $(I)$, where $I$ is a subset of
+a canonically ordered set (such as the natural numbers), to indicate
+we wish to form an ordered set using the canonical ordering,
+e.g. $(\{1, 5,  3\}) \ensuremath{:=} (1,3,5)$. Conversely, if we have an ordered
+set $I$, then we shall use $\{ I \}$ to indicate the set itself. Thus,
+$\{ \}$ is the inverse of $( )$. In this section, they will be maps
+between \ensuremath{\ensuremath{\mathfrak{n}}^{k}_{\neq}}\ and \ensuremath{{}^{k}\!\ensuremath{\mathfrak{n}}}. All tensor and wedge products
+are utilizing the idea of the set-based tensor product of appendix
+\ref{a:tensor}. In particular, the ordering in which things are
+written down is not relevant; only the labelling is relevant. 
+
+
+We also define an anti-symmetric symbol which is crucial for component
+formulas. The symbol $\ensuremath{\epsilon^{n}_{I}}$ is defined to be the sign of the
+permutation putting the numbers in the correct order, i.e.\ taking 
+$((\ensuremath{\mathfrak{n}}\setminus \{I\}), I) \to (\ensuremath{\mathfrak{n}})$ or 
+$((\ensuremath{\mathfrak{n}}\setminus I), (I)) \to (\ensuremath{\mathfrak{n}})$ depending on whether $I$
+is an ordered set or unordered. Just to emphasize, we will be using
+this symbol both for ordered and unordered sets.
+
+
+Let $A:V \to W$ be a map between two vector spaces of dimension
+$n$. Each vector space is endowed with a
+volume vector, say  $\nu$ for $V$ and $\omega$ for $W$. By a volume
+vector, say for $V$, we mean a non-zero  element of $\bigwedge^n V$, which is
+the 1-dimensional vector space formed from the totally
+antisymmetric subspace of the $n$-fold self-tensor product of $V$.
+By $A^{\otimes n}$, we mean the linear operator acting on $V^{\otimes
+n}$ 
+taking
+values in $W\ensuremath{^{\otimes n} }$ defined on product elements by
+\[
+A\ensuremath{^{\otimes n} } (\mathop{\otimes}_{i \in \ensuremath{\mathfrak{n}}} e_i ) = \mathop{\otimes}_{i \in \ensuremath{\mathfrak{n}}} A(e_i).
+\] 
+A key property of $A\ensuremath{^{\otimes n} }$ is that it preserves spaces invariant
+under permutations. That is to say, if $P_{\ensuremath{\sigma}}$ represents the
+action of a 
+permutation \ensuremath{\sigma}\  on
+an $n$-fold self-tensor product induced by the permutation acting on
+the indices, then $A \ensuremath{^{\otimes n} } P_{\ensuremath{\sigma}} = P_{\ensuremath{\sigma}} A \ensuremath{^{\otimes n} }$. 
+Thus, $A \ensuremath{^{\otimes n} } (\nu) \in
+\bigwedge^n V$ since  $P_{\ensuremath{\sigma}} A \ensuremath{^{\otimes n} }
+(\nu)
+= -1^{\ensuremath{\sigma}} A \ensuremath{^{\otimes n} } (\nu)$ for every permutation $\ensuremath{\sigma}$. This
+characterizes a volume vector. 
+
+We define the determinant of $A$ as the unique number satisfying
+\begin{equation} \label{7e:detdef}
+A\ensuremath{^{\otimes n} } (\nu) \ensuremath{=:} (\det A) \omega.
+\end{equation} 
+If we choose 
+bases $\{v_i\}$ and $\{w_i\}$ such that the volume vectors are the wedge
+product of the bases in the given order, i.e.\ $\nu = \bigwedge_{i \in
+\ensuremath{\mathfrak{n}}} v_i$, then the
+ determinant is the number satisfying 
+\begin{equation} \label{ae:det}
+\bigwedge_{i\in \ensuremath{\mathfrak{n}}} A( v_i) \ensuremath{=:} (\det A)  \bigwedge_{i
+\in\ensuremath{\mathfrak{n}}} 
+w_i.
+\end{equation}
+In its turn, we find the usual determinant formula 
+\[
+\det A = \sum_{\ensuremath{\sigma}: \ensuremath{\mathfrak{n}} \leftrightarrow \ensuremath{\mathfrak{n}}} -1^{\ensuremath{\sigma}}
+\prod_{i \in n} A_i^{\ensuremath{\sigma}(i)}.  
+\]
+We also note that if $V=W$, then we can choose $\nu = \omega$. This
+means that the determinant in that case is defined independently of the
+choice of $\nu$ since different choices correspond to different
+constants and these constants can be cancelled. 
+
+The trace of an operator can also be defined using volume vectors and
+tensors. But its definition requires that $A$ is map from $V$ to
+itself. Then $A^{(i)}$ is defined to be 
+the operator acting on $V\ensuremath{^{\otimes n} }$ defined
+on product elements via
+\[
+A^{(i)}  (\mathop{\otimes}_{j \in \ensuremath{\mathfrak{n}}} e_j) = \{\mathop{\otimes}_{j \in \ensuremath{\mathfrak{n}}
+\setminus {\{i\}} } e_j \} \otimes A(e_i).
+\]
+That is to say, it is the identity on each factor except the \ensuremath{{i}^{th}}\
+factor for which $A$ acts on that factor.
+The operator $\sum_{i \in \ensuremath{\mathfrak{n}}} A^{(i)}$  clearly commutes with
+permutations. Thus, one can define the trace of the operator $A$ as
+the unique number $\ensuremath{\textrm{Tr}} A$ satisfying 
+\[
+\sum_{i \in \ensuremath{\mathfrak{n}}} A^{(i)} (\nu) \ensuremath{=:} (\ensuremath{\textrm{Tr}} A) \nu.
+\] 
+In coordinates, we see that 
+\[
+\sum_{i \in \ensuremath{\mathfrak{n}}} A^{(i)} (\nu) = \sum_{i \in \ensuremath{\mathfrak{n}}} \{\bigwedge_{j
+\in j \in \ensuremath{\mathfrak{n}}
+\setminus {\{i\}}} v_j \} \wedge A(v_i).
+\]
+Since $A(v_i) = \sum_k A_i^k v_k$, we notice that in the \ensuremath{{i}^{th}} term of
+the sum, only $A_i^i v_i$ gives a non-zero contribution to the wedge
+product. Thus, we have that the trace is given, in components, by 
+\[
+\ensuremath{\textrm{Tr}} A = \sum_i A_i^i
+\]
+which is just the usual coordinate formula. Also notice that this
+definition is independent of the volume form chosen and hence any
+wedge product of a basis will yield the same result. In other words,
+the trace is canonically defined.\footnote{The reason that we need $A$ to map
+$V$ to itself, rather than some other vector space, is that the
+identity is crucial in this argument. On the other hand, if $A: V \to
+W$, then if we choose the volume vectors $\nu$ and $\omega$ as well as
+another map $B: V \to W$, then we can define 
+\[
+\ensuremath{\textrm{Tr}}_B A (\omega) = (\sum_{i \in \ensuremath{\mathfrak{n}}} \{\mathop{\otimes}_{j \in \{\ensuremath{\mathfrak{n}}
+\setminus i\} }B \} \otimes (A)_i) \nu
+\]
+Taking $A =B$, we find that the above formula gives us $n$ times the
+determinant of $A$.  One can also envision a further generalization
+involving multiple operators appearing a specified number of
+times. This begins to resemble something remarkably similar to minors.
+}
+
+We needed to choose a volume form on each space in order 
+to define the determinant. One way to do this is to specify a
+metric. Then, up to a sign, we have a canonical volume vector. This is
+formed by taking an orthonormal basis and wedging all of the elements
+in the basis together. The sign ambiguity comes in by not knowing how
+to choose which order to wedge product the vectors together. But, if
+we want a positive number, then there is no ambiguity. In fact, given
+$A$, we can redefine one of the volume vectors so that the determinant
+is positive. Thus, $\ensuremath{\lvert {\det A} \rvert}$ or just $\ensuremath{\lvert {A} \rvert}$ for short, is
+well-defined. 
+Note that if we had a map between $V$ and itself, then given
+any volume vector on $V$, we would use the same volume vector on both
+sides. This gives an unambiguous determinant which may be negative.  
+
+Extending this to manifolds should now be clear. 
+Our setup is that we have a mapping $f: M^k \to N^k$ between two
+Riemannian manifolds of the same dimension. 
+Since $D_pf : T_pM \to T_{f(p)}N$, we can ask what is the
+determinant of $Df$ as a mapping of the tangent spaces. The volume
+vectors that we choose are the Riemannian volume vectors. For $M$, let
+$\nu$ be the volume form and $\omega$ be the volume form for $N$. Then
+$\ensuremath{\lvert {\det(D_pf)} \rvert} \ensuremath{=:} \ensuremath{\lvert {D_pf} \rvert} $   satisfies
+\[
+\ensuremath{\lvert {D_pf} \rvert} \omega_{f(p)} =( D_pf )\ensuremath{^{\otimes k} } (\nu_p)
+\]
+up to a sign.
+That
+completely determines the information. In any coordinate system, the
+volume form is $\sqrt{\det G^{ij}} \bigwedge_{i \in \ensuremath{\mathfrak{n}}} v_i$.  Thus, the
+determinant in coordinates is
+\[
+\ensuremath{\lvert {D_pf} \rvert} = \ensuremath{\lvert {\frac{\sqrt{\det{G_M^{ij}}}}{\sqrt{\det{G_N^{ij}}}} 
+\sum_{\sigma : \ensuremath{\mathfrak{n}} \leftrightarrow \ensuremath{\mathfrak{n}}} -1^\sigma
+\prod_{j \in \ensuremath{\mathfrak{n}}} \ensuremath{\frac{\partial {f^{\sigma j} }}{\partial {x^j}}} } \rvert}
+\]
+We do not have to worry about orientability as we are concerned only
+with local properties of objects which should be non-zero.\footnote{If 
+we were concerned about the Maslov index and the
+determinant vanishing, we would choose an initial volume vector in a
+neighborhood about the initial point and
+parallel transport the volume vector along the curve. As we pass through
+a zero of the determinant, we would pickup a phase and appropriately
+order the volume vector to have a positive determinant.}
+
+
+\section{Derivatives of the determinant}
+
+We need to compute derivatives of the volume vector. Our setup is that
+we have a map $Q$ with differential $DQ$ acting on the tangent
+space; we shall suppress $t$ in the following discussion. 
+The only important fact is that the Riemannian 
+volume vector is parallel. The reason is that we can choose an
+orthonormal basis at a point $q \in \ensuremath{\mathcal{Q}}$ and then parallel
+transport the basis along geodesics. This gives us a basis of
+orthonormal vector fields at every point as the inner product is
+preserved by parallel transport. 
+
+
+We have that  the first covariant derivative of these
+vector fields is zero at $q$. Thus, at every point in \ensuremath{\mathcal{Q}}, the Riemannian
+volume form's first covariant derivative vanishes. This means that it
+is parallel and that the higher derivatives also vanish since these
+will be derivatives of a zero tensor.
+
+
+With that trivial fact established, we can now differentiate the
+determinant. Let $A \ensuremath{:=} DQ$. We start with 
+\[
+\ensuremath{\lvert {A} \rvert}  \omega  = A\ensuremath{^{\otimes n} } \circ \nu.
+\]
+Recall that composition essentially means that we tensor these objects
+together and then contract the indices. Since covariant derivatives
+commute  with contractions, we have that
+\[
+D[\ensuremath{\lvert {A} \rvert}]  \omega + \ensuremath{\lvert {A} \rvert}  D[\omega]
+=
+D[A\ensuremath{^{\otimes n} }] \circ \nu +  A\ensuremath{^{\otimes n} } \circ D[\nu].
+\]
+Since the volume forms are parallel, this reduces to 
+\[
+D[\ensuremath{\lvert {A} \rvert}] \omega = D[A\ensuremath{^{\otimes n} }] \circ \nu.
+\]
+Continuing in this fashion, we have
+\[
+D^m [\ensuremath{\lvert {A} \rvert}]  \omega = D^m[A\ensuremath{^{\otimes n} }] \circ \nu.
+\]
+One can then use the product rule to express $D^m[A\ensuremath{^{\otimes n} }]$ in terms
+of the factors. If one does this and then expresses it in coordinates,
+we find
+\[
+(D^{\ensuremath{\lvert {i} \rvert}} [\det(A)])_{k_1\cdots k_i} = 
+\sum_{\ensuremath{PR} \in \ensuremath{\mathcal{\ensuremath{PR}}} (i, n)} 
+ \sum_{\sigma : \ensuremath{\mathfrak{n}} \leftrightarrow \ensuremath{\mathfrak{n}}}
+-1^{\sigma}
+\prod_{j \in \ensuremath{\mathfrak{n}}} A^{\sigma_j}_{j k_{r_j(1)} \cdots k_{r_j(\ensuremath{\lvert {r_j} \rvert})}}
+\]
+where $\ensuremath{\mathcal{\ensuremath{PR}}}(i, n)$ is the set of 
+ product rule diagrams of length $i$ with height $n$, $R_{\ensuremath{PR}}$ is the set of
+nonempty rows, and   $r_j$ is the \ensuremath{{j}^{th}}\ row. The extra subscripts
+ indicate covariant differentiation slots. This is the same
+ formula as in the Euclidean case; it can also be written in terms of
+ minors, although we shall not do that here.  
+
+
+\section{The continuity equation}
+
+
+The continuity equation is 
+\[
+\ensuremath{\frac{\partial {\ensuremath{\rho}}}{\partial {t}}} + \nabla \cdot (\ensuremath{\rho}  \ensuremath{\boldsymbol{v}}) =0
+\]
+where $\ensuremath{\rho} : \ensuremath{\mathcal{Q}} \to \ensuremath{\mathbb{R}^{}}$ and \ensuremath{\boldsymbol{v}}\ is a time-dependent
+velocity field on \ensuremath{\mathcal{Q}}. We assume that $Q(x_0,t)$ describes the
+family of integral curves of the velocity field. 
+Let $\ensuremath{\rho}_0$ be given. Then we claim that the solution to the
+continuity equation, as said in Chapter \ref{c:algo}, 
+is
+\[
+\ensuremath{\rho}_t(x) = \ensuremath{\rho}_0(Q^{-1}(x, t))\ensuremath{\lvert {DQ^{-1} (x,t)} \rvert}.
+\]
+To understand this, we note that under a mapping $f$, a density $\mu$ on the
+image is mapped to a density on the domain via
+$ \tilde{\mu}(x) \ensuremath{:=} \mu(f(x))\ensuremath{\lvert {Df} \rvert}(x)$. This is the definition
+which gives $\int_A \tilde{\mu} = \int_{f(A)} \mu$. The Jacobian
+factor is what is needed for the change of variables. This is the
+picture of why it is true.
+
+Direct verification is as follows. 
+Define $h(x,t) \ensuremath{:=}
+Q^{-1}(x,t)$. Then $\ensuremath{\rho}(x,t) \ensuremath{:=} \ensuremath{\rho}_0(h(x,t)) \ensuremath{\lvert {Dh} \rvert} (x,t)$. 
+Fix $(x,t)$ and let $\omega$ be the Riemannian volume vector
+at $h(x,t)$ while $\nu$ is the volume vector at $x$. The full
+derivative of $h$ is $D [h] : T_x \ensuremath{\mathcal{Q}} \oplus \ensuremath{\mathbb{R}^{}} \to T_{h(x,t)}
+\ensuremath{\mathcal{Q}}$. As this is a direct sum of two bundles, we define $D_x [h] :
+T_x \ensuremath{\mathcal{Q}} \to T_{h(x,t)}$ by restricting $D[h]$ to the subspace
+  $T_x$. We define $\dot{h} = \ensuremath{\frac{\partial {h}}{\partial {t}}}$ in a similar fashion
+   except that, by evaluating
+at 1, we can say that $\dot{h} \in T_{(h(x,t)}$. Additionally, please note that
+$\dot{Q}(h(x,t)) \in T_x\ensuremath{\mathcal{Q}}$.  We shall also take
+the liberty of using various equivalences such as $\nabla f \cdot
+\ensuremath{\boldsymbol{v}} = D[f] (\ensuremath{\boldsymbol{v}})$ without necessarily mentioning them.
+
+
+By using the chain rule, we have  
+\[
+\ensuremath{\frac{\partial {\ensuremath{\rho}}}{\partial {t}}}   = \ensuremath{\lvert {Dh} \rvert} D_h [\ensuremath{\rho}_0] ( \dot{h}) 
++ \ensuremath{\rho}_0(h) \ensuremath{\frac{\partial {[\ensuremath{\lvert {Dh} \rvert}]}}{\partial {t}}}  
+\]
+and 
+\[ \nabla \cdot [ \ensuremath{\rho} \nabla [S] ])   = \ensuremath{\lvert {Dh} \rvert} D_h [\ensuremath{\rho}_0] \circ D_x[h] 
+\circ \ensuremath{\boldsymbol{v}}    + \ensuremath{\rho}_0(h) D_x[\ensuremath{\lvert {Dh} \rvert}] \circ \ensuremath{\boldsymbol{v}}   
++ \ensuremath{\rho}  \nabla \cdot \ensuremath{\boldsymbol{v}} . 
+\] 
+
+
+Since $h(Q(x_0,t), t) = x_0$ and $\dot{Q}(x_0,t) = \nabla S (Q)$ 
+ by definition , we can eliminate two terms
+by noting 
+
+\begin{align*}
+\dot{h} (Q, t) + D_Q[h] \circ \dot{Q}  & = 0 \\ 
+\dot{h} (Q, t) &= - D_Q[h] \circ \ensuremath{\boldsymbol{v}} (Q)\\
+\ensuremath{\lvert {Dh} \rvert} D_h [\ensuremath{\rho}_0] \circ \dot h 
+  & = - \ensuremath{\lvert {Dh} \rvert}D_h [\ensuremath{\rho}_0] \circ (  D_x[h] \circ \ensuremath{\boldsymbol{v}} ) \\ 
+\end{align*}
+
+
+Since contractions commute, we have the cancellation of the first terms. 
+
+Replacing $Q$ with $x$ and differentiating, 
+we have that 
+\[
+ D_x[\dot{h}]  
+  =  - D_x^2[h] (\ensuremath{\boldsymbol{v}})  - D_x[h] (D_x\ensuremath{\boldsymbol{v}}).
+\]
+Using the definition of determinant and following the discussion of
+the derivative of the determinant, we find that 
+\[ \ensuremath{\frac{\partial {[\ensuremath{\lvert {D_x[h]} \rvert}]}}{\partial {t}}} \omega = \sum_i \{D_x[h] \ensuremath{^{\otimes \ensuremath{\mathfrak{n}} \setminus
+  i} } \otimes D_x[\dot{h}]\} \nu. 
+\]
+Combining these two equations, we find, 
+\[ \ensuremath{\frac{\partial {[\ensuremath{\lvert {D_x[h]} \rvert}]}}{\partial {t}}} \omega = \sum_i \{D_x[h] \ensuremath{^{\otimes \ensuremath{\mathfrak{n}} \setminus
+  i} } \otimes\{ - D_x^2[h] (\ensuremath{\boldsymbol{v}})  - D_x[h] (D_x\ensuremath{\boldsymbol{v}})\}\} \nu. 
+\]
+Again by a simple computation, we also have, 
+\[ D_x[\ensuremath{\lvert { D[h]} \rvert}] (\ensuremath{\boldsymbol{v}}) \omega = \sum_i \{D_x[h] \ensuremath{^{\otimes \ensuremath{\mathfrak{n}}
+  \setminus i } } 
+\otimes  D^2_x [h] (\ensuremath{\boldsymbol{v}}) \} \nu
+\]
+which replaces part of the above equation. 
+
+To eliminate the term with the derivative of \ensuremath{\boldsymbol{v}}, one should
+recall the definition of the trace of a matrix. Additionally, we shall 
+view $D \ensuremath{\boldsymbol{v}}$
+ as a matrix as it takes in a tangent vector and
+produces a tangent vector. We therefore have  
+\[
+\begin{split}
+ \sum_i \{D_x[h] \ensuremath{^{\otimes \ensuremath{\mathfrak{n}} \setminus
+  i} } \otimes\{D_x[h] (D_x\ensuremath{\boldsymbol{v}})\}\} \nu
+& =
+ D_x [h] \ensuremath{^{\otimes n} } \sum_i  (D\ensuremath{\boldsymbol{v}})^{(i)}(\nu)\\
+&  =  D_x[h] \ensuremath{^{\otimes n} } (\ensuremath{\textrm{Tr}} (D\ensuremath{\boldsymbol{v}}) \nu) \\
+&= \nabla \cdot \ensuremath{\boldsymbol{v}} \{ D_x[h] \ensuremath{^{\otimes n} } \nu\} \\
+&=  \nabla \cdot \ensuremath{\boldsymbol{v}} \{ \ensuremath{\lvert {D [h]} \rvert}\} \omega\}  .
+\end{split}
+\]
+
+
+We therefore conclude that 
+\[ 
+\ensuremath{\frac{\partial {[\ensuremath{\lvert {D_x[h]} \rvert}]}}{\partial {t}}}  + D_x[\ensuremath{\lvert { D[h]} \rvert}](\ensuremath{\boldsymbol{v}}) +  \nabla \cdot \ensuremath{\boldsymbol{v}} \{
+ \ensuremath{\lvert {D [h]} \rvert}\} = 0
+\]
+Thus, all of the terms in the continuity equation do vanish. 
+
+
+\section{The {H}amilton-{J}acobi equation}
+
+We claim that the Hamilton-Jacobi equation's solution is the action
+integral integrated over the trajectories. More precisely, let $V$ be
+the potential, $Q$ the set of trajectories, and $S_0$ the initial
+action function.  We are assuming that $Q$ is invertible and that
+$\dot{Q} (x_0,0) = \nabla S_0 (x_0)$, and $\ddot Q (x_0,t) =
+-\nabla V (Q (x_0,t))$. 
+
+Then we claim
+that 
+\begin{equation} \label{ae:sdef}
+S(x,t) = S_0(Q^{-1}(x,t)) + \int_0^t [\frac{1}{2} g(\dot Q, \dot Q) - V
+(Q)](Q^{-1}(x, t), s) ds    
+\end{equation} 
+is the solution to the H-J equation. To establish this, first note
+that 
+\[
+S(Q(x_0,t),t) \ensuremath{=:} \tilde{S} (x_0,t) = S_0(x_0) + \int_0^t
+[\frac{1}{2} g(\dot Q, \dot Q) - V 
+(Q)](x_0, s) ds    
+\] 
+satisfies, for fixed $x_0$,    
+\begin{equation} \label{ae:lag}
+\ensuremath{\frac{d{\tilde{S}}}{d{t}}} (x_0,t) = \ensuremath{\mathcal{L}}(x_0,t) := 
+\{\frac{1}{2} g(\dot Q, \dot Q) - V(Q)\}(x_0,t)
+\end{equation}
+as a trivial application of the fundamental theorem of calculus
+establishes.
+On the other hand, 
+\begin{equation} \label{ae:eng}
+\ensuremath{\frac{d{S(Q(x_0,t),t)}}{d{t}}} = \ensuremath{\frac{\partial {S}}{\partial {t}}} (Q, t) + D_Q [S] \circ
+\dot{Q}({x_0,t})  .
+\end{equation}
+The main claim, which requires effort to prove, is that 
+\begin{equation} \label{ae:claim} 
+\nabla S (Q (x_0,t)) = \dot{Q}(x_0,t)
+\end{equation} 
+implying 
+\begin{equation}\label{ae:qdens}
+\nabla S \cdot \nabla S 
+= D_Q [S] \circ\dot{Q} d 
+= g(\dot{Q}, \dot{Q} ).  l
+\end{equation} 
+Combining \eqref{ae:qdens}, \eqref{ae:lag}, and \eqref{ae:eng}, we find
+\[
+\{\ensuremath{\frac{\partial {S}}{\partial {t}}}  + \nabla S \cdot \nabla S 
+ - (\frac{1}{2} \nabla S \cdot \nabla S) - V) \}(Q(x_0,t),t)  = 0
+\]
+which, after replacing $Q$ with $x$, is the Hamilton-Jacobi
+equation demonstrating that our claimed solution is 
+ a local solution to the
+Hamilton-Jacobi equation whenever $Q$ is locally
+invertible.\footnote{In Chapter \ref{c:algo}, algorithm A1 requires
+  the solution to an equation of the form 
+$\ensuremath{\frac{\partial {S}}{\partial {t}}} + \nabla S \cdot \boldsymbol{v} = \frac{1}{2} g(\boldsymbol{v}, \boldsymbol{v})  -
+V$. From the above discussion, one can immediately see that
+integrating the right hand side over the integral curves of $\boldsymbol{v}$
+will yield the solution.}
+
+All that remains to show is that if $S$ is defined by \eqref{ae:sdef}
+and that $Q$ is the family of classical trajectories under the
+potential $V$ whose initial velocity field is given $\nabla S$, then
+\eqref{ae:claim} holds. That is to say, the constraint is
+preserved. To prove this, we use the chain rule. 
+We start with noting that
+\[
+D_{x_0} [\tilde{S}] (x_0,t) = D_{x_0} S_0 (x_0) + \int_0^t
+\{g( D_{x_0} [\dot Q], \dot Q) - D_Q [V] \circ D_{x_0}[Q]\}(x_0, s) ds     
+\] 
+and applying the product rule
+\[
+\ensuremath{\frac{d{g(\dot Q, D_{x_0} [Q] )}}{d{t}}} = g(\ddot{Q}, D_{x_0} [Q])  + g(
+\dot Q,  D_{x_0} [\dot Q]) 
+\]
+ setting us up for an integration by parts leading to 
+\[
+\begin{split}
+D_{x_0} [\tilde{S}] (x_0,t)
+=&  D_{x_0} S_0 (x_0) + g(\dot Q, D_{x_0} [Q] )\vert_0^t   
+\\&
+-\int_0^t 
+ {g(\ddot{Q}, D_{x_0} [Q]) -D_Q[V] \circ D_{x_0} [Q]} (x_0, s) ds   
+\\ &
+=(  D_{x_0} S_0 (x_0) - g(\dot Q (x_0,0) , D_{x_0} [Q] (x_0,0) ) 
++ g(\dot Q, D_{x_0} [Q] ) (x_0,t) 
+\\& -  \int_0^t 
+ {g(\ddot{Q}, D_{x_0} [Q]) -DV \circ D_{x_0} [Q]} (x_0, s) ds.
+\end{split}
+\]
+As $D_{x_0} [Q] (x_0,0) = \ensuremath{\text{Id}}$, the initial conditions lead to the
+cancellation of the first two terms in the above equation. 
+The differential of $Q$ can be pulled out to the right in the
+integrand leading to
+\[
+( g(\ddot{Q}, ) -DV )\circ D_{x_0} [Q] (x_0, s) 
+= 0 \circ D_{x_0} [Q] (x_0, s)
+\]
+since $Q_{x_0} (t)$ is a classical trajectory with potential
+$V$. The integral's vanishing leaves us with one term.
+To finish the claim, note that, evaluating at $(x,t)$,  
+\[
+D_x [S]  = D_{Q^{-1}} [\tilde S] \circ D_x [Q^{-1}]   
+= g(\dot Q, D_{Q^{-1}} [Q] \circ D_x [Q^{-1}]  )  
+= g(\dot Q, \ensuremath{\text{Id}}) . 
+\]
+Taking $x = Q$, this establishes \eqref{ae:claim}. Thus, $S$ is a
+solution to the Hamilton-Jacobi equation under the invertibility
+assumption of $Q$. 
+
+\section{Semi-classical asymptotics and the Maslov index}
+
+The idea of semi-classical asymptotics in quantum mechanics is quite
+well known and we shall be brief. A few references are \cite{Arn89,
+  Mas80, dG98} The basic
+idea is to take $\hbar \to 0$. Setting it equal to 0 leads to the
+classical Hamilton-Jacobi equation. The continuity equation can then
+be solved using the classical trajectories. When $\hbar$ is considered
+a small
+parameter in the problem, this is expected to be a good approximation
+to the solution. An immediate problem of this method is that the
+classical trajectories are not generically invertible. Thus, the
+Hamilton-Jacobi equation does not have a global solution. Undeterred
+by this minor inconvenience, one can do some Fourier analysis and,
+ by applying the method of stationary phase, we arrive at 
+\[
+{\ensuremath{\psi}}_n (x, t)  \ensuremath{:=} \sum_{ \{y_j | Q_n(y_j, t) = x \} } \mathcal{R} [Q_n,
+ R(\cdot,0)] (y_j,  t)  
+e^{i(\mathcal{S}[Q_n, U_{n-1}, S(\cdot, 0)] (y_j, t) -
+ \frac{\pi}{2} \mu_j)}.
+\]
+In words, we are assuming that in a neighborhood of each point, the
+function $Q$ is locally invertible. We look at the inverse image and
+generate the $S$ along the trajectories using the action formula. We
+append the Jacobian correction factor and do a sum over the terms. It
+is important that the terms have the right phase which is accounted
+for by
+the Maslov index $\mu$ over the trajectory. Although it is a very
+important symplectic geometric object associated with Lagrangian
+submanifolds,  we shall view it in a very
+simple-minded way. The factor is just the number of zeroes of the
+determinant of $Q$ that the trajectory crosses. The zeroes correspond
+to caustics and these are the places where invertibility of $Q$ begins
+to fail. The reason this factor arises from our perspective is
+clear. Remove the absolute value signs around the determinant and the
+square root will then pick up factors of $i$ (or $-i$)  as a
+trajectory goes through a zero. Noticing the multiplicity arises by
+considering a slight perturbation of the surrounding flow and showing
+that the overall phase factor is unaffected by the perturbation.
+
+\clearpage
+\bibliographystyle{abbrv}
+\bibliography{references}
+\end{document}

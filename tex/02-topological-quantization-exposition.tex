@@ -1,0 +1,1702 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts,amsthm,mathtools,bm}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{cor}{Corollary}
+\newtheorem{defn}{Definition}
+\newtheorem{principle}{Principle}
+\newtheorem{statement}{Statement}
+\theoremstyle{remark}
+\newtheorem{statementr}{Statement}
+
+\title{Theory Formation and the Topology of Configuration Space}
+\author{James Taylor}
+\date{Working draft derived from the 2003 thesis}
+\begin{document}
+\maketitle
+
+\begin{quote}\small This expository manuscript overlaps with later published work and is retained as a thesis-derived, self-published treatment with a different organization and emphasis.\end{quote}
+
+\section{Theory formation and the influence of 
+the topology of configuration space} \label{c:top}
+
+
+\section{Introduction} \label{s:introi}
+
+In this chapter, we analyze the influence of the topology of the
+configuration space in formulating Bohmian theories. 
+We formulate the Abelian Quantization Principle\ which states that, in addition to the
+usual data such as the potential, one needs to choose
+a character of the fundamental group of the configuration space 
+ when forming a Bohmian theory.  
+To conclude the principle, we consider three different approaches
+based on: the covering space; connections; and self-adjoint extensions.
+We demonstrate that each approach generates equivalent theories. 
+This will set us up for the next chapter. In particular, we will 
+conclude that, in the theory of
+identical particles moving in 3-space, 
+one has the choice between bosons and fermions. This is the usual
+Bose-Fermi alternative.
+
+
+The current goal  is to explain the relevance of
+a space being multiply connected. The prime example to have in mind is
+the Aharonov-Bohm effect. Briefly, the setup is 
+a particle moving along a circle embedded in 3-space; there is also 
+a magnetic field  whose support is disjoint from the circle but whose integral
+over the disk does not vanish. We would like to
+model this situation in terms of a Bohmian system involving just the
+circle with no need to embed it into an ambient space. 
+
+We start by considering what role the covering space might have. 
+The idea is to consider wave functions
+on the universal covering space such that they still define a Bohmian
+motion on the base space. For the circle, the covering space is a
+line; the useful wave functions are those that are $2\pi$-periodic up to a
+phase. In general, we find a periodicity condition 
+ characterized by a character of the fundamental
+group. Another approach is to consider different connections. This is
+very familiar in the context of the Aharonov-Bohm effect. The
+important point is that the characters of the fundamental group are in
+bijective correspondence with the flat connections; the correspondence
+is that of the holonomy operator. For the circle, this is the integral
+of the vector potential. The final approach is to consider
+different self-adjoint extensions of the Hamiltonian. 
+On the circle, if we remove a
+point, then we may view the space as an interval. As is well-known,
+there are a variety of possible self-adjoint Laplacians on the
+interval; they are 
+characterized by different boundary conditions. The extensions that
+are permissible are those for which, given any other point, there is a
+corresponding Hamiltonian which provides the same Bohmian evolution of
+the configuration. 
+
+
+The notion of multiply connected spaces giving rise to different
+quantum theories is not new. A sampling of the literature is the
+following. The use of a covering space was done at
+least as early as 1950 as in \cite{BH50}; it was more fully done in
+\cite{D72}. 
+The use of vector potentials was done
+ in \cite{AB59}. Path integrals on multiply connected
+spaces began largely with the work of \cite{S68} and \cite{DL71}; see
+\cite{Sch81} for details. 
+Most of these works are dedicated to scalar-valued wave functions.
+
+
+This chapter is organized as follows. 
+In Section {\ref{is:circ}}, we discuss the circle and its relation to 
+the Aharonov-Bohm effect. In that section, we give the principle for
+Bohmian theories on manifolds for which the wave functions are complex-valued
+functions over the configuration space. 
+We give the
+general formulation and argument for the principle in
+Section {\ref{s:expo}}; the generalization refers to taking wave functions to be
+sections of a given complex vector bundle over the configuration space. 
+The entire discussion, centered upon deriving how
+characters arise, is based upon appealing to the covering
+space of the configuration space.
+Section {\ref{s:fb}}\ and Section {\ref{s:sa}}\ discuss approaches that do
+not use the covering space.
+We  contrast the various equivalent approaches in
+Section {\ref{s:comp}} and discuss in Section {\ref{is:leqv}}
+ how the principle is generating
+locally equivalent theories. 
+We conclude with a discussion of quantization. 
+In particular, quantization of 
+systems on the configuration space whose potential can
+only be formulated on the covering space is described in
+Section {\ref{s:pers}}.  Appendix \ref{s:setten} reviews the
+necessary notion of a set-indexed tensor
+product. Appendix \ref{s:sat}  
+deals with a technical point involving the self-adjointness of the
+formal Hamiltonian. 
+
+
+\section{The circle and the Aharonov-Bohm effect} \label{is:circ}
+
+In this section, all wave functions will be complex-valued functions on the
+configuration space. 
+
+Consider the system of a single particle
+constrained to travel along a circle. Thinking of the circle as
+sitting in \ensuremath{\mathbb{R}^{3}}, we assume that going through the center of the 
+circle is a
+magnetic field. We demand that the field
+ vanishes in a neighborhood around the circle, but
+that its integral over a disk, with the circle as the boundary, does not
+vanish. Our goal is a Bohmian theory that accurately describes this
+system in which the configuration space is explicitly the circle. 
+
+This is a simplified version of the usual Aharonov-Bohm effect. The
+standard answer is that the vector potential which generates the
+magnetic field should be included in the covariant derivative. This
+does work as explained in Section {\ref{s:fb}}. But we want to describe
+this without getting into bundles. Instead, we shall focus on the
+topology of the circle and see that the possibilities naturally arising
+from being multiply-connected already provides the setting for such a
+model. 
+
+We are looking for other Bohm-type theories governing an evolution of
+a particle on the circle. One important constraint is that the Bohmian
+velocity field needs to be well-defined on the circle. The inspiration
+in this approach comes from 
+noting that if we write \ensuremath{\psi}\ in the polar form
+$Re^{iS/\ensuremath{\hbar}}$, then $v^{\ensuremath{\psi}} = \nabla S$. Thus, the Bohmian velocity
+field is locally a gradient. From classical experiences, this
+immediately brings to mind the universal covering space which, for the
+circle, is just $\ensuremath{\mathbb{R}^{}}$. We can therefore ask which  wave functions on
+$\ensuremath{\mathbb{R}^{}}$ could provide an evolution on the circle. The tentative
+answer are those wave functions for which $S$ is periodic up to a constant,
+i.e.\ $S( \theta + 2k\pi) = S(\theta) + k\beta$. This translates into a
+multiplicative periodicity condition on $\ensuremath{\psi}$: 
+\begin{equation} \label{ie:sper}
+\ensuremath{\psi}(\theta + 2k\pi) = \gamma^k \ensuremath{\psi} (\theta).
+\end{equation}
+As a side note, we could say that the periodicity condition is
+represented by a homomorphism between the additive group of integers
+into the multiplicative group of the unit circle in the complex
+plane. More abstractly, we could say that we have a unitary,
+1-dimensional representation of
+the covering group, and therefore of the fundamental group, for the
+circle. 
+
+
+Given this periodicity condition, it is clear to see that 
+the associated Bohmian velocity field on \ensuremath{\mathbb{R}^{}}\ is $2\pi$-periodic. Hence,
+one can project the velocity field down to the circle in order to
+define a Bohm-type evolution of the particle. As
+for this condition being preserved under the Schr\"odinger\ evolution on the
+covering space,
+linearity of Schr\"odinger's equation\ suggests it; locally, the wave function\ differs only by a
+constant.
+ We shall say more about this 
+in the next section.
+
+We may therefore define a $\gamma$-based theory in the following way. 
+The position
+of the particle at time $t$, $Q_t$, is a point on the circle. The wave function\
+is a smooth function on $\ensuremath{\mathbb{R}^{}}$ satisfying \eqref{ie:sper}. The
+evolution of the wave function\ is governed by Schr\"odinger's equation\ on \ensuremath{\mathbb{R}^{}}. The
+generated Bohmian velocity field projects, in a single-valued way, to
+the circle. The position then evolves according to that velocity field. 
+
+As for the relation to the Aharonov-Bohm setup, we make the following
+claim, which will be established in more generality in
+Section {\ref{iss:bunequ}}. Let $\beta \ensuremath{:=} \int_{D^2} \boldsymbol{B}
+\boldsymbol{\omega}$. This integral requires a choice of orientation
+and the choice induces an orientation on the circle. If increasing
+$\theta$ on $\ensuremath{\mathbb{R}^{}}$ agrees with this orientation, then $\gamma
+\ensuremath{:=} e^{-i \beta}$ will give the appropriate
+theory.
+
+
+The above story holds much more generally. We first state the
+following principle for scalar-valued wave functions. We then explain the
+terminology and notation in a following subsection. An even more
+general statement is given in the next section.
+\begin{principle}[Abelian Quantization Principle, covering formulation, scalar]
+To specify a Bohmian theory involving complex-valued wave functions, 
+one must choose  a Riemannian configuration space
+ \ensuremath{\mathcal{Q}}, a potential $V$, and a 
+ character \ensuremath{\gamma}\
+ of the fundamental group \ensuremath{\pi_1 ({\ensuremath{\mathcal{Q}}})}\ of \ensuremath{\mathcal{Q}}.
+The Bohmian
+theory corresponding to the character \ensuremath{\gamma}\ is defined by
+ \eqref{ie:rbe}, where $\ensuremath{\psi}_t$ is a smooth wave function\ on \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}\
+ satisfying the character's associated periodicity condition 
+ and locally satisfying \eqref{ie:rse},
+ i.e.\ $\ensuremath{\psi}_t$ evolves according to the Schr\"odinger\ dynamics generated by the lift
+ of $H$ from \ensuremath{\mathcal{Q}}\ to \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}. 
+\end{principle}
+
+\subsection{Notations and relevant facts}
+
+The notations are summarized by
+the table:
+\begin{center}
+\begin{tabular}{ccc}
+Configuration space & \ensuremath{\mathcal{Q}} & $S^1$ \\
+Universal covering space & \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}} & \ensuremath{\mathbb{R}^{}} \\
+Points in \ensuremath{\mathcal{Q}}, \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}} & \ensuremath{q}, \ensuremath{\hat{q}} &  $e^{i\theta}$, $\theta$ \\
+Projection map & $\ensuremath{\ensuremath{\rho}} : \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}} \to \ensuremath{\mathcal{Q}}$ & $e^{i \cdot}: \ensuremath{\mathbb{R}^{}}
+\to S^1$\\
+Covering fiber over \ensuremath{q}, $e^{i\theta}$ & $\ensuremath{\ensuremath{\rho}}^{-1} (\ensuremath{q})$ &
+$\{\theta + 2k\pi\}_{k \in \mathbb{Z}}$ \\
+Fundamental group of \ensuremath{\mathcal{Q}} & \ensuremath{\pi_1 ({\ensuremath{\mathcal{Q}}})} & $\mathbb{Z}$ \\
+Covering transformation & \ensuremath{\sigma} & $\sigma_k : \theta \to \theta+2\pi k$ \\
+Covering group & \ensuremath{Cov(\ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}, \ensuremath{\mathcal{Q}})} & $\sigma_k$ \\
+Character of fundamental group & $\ensuremath{\gamma}_{\ensuremath{\sigma}}$ & $\ensuremath{\gamma}_{k} \ensuremath{:=}
+\ensuremath{\gamma}^{k}_1$  \\
+Bundle, lifted bundle & $E$, $\ensuremath{\widehat{E}}$ & $S^1\times \ensuremath{\mathbb{C}}$,
+$\ensuremath{\mathbb{R}^{}}\times \ensuremath{\mathbb{C}}$ \\
+\end{tabular}
+\end{center}
+
+
+Throughout this chapter, \ensuremath{\mathcal{Q}}\ will be 
+ a Riemannian manifold with metric $g$. Its universal covering
+space will be \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}. We shall always take \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}\ to be endowed with the
+lifted metric $\hat{g}$; this assures that it is canonically locally
+  isometric
+to \ensuremath{\mathcal{Q}}. More to the point, the differential operators are locally
+identical. 
+
+The universal covering space \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}\  of \ensuremath{\mathcal{Q}}\ is, by
+construction,   a
+simply connected space. The
+\emph{covering fiber} for $\ensuremath{q}\ \in \ensuremath{\mathcal{Q}}$ is the set of points in \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}\ that
+project to \ensuremath{q}\ under the projection, or covering,  map, 
+$\ensuremath{\ensuremath{\rho}}: \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}} \to \ensuremath{\mathcal{Q}}$,  associated with 
+the covering 
+space. A function $f: \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}} \to \ensuremath{\mathbb{C}}$ is projectable iff  $f(\ensuremath{\hat{q}}) =
+f(\hat{r})$ whenever $\ensuremath{\ensuremath{\rho}}(\ensuremath{\hat{q}}) = \ensuremath{\ensuremath{\rho}}(\hat{r})$. 
+The projection  $\tilde{f} :
+\ensuremath{\mathcal{Q}} \to \ensuremath{\mathbb{C}}$ is defined by $\tilde{f}(\ensuremath{q}) = f(\ensuremath{\ensuremath{\rho}}^{-1}
+(\ensuremath{q}))$.
+Projectability of a vector field 
+can be translated into demanding that  
+$((D\ensuremath{\ensuremath{\rho}}) v^{\ensuremath{\psi}}) (\ensuremath{\hat{q}}) = ((D\ensuremath{\ensuremath{\rho}}) v^{\ensuremath{\psi}}) (\hat{r})$ whenever
+$\ensuremath{\ensuremath{\rho}}(\ensuremath{\hat{q}}) = \ensuremath{\ensuremath{\rho}}(\hat r )$; $D\ensuremath{\ensuremath{\rho}}: T\ensuremath{\widehat{\ensuremath{\mathcal{Q}}}} \to T\ensuremath{\mathcal{Q}}$ is
+the differential of the 
+map \ensuremath{\ensuremath{\rho}}. The lift of a function or a vector field 
+is always well-defined and it is the
+inverse of projection. 
+
+If $E$ is a bundle over \ensuremath{\mathcal{Q}}, then the lift of $E$, denoted
+$\ensuremath{\widehat{E}}$, is a bundle over \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}; the fiber at \ensuremath{\hat{q}}\ is defined 
+to be the fiber of $E$ at $\ensuremath{q}$, i.e.\ 
+$\ensuremath{\widehat{E}}_{\ensuremath{\hat{q}}} \ensuremath{:=} E_{\ensuremath{q}}$ where $\ensuremath{q} \ensuremath{:=} \ensuremath{\ensuremath{\rho}}(\ensuremath{\hat{q}})$.
+ When we do this, we can then lift sections of the vector bundle as
+well as matrix-valued functions acting on the bundle. It is important
+to realize that with this construction, it makes sense to ask if $v
+\in E_{\ensuremath{\hat{q}}}$ is equal to $w \in E_{\hat{r}}$ whenever $\ensuremath{\hat{q}}$ and
+$\hat{r}$ are elements of the same covering fiber.
+As a particular example, the lift of the tangent
+bundle of \ensuremath{\mathcal{Q}}\ to \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}\ is canonically isomorphic to 
+the tangent bundle of \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}. 
+
+
+A \emph{covering transformation} is an isometry which maps the covering
+space to itself and which preserves the covering fiber s.  The group of such
+transformations is the covering group and is denoted by \ensuremath{Cov(\ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}, \ensuremath{\mathcal{Q}})}. 
+The fundamental group at a point \ensuremath{q}, denoted
+by \ensuremath{\pi_1 ({\ensuremath{\mathcal{Q}}, \ensuremath{q}})},
+is the set of 
+equivalence classes 
+of closed loops, through \ensuremath{q}, where the equivalence relation is
+that of homotopy, 
+or smoothly deforming one curve into the other. 
+The product in the group is concatenation; in particular, given
+$\sigma \tau$, we first follow $\tau$ and then follow $\sigma$. This
+is in contrast to the common definition of the product in the opposite
+order. We do it this way as it seems more natural in terms of parallel
+transport, which is of fundamental concern to us. 
+The fundamental groups
+at different points are isomorphic to each other as well as to the
+covering group, but the isomorphisms are not canonical. 
+By the fundamental group, written \ensuremath{\pi_1 ({\ensuremath{\mathcal{Q}}})}, we shall mean the
+abstract group 
+which the covering group and all of the fundamental groups are
+isomorphic to.  In particular, a representation of the covering group
+is a representation of the fundamental group. A character of the
+fundamental group is any unitary, 1-dimensional representation of the
+fundamental group, i.e., it is a homomorphism between the fundamental
+group and the multiplicative group of the complex numbers of modulus
+one. 
+
+\section[AQP]{Bohmian mechanics\ and topology:\\ the Abelian Quantization Principle} \label{s:expo}
+
+
+Since it is the same argument, we shall argue for the Abelian Quantization Principle\ in the
+context of a 
+ Bohmian theory in which the wave functions are sections of a vector bundle. We
+start with a Riemannian configuration space $\ensuremath{\mathcal{Q}}$ and
+ a vector bundle $E$ endowed with a connection and a parallel inner
+product. We are also given a self-adjoint matrix-valued potential $V$
+acting on $E$. We claim that, in addition to this information, we also
+need to choose a character of the fundamental group to complete the
+theory formation. That this is an \emph{a priori} necessity is
+debatable since the theory corresponding to 
+ the trivial character requires no need to
+appreciate the other possibilities. But the physics certainly seems to
+require an appreciation of these options.
+
+As in the case of the circle, the idea is to appeal to the universal covering
+space \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}\ in order to trivialize the topology. We lift all of the
+objects of our theory to \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}. This includes lifting $E$ to
+$\ensuremath{\widehat{E}}$
+by defining $E_{\ensuremath{\hat{q}}} \ensuremath{:=} E_{\ensuremath{q}}$. By lifting the local
+objects, we can write down a Schr\"odinger's equation\ for sections of $\ensuremath{\widehat{E}}$; we refer
+to the Hamiltonian on \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}\ as the lifted Hamiltonian.  
+ As before, we are only interested in wave functions which
+generate a Bohmian evolution on \ensuremath{\mathcal{Q}}. In particular, the velocity
+field defined in \eqref{ie:vbv}\ needs to be projectable. 
+
+Although we no longer have an $S$, as we are dealing with vector
+bundles, it is quite clear that projectability is guaranteed 
+if we have a scalar periodicity condition as in the case of the
+circle. More precisely, if $\ensuremath{\psi}$ is a section of $\ensuremath{\widehat{E}}$ satisfying 
+\begin{equation} \label{e:percon}
+\ensuremath{\psi} (\ensuremath{\sigma} \ensuremath{\hat{q}})
+= \ensuremath{\gamma_{\ensuremath{\sigma}}} \ensuremath{\psi}(\ensuremath{\hat{q}})
+\end{equation}
+for every $\ensuremath{\hat{q}} \in \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}$ and $\ensuremath{\sigma} \in \ensuremath{Cov(\ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}, \ensuremath{\mathcal{Q}})}$, and 
+where \ensuremath{\gamma_{\ensuremath{\sigma}}}\ is a constant of modulus 
+one, then it is clear that 
+\[v^{\ensuremath{\psi}} (\ensuremath{\hat{q}}) = v^{\ensuremath{\psi}} (\ensuremath{\sigma}\ensuremath{\hat{q}}). 
+\]
+
+In order to say that we have a Bohmian dynamics on \ensuremath{\mathcal{Q}}, we
+must demonstrate that if the initial wave function\ satisfies \eqref{e:percon},
+then it remains projectable. In fact, we shall demonstrate that it
+continues to satisfy the same periodicity condition. It follows from 
+the linearity of Schr\"odinger's equation\  and the fact that the lifted Hamiltonian is locally the
+same when compared at different points in the same covering fiber. 
+The idea is that the wave function\ at different ``levels'' is the same
+up to an irrelevant constant. Its evolution 
+ should therefore be the same on the different levels and the
+periodicity condition will thus be preserved. 
+
+A more precise
+argument is the following. If $\ensuremath{\psi}_t$ is any solution to Schr\"odinger's equation\ on
+$\ensuremath{\widehat{E}}$,  then, for any covering transformation $\ensuremath{\sigma}$, we have
+that $\ensuremath{\psi}_t^{\ensuremath{\sigma}} \ensuremath{:=} \ensuremath{\psi}_t \circ \ensuremath{\sigma}$ is another solution to
+Schr\"odinger's equation.\footnote{Since the potential is identical at each point  of the
+covering fiber, we only have to worry about the Laplacian. But since \ensuremath{\sigma}\
+is an isometry we have $\ensuremath{\Delta} \ensuremath{\psi}_t^{\ensuremath{\sigma}} = (\ensuremath{\Delta} \ensuremath{\psi}_t) \circ
+{\ensuremath{\sigma}}$.} On the other hand, if we multiply $\ensuremath{\psi}_t$ 
+by a constant scalar, we still have a
+solution. Using the periodicity condition and uniqueness of initial
+conditions, we have that
+the periodicity condition is preserved.\footnote{
+Assume that $\ensuremath{\psi}_0$   satisfies the periodicity
+condition. Let $\ensuremath{\psi}_t$ be the solution of Schr\"odinger's equation\ with that initial
+condition. Define $\phi_t^{\ensuremath{\sigma}} \ensuremath{:=} \ensuremath{\gamma_{\ensuremath{\sigma}}} \ensuremath{\psi}_t$. By linearity, this is
+a solution to Schr\"odinger's equation. As stated above, $\ensuremath{\psi}_t^{\ensuremath{\sigma}}$ is also a
+solution. We claim that $\ensuremath{\psi}_0^{\ensuremath{\sigma}} = \phi_0^{\ensuremath{\sigma}}$. This is
+clear since $\ensuremath{\psi}_0^{\ensuremath{\sigma}} (\ensuremath{\hat{q}})  \ensuremath{:=} \ensuremath{\psi}_0 (\ensuremath{\sigma}\ensuremath{\hat{q}}) = \ensuremath{\gamma_{\ensuremath{\sigma}}}
+\ensuremath{\psi}_0(\ensuremath{\hat{q}}) \ensuremath{=:}  \phi_0^{\ensuremath{\sigma}} (\ensuremath{\hat{q}}) $. Thus, by uniqueness of
+initial conditions, $\ensuremath{\psi}_t^{\ensuremath{\sigma}} = \phi_t^{\ensuremath{\sigma}}$ which implies
+that the periodicity condition is preserved.}
+
+Given the periodicity condition \eqref{e:percon}, it is a fact that
+ the map $\gamma: \ensuremath{Cov(\ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}, \ensuremath{\mathcal{Q}})} \to \ensuremath{\mathbb{C}}$,  must
+be a  representation of
+the covering group, as the following argument demonstrates. 
+ Let $\ensuremath{\ensuremath{\sigma}_{1}}$, $\ensuremath{\ensuremath{\sigma}_{2}} \in  \ensuremath{Cov(\ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}, \ensuremath{\mathcal{Q}})}$. Then
+we have the following equalities
+\begin{equation*} 
+\ensuremath{\gamma_{\ensuremath{\ensuremath{\sigma}_{1}} \ensuremath{\ensuremath{\sigma}_{2}}}} \ensuremath{\psi} (\ensuremath{\hat{q}}) 
+= \ensuremath{\psi}(\ensuremath{\ensuremath{\sigma}_{1}} \ensuremath{\ensuremath{\sigma}_{2}} \ensuremath{\hat{q}}) 
+= \ensuremath{\gamma_{\ensuremath{\ensuremath{\sigma}_{1}}}} \ensuremath{\psi}(\ensuremath{\ensuremath{\sigma}_{2}} \ensuremath{\hat{q}})
+= \ensuremath{\gamma_{\ensuremath{\ensuremath{\sigma}_{1}}}}\ensuremath{\gamma_{\ensuremath{\ensuremath{\sigma}_{2}}}} \ensuremath{\psi}(\ensuremath{\hat{q}}).
+\end{equation*}
+We therefore conclude the fundamental relation
+ \begin{equation} \label{e:ccc}
+\ensuremath{\gamma_{\ensuremath{\ensuremath{\sigma}_{1}} \ensuremath{\ensuremath{\sigma}_{2}}}} = \ensuremath{\gamma_{\ensuremath{\ensuremath{\sigma}_{1}}}}\ensuremath{\gamma_{\ensuremath{\ensuremath{\sigma}_{2}}}}.
+\end{equation}
+We thus have that  
+each periodicity condition corresponds to a  character
+ of the covering group. The periodicity
+condition also forms a character of the fundamental group since the
+fundamental group and covering group are isomorphic.
+
+
+We have the following principle, which shall be denoted by \ensuremath{\text{AQP}_{\ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}}}: 
+\begin{principle}[Abelian Quantization Principle, \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}] 
+To specify a Bohmian theory, one needs to pick a Riemannian manifold
+ $\ensuremath{\mathcal{Q}}$, a 
+ cc-Hermitian\ vector bundle $E$ over
+ \ensuremath{\mathcal{Q}}, a potential $V$, and a character \ensuremath{\gamma}\
+ of the fundamental group \ensuremath{\pi_1 ({\ensuremath{\mathcal{Q}}})}.
+ The Bohmian
+ theory $(\ensuremath{\mathcal{Q}}, E, V, \ensuremath{\gamma})_{\ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}}$ is defined by 
+\eqref{ie:ve}
+where $v^{\ensuremath{\psi}_t}$ is the projection to \ensuremath{\mathcal{Q}}\ of the Bohmian velocity field
+ defined on
+ \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}\ and the wave function\
+$\ensuremath{\psi}_t$ is a section of the lifted bundle $\ensuremath{\widehat{E}}$ satisfying
+ \eqref{e:percon} and locally satisfying  \eqref{ie:vse}. 
+\end{principle}
+
+\subsection{Remarks}
+
+\begin{enumerate}
+
+\item The trivial periodicity condition, $\ensuremath{\sigma} \mapsto 1$ for all
+\ensuremath{\sigma}, corresponds to lifted wave functions. Indeed, 
+if we
+lift a wave function\ from \ensuremath{\mathcal{Q}}\ to \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}, then, for every $\ensuremath{\hat{q}} \in
+\ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}$
+and $\ensuremath{\sigma} \in \ensuremath{Cov(\ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}, \ensuremath{\mathcal{Q}})}$,
+the wave function\ satisfies the
+periodicity condition
+\begin{equation*}
+\ensuremath{\psi} (\ensuremath{\sigma}\ensuremath{\hat{q}})
+= \ensuremath{\psi}(\ensuremath{\hat{q}}).
+\end{equation*}
+
+\item Having a projectable Bohmian velocity field places no constraint
+on the amplitude. 
+One might then wonder whether the amplitude is allowed
+to vary based on \ensuremath{\hat{q}}. Generically, such a condition will not be
+preserved under the Schr\"odinger\ evolution. 
+In other words, if $r_{\ensuremath{\sigma}} (\ensuremath{\hat{q}})$ is the proposed
+amplitude, then in order to argue that it is preserved, we should have
+$\ensuremath{\Delta} r_{\ensuremath{\sigma}} \ensuremath{\psi} = r_{\ensuremath{\sigma}} \ensuremath{\Delta}\ensuremath{\psi}$. That is to say, we need
+$(\ensuremath{\Delta} r_{\ensuremath{\sigma}}) \ensuremath{\psi} + \nabla r_{\ensuremath{\sigma}} \cdot \nabla \ensuremath{\psi} =
+0$. If $r_{\ensuremath{\sigma}}$ is independent of $\ensuremath{\psi}$, we see that
+$\nabla r_{\ensuremath{\sigma}}$ must 
+vanish and hence $r_{\ensuremath{\sigma}}$ is a constant.  
+
+\item What if $r_{\ensuremath{\sigma}}$ is a constant? 
+In standard quantum mechanics, the condition on wave functions on the covering
+space is that their densities should project down unambiguously \cite{Mor92}. 
+As this is not our motivation, one might wonder why \ensuremath{\gamma_{\ensuremath{\sigma}}}\ should be
+of modulus one.  If the 
+fundamental group is 
+finite, or even just idempotent, then the constant must be a root of
+unity as a result of $\gamma$ being a representation. If   
+ the  group is not idempotent, then the representation properties do
+not demand that \ensuremath{\gamma_{\ensuremath{\sigma}}}\ be 
+of modulus one. But 
+if \ensuremath{\gamma_{\ensuremath{\sigma}}}\ has a modulus not
+equal to one, then $|\ensuremath{\psi}({\ensuremath{\sigma}^m} \ensuremath{\hat{q}})| = r_{\ensuremath{\sigma}}^{m}\ensuremath{\psi}(\ensuremath{\hat{q}})$,
+for any integer $m$;
+our amplitude is growing exponentially in space as we proceed from
+level to level. 
+With such a growth, there 
+is reason to believe  that the evolution of the system
+will be ill-defined. 
+
+\item For vector bundles, multiplying by a scalar is not the only
+possibility. We could imagine replacing $\gamma$ with a matrix,
+$\Gamma$. Again, the problem is preservation of the condition under
+the Schr\"odinger\ evolution. In particular, it is necessary that $[\Gamma, V]
+= 0$. This could happen, e.g.\ $V$ is a scalar function times the
+identity, but it should not be expected. 
+ In section {\ref{s:bprin}}, we discuss
+this possibility in the context of spin and demonstrate that it is not
+possible. 
+
+\item Another question is whether the periodicity condition
+characterizes all projectable wave functions. This is clearly false since any
+real wave function\ has a zero Bohmian velocity field and hence it projects
+unambiguously. If we make the more important restriction that the wave function\
+should be projectable for all time, it still fails. Indeed, it is
+possible to have on the covering space a wave function\ which is essentially a real
+eigenstate of the potential.
+ It is therefore invariant and its
+velocity field vanishes implying projectability. This is not a problem
+as our goal is to formulate a theory. 
+We are not interested in
+having just one wave function, but we are rather demanding
+ a robust class of wave functions that our
+theory will have as initial conditions.\footnote{It can be argued  
+ that a wave function\ which is projectable for all time, 
+but does not satisfy the
+periodicity condition, must have the property that the nodal set is
+of codimension 1. Since wave functions generically have a nodal set of
+codimension 2, as both the real and imaginary parts must vanish, we
+can expect that the condition is only preserved under very special
+conditions such as the wave function\ being an eigenstate and, therefore, not
+evolving. This question was pursued in the context of identical
+particles in \cite{Bac03}. As a particular example in that setup, and
+one which should perhaps be read after the Chapter \ref{c:manpart},
+consider 
+ the hydrogen atom with two electrons and no interaction
+between the electrons. Tensor the ground state with a real-valued excited
+state. The state is then essentially invariant under the
+evolution and has no particular symmetry. Since it is essentially
+real, the Bohmian velocities are 
+zero and, hence, consistent. We would expect, however, that under a
+small perturbation of the potential (or including interactions) the
+states would evolve in such a way as to lose their consistency
+condition. 
+} 
+
+\item Different characters may give rise to equivalent theories. In the
+examples we discuss, the theories are not equivalent, and this is
+generically the case. 
+If our bundles are 1-dimensional, then they are distinct. 
+ We shall say more about this in Section {\ref{iss:beypri}} in a context for
+which this can be more readily understood.
+
+\end{enumerate}
+
+
+\section{Different connections} \label{s:fb}
+
+We have described a class of Bohmian theories that arise by considering
+those wave functions,  defined on the covering space of the configuration
+space, which provide an unambiguous evolution of the
+configuration.
+We motivated that line of pursuit with the circle in the
+situation of the Aharonov-Bohm effect. In this section, we shall
+pursue theories that arise by considering different connections, i.e.\
+different possibilities for what the derivative is. This approach has
+the advantage that it does not depend on Bohmian
+considerations. 
+Instead of changing the base space, we change the bundle
+structures of the value space of the wave function. 
+We automatically have a well-defined Bohmian velocity. 
+
+\subsection{The circle}
+We start with the circle. The usual wave functions over the circle are
+sections of the trivial bundle $S^1 \times \ensuremath{\mathbb{C}}$. For trivial
+bundles, there is a natural choice for a derivative; namely, form the
+difference quotient. Since it is a trivial bundle, there is no issue
+in comparing values in different fibers. But it is a fact that this
+trivial connection is not the only flat connection on the circle. 
+Indeed, any real-valued 1-form defines a new connection and if the
+integral of the 1-form around a loop is not zero, then the new
+connection is fundamentally different from the trivial connection. 
+
+We claim that the set of complex numbers of modulus one are in
+bijective correspondence with the distinct classes of connections.
+Define
+the real-valued 1-form  $d\theta$ on the circle such that its integral
+around the circle is $2\pi$.\footnote{Parametrize the circle with the
+multi-valued angle function $\theta$ and
+differentiate. 
+} Let
+$\nabla$ be the trivial connection associated with
+$S^1 \times \ensuremath{\mathbb{C}}$. Then $\nabla + i\frac{\beta}{2\pi}
+d\theta$ defines a flat connection; the parallel transport of $v$
+along the path 
+$\alpha$ is given by
+\begin{equation*}
+\ensuremath{P_{{\alpha}}{v}} = e^{\int_{\alpha}i\frac{\beta}{2\pi}d\theta} v. 
+\end{equation*}
+Thus, around a closed loop of multiplicity $n$,
+we have that multiplication by $e^{i n \beta}$ 
+is the parallel transport operator. 
+Note that although it is no longer the trivial flat bundle, the
+bundle is still trivial as a vector bundle. 
+
+As for the relation to the Aharonov-Bohm setup, the fact of the matter
+is that $\beta$ 
+should be the integral of the magnetic field over the
+disk. Furthermore, there is a vector potential which generates the
+magnetic field and, restricted to the circle, it is 
+$\frac{\beta}{2\pi}d\theta$. 
+This is essentially 
+the original explanation of
+the Aharonov-Bohm effect.
+
+\subsection{General discussion}
+The circle is a nice example since it implements the idea of changing
+the connection on the bundle. In more general situations, this
+changing of the connection actually requires a change of the
+underlying bundle structure. We therefore formulate the general
+discussion in terms of constructing a new bundle out of an old
+bundle. This method provides the appropriate connection and it may or
+may not change the underlying vector bundle. 
+
+
+Inspired by the case of fermions, as discussed in the next chapter, 
+we shall formulate the new principle slightly differently than one
+might expect: tensor
+the original bundle with a flat cc-Hermitian\ line bundle.
+It is a fact that the flat cc-Hermitian\ line
+bundles are in bijective correspondence, up to equivalences,
+ with the characters of the
+fundamental group. Indeed, 
+the  representation associated with
+a flat bundle is its holonomy representation; the \emph{holonomy
+representation}, at \ensuremath{q}, is the map taking 
+each element $\ensuremath{\sigma} \in \ensuremath{\pi_1 ({\ensuremath{\mathcal{Q}}, \ensuremath{q}})}$ to  the matrix
+associated with  
+parallel transporting vectors around a representative curve of \ensuremath{\sigma}. Flatness
+implies this map is well-defined, i.e.\ parallel transport on flat
+bundles only depends
+upon the homotopy class of the curve.  For a line bundle, a matrix
+is just a complex number; to preserve the inner product, it must be an
+element of the unit circle. Therefore, every flat line bundle has an
+associated character. 
+
+The connection for the tensor product $F \otimes
+E$ of two bundles is defined using the Leibniz rule:
+\begin{equation*} \nabla^{F\otimes E}( f \otimes e) = (\nabla^F f)
+\otimes e + f 
+\otimes (\nabla^E  e).
+\end{equation*} 
+It can also be realized by tensoring the holonomy operators together.
+Computing the  Laplacian,  we find  
+\begin{equation*} 
+\ensuremath{\Delta}^{F\otimes E} (f \otimes e) = (\ensuremath{\Delta}^F f) \otimes e + f \otimes (\ensuremath{\Delta}^E
+e) + 2 (\nabla^F f) \cdot \otimes (\nabla^E e).
+\end{equation*} 
+Furthermore, 
+it is an easy
+fact that  in
+computing the 
+curvature, the cross terms cancel rather than add.\footnote{The
+curvature, $\omega$,  is the antisymmetric part of the second derivative. In
+particular, for a tensor product, we have
+ \[\begin{split}  
+D^2 (f\otimes e) (x, y) - D^2(f \otimes e)(y,x) = & D^2f(x,y) \otimes
+e + Df(x) \otimes De(y) + f \otimes D^2e(x,y) + \\ &Df(y) \otimes
+De(x)  
+- (D^2f(y,x) \otimes
+e + 
+Dfy \otimes De(x) + \\
+&f \otimes D^2e(y,x) + Df(x) \otimes
+De(y) ). \end{split} \]
+Thus, we have $\omega^{F \otimes E} = \omega^{F} \otimes \mathrm{Id}
++ \mathrm{Id} \otimes \omega^{E} $. In particular, if $F$ is a flat
+line bundle, we can appropriately say that the curvature is unchanged
+under tensoring with $F$. }
+Thus, if $E$ has
+curvature and $F$ is a flat line bundle,
+ then $F \otimes E$ will have the same
+curvature as $E$. Any potential $V$, defined on $E$, goes to
+$\mathrm{Id} \otimes V$, which may reasonably be viewed as $V$ since
+$F$ is one dimensional, i.e $\mathrm{Id} = 1$. 
+
+
+Thus, we have the Abelian Quantization Principle\ based on changing the connection; we shall
+denote it by \ensuremath{\text{AQP}_{\nabla}}.
+\begin{principle}[Abelian Quantization Principle, $\nabla$]
+To specify a Bohmian theory, one needs to pick a Riemannian manifold
+ $\ensuremath{\mathcal{Q}}$, a 
+ cc-Hermitian\ vector bundle $E$ over
+ \ensuremath{\mathcal{Q}}, a potential $V$, and a character \ensuremath{\gamma}\
+ of the fundamental group \ensuremath{\pi_1 ({\ensuremath{\mathcal{Q}}})}.
+Let $F$ be the flat
+ cc-Hermitian\ line bundle corresponding to \ensuremath{\gamma}. The Bohmian
+ theory $(\ensuremath{\mathcal{Q}}, E, V, \ensuremath{\gamma})_{\nabla}$ is defined by 
+\eqref{ie:ve}
+where  the wave function\
+$\ensuremath{\psi}_t$ is a section of the bundle $F\otimes E$. 
+\end{principle}
+
+
+\subsection{Equivalence of the two approaches} \label{iss:bunequ}
+
+The bundle approach and the covering space approach are completely
+equivalent as we shall now explain. We start with the bundle $E$ 
+and denote its holonomy operator for the path $\alpha$ by
+$P^E_{\alpha}$.\footnote{We should emphasize that we
+are not assuming that the connection on $E$ is flat. Thus, the holonomy
+operator depends on the path itself and not just the homotopy
+class of the path.} 
+We
+now have two approaches for forming theories. One is to consider
+various periodicity conditions, involving scalars, on the covering
+space; the other is to tensor $E$ with the various flat line
+bundles. Both are characterized by a character of the fundamental
+group. We contend that either way produces equivalent theories for
+equivalent characters.
+
+Before we produce the equivalence, we first discuss the 
+canonical isomorphism
+between the covering group and the fundamental group based at a point. There
+are two natural bijections and it is the less obvious one which is
+relevant, as we now explain. 
+Let \ensuremath{\ensuremath{\rho}}\ be the projection  map
+from \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}\ to \ensuremath{\mathcal{Q}}. Then $\ensuremath{\ensuremath{\rho}}(\alpha)  = \ensuremath{\ensuremath{\rho}}(\ensuremath{\sigma}
+\alpha)$ for all paths $\alpha$ on \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}\ and for all $\ensuremath{\sigma} \in
+\ensuremath{Cov(\ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}, \ensuremath{\mathcal{Q}})}$. This is trivially true since the covering transformations map
+each covering fiber\ to itself and \ensuremath{\ensuremath{\rho}}\ projects all points of the fiber to
+the same base point. Given $\ensuremath{\hat{q}} \in
+\ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}$, and $\ensuremath{q} \ensuremath{:=} \ensuremath{\ensuremath{\rho}}(\ensuremath{\hat{q}})$, we can define
+an isomorphism between \ensuremath{\pi_1 ({\ensuremath{\mathcal{Q}}, \ensuremath{q}})}\ and \ensuremath{Cov(\ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}, \ensuremath{\mathcal{Q}})}. The obvious
+bijection from $\ensuremath{Cov(\ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}, \ensuremath{\mathcal{Q}})} \to \ensuremath{\pi_1 ({\ensuremath{\mathcal{Q}}, \ensuremath{q}})}$ 
+is to map the covering transformation \ensuremath{\sigma}\ into the
+projection of any path taking $(\ensuremath{\hat{q}} \to \ensuremath{\sigma} \ensuremath{\hat{q}})$. This is fine
+as a bijection, but it fails to be an isomorphism.\footnote{To be an
+  isomorphism, we would need $\ensuremath{\ensuremath{\rho}}(\ensuremath{\hat{q}} \to \ensuremath{\sigma} \tau \ensuremath{\hat{q}}) \ensuremath{\sim}
+  \ensuremath{\ensuremath{\rho}}(\ensuremath{\hat{q}} \to \ensuremath{\sigma} \ensuremath{\hat{q}}) \circ \ensuremath{\ensuremath{\rho}}(\ensuremath{\hat{q}} \to \tau
+  \ensuremath{\hat{q}})$. We certainly have $\ensuremath{\ensuremath{\rho}}(\ensuremath{\hat{q}} \to \ensuremath{\sigma} \tau \ensuremath{\hat{q}}) \ensuremath{\sim}
+  \ensuremath{\ensuremath{\rho}}(\tau \ensuremath{\hat{q}} \to \ensuremath{\sigma} \tau \ensuremath{\hat{q}}) \circ \ensuremath{\ensuremath{\rho}}(\ensuremath{\hat{q}} \to \tau
+  \ensuremath{\hat{q}})$ and therefore only need
+   $\ensuremath{\ensuremath{\rho}}(\ensuremath{\hat{q}} \to \ensuremath{\sigma} \ensuremath{\hat{q}})
+  \ensuremath{\sim} \ensuremath{\ensuremath{\rho}}(\tau \ensuremath{\hat{q}} \to \ensuremath{\sigma} \tau \ensuremath{\hat{q}})$. But, in actual fact,
+  we can only conclude $\ensuremath{\ensuremath{\rho}}(\ensuremath{\hat{q}} \to \ensuremath{\sigma} \ensuremath{\hat{q}})
+  \ensuremath{\sim} \ensuremath{\ensuremath{\rho}}(\tau \ensuremath{\hat{q}} \to \tau \ensuremath{\sigma} \ensuremath{\hat{q}})$ by applying $\tau$ to
+  the left hand side. If the covering group is not abelian, then this
+bijection is not an isomorphism, but an anti-isomorphism.} 
+To find an isomorphism, we map it to the
+inverse of the above map. More precisely, map \ensuremath{\sigma}\ into
+$\ensuremath{\ensuremath{\rho}}(\ensuremath{\sigma} \ensuremath{\hat{q}} \to \ensuremath{\hat{q}}) \ensuremath{\sim} \ensuremath{\ensuremath{\rho}}(\ensuremath{\hat{q}} \to \ensuremath{\sigma}^{-1}
+\ensuremath{\hat{q}})$. This is an isomorphism as is easy to check.\footnote{To be an
+  isomorphism, we would need $\ensuremath{\ensuremath{\rho}}(\ensuremath{\hat{q}} \to (\ensuremath{\sigma} \tau)^{-1} \ensuremath{\hat{q}}) \ensuremath{\sim}
+  \ensuremath{\ensuremath{\rho}}(\ensuremath{\hat{q}} \to \ensuremath{\sigma}^{-1} \ensuremath{\hat{q}}) \circ \ensuremath{\ensuremath{\rho}}(\ensuremath{\hat{q}} \to \tau^{-1}
+  \ensuremath{\hat{q}})$. Since $\ensuremath{\ensuremath{\rho}}(\ensuremath{\hat{q}} \to (\ensuremath{\sigma} \tau)^{-1} \ensuremath{\hat{q}}) \ensuremath{\sim}
+  \ensuremath{\ensuremath{\rho}}(\tau^{-1} \ensuremath{\hat{q}} \to \tau^{-1} \ensuremath{\sigma}^{-1} \ensuremath{\hat{q}}) \circ
+\ensuremath{\ensuremath{\rho}}(\ensuremath{\hat{q}} \to \tau^{-1}
+  \ensuremath{\hat{q}}),$
+ we need 
+$\ensuremath{\ensuremath{\rho}}(\ensuremath{\hat{q}} \to \ensuremath{\sigma}^{-1} \ensuremath{\hat{q}})
+  \ensuremath{\sim} \ensuremath{\ensuremath{\rho}}(\tau^{-1} \ensuremath{\hat{q}} \to \tau^{-1} \ensuremath{\sigma}^{-1} \ensuremath{\hat{q}})$ which
+  is what we have 
+   by applying $\tau^{-1}$ to
+  the left hand side.} Hence, we have a representation of the
+fundamental group if and only if the image under this isomorphism is a
+representation of the covering group. Abstractly, they will be the
+same representation.  This isomorphism is exactly what comes out of
+the following equivalence. 
+
+
+\begin{theorem} 
+The principles generate equivalent Bohmian theories, i.e.\ 
+\[(\ensuremath{\mathcal{Q}}, E, V, \ensuremath{\gamma})_{\ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}} \ensuremath{\simeq} (\ensuremath{\mathcal{Q}}, E, V,
+\ensuremath{\gamma})_{\nabla}.\] 
+\end{theorem}
+
+
+\begin{proof}
+Let $F$ be the flat line bundle associated with \ensuremath{\gamma}. 
+The proof will go as follows. We start with $(\ensuremath{\mathcal{Q}}, E, V,
+\ensuremath{\gamma})_{\nabla}$. We 
+lift the bundle $G \ensuremath{:=} F\otimes E$ and show that the lifted sections are
+essentially the sections of the lift of $E$ which satisfy the
+periodicity condition \ensuremath{\gamma}. We also show that this mapping commutes
+with 
+the evolutions. 
+
+
+We start by lifting the bundle $F$ to
+the covering 
+space; as usual, we denote its lift by $\ensuremath{\widehat{F}}$. 
+Since $\ensuremath{\widehat{F}}$ is flat and \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}\ is simply connected, 
+it is trivializable. Let $\phi$ be a trivialization map of
+$\ensuremath{\widehat{F}}$. That is to say, $\phi: \ensuremath{\widehat{F}} \to \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}} \times \ensuremath{\mathbb{C}}$
+should be a bundle isomorphism preserving the connection, i.e.\
+$\nabla(\phi( \ensuremath{\psi})) = \phi( \nabla\ensuremath{\psi})$ for any section \ensuremath{\psi}\ of $\ensuremath{\widehat{F}}$.  
+We now lift $G$ to $\ensuremath{\widehat{G}} =\ensuremath{\widehat{F}} \otimes\ensuremath{\widehat{E}}$. 
+The Bohmian theory on $\ensuremath{\widehat{G}}$ with the trivial periodicity
+condition is completely equivalent to the Bohmian theory on $G$. 
+Apply $\Phi \ensuremath{:=} \phi \otimes \text{Id}$ to $\ensuremath{\widehat{G}}$; this is
+clearly an isomorphism between $\ensuremath{\widehat{G}}$ and $\ensuremath{\widehat{E}}$. Furthermore, it
+commutes with the covariant derivative due to $\phi$ being
+connection-preserving. We also know that it commutes with 
+ all potentials since it is essentially a scalar.  
+More to the point, if $\ensuremath{\psi}_t$ is a section of
+$\ensuremath{\widehat{G}}$ and it is a solution to the appropriate
+Schr\"odinger's equation, then we have
+\begin{align}
+i\ensuremath{\frac{\partial {\ensuremath{\psi}_t}}{\partial {t}}} &= H \ensuremath{\psi}_t  \Leftrightarrow i\ensuremath{\frac{\partial {\Phi(\ensuremath{\psi})_t}}{\partial {t}}} = H
+\Phi(\ensuremath{\psi})_t  \\
+v^{\ensuremath{\psi}_t} &= v^{\Phi(\ensuremath{\psi})_t}.
+\end{align}
+Thus, once we establish the claim below, we will have shown that these
+theories are equivalent.
+
+Our claim is
+that $\ensuremath{\psi}_G$ is a lifted section of $G$ if and only if $\ensuremath{\psi}_E \ensuremath{:=}
+\Phi(\ensuremath{\psi}_G)$ satisfies $\ensuremath{\psi}_E (\ensuremath{\sigma} \ensuremath{\hat{q}}) = \ensuremath{\gamma}_{\ensuremath{\sigma}}\ensuremath{\psi}_E
+(\ensuremath{\hat{q}}) $. 
+To see this, consider what the partial trivialization
+  is. Given points $\ensuremath{\hat{q}}, \ensuremath{\widehat{r}} \in \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}$, then the
+  trivialization $\phi$ satisfies 
+\[\phi_{\ensuremath{\widehat{r}}} = P_{\ensuremath{\hat{q}} \to \ensuremath{\widehat{r}} }^{\ensuremath{\widehat{\ensuremath{\mathcal{Q}}}} \times \ensuremath{\mathbb{C}}} \phi_{\ensuremath{\hat{q}}}
+  P_{\ensuremath{\widehat{r}} \to \ensuremath{\hat{q}}}^{\ensuremath{\widehat{F}}} = \phi_{\ensuremath{\hat{q}}}
+  P_{\ensuremath{\widehat{r}} \to \ensuremath{\hat{q}}}^{\ensuremath{\widehat{F}}};\] 
+ this follows from the fact that the trivialization is parallel
+    and that parallel transport on the trivial flat bundle is
+    trivial. Thus, if we  map  $\ensuremath{\psi}_G$, a lifted section of $G$, using this
+    partial trivialization to a section of $\ensuremath{\widehat{E}}$, $\ensuremath{\psi}_E$, we find the
+    following:
+\begin{equation*}
+\begin{split}
+ \ensuremath{\psi}_E (\ensuremath{\sigma} \ensuremath{\hat{q}}) = & \Phi_{\ensuremath{\sigma} \ensuremath{\hat{q}}} \ensuremath{\psi}_G (\ensuremath{\sigma} \ensuremath{\hat{q}}) =
+\Phi_{\ensuremath{\sigma} \ensuremath{\hat{q}}} \ensuremath{\psi}_G ( \ensuremath{\hat{q}})  \\
+= & \Phi_{\ensuremath{\hat{q}}} (P_{\ensuremath{\sigma} \ensuremath{\hat{q}} \to
+  \ensuremath{\hat{q}}}^{\ensuremath{\widehat{F}}}\otimes \text{Id})
+ \ensuremath{\psi}_G(\ensuremath{\hat{q}}) = \Phi_{\ensuremath{\hat{q}}} (P_{\ensuremath{\sigma} \ensuremath{\hat{q}} \to
+  \ensuremath{\hat{q}}}^{\ensuremath{\widehat{F}}} \otimes \text{Id}) \Phi_{\ensuremath{\hat{q}}}^{-1} 
+\ensuremath{\psi}_E(\ensuremath{\hat{q}}) = \gamma_{\ensuremath{\ensuremath{\rho}}(\ensuremath{\sigma} \ensuremath{\hat{q}} \to  \ensuremath{\hat{q}})} \ensuremath{\psi}_E(\ensuremath{\hat{q}});
+\end{split}
+\end{equation*}
+it is important to note that $P_{\ensuremath{\sigma} \ensuremath{\hat{q}} \to
+  \ensuremath{\hat{q}}}^{\ensuremath{\widehat{F}}} = \gamma_{\ensuremath{\ensuremath{\rho}}(\ensuremath{\sigma} \ensuremath{\hat{q}} \to  \ensuremath{\hat{q}})}$ which is
+  the defining property of $F$. This demonstrates that the mapping
+  injects into the set of wave functions in $\ensuremath{\widehat{E}}$ 
+satisfying the periodicity condition. We must show that it is
+  onto. But this is just a rewriting of the above series of
+  equations.
+
+
+\end{proof}
+
+As an immediate application of this theorem, we have that the
+covering space description of the Aharonov-Bohm effect is equivalent
+to the vector potential description; it is important to appreciate the
+correct 
+isomorphism in order to make the correct correspondence. 
+
+
+\section{Self-adjoint extensions from cutting} \label{s:sa}
+
+
+We now pursue the functional analytic approach. This approach is
+concerned with different self-adjoint extensions of the formal
+Hamiltonian on the same \ensuremath{L^{2}}\ space. We will formulate a principle
+based on this approach and it will correspond to the previous approaches. In
+particular, for each character of the fundamental group, we shall have
+a corresponding Bohmian theory. 
+We first introduce the rough picture and then provide bite-sized
+pieces of a precise treatment.
+
+The idea is to cut \ensuremath{\mathcal{Q}}\ in order to make it simply connected. That
+is to say, we shall specify a set $\ensuremath{\kappa} \subset \ensuremath{\mathcal{Q}}$ such that $
+\ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{\ensuremath{\kappa}}} \ensuremath{:=} \ensuremath{\mathcal{Q}} \setminus \ensuremath{\kappa}$ is a simply connected open
+set. We shall also demand that \ensuremath{\kappa}\ be appropriately smooth and
+minimal. If $E$ is a bundle over \ensuremath{\mathcal{Q}}, then $\ensuremath{\bar{E}_{\ensuremath{\kappa}}}$ denotes the
+restriction of  $E$ to $\ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{\ensuremath{\kappa}}}$. 
+We also have an induced Hamiltonian  acting on
+the sections with compact support in \ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{\ensuremath{\kappa}}}. But  such
+wave functions no longer form a domain of essential self-adjointness for $H$ in the
+Hilbert space $\ensuremath{L^{2}}(\ensuremath{\mathcal{Q}}, E)$. We
+therefore need to choose a self-adjoint extension of $H$. 
+Generally, there are many different extensions. 
+For us, a self-adjoint extension will be acceptable only if 
+the resulting Bohmian evolution cannot be used to detect which
+cut was used to generate the theory. 
+
+
+\subsection{The circle}
+
+ 
+Let us consider our canonical example, $\ensuremath{\mathcal{Q}} = S^1$, $E=
+\ensuremath{\mathcal{Q}} \times \ensuremath{\mathbb{C}}$. We parametrize the circle with 
+the angle $\theta$.
+A cut \ensuremath{\kappa}\ corresponds to choosing a point; say $\ensuremath{\kappa} = 0$ in the
+parametrization.   
+Once we cut it, then we may view the space as the interval $[0,
+ 2\pi]$. We wish to consider various self-adjoint extensions of the
+Laplacian defined on $\ensuremath{C^{\infty}_0}([0,2\pi])$. The domains of essential
+self-adjointness which correspond to the ones we have found before
+consist of functions in 
+$C^{\infty} ( [0, 2\pi])$
+ satisfying the boundary condition $D^n \ensuremath{\psi}( 2 \pi) = \gamma
+D^n \ensuremath{\psi} (0)$.\footnote{Here $\gamma$ must be of modulus one so that the
+Hamiltonian is symmetric on this domain as an integration by
+parts argument demonstrates.}  
+This corresponds to the
+periodicity condition $\ensuremath{\psi} (\theta + 2 \pi) = \gamma
+ \ensuremath{\psi} (\theta)$ on \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}\ 
+and it also corresponds to having 
+the connection $\nabla -  \frac{\ln(\gamma)}{2 \pi} d\theta$ on
+$ \ensuremath{\mathcal{Q}}\times \ensuremath{\mathbb{C}}$.
+
+
+It is a  fact that the full set of
+self-adjoint extensions  is a family parameterized by four
+parameters. The extensions above are
+ characterized by just one parameter. How do we discard the other
+extensions? The idea is that the Bohmian evolution should not depend
+upon which cut was chosen; in this regard, a cut should be thought of
+as a choice of coordinates. For example, if we choose the extension
+with boundary conditions that \ensuremath{\psi}\ vanishes at both endpoints, then
+we know that typically, the particle's trajectory will not cross the
+cut point. This is the kind of dependence that we are trying to
+avoid.  
+A variety of extensions have the property that the velocity
+field is ill-defined at the cut point; we certainly would exclude
+those extensions. There is one family of
+extensions for which the velocity field is defined and continuous at
+the cut point, but it is not smooth
+at the cut point. We exclude them as well. This leaves us with only
+the ones we had previously.
+
+We have roughly described why the other cuts are unsuitable from our
+perspective. The question is now whether the boundary conditions we
+consider good actually satisfy being cut-independent. 
+Choose $\gamma_1$ and $\gamma_2$ such that  $\gamma =
+\frac{\gamma_1}{\gamma_2}$.  
+Another cut, $\ensuremath{\kappa'} \in (0, 2\pi)$, would correspond to
+$[\ensuremath{\kappa'}, \ensuremath{\kappa'}
++2\pi]$. A unitary equivalence map \ensuremath{U^{\ensuremath{\kappa}{'}  \ensuremath{\kappa}{}}} from \ensuremath{\kappa'}\ to \ensuremath{\kappa}, which
+preserves the Bohmian velocities except at the cut points, is
+\[
+\ensuremath{U^{\ensuremath{\kappa}{'}  \ensuremath{\kappa}{}}}(\theta) \ensuremath{\psi}(\theta) \ensuremath{:=} \begin{cases}
+                         \gamma_1 \ensuremath{\psi}(\theta) & \theta \in (0, \ensuremath{\kappa'})\\
+                         \gamma_2 \ensuremath{\psi}(\theta) & \theta \in (\ensuremath{\kappa'}, 2\pi)
+                        \end{cases}.
+\]
+As this map is constant away from the cuts, it is rather
+self-evident that the Bohmian velocity field is unchanged under this mapping.
+Furthermore, this is a bijection between the domains; choosing the
+$\gamma_i$ so that  the ratio is $\gamma$ is the key fact. This
+ensures that the 
+discontinuity at \ensuremath{\kappa'}\ disappears while the smoothness at
+\ensuremath{\kappa}\ is replaced with a discontinuity
+ ensuring that the wave function\ satisfies the
+boundary condition.
+As the wave function\ evolution will commute with this mapping, we can see that
+the Bohmian evolution is independent of which cut is chosen in the
+formation of the Hamiltonian.
+
+
+Let us make a couple of remarks about approaches that did not work. 
+If we  were to demand that the wave function's  evolution
+is independent of the cut, then the only allowed boundary condition is
+ the trivial periodic
+boundary condition;  the only domain which is
+independent of the cut is the one in which \ensuremath{\psi}, and its derivatives,
+agree at the boundary.
+ Another possibility, one which is too weak, is
+that of unitary equivalence. On the circle, given any extension based
+on a cut, we can implement a rotation on the circle and obtain a
+unitarily equivalent evolution based on another cut. That is to say,
+unitary equivalence excludes nothing. 
+
+
+\subsection{What is a cut?}
+We first need to define what a cut is. After doing that, we 
+consider certain illuminating examples although the most illuminating
+is in the context of identical particles as discussed in the next chapter. 
+
+A cut, \ensuremath{\kappa}, is a closed subset of \ensuremath{\mathcal{Q}}\ satisfying
+\begin{enumerate}
+\item Its complement, \ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{\ensuremath{\kappa}}}, is a simply connected
+set.\footnote{We take simply connected to also imply that the space is
+connected. 
+}
+\item If $\ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{\ensuremath{\kappa}}} \subset A$ and $A$ is an open, simply connected
+subset of \ensuremath{\mathcal{Q}}, then $A = \ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{\ensuremath{\kappa}}}$.
+\item The cut \ensuremath{\kappa}\ should be smooth in the sense that about any point
+$p \in \ensuremath{\kappa}$, there is a neighborhood $V$ such that $V \cap \ensuremath{\kappa}$ is
+the union of a finite number of regular, $(n-1)$-dimensional
+submanifolds.\footnote{A regular
+submanifold is one in which every point of it has a coordinate
+chart in the manifold 
+in which the submanifold looks like a subspace in that coordinate
+system. This assumption of regularity 
+is to avoid having a boundary such as the following in
+the plane:  
+$\{(x, \sin(\frac{1}{x}))| 0<x\leq 1\} \cup \{(0,y)| y \in [-1,1]\}$.
+ That is not the kind of boundary we want. Note that in that
+example, any small neighborhood about the origin has an
+infinite number of disconnected  lines arising from 
+the intersection of the submanifold
+with the neighborhood.}   
+\end{enumerate}
+
+
+For $S^1$, an $(n-1)$-dimensional submanifold is a point. If we remove
+more than one point, then the resulting space ceases to be
+connected. Thus, a cut \ensuremath{\kappa}\ for the circle is the removal of a single
+point. For the torus, $T^2$, an example of a cut is the removal of a
+horizontal circle and a vertical circle. Their intersection is
+typically a
+single point. In the usual representation of the torus as a square in
+the plane, the boundary of the square is the cut \ensuremath{\kappa}\ and the
+interior is the fundamental domain, \ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{\ensuremath{\kappa}}}. Analogously,
+if we take a cube in \ensuremath{\mathbb{R}^{3}}\ and identify opposite sides to obtain
+$T^3 = S^1\times S^1 \times S^1$, then the
+boundary of the cube is a cut. Notice that it consists of the union
+of three copies of $T^2$. The twelve edges of the cube are the
+three circles each of which  corresponds to an intersection of two of these
+surfaces. The corners
+ correspond to the single point of $T^3$ in which all three
+manifolds intersect.  In contrast, a vertical cylinder's cut is a vertical
+line which is a single $(2-1)$-dimensional submanifold with no
+self-intersections.  
+
+
+\subsection{BV-equivalence and cut-independent self-adjoint extensions}
+
+
+We shall now make a precise expression as to what it means for the
+ Bohmian evolution to be independent of the cut. 
+We define two self-adjoint operators $H_1$  and $H_2$ to be
+\emph{BV-equivalent} iff there exists a unitary operator $U: 
+L^2[\ensuremath{\mathcal{Q}},E] \to L^2[\ensuremath{\mathcal{Q}}, E]$ such that 
+\begin{enumerate}
+\item  $v^{\ensuremath{\psi}} (\ensuremath{q}) 
+= v^{U \ensuremath{\psi}} (\ensuremath{q})$ almost everywhere (w.r.t. Lebesgue measure)
+\item $U H_1 \ensuremath{\psi} = H_2 U \ensuremath{\psi}$ for every $\ensuremath{\psi}$ in the domain of $H_1$. 
+\end{enumerate}
+This does define an equivalence relation on the set of self-adjoint
+operators.\footnote{Composition of two BV-equivalences is clear
+enough.  As for the inverse of BV-equivalence being a BV-equivalence,
+the first property is still clear. For the
+second property, the domain is the issue. To resolve it, take
+ the adjoint of the equation and use the facts
+that both $H_1$ and $H_2$ are self-adjoint and $U$ is unitary. Thus,
+one can conclude $U^{-1} H_2 = H_1 U^{-1}$.} 
+We shall state what these conditions imply, but we shall only give a
+rough argument in establishing  the
+implications. 
+
+
+Since the velocity fields must be defined at the same places (almost
+everywhere), the supports of $\ensuremath{\psi}$ and $U \ensuremath{\psi}$ must be
+the same. This implies that $U$ is a unitary matrix-valued function over
+\ensuremath{\mathcal{Q}}, i.e.\ $(U \ensuremath{\psi}) (\ensuremath{q})  = U(\ensuremath{q}) \ensuremath{\psi}(\ensuremath{q}) $, with $U(\ensuremath{q})$ a
+unitary matrix acting on the value space of \ensuremath{\psi}.\footnote{This follows
+from the fact that $U$ commutes with all of the position spectral
+measures. If we were discussing only scalar valued wave functions, we could 
+then say that $U$ is diagonalizable in the position
+representation. The reason for the commutation is that if $P_A$ is a
+projection operator onto the wave functions with support in $A$, then $U P_A
+(\ensuremath{\psi}_A + \ensuremath{\psi}_{A^c}) = U \ensuremath{\psi}_A  = P_A( U\ensuremath{\psi}_A + U\ensuremath{\psi}_{A^c})$; all that
+is necessary is that $U$ preserves supports.}
+Furthermore, $U$
+should be smooth except for a set of measure zero; the set of measure zero
+arises since we only demand agreement up to a set of measure zero. We can
+then use the 
+preservation of the velocities to conclude that $U$ has to be 
+constant 
+in any region of smoothness.\footnote{We really mean parallel, i.e.\ $\nabla U =0$.  
+We shall generally use the term constant especially since $U$ will
+generally 
+be a pointwise 
+multiple of the identity.} 
+The second condition implies that $U$ bijectively maps
+the domain of $H_1$ to the domain of $H_2$.\footnote{From an orthodox
+perspective, one would presumably demand that the local density is
+unaffected by the unitary transformation. This immediately leads to
+$U(q)$. To argue that it is locally constant, one would need to invoke
+the commutation with the Hamiltonian. In particular, one needs 
+$[\ensuremath{\Delta}, U] =0$. This immediately leads to, acting on a test function
+\ensuremath{\psi}, $(\ensuremath{\Delta} U) \ensuremath{\psi} + \nabla U \cdot \nabla \ensuremath{\psi} = 0$. Thus, $U$ is
+locally constant.}
+
+Equipped with a satisfactory notion of equivalence, we shall state
+precisely what  cut-independence of the extension means.
+Given a cut \ensuremath{\kappa}, we define $\ensuremath{H_{\ensuremath{\kappa}}}^{0}$ to be the formal Hamiltonian 
+ $ -\ensuremath{\Delta} +V$  with domain 
+$\ensuremath{C^{\infty}_0}(\ensuremath{\bar{E}_{\ensuremath{\kappa}}})$. By $\ensuremath{H_{\ensuremath{\kappa}}}$, we shall mean a self-adjoint extension 
+of $\ensuremath{H_{\ensuremath{\kappa}}}^{0}$. 
+Then  \ensuremath{H_{\ensuremath{\kappa}}}\ is
+\emph{cut-independent} iff for each cut \ensuremath{\kappa'}, there is a
+corresponding $\ensuremath{H_{\ensuremath{\kappa'}}}$  which is BV-equivalent to \ensuremath{H_{\ensuremath{\kappa}}}. 
+Although there are many choices, we shall simply assume that 
+a 
+BV-equivalence map taking $\ensuremath{H_{\ensuremath{\kappa}}} \to \ensuremath{H_{\ensuremath{\kappa'}}}$
+ has
+been chosen; it will be 
+denoted by
+\ensuremath{U^{\ensuremath{\kappa}{}  \ensuremath{\kappa}{'}}}. 
+
+
+\subsection{The principle}
+
+We now establish a family of cut-independent self-adjoint extensions,
+one for each character. The construction is to appeal to the covering
+space to obtain the relevant evolution.  
+To do this, we  show that given a periodicity
+condition on the covering space, we do have a corresponding
+cut-independent self-adjoint extension.
+
+In many ways, the cut approach is a non-smooth version of the
+covering space approach. 
+Indeed, select a fundamental domain\footnote{A fundamental domain is a
+region of the covering space which bijectively corresponds, under the
+projection map, to \ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{\ensuremath{\kappa}}}. In more general contexts, the boundary of
+a fundamental domain is allowed to be quite wild.} $R$ on the covering space
+whose boundary is contained in the lift of \ensuremath{\kappa}. 
+Given a character, \ensuremath{\gamma},
+define
+\[\Lambda_{\ensuremath{\gamma_{}}} \ensuremath{:=} \{\phi \in \ensuremath{\mathcal{D}}(H)
+| \phi(\sigma
+\ensuremath{\hat{q}}) = \ensuremath{\gamma_{\ensuremath{\sigma}}} \phi(\ensuremath{\hat{q}}) \forall \ensuremath{\hat{q}} \in \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}\},
+\]
+the set of smooth sections of the lifted bundle
+$\ensuremath{\widehat{E}}$ satisfying the periodicity condition defined by \ensuremath{\gamma}. 
+The unitary evolution on the covering space preserves this
+domain and preserves the \ensuremath{L^{2}}\ norm of each section restricted to the
+region. Define the dense domain of $\ensuremath{L^{2}}(\ensuremath{\mathcal{Q}}, E)$
+\[
+\ensuremath{E_{\ensuremath{\kappa}, \ensuremath{\gamma_{}}}}  \ensuremath{:=}
+\{\ensuremath{\psi} | \exists \phi \in \Lambda_{\ensuremath{\gamma_{}}} \text{ s.t. }
+ \forall \ensuremath{q} \in \ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{\ensuremath{\kappa}}},  \ensuremath{\psi}(\ensuremath{q}) = \phi(\ensuremath{\hat{q}})  \text{ for
+the unique } \ensuremath{\hat{q}} \in (\ensuremath{\ensuremath{\rho}}^{-1} (\ensuremath{q}) \cap R)\}
+\]
+and let $\ensuremath{\ensuremath{\rho}}_R(\phi)$ be the bijection making the correspondence between
+the elements of $\Lambda_{\ensuremath{\gamma_{}}}$ and \ensuremath{E_{\ensuremath{\kappa}, \ensuremath{\gamma_{}}}}.
+Then the covering space evolution defines a unitary evolution on
+\ensuremath{E_{\ensuremath{\kappa}, \ensuremath{\gamma_{}}}}\ which takes the domain to itself. 
+Thus, if we define \ensuremath{H_{\ensuremath{\kappa}}}\ to be the formal Hamiltonian defined on
+\ensuremath{E_{\ensuremath{\kappa}, \ensuremath{\gamma_{}}}},  then \ensuremath{H_{\ensuremath{\kappa}}}\ is self-adjoint. 
+
+To establish that \ensuremath{H_{\ensuremath{\kappa}}}\ is cut-independent, we choose another cut
+\ensuremath{\kappa'}. We select a fundamental domain $R'$ on \ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}\ 
+ with a boundary formed
+from the lift of \ensuremath{\kappa'}. We do the same process again to generate
+\ensuremath{H_{\ensuremath{\kappa'}}}, choosing the same periodicity condition as the one for \ensuremath{H_{\ensuremath{\kappa}}}. 
+The BV-equivalence mapping is extremely simple. Let $f^{RR'}$ be the
+map taking $R$ to $R'$ which is defined away from the boundary.
+Then the BV-equivalence map is
+\[
+\ensuremath{U^{\ensuremath{\kappa}{}  \ensuremath{\kappa}{'}}} \ensuremath{\psi}(\ensuremath{q}) 
+= \ensuremath{U^{\ensuremath{\kappa}{}  \ensuremath{\kappa}{'}}} \ensuremath{\ensuremath{\rho}}_R(\phi) (\ensuremath{q}) 
+\ensuremath{:=} \phi(f^{RR'}(\ensuremath{\ensuremath{\rho}}^{-1}_R(\ensuremath{q})) 
+=\ensuremath{\gamma}_{\sigma(\ensuremath{q}, f^{RR'})} \ensuremath{\ensuremath{\rho}}_R(\phi) (\ensuremath{q}).
+\]
+In words, we take our wave function\ in \ensuremath{E_{\ensuremath{\kappa}, \ensuremath{\gamma_{}}}}, lift it to the appropriate wave function\ on
+the covering space, using the level $R$, then we project down the
+corresponding parts of that wave function\ defined over $R'$.  If
+$\ensuremath{q} \in R \cap R'$, then the BV-equivalence map at \ensuremath{q}\ is the
+identity. Elsewhere, it would be multiplication by the appropriate
+phase induced by the periodicity condition.  
+Thus, given a character and a cut, we have a 
+ cut-independent self-adjoint extension of the formal 
+Hamiltonian. 
+
+
+As a general principle, we can state the following. 
+\begin{principle}[Abelian Quantization Principle, H]
+To specify a Bohmian theory, one needs to pick a Riemannian manifold
+ $\ensuremath{\mathcal{Q}}$, a 
+ cc-Hermitian\ vector bundle $E$ over
+ \ensuremath{\mathcal{Q}}, a potential $V$, and a character \ensuremath{\gamma}\
+ of the fundamental group \ensuremath{\pi_1 ({\ensuremath{\mathcal{Q}}})}.
+ The Bohmian
+ theory $(\ensuremath{\mathcal{Q}}, E, V, \ensuremath{\gamma})_H$ is defined by 
+\eqref{ie:ve}
+where  the wave function\
+$\ensuremath{\psi}_t$ is a section of the bundle $ E$ and $H$ is the cut-independent
+ self-adjoint extension defined by \ensuremath{\gamma}\ and the cut \ensuremath{\kappa}. 
+
+\end{principle}
+
+
+\subsection{ Characterization of cut-independence }
+Given a cut-independent self-adjoint
+extension whose BV-equivalence map is
+of the form 
+$ \gamma_{ \ensuremath{q} } \ensuremath{\text{Id}} $, 
+then there is an associated character of \ensuremath{\pi_1 ({\ensuremath{\mathcal{Q}}})}.
+In general, 
+the various unitary representations of the fundamental group characterize the
+possible cut-independent extensions; this can be argued in a similar
+vein as below. As shall be explained in the next chapter, there is
+good reason to ignore such possibilities. 
+
+Therefore, for the rest of this section, BV-equivalence
+maps will be multiples of the identity. 
+
+\begin{theorem}
+Let $E$ be a cc-Hermitian\ vector bundle over the Riemannian configuration
+space \ensuremath{\mathcal{Q}}\ and $V$ a potential acting on $E$. 
+Let \ensuremath{H_{\ensuremath{\kappa}}}\ be a cut-independent self-adjoint extension 
+generating the Bohmian theory $(\ensuremath{\mathcal{Q}}, E, V)_{\ensuremath{H_{\ensuremath{\kappa}}}}$ whose
+BV-equivalence maps are scalar multiples of the identity. Then there
+exists a character $\ensuremath{\gamma}$ such that 
+ $(\ensuremath{\mathcal{Q}}, E, V)_{\ensuremath{H_{\ensuremath{\kappa}}}} \ensuremath{\simeq} (\ensuremath{\mathcal{Q}}, E, V, \ensuremath{\gamma})_{\nabla}$.
+\end{theorem}
+
+From the equivalence proved in Section {\ref{s:fb}}, we can conclude that
+the set of cut-independent self-adjoint extensions is characterized by
+the cut and a character. 
+
+\begin{proof}
+
+We start with the cut-independent \ensuremath{H_{\ensuremath{\kappa}}}. 
+Each pair $(\ensuremath{\bar{E}_{{\ensuremath{\kappa'}}}}, \ensuremath{U^{\ensuremath{\kappa}{}  \ensuremath{\kappa}{'}}})$ is to be a generalized chart for our
+bundle.\footnote{By generalized, we mean that we are not actually
+going to write down coordinate charts. Instead these are neighborhoods
+with a bundle structure already implied. Our construction does not
+require us to go to coordinates; it only requires us to have patches
+that we can put together differently.} The transition
+map  going from the chart of $\ensuremath{\kappa}'$ to the chart of $\ensuremath{\kappa}''$ is the
+(BV-equivalence) map 
+\[
+\ensuremath{U^{\ensuremath{\kappa}{'}  \ensuremath{\kappa}{''}}} \ensuremath{:=} \ensuremath{U^{\ensuremath{\kappa}{}  \ensuremath{\kappa}{''}}}(\ensuremath{U^{\ensuremath{\kappa}{}  \ensuremath{\kappa}{'}}})^{-1} .
+\] These maps are smooth away from
+the cuts $\ensuremath{\kappa}'$ and $\ensuremath{\kappa}''$; we shall establish this later. 
+We then form the disjoint union of all of these charts and define our vector
+bundle to 
+ be the set of equivalence classes under the relation
+\begin{equation} \label{ei:eqvr}
+(\ensuremath{q}, v)_{\ensuremath{\kappa}'} \ensuremath{\sim} (\ensuremath{q}, w)_{\ensuremath{\kappa}''} \text{ iff }
+\ensuremath{U^{\ensuremath{\kappa}{'}  \ensuremath{\kappa}{''}}} v = w;
+\end{equation}
+By $(\ensuremath{q}, v)_{\ensuremath{\kappa}'}$ we mean that $\ensuremath{q} \in \ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{{\ensuremath{\kappa'}}}}$
+and $v \in E_{\ensuremath{q}}$. 
+Because  BV-equivalence is an equivalence relation, the relation above
+is indeed an equivalence relation.
+Quite generally, 
+it can be shown that this setup does define a bundle as is often done
+in the context of physics. We shall call this bundle $G$. 
+Parallel transport is defined, in a chart, as  the 
+parallel transport in $E$.
+Furthermore, \ensuremath{H_{\ensuremath{\kappa}}}\  defines a Schr\"odinger\ evolution
+with the correct formal Hamiltonian on $G$; cut-independence is
+important to show that the evolution in any of the other charts is
+compatible. The first property for BV-equivalence establishes
+that the Bohmian evolution will be the same either using \ensuremath{H_{\ensuremath{\kappa}}}\ or the
+bundle $G$.  
+
+All that remains is to demonstrate that $G = F_{\ensuremath{\gamma}} \otimes E$,
+for some flat line bundle $F_{\ensuremath{\gamma}}$. For this, consider the
+parallel transport of the element $v \in E_{\ensuremath{q}}$, $\ensuremath{q} \in
+\ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{\ensuremath{\kappa}}}$, around the closed loop
+$\alpha$, parametrized in the interval $[0,1]$. 
+For simplicity, assume that $\ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{\ensuremath{\kappa}}}$ and
+$\ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{{\ensuremath{\kappa'}}}}$ form a cover of $\alpha$ and that it is possible to
+find $t_1, t_2$
+such that $\alpha_t \in \ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{\ensuremath{\kappa}}}$ for $t \in [0,t_1] \cup [t_2, 1]$
+while $\alpha_t \in \ensuremath{\bar{\ensuremath{\mathcal{Q}}}_{{\ensuremath{\kappa'}}}}$ for $t \in [t_1, t_2]$.  
+Then parallel transport along $\alpha$ is 
+\[
+P_{\alpha_0 \to \alpha_1}^G v =
+P_{\alpha_{t_2} \to \alpha_1}^{\ensuremath{\bar{E}_{{\ensuremath{\kappa}}}}} 
+\ensuremath{U^{\ensuremath{\kappa}{'}  \ensuremath{\kappa}{}}}_{\alpha_{t_2}}  
+P_{\alpha_{t_1} \to \alpha_{t_2}}^{\ensuremath{\bar{E}_{{\ensuremath{\kappa'}}}}}
+\ensuremath{U^{\ensuremath{\kappa}{}  \ensuremath{\kappa}{'}}}_{\alpha_{t_1}} P_{\alpha_{0} \to \alpha_{t_1}}^{\ensuremath{\bar{E}_{{\ensuremath{\kappa}}}}} v
+= \ensuremath{U^{\ensuremath{\kappa}{'}  \ensuremath{\kappa}{}}}_{\alpha_{t_2}} \ensuremath{U^{\ensuremath{\kappa}{}  \ensuremath{\kappa}{'}}}_{\alpha_{t_1}} P_{\alpha_0 \to
+\alpha_1}^E v 
+\]
+where we used the fact that the BV-equivalence maps commute with the
+parallel transport operators which is especially true as they are just
+scalars. Thus, we have that parallel transport is just parallel
+transport in $E$ times a phase factor. To finish the argument, we need
+to argue that the phase factor depends only on the homotopy class of
+the curve. This follows from two facts. First, within a chart, we can
+smoothly vary the path $\alpha$ without changing the phase part since
+BV-equivalence maps are constant away from the boundaries. Second,
+parallel transport is independent of the charts.
+
+
+ Except for establishing smoothness of the BV-equivalence maps, 
+we have arrived at our result. The flat line bundle that we tensor
+with $E$ has the holonomy given by the phase holonomy constructed from
+the BV-equivalences as done above. 
+
+
+We now  establish some smoothness results. We need this to
+demonstrate that the transition maps are smooth where they are
+supposed to be. This will also establish that the appropriate wave functions in
+the domain of \ensuremath{H_{\ensuremath{\kappa}}}, those that are smooth enough to provide a Bohmian
+evolution, actually become the smooth sections of $G$ in the
+construction. Although this seems like a side remark, it is actually
+quite important as it demonstrates the restrictions placed on the
+BV-equivalence maps due to property 2 of the definition for being a
+BV-equivalent map. 
+
+Given an operator $A$,  let $\ensuremath{\mathcal{D}}(A)$ be the domain of $A$. Define
+$\ensuremath{C^{\infty}}(A) \ensuremath{:=} \bigcap_{n=1}^{\infty} \ensuremath{\mathcal{D}}(A^n)$. Let \ensuremath{H_{\ensuremath{\kappa}}}\ be a
+cut-independent self-adjoint extension and \ensuremath{H_{\ensuremath{\kappa'}}}\ be a BV-equivalent
+extension. Then, from the definition of BV-equivalence, it is clear that
+$\ensuremath{C^{\infty}}(\ensuremath{H_{\ensuremath{\kappa}}})$ is mapped into $\ensuremath{C^{\infty}}(\ensuremath{H_{\ensuremath{\kappa'}}})$. By Sobolev regularity
+theorems for the Laplacian, we actually have that $\ensuremath{C^{\infty}}(\ensuremath{H_{\ensuremath{\kappa}}})$
+consists of smooth functions away from the boundary and these
+functions, and their derivatives, have limits as one approaches the
+boundaries. Therefore, the image of a smooth section under a 
+BV-equivalence map  is smooth. 
+Since a BV-equivalence map is multiplication by a
+function, we can deduce that the
+BV-equivalence map must be smooth away from the boundaries. Furthermore,
+the jumps along a given cut are prescribed by the domain of the extension 
+corresponding to that cut. 
+
+Since BV-equivalence is an equivalence relation, the same statement
+holds for the composition of BV-equivalence maps. Thus, the map
+$\ensuremath{U^{\ensuremath{\kappa}{}  \ensuremath{\kappa}{'}}} \ensuremath{U^{\ensuremath{\kappa}{''}  \ensuremath{\kappa}{}}}$ is smooth along $\ensuremath{\kappa}$ wherever $\ensuremath{\kappa}$ does
+not intersect either of the other cuts. One can also then understand
+that under the equivalence map defining the bundles, sections in
+$\ensuremath{C^{\infty}}(\ensuremath{H_{\ensuremath{\kappa}}})$ that
+might not look smooth along the boundary do get mapped to sections
+that are smooth along \ensuremath{\kappa}\ in the new chart although they will
+generally cease to be smooth along the cut of the new chart. 
+
+\end{proof}
+
+
+\section{Comparisons} {\label{s:comp}}
+
+In this chapter, we have described three very different approaches to
+finding various theories. To summarize, we have shown that there is
+only one Abelian Quantization Principle, i.e., 
+\[
+(\ensuremath{\mathcal{Q}}, E, V, \ensuremath{\gamma}) 
+\ensuremath{:=} (\ensuremath{\mathcal{Q}}, E, V, \gamma)_{\ensuremath{\widehat{\ensuremath{\mathcal{Q}}}}} 
+\ensuremath{\simeq} (\ensuremath{\mathcal{Q}}, E, V, \gamma)_{\nabla} 
+\ensuremath{\simeq} (\ensuremath{\mathcal{Q}}, E, V, \gamma)_{H}.
+\] 
+Although equivalent,  each approach had a different feeling to
+it. Indeed, the covering space approach is to change the domain of
+the wave function\ into a simply connected space. The bundle approach is to change the
+notion of derivative; to a certain extent, we can view this as
+changing the range of the wave function. 
+The self-adjoint extension
+approach directly  
+changes the Hamiltonian. It is not at all obvious that all
+three approaches should have worked and it is quite remarkable 
+ that they produce the same
+possibilities. We shall now attempt to contrast the three
+approaches. 
+
+
+Our first approach was to use the covering space; this 
+ is a topological solution. Indeed, since 
+topology is responsible for these extra possibilities, it seems quite
+natural to attempt to trivialize the topology. The usual
+topological mechanism for  a trivialization is the use of the 
+ simply connected covering space particularly when gradients are involved. 
+ We used Bohmian mechanics to explain why the
+covering space is useful. The Bohmian constraint is the condition of
+projectability of the velocity field. The immediate solution
+ is the scalar periodicity condition. We demonstrated that this works
+ for any Bohmian theory. In the next chapter, we shall show that,
+ generically, the scalar periodicity 
+ condition is the only periodicity condition that works.
+The true advantage of the covering space is its simplicity. Noticing
+ that it is a character which is at work is immediate. It also 
+provides a single framework for all of the various
+ possible theories.
+ A minor disadvantage is that the covering space causes certain
+ worries to occur. One worry, easily dismissable, but very
+ tempting, is to be bothered by the possibility of 
+  wave functions  on the covering space 
+ whose Bohmian velocities project down to the base
+ space for all time without satisfying any periodicity conditions.
+The appropriate response is that the goal is to find theories, not
+ exceptions, but many may be unsatisfied with this. Another worry, of
+ a very technical nature, is that for spaces with infinite fundamental
+ groups, the wave functions satisfying a periodicity condition are not in
+ \ensuremath{L^{2}}. This technical problem can be dealt with in a variety of ways,
+ such as appealing to the other approaches or perhaps to the theory of
+ rigged Hilbert spaces, 
+ but it is still an annoyance. 
+
+
+The approach of considering different self-adjoint extensions is a
+functional analysis approach. The issue is, after all, about the
+evolution of a system. But in order to consider these possibilities,
+we had to the cut space in such a way to make it simply
+connected. Then our self-adjoint extension could be thought of as
+describing what happens along this virtual boundary. The picture to
+have is that 
+as a wave packet passes through the boundary, it picks up a phase. But
+considering all self-adjoint extensions is to consider a great number
+of possible theories. The necessary demand for the extension to be
+physically reasonable was that the extension was cut-independent. This
+notion was grounded in the Bohmian evolution not detecting which cut
+was used. 
+ We immediately constructed a cut-independent extension for each
+character; one way was to appeal to the covering space. But in this
+context, it seemed necessary to rule out the vast number of other
+possibilities, which we did.  Unlike the covering space, these
+possibilities  did form their own theory. We dismissed them 
+on the grounds that  
+ they  introduced an element assumed to be not  in the physics, in
+much the same way that physics demands an appropriate 
+invariance under coordinate changes. 
+
+The bundle approach is a geometric solution. As wave functions are sections of
+a vector bundle,  the idea is to consider various different
+connections potentially involving various bundles. 
+The important fact is that having a non-trivial fundamental group 
+implies the  existence of inequivalent flat bundles. 
+ This allowed us to define different Bohmian
+theories by tensoring the original bundle with a flat line bundle. 
+Interestingly, 
+the bundle approach does not seem to  offer any wrong directions. 
+We had no isolated
+wave functions and we had no obvious alternative theories. In terms of
+tensoring with a line bundle, only the flat ones are allowed and they
+are easily classified. One could ask the question if it is possible to
+have locally equivalent bundles which are not constructed in this
+manner. This is the case for flat bundles, 
+as all flat bundles of a given dimension are
+locally equivalent to each other, 
+but from the experience with spin as detailed in the next chapter, 
+it seems that the only generically
+permitted construction is tensoring with a flat line bundle. 
+
+
+One strength of the bundle approach is in the following question:
+ Given the existence
+of certain structures, such as spin,
+ necessary for the kinds of theories we want,
+what are the possible bundles over the configuration space that can
+support these structures? 
+Although interesting, this question is not what this work is
+ addressing.  Indeed, that question applies for simply
+connected spaces and requires the consideration of very specific theories
+such as those involving spin. 
+
+
+As to the role of Bohmian mechanics in these considerations, the main
+role is to solidify the notion that wave functions
+are not primary objects and to explain what is of primary concern,
+namely the particles and their evolution.
+Indeed, the wave function\ does not need to be well-defined on the base
+space, only the Bohmian velocity field needs to be. 
+To put it more
+succinctly, wave functions should be thought of as more in the nature of
+potentials, which are certain artifacts of describing the dynamics,
+and less in the nature of electromagnetic fields, which are actually 
+exact objects. 
+
+And yet we are not implying that these arguments cannot be made in
+standard quantum mechanics. If one accepts, as an axiom, that the local
+density is the central object in the theory, then the same results
+will follow in almost the same way. 
+The cut 
+ approach would replace the preservation of the velocity fields
+with the preservation of the density. 
+In the covering space approach, the projectability of the density would
+ replace the projectability of the velocity field. 
+The only actual change in the arguments would be the need to use the
+Laplacian to demonstrate local constancy of the periodicity or boundary
+conditions. 
+
+\section{Local equivalence} \label{is:leqv}
+
+A hidden principle that we have found to be a useful guide is that of
+local equivalence. Given the data $(\ensuremath{\mathcal{Q}}, E, V)$, the various 
+theories generated by
+the Abelian Quantization Principle\ are all locally equivalent to each other. This means that
+only global considerations
+ can distinguish the theories. 
+
+
+What does local equivalence 
+mean? Roughly, the equations of motion look locally the same. The
+objects generating the theory such as $g$, $\nabla$, and $V$ are all
+local objects and, in a certain sense,  locally they remain unchanged. 
+The global difference comes in from the
+character. Another way of saying what local equivalence is, is to
+consider coordinates in a neighborhood 
+and write down the equations, restricted to that neighborhood, in those
+coordinates. The theories are locally equivalent if, in the
+appropriate coordinates, the equations are the same. 
+ Appropriate coordinates means the following. Pick a
+point $\ensuremath{q} \in \ensuremath{\mathcal{Q}}$ and a simply connected neighborhood of
+\ensuremath{q}. 
+Choose
+a basis of the tangent space at $\ensuremath{q}$ and a basis of $E$ at
+\ensuremath{q}. Then pick normal coordinates for \ensuremath{\mathcal{Q}}\ 
+and parallel transport the basis
+of the vector bundle along the geodesics in \ensuremath{\mathcal{Q}}. One can then show
+that the equations are the same. 
+
+Local equivalence helps us limit the possibilities. This chapter has
+shown that, as far as we can imagine, AQP describes all the possible
+locally equivalent theories. But if we allow  the dimension of the
+bundle fiber to change, then we can find other theories for which 
+the theories are locally equivalent in terms of individual 
+components, but they are not,
+strictly speaking, 
+locally equivalent as the number of components is different. 
+More to the point, if $G$ is the  tensor product of  $E$ with some flat bundle
+$F$, then there is no local isomorphism between $G$ and $E$ if $F$ is
+not a line bundle. Nevertheless, if the initial wave function\ is a product
+state, then its evolution will locally look like it is a section of
+$E$. The relevance of such possibilities is rather unclear. 
+
+
+\section{Quantization of classical systems} \label{is:quant}
+
+We finish the chapter by indicating how to quantize a classical system
+from a Bohmian point of view. The procedure is little more than Schr\"odinger\
+quantization, i.e.\ writing down  Schr\"odinger's equation. One of the uses of Bohmian
+mechanics is that this is all that needs to be chosen; the Bohmian
+velocity law is always the same. Bohmian mechanics also provides the
+appropriate framework in order to recover the classical system in the
+classical limit of the quantum theory. Finally, we use the ideas of
+this chapter to quantize a classical system whose force is only locally
+a gradient, i.e.\ the potential is only well-defined on the universal
+covering space.  
+
+\subsection{Newtonian dynamics on a manifold}
+We start with a Riemannian configuration space \ensuremath{\mathcal{Q}}, 
+with metric $g$, and a
+real-valued potential function $V$ defined on \ensuremath{\mathcal{Q}}.
+This is
+enough information to define a classical evolution on 
+\ensuremath{\mathcal{Q}}. Indeed, the Levi-Civita connection, defined by the metric,
+allows the acceleration vector to be defined. The metric also provides
+a canonical isomorphism between 
+ 1-forms and tangent vectors. Thus, given $V$, we have
+Newton's equation: $\ddot{Q} = - \nabla V$. Equivalently, Newton's 
+ equation may be written, in terms of 1-forms, as 
+$g(\ddot{Q}, \cdot) = -dV(\cdot)$. An immediate
+consequence of this equation is conservation of energy, 
+$ \frac{1}{2}g(\dot{Q},\dot{Q}) + V(Q) = E$. 
+
+\subsection{Bohmian Quantization}
+The question we address is what the corresponding quantum system
+is. The general prescription is that our wave functions are to be
+complex-valued functions and the Hamiltonian is 
+$-\ensuremath{\Delta}+V$. The wave function\ evolves according to Schr\"odinger's equation\ \eqref{ie:rse}. 
+This is Schr\"odinger\ quantization. To complete the theory, we take Bohm's
+equation \eqref{ie:rbe} as defining the evolution of the particles. 
+
+This should be contrasted with standard quantum mechanics in which the
+theory is only fully specified after the relevant observables are
+chosen. 
+This can
+be tricky since generally the momentum operator does not exist,
+e.g.\ the half-line, or the position operator does not exist, e.g.\ the
+circle. The relevant data for quantum theories does exist, as can be
+deduced from Bohmian mechanics, but the story becomes much more
+complicated and requires the finesse of a master in order to do it
+correctly without the aid of Bohmian mechanics. 
+
+\subsection{Classical limit}
+When one quantizes a system, the main purpose is to form a quantum
+theory which, under certain suitable conditions, will behave like the
+given system. 
+From a
+Bohmian perspective, this is formally clear. Indeed, just as in \ensuremath{\mathbb{R}^{n}},
+we can write Schr\"odinger's equation, using the polar form $\ensuremath{\psi} = Re^{iS/\ensuremath{\hbar}}$, as two
+coupled real equations. One of the equations is the
+Hamilton-Jacobi equation for the above classical system with an
+additional term, the quantum potential
+$(\frac{-\ensuremath{\hbar}^2\ensuremath{\Delta} R}{2R})$. Thus, in any region in which
+ this potential may be
+considered negligible, the system will behave classically in that
+region. Giving a
+precise story of when it is negligible is subtle; see \cite{ADGZ02}. 
+The main lesson to learn is that in Bohmian mechanics 
+the classical limit only involves
+demonstrating
+ that the trajectories of the actual particles are approximately classical. In
+contrast, standard quantum mechanics must explain what objects are
+supposed to behave in a way in which the classical world will emerge. 
+
+We conclude this subsection with what this chapter tells us about 
+quantization. Although the above quantization procedure does define a
+unique theory given $V$, it is not necessarily 
+the only Bohmian  theory with that classical limit. 
+If $\ensuremath{\mathcal{Q}}$ is multiply connected, then the Abelian Quantization Principle\ tells us that for
+each character of the fundamental group, 
+we have a different Bohmian theory involving the
+potential $V$. Section {\ref{is:leqv}}\ explained that  these theories
+are locally equivalent. Since the classical limit is largely based on
+a local viewpoint, we can expect that these various theories all have
+the same classical limit. To distinguish between them, one must
+consider the quantum effects. 
+
+\subsection{Potentials on the covering space} \label{s:pers}
+
+
+We have been assuming that we have a
+time-independent formal Hamiltonian well-defined on \ensuremath{\mathcal{Q}}. One can
+ask the question about quantizing systems with a potential which is
+only defined on the covering space; an example is having a constant
+electric field along a circle. Alternatively, we could also
+ pursue time-dependent, topologically motivated 
+connections, such as having a time-dependent magnetic field in the
+Aharonov-Bohm setup. On the surface, these seem to be areas where the
+approaches are inequivalent. On closer inspection, these are, in fact,
+the same phenomena. 
+
+
+We start with \ensuremath{\mathcal{Q}}\ and a 1-form $\omega$ which is closed but not
+exact on \ensuremath{\mathcal{Q}}. 
+The model spaces to think about are 
+the circle and the torus. 
+
+We take $\omega$ to be our classical force, and we
+have its potential $V$ on the covering space, but not on the base
+space.  We therefore consider the Bohmian system on the covering space
+which corresponds to $-\ensuremath{\Delta} +V$, and the relevant set of wave functions will be
+those that consistently project down. We claim that the periodicity
+condition now becomes time-dependent. More to the point, our space of
+wave functions will be a disjoint union over the periodicity conditions and any
+particular wave function\ will evolve from one sector to the next. Note that the
+space of  wave functions  ceases to be a linear space. 
+
+To establish what we just claimed, we start with a wave function\ on the
+covering space satisfying 
+\begin{equation} \label{ei:tpercon}
+\ensuremath{\psi} (\ensuremath{\sigma} \ensuremath{\hat{q}}, 0) = \ensuremath{\gamma_{\ensuremath{\sigma}}} \ensuremath{\psi}(\ensuremath{\hat{q}},0).
+\end{equation}
+ Our claim is that if $V(\ensuremath{\sigma} \ensuremath{\hat{q}}) = V(\ensuremath{\hat{q}}) +
+\beta_{\ensuremath{\sigma}}$ for all \ensuremath{\hat{q}}\ and \ensuremath{\sigma}, then 
+\begin{equation} \label{ei:tcons}
+\ensuremath{\psi} (\ensuremath{\sigma} \ensuremath{\hat{q}} , t) 
+= \ensuremath{\gamma_{\ensuremath{\sigma}}} e^{-i \beta_{\ensuremath{\sigma}}t} \ensuremath{\psi} (\ensuremath{\hat{q}}, t).    
+\end{equation}
+We can establish this by noting that if $\phi$ is any solution to 
+Schr\"odinger's equation, then  
+\[\phi_{\ensuremath{\sigma}} (\ensuremath{\hat{q}},t)
+\ensuremath{:=} 
+\ensuremath{\gamma_{\ensuremath{\sigma}}}^{-1}  e^{i \beta_{\ensuremath{\sigma}}t} \phi (\ensuremath{\sigma}
+\ensuremath{\hat{q}}, t)
+\] is also a solution to Schr\"odinger's equation. That is a simple computation. If \ensuremath{\psi}\
+satisfies equation \eqref{ei:tpercon}, then $\ensuremath{\psi}_{\ensuremath{\sigma}}(\ensuremath{\hat{q}}, 0) =
+ \ensuremath{\psi}(\ensuremath{\hat{q}}, 0)$. Hence, by uniqueness of solutions, 
+\[\ensuremath{\psi}_{\sigma}(\ensuremath{\hat{q}}, t) = \ensuremath{\psi}(\ensuremath{\hat{q}}, t)\] which is equation
+ \eqref{ei:tcons}.
+That is to say,  we have time-dependent periodicity
+conditions. Furthermore, as above, in the classical
+limit the motion on \ensuremath{\mathcal{Q}}\ should look Newtonian with force $\omega$.
+
+We now wish to argue that the above Bohmian system
+ is equivalent to a Hamiltonian with a
+time-dependent connection, but with a fixed periodicity
+condition. Quite generally, we claim that the 
+Bohmian
+systems 
+\begin{equation} \label{e:2thry}
+(-\ensuremath{\Delta} + V, \nabla) \ensuremath{\sim} (-(\nabla -i
+tdV )^2, \nabla -i
+tdV )
+\end{equation}
+are equivalent
+under the map $\ensuremath{\psi} \mapsto e^{ i V t} \ensuremath{\psi}$.\footnote{If $V$ depends on
+$t$, then we would replace $Vt$ with $W \ensuremath{:=} \int V dt$ and replace
+$tdV $ with $dW$. 
+}
+ Again, a simple computation
+establishes this. If we make this change, then the time-dependent
+mapping cancels the time-dependent change of phase in the periodicity
+condition. Hence we are  left with the initial periodicity condition as
+the condition for all $t$. We may 
+thus
+define a flat bundle over \ensuremath{\mathcal{Q}}, by using the time-independent periodicity
+condition. As $dV$ is well-defined on \ensuremath{\mathcal{Q}},  
+the time-dependent connection on the bundle over the covering
+space induces a time-dependent connection on the bundle over
+\ensuremath{\mathcal{Q}}. 
+
+As for the cuts, it seems that time-dependent boundary conditions
+would be necessary. Our scheme would be the following. Cut the space
+and define $V$ up to the boundary.
+If we use time-independent conditions,
+then the potential we are modeling is the one corresponding to the
+lift of this discontinuous potential to the covering space. The cut
+would certainly matter and  presumably no 
+BV-equivalence exists between the different cuts. 
+However, if we use a time-dependent
+boundary condition, as suggested by the time-dependent periodicity condition,
+then the extension will be cut-independent.
+
+
+Let us say a few words about this in relation to a quantum system on
+the circle. 
+On the circle, there are closed, but not
+exact, 1-forms. 
+Indeed, a constant force along
+the circle is represented by the the non-exact 1-form
+$\frac{\beta}{2\pi}d\theta $. We shall suppress the $d\theta$ as is
+customarily done.   
+On the covering space we
+have a potential function, $\frac{\beta}{2\pi} \theta$,  and, therefore, a
+well-defined Schr\"odinger's equation.  The
+  periodicity condition is $\ensuremath{\psi} (\theta +2\pi n, t) = \gamma^n e^{i
+\beta n t} \ensuremath{\psi}(\theta, t)$. 
+Such wave functions obviously define a Bohmian evolution on $S^1$.
+The change of connection which eliminates this time-dependent
+periodicity condition is $\ensuremath{\frac{\partial {}}{\partial {\theta}}} - i \frac{\beta}{2 \pi}
+t$. Forming the induced line bundle over the circle, we have the
+trivial bundle with 
+ connection 
+\begin{equation*} 
+\nabla \ensuremath{:=} \ensuremath{\frac{\partial {}}{\partial {\theta}}} - i ( \frac{\alpha + t \beta}{2 \pi} )
+\end{equation*}
+ where $\alpha$
+satisfies $\gamma = e^{i \alpha}$. This connection incorporates both the
+periodicity condition and the time-dependent connection on the
+covering space.
+
+\clearpage
+\bibliographystyle{abbrv}
+\bibliography{references}
+\end{document}
