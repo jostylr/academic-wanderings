@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Calculate a latitude’s Taylor jets two ways and vary the latitude and step to measure their difference.">
+  <title>Where the two Taylor polynomials part on a sphere · Academic Wanderings</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css"
+    integrity="sha384-WwGtaC6ywCHxA5cstpj/3+xIZvTez8dq2IcBQaXRkenHZ7FVVq1ZROtURwfbtTlG" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.js"
+    integrity="sha384-a1WQdjRj162i159OYq041X6I4K8NenkrI09LlPmiHg0YOb7CR+wJOraXwK9abpnE" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="math.js"></script>
+  <script defer src="sphere-latitude.js"></script>
+</head>
+<body>
+  <main class="page page--article">
+    <nav class="site-header" aria-label="Site">
+      <a class="site-title" href="index.html">Academic Wanderings</a>
+      <a href="index.html#exploratory">Exploratory</a>
+    </nav>
+    <article class="taylor-article">
+      <header><h1>Where the two Taylor polynomials part on a sphere</h1></header>
+<p>Unroll a narrow strip of longitude and latitude onto graph paper and give the paper its Euclidean metric. A horizontal line is straight on the paper. Wrapping it onto the unit sphere makes it a circle of latitude. This map lets us compare four derivatives by two independent calculations.</p>
+<section id="a-flat-strip-mapped-onto-a-curved-patch" class="level2">
+<h2>A flat strip mapped onto a curved patch</h2>
+<p>Use the map
+<span class="math display">\[f(u,w)=(\cos w\cos u,\cos w\sin u,\sin w),\qquad |w|&lt;\pi/2.\]</span>
+Fix <span class="math inline">\(p=(0,\phi)\)</span>, write <span class="math inline">\(h=\cos\phi\)</span>, <span class="math inline">\(s=\sin\phi\)</span>, and take the source line <span class="math inline">\(\gamma(t)=(t,\phi)\)</span>. Its image begins at <span class="math inline">\(q=(h,0,s)\)</span>. An orthonormal basis at <span class="math inline">\(q\)</span> is east <span class="math inline">\(E=(0,1,0)\)</span> and north <span class="math inline">\(B=(-s,0,h)\)</span>. All the pairs below are components in this fixed tangent basis. The parameter <span class="math inline">\(t\)</span> is the change in longitude, in radians.</p>
+</section>
+<section id="take-the-spherical-logarithm-first" class="level2">
+<h2>Take the spherical logarithm first</h2>
+<p>Put <span class="math inline">\(c(t)=f(t,\phi)\)</span>. The central angle <span class="math inline">\(\theta\)</span> from <span class="math inline">\(q\)</span> to <span class="math inline">\(c(t)\)</span> satisfies <span class="math inline">\(\cos\theta=q\cdot c(t)=s^2+h^2\cos t\)</span>. The initial direction of their great circle is the tangent projection of <span class="math inline">\(c(t)\)</span>, normalized. Multiplying by the arc length <span class="math inline">\(\theta\)</span> gives
+<span class="math display">\[\log_q c(t)=\frac{\theta}{\sin\theta}
+\big(h\sin t,\;hs(1-\cos t)\big).\]</span>
+At <span class="math inline">\(t=0\)</span> the prefactor is one by continuity. For the east component use <span class="math inline">\(\sin t=t-t^3/6+O(t^5)\)</span>. For the north component use <span class="math inline">\(1-\cos t=t^2/2-t^4/24+O(t^6)\)</span>. Both use <span class="math inline">\(\theta/\sin\theta=1+h^2t^2/6+O(t^4)\)</span>. Reading the derivatives from the resulting polynomial gives the middle column below.</p>
+</section>
+<section id="differentiate-the-moving-velocity-instead" class="level2">
+<h2>Differentiate the moving velocity instead</h2>
+<p>Along the latitude the unit east vector is <span class="math inline">\(E(t)=(-\sin t,\cos t,0)\)</span> and the unit north vector is <span class="math inline">\(B(t)=(-s\cos t,-s\sin t,h)\)</span>. Differentiate in three dimensions and project onto the tangent plane. This gives <span class="math inline">\(D_tE=sB\)</span> and <span class="math inline">\(D_tB=-sE\)</span>. The speed is <span class="math inline">\(h\)</span>, so start with <span class="math inline">\(\dot c=hE\)</span> and apply these two rules successively.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Order</th>
+<th>Derivative of the logarithm</th>
+<th>Covariant derivative along the latitude</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><span class="math inline">\(hE\)</span></td>
+<td><span class="math inline">\(hE\)</span></td>
+</tr>
+<tr>
+<td>2</td>
+<td><span class="math inline">\(hsB\)</span></td>
+<td><span class="math inline">\(hsB\)</span></td>
+</tr>
+<tr>
+<td>3</td>
+<td><span class="math inline">\(-hs^2E\)</span></td>
+<td><span class="math inline">\(-hs^2E\)</span></td>
+</tr>
+<tr>
+<td>4</td>
+<td><span class="math inline">\(hs(2h^2-1)B\)</span></td>
+<td><span class="math inline">\(-hs^3B\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>At <span class="math inline">\(45^\circ\)</span>, <span class="math inline">\(h=s=1/\sqrt2\)</span>. The north component of the fourth logarithmic derivative is <strong>zero</strong>; the fourth covariant derivative is <strong><span class="math inline">\(-1/4\)</span></strong>. This example checks both the coefficient and sign of the paper’s curvature formula. At the equator the image is a great circle and both constructions give exactly <span class="math inline">\((t,0)\)</span>.</p>
+</section>
+<section id="experiment" class="level2">
+<h2>Measure the fourth-order difference</h2>
+<p>Change latitude or the longitude step below. The table uses the exact logarithm, its degree-four polynomial, and the polynomial obtained from the first four covariant derivatives. North is where the quartic difference occurs. Halve the step and watch the last row approach the predicted value <span class="math inline">\(h^3s\)</span>. Crossing the equator reverses its sign.</p>
+<div id="latitude-lab" class="experiment" hidden="">
+<label for="latitude">Latitude
+<output id="latitude-value" for="latitude">
+</output>
+</label>
+<input type="range" id="latitude" min="-75" max="75" step="1" value="45">
+<label for="longitude-step">Longitude step
+<output id="step-value" for="longitude-step">
+</output>
+</label>
+<input type="range" id="longitude-step" min="0.05" max="1" step="0.05" value="0.5">
+<table>
+<caption>
+Northward displacement in the tangent plane
+</caption>
+<tbody>
+<tr>
+<th scope="row">
+Exact logarithm
+</th>
+<td id="north-exact">
+</td>
+</tr>
+<tr>
+<th scope="row">
+Taylor polynomial
+</th>
+<td id="north-taylor">
+</td>
+</tr>
+<tr>
+<th scope="row">
+Covariant polynomial
+</th>
+<td id="north-covariant">
+</td>
+</tr>
+<tr>
+<th scope="row">
+Predicted limit
+</th>
+<td id="north-limit">
+</td>
+</tr>
+<tr>
+<th scope="row">
+24 × (exact − covariant) / step⁴
+</th>
+<td id="north-measured">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>At <span class="math inline">\(45^\circ\)</span> the covariant northward polynomial is <span class="math inline">\(t^2/4-t^4/96\)</span> and the Taylor northward polynomial is <span class="math inline">\(t^2/4\)</span>. Their difference is <span class="math inline">\(t^4/96\)</span> exactly. The measured quantity uses the exact logarithm, so it also includes the sixth and higher even powers. <a href="taylor-maps.html#discrepancy">Derivation for an arbitrary target</a> · <a href="ring-torus.html">Repeat with variable curvature on a torus</a></p>
+</section>
+    </article>
+    <footer><a href="index.html#exploratory">More from Exploratory</a></footer>
+  </main>
+</body>
+</html>

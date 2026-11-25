@@ -1,5 +1,30 @@
 # Review: Taylor Expansions of Mappings between Manifolds
 
+## Findings from the November 25, 2026 HTML revision
+
+The [revised paper](../docs/taylor-maps.html) retains the 2003 chapter’s
+comparison problem, ordered chain rule, and all-order sufficient conditions.
+The original TeX and the July triage below provide the historical baseline.
+
+| Location in the dissertation | Finding | Resolution in the paper |
+| --- | --- | --- |
+| §6.4, tensors in a normal coframe | An order-\(n\) derivative of a covariant \(\ell\)-tensor has \(n+\ell\) slots. The displayed corollary supplies one extra vector. | Contract the tensor slots and derivative slots with the radial velocity. |
+| §§6.8–6.9, flat subspaces | The identity differential of the exponential rules out including order one in the vanishing condition. The sufficient-condition proof assumes that lower logarithm derivatives belong to the span of the covariant jets. | Start at order two. Establish membership inductively using the one-block term in the chain rule. |
+| §6.9, geodesic reparametrizations | At a stop, a curve in one geodesic can have zero velocity and nonzero acceleration. A pointwise proportionality factor need not be differentiable. | Use image containment for the all-order conclusion. Use the proportional-acceleration characterization on regular arcs. |
+| §6.10, third and fourth derivatives | The specialized cubic formula changes two velocity slots to acceleration slots. This introduces a spurious possible cubic discrepancy in the torsion-free case. | The actual cubic difference is half the target torsion applied to velocity and acceleration. For a torsion-free target the fourth derivative difference is \(R(a,b)a\), covariant minus logarithmic. |
+| §6.10, proposed converse | Agreement for one curve can coexist with a non-flat span of its jets. | [Two explicit counterexamples](../docs/taylor-maps.html#converse) include an analytic Riemannian metric. The mixed fifth derivative of the exponential has a nonzero component even though every derivative sampled by the curve agrees. |
+| §6.11 and the radial-frame appendix | The section polynomial drops its factorials. Parallel transport over a closed base geodesic can have holonomy. The appendix also identifies an ordered Hessian with the full curvature action. | Use a short base arc, specify the total-space connection by the connector splitting, and insert \(1/k!\). With zero symmetric Hessian, the antisymmetrized difference, twice the appropriate ordered Hessian, gives the curvature action at the center. |
+
+The [sphere calculation](../docs/sphere-latitude.html) obtains both jets
+independently. At 45° the northward fourth derivatives are zero for the
+logarithm and −1/4 for the covariant derivative. The [ring torus](../docs/ring-torus.html)
+compares the predicted sign and magnitude with a numerical boundary-value
+calculation. The literature comparison establishes precedents for the
+transported-section formula and normal-coordinate methods. Publication
+priority for the comparison theorem and counterexamples remains undetermined.
+
+## Original editorial review
+
 Reviewed 2026-07-23. This is an editorial and mathematical triage, not a substitute for specialist peer review.
 
 ## Verdict

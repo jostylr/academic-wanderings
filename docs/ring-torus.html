@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Follow a parallel from a flat torus to a ring torus and watch the fourth-order correction change sign.">
+  <title>One torus, two metrics · Academic Wanderings</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css"
+    integrity="sha384-WwGtaC6ywCHxA5cstpj/3+xIZvTez8dq2IcBQaXRkenHZ7FVVq1ZROtURwfbtTlG" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.js"
+    integrity="sha384-a1WQdjRj162i159OYq041X6I4K8NenkrI09LlPmiHg0YOb7CR+wJOraXwK9abpnE" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="math.js"></script>
+  <script defer src="ring-torus.js"></script>
+</head>
+<body>
+  <main class="page page--article">
+    <nav class="site-header" aria-label="Site">
+      <a class="site-title" href="index.html">Academic Wanderings</a>
+      <a href="index.html#exploratory">Exploratory</a>
+    </nav>
+    <article class="taylor-article">
+      <header><h1>One torus, two metrics</h1></header>
+<p>Take the two angles that locate a point on a torus. What happens to a straight horizontal line in the square of angles when the square is wrapped around a doughnut? We will use the identity on the angles as a map of surfaces and change only the target metric.</p>
+<section id="where-the-curvature-changes-sign" class="level2">
+<h2>Where the curvature changes sign</h2>
+<p>Let <span class="math inline">\(u\)</span> run around the central hole and <span class="math inline">\(w\)</span> around the tube. For major radius <span class="math inline">\(R\)</span> and tube radius <span class="math inline">\(r\)</span> with <span class="math inline">\(R&gt;r&gt;0\)</span>, put <span class="math inline">\(\rho=R+r\cos w\)</span>. The target is the ring torus parametrized by
+<span class="math display">\[X(u,w)=(\rho\cos u,\rho\sin u,r\sin w).\]</span>
+On the source torus use <span class="math inline">\(du^2+dw^2\)</span>. The vectors <span class="math inline">\(X_u,X_w\)</span> on the target are perpendicular, with lengths <span class="math inline">\(\rho,r\)</span>, so the induced target metric is <span class="math inline">\(\rho^2du^2+r^2dw^2\)</span>. Use the orthonormal fields <span class="math inline">\(E=X_u/\rho\)</span> and <span class="math inline">\(B=X_w/r\)</span>.</p>
+<p>For the outward unit normal <span class="math inline">\(n=(\cos w\cos u,\cos w\sin u,\sin w)\)</span> we have <span class="math inline">\(n_u=(\cos w/\rho)X_u\)</span> and <span class="math inline">\(n_w=X_w/r\)</span>. The principal curvatures with shape operator <span class="math inline">\(-dn\)</span> are <span class="math inline">\(-\cos w/\rho\)</span> and <span class="math inline">\(-1/r\)</span>. Their product is
+<span class="math display">\[K(w)=\frac{\cos w}{r(R+r\cos w)}.\]</span>
+The outside has positive curvature, the inside negative curvature, and the top and bottom have zero curvature along a circle. Unrolling the angles preserves the smooth surface but changes these measurements.</p>
+</section>
+<section id="move-a-parallel-across-the-surface" class="level2">
+<h2>Move a parallel across the surface</h2>
+<p>The highlighted circle runs around the central hole. Move it from the outside toward the inside. Watch where its acceleration is largest and where the fourth-order difference changes sign. The readouts use <span class="math inline">\(R=2\)</span>, <span class="math inline">\(r=1\)</span> and unit angular speed in <span class="math inline">\(u\)</span>. The signed components are measured along <span class="math inline">\(B\)</span>, pointing in the direction of increasing tube angle.</p>
+<div id="torus-lab" class="experiment" hidden="">
+<label for="tube-angle">Tube angle
+<output id="angle-value" for="tube-angle">
+</output>
+</label>
+<input type="range" id="tube-angle" min="0" max="180" step="1" value="60">
+<canvas id="torus-view" width="680" height="460" role="img" aria-label="Ring torus with the selected parallel highlighted. At zero degrees it is the outer equator, at ninety the top, and at one hundred eighty the inner equator.">
+</canvas>
+<table>
+<caption>
+Along the selected parallel
+</caption>
+<tbody>
+<tr>
+<th scope="row">
+Gaussian curvature
+</th>
+<td id="gaussian">
+</td>
+</tr>
+<tr>
+<th scope="row">
+Sideways acceleration
+</th>
+<td id="sideways">
+</td>
+</tr>
+<tr>
+<th scope="row">
+Fourth derivative difference, covariant − Taylor
+</th>
+<td id="quartic">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="differentiate-a-parallel-circle" class="level2">
+<h2>Differentiate a parallel circle</h2>
+<p>The flat-source curve <span class="math inline">\((t,w)\)</span> at fixed <span class="math inline">\(w\)</span> is a geodesic. Its image velocity is <span class="math inline">\(a=\rho E\)</span>. To differentiate <span class="math inline">\(E=(-\sin t,\cos t,0)\)</span>, project its derivative onto the tangent plane. The <span class="math inline">\(E\)</span> component is zero and the <span class="math inline">\(B\)</span> component is <span class="math inline">\(\sin w\)</span>. Differentiating <span class="math inline">\(B\)</span> in the same way gives
+<span class="math display">\[D_t E=\sin w\,B,\qquad D_t B=-\sin w\,E.\]</span>
+Thus the acceleration <span class="math inline">\(b=\rho\sin w\,B\)</span> is perpendicular to the velocity, and <span class="math inline">\(C_4=-\rho\sin^3w\,B\)</span>. On a surface the curvature formula in the paper gives
+<span class="math display">\[C_4-T_4=-K|a|^2 b=-\frac{\rho^2}{r}\sin w\cos w\,B.\]</span>
+Here <span class="math inline">\(C_4\)</span> and <span class="math inline">\(T_4\)</span> denote the two fourth derivatives in the horizontal source direction, so the difference in the polynomial coefficients is <span class="math inline">\(1/24\)</span> of this vector. For instance, with <span class="math inline">\(R=2\)</span>, <span class="math inline">\(r=1\)</span>, <span class="math inline">\(w=\pi/3\)</span>, we have <span class="math inline">\(\rho=5/2\)</span>, <span class="math inline">\(K=1/5\)</span> and <span class="math inline">\(b=(5\sqrt3/4)B\)</span>. The fourth-order derivative difference is <span class="math inline">\(-(25\sqrt3/16)B\)</span>. At <span class="math inline">\(w=2\pi/3\)</span> its <span class="math inline">\(B\)</span> component becomes positive.</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Circle</th>
+<th>Target curvature</th>
+<th>Image acceleration</th>
+<th>Fourth-order test</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Outside equator, <span class="math inline">\(w=0\)</span></td>
+<td>Positive</td>
+<td>Zero</td>
+<td>All orders agree along this geodesic</td>
+</tr>
+<tr>
+<td>Upper outer side, <span class="math inline">\(0&lt;w&lt;\pi/2\)</span></td>
+<td>Positive</td>
+<td>Toward <span class="math inline">\(+B\)</span></td>
+<td><span class="math inline">\(C_4-T_4\)</span> points toward <span class="math inline">\(-B\)</span></td>
+</tr>
+<tr>
+<td>Top, <span class="math inline">\(w=\pi/2\)</span></td>
+<td>Zero</td>
+<td>Toward <span class="math inline">\(+B\)</span></td>
+<td>Agreement through degree four</td>
+</tr>
+<tr>
+<td>Upper inner side, <span class="math inline">\(\pi/2&lt;w&lt;\pi\)</span></td>
+<td>Negative</td>
+<td>Toward <span class="math inline">\(+B\)</span></td>
+<td><span class="math inline">\(C_4-T_4\)</span> points toward <span class="math inline">\(+B\)</span></td>
+</tr>
+<tr>
+<td>Inside equator, <span class="math inline">\(w=\pi\)</span></td>
+<td>Negative</td>
+<td>Zero</td>
+<td>All orders agree along this geodesic</td>
+</tr>
+</tbody>
+</table>
+<p>The top circle is a useful test. It turns sideways, so it is intrinsically accelerated, yet its quartic discrepancy is zero. On the outside equator the explanation is different: every short segment is a target geodesic and the whole Taylor comparison reduces to its affine parameter.</p>
+</section>
+<section id="computing-the-logarithm-from-the-metric" class="level2">
+<h2>Computing the logarithm from the metric</h2>
+<p>The sphere offered a closed formula for <span class="math inline">\(\log\)</span>. On the torus one can recover the same derivative by solving the geodesic equations locally. Using <span class="math inline">\(\partial_w(\rho^2)=-2r\rho\sin w\)</span> in the Levi-Civita formula gives <span class="math inline">\(\Gamma^u_{uw}=\Gamma^u_{wu}=-r\sin w/\rho\)</span> and <span class="math inline">\(\Gamma^w_{uu}=\rho\sin w/r\)</span>; the remaining coefficients vanish. For affine travel time <span class="math inline">\(\tau\)</span> the equations are
+<span class="math display">\[\ddot u=\frac{2r\sin w}{\rho}\dot u\dot w,\qquad
+\ddot w=-\frac{\rho\sin w}{r}\dot u^2 .\]</span>
+Start at <span class="math inline">\((0,w_0)\)</span>, choose initial angular velocities <span class="math inline">\((U,W)\)</span> and integrate to <span class="math inline">\(\tau=1\)</span>. Adjust <span class="math inline">\((U,W)\)</span> until the endpoint is <span class="math inline">\((t,w_0)\)</span> using a local lift of the angles. Then <span class="math inline">\(\log_{X(0,w_0)}X(t,w_0)=\rho(w_0)U\,E+rW\,B\)</span>. This calculation varies the initial velocity of a <strong>connecting geodesic</strong>. Differentiating the parallel circle itself computes the covariant column.</p>
+<p>For a quick second-order check, start with <span class="math inline">\(U=t+O(t^3)\)</span>. The second geodesic equation would lower the endpoint angle by <span class="math inline">\(\rho\sin(w_0)t^2/(2r)\)</span> if <span class="math inline">\(W\)</span> were zero. To end back at <span class="math inline">\(w_0\)</span>, choose <span class="math inline">\(W=\rho\sin(w_0)t^2/(2r)+O(t^4)\)</span>. The vertical tangent displacement is then <span class="math inline">\(rW=\rho\sin(w_0)t^2/2+O(t^4)\)</span>, exactly half the acceleration times <span class="math inline">\(t^2\)</span>. Reflection <span class="math inline">\(u\mapsto-u\)</span> makes <span class="math inline">\(U\)</span> odd and <span class="math inline">\(W\)</span> even in <span class="math inline">\(t\)</span>.</p>
+<p>Here is a numerical check using the endpoint equations alone for the logarithm. With <span class="math inline">\(R=2\)</span>, <span class="math inline">\(r=1\)</span>, integrate each trial geodesic with 64 fourth-order Runge–Kutta steps, then solve for the two initial velocities by Newton iteration. Subtract the numerical north component <span class="math inline">\(rW\)</span> from the covariant north polynomial <span class="math inline">\(bt^2/2+C_4t^4/24\)</span>, taking <span class="math inline">\(b\)</span> and <span class="math inline">\(C_4\)</span> here as their signed <span class="math inline">\(B\)</span> components. Multiplication by <span class="math inline">\(24/t^4\)</span> makes the limiting fourth derivative difference visible.</p>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 36%" />
+<col style="width: 36%" />
+</colgroup>
+<thead>
+<tr>
+<th>Longitude step <span class="math inline">\(t\)</span></th>
+<th style="text-align: right;">Outer side, <span class="math inline">\(w=60^\circ\)</span></th>
+<th style="text-align: right;">Inner side, <span class="math inline">\(w=120^\circ\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math inline">\(0.20\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-2.683335\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(+0.968410\)</span></td>
+</tr>
+<tr>
+<td><span class="math inline">\(0.10\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-2.700630\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(+0.972816\)</span></td>
+</tr>
+<tr>
+<td><span class="math inline">\(0.05\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-2.704908\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(+0.973913\)</span></td>
+</tr>
+<tr>
+<td>Curvature prediction as <span class="math inline">\(t\to0\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-2.706329\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(+0.974279\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><a href="flat-targets.html">Compare the flat torus</a> · <a href="sphere-latitude.html#experiment">Try the sphere calculation</a> · <a href="taylor-maps.html#discrepancy">Fourth-order theorem</a></p>
+</section>
+    </article>
+    <footer><a href="index.html#exploratory">More from Exploratory</a></footer>
+  </main>
+</body>
+</html>

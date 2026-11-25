@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Compute covariant acceleration, follow a geodesic, and locate a point in normal coordinates.">
+  <title>Connections, geodesics, and the exponential map · Academic Wanderings</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css"
+    integrity="sha384-WwGtaC6ywCHxA5cstpj/3+xIZvTez8dq2IcBQaXRkenHZ7FVVq1ZROtURwfbtTlG" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.js"
+    integrity="sha384-a1WQdjRj162i159OYq041X6I4K8NenkrI09LlPmiHg0YOb7CR+wJOraXwK9abpnE" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="math.js"></script>
+</head>
+<body>
+  <main class="page page--article">
+    <nav class="site-header" aria-label="Site">
+      <a class="site-title" href="index.html">Academic Wanderings</a>
+      <a href="index.html#introductory">Introductory</a>
+    </nav>
+    <article class="taylor-article">
+      <header><h1>Connections, geodesics, and the exponential map</h1></header>
+<p>Draw a path on the unit sphere and attach a tangent arrow at every point along it. How quickly is that arrow changing? The arrows belong to different tangent planes. A <strong>connection</strong> gives a rule for differentiating a vector field <span class="math inline">\(Y\)</span> in a direction <span class="math inline">\(X\)</span>, written <span class="math inline">\(\nabla_XY\)</span>. It is linear over functions in <span class="math inline">\(X\)</span> and obeys <span class="math inline">\(\nabla_X(hY)=X(h)Y+h\nabla_XY\)</span>. A Riemannian metric singles out its length-preserving, torsion-free connection, the <strong>Levi-Civita connection</strong>.</p>
+<section id="a-calculation-you-can-do-in-the-surrounding-space" class="level2">
+<h2>A calculation you can do in the surrounding space</h2>
+<p>For a surface in Euclidean space with the induced metric, differentiate the arrow in ordinary space and project the result onto the tangent plane. On the unit sphere this says
+<span class="math display">\[D_tY=Y&#39;-(Y&#39;\cdot\gamma)\gamma.\]</span>
+Walk around the equator along <span class="math inline">\(\gamma(t)=(\cos t,\sin t,0)\)</span>. Its ordinary acceleration is <span class="math inline">\(-\gamma(t)\)</span>. Projection removes the whole acceleration, so <span class="math inline">\(D_t\dot\gamma=0\)</span>. This is the defining equation for an affinely parametrized <strong>geodesic</strong>. The same equation applied to an arrow, <span class="math inline">\(D_tY=0\)</span>, defines <strong>parallel transport</strong>. An eastward arrow tangent to this equatorial walk stays parallel even as it turns in the surrounding space.</p>
+</section>
+<section id="how-to-compute-in-coordinates" class="level2">
+<h2>How to compute in coordinates</h2>
+<p>Write <span class="math inline">\(\nabla_{\partial_i}\partial_j=\Gamma^k_{ij}\partial_k\)</span>, summing a repeated upper and lower index. The functions <span class="math inline">\(\Gamma^k_{ij}\)</span> record the change in the coordinate frame. For an arrow along a path,
+<span class="math display">\[(D_tY)^k=\frac{dY^k}{dt}+\Gamma^k_{ij}(\gamma(t))\,\dot\gamma^iY^j.\]</span>
+For a concrete check, use polar coordinates <span class="math inline">\((r,\theta)\)</span> on the ordinary Euclidean plane, with <span class="math inline">\(r&gt;0\)</span>. The angular basis vector is <span class="math inline">\((-r\sin\theta,r\cos\theta)\)</span>. Differentiating it in <span class="math inline">\(\theta\)</span> gives <span class="math inline">\(-r\partial_r\)</span>, so <span class="math inline">\(\Gamma^r_{\theta\theta}=-r\)</span>. A circle of radius <span class="math inline">\(r\)</span> traversed at unit angular speed has inward acceleration <span class="math inline">\(-r\partial_r\)</span>. Nonzero connection coefficients occur even on a flat plane.</p>
+<p><strong>Curvature</strong> measures the failure of covariant differentiations to commute, with the bracket of the differentiating fields subtracted. <strong>Torsion</strong> measures a different failure, <span class="math inline">\(T(X,Y)=\nabla_XY-\nabla_YX-[X,Y]\)</span>. The surface examples use Levi-Civita connections, whose torsion vanishes. On a surface, Gaussian curvature <span class="math inline">\(K\)</span> determines the intrinsic curvature tensor. The plane has <span class="math inline">\(K=0\)</span> and the unit sphere has <span class="math inline">\(K=1\)</span>.</p>
+</section>
+<section id="the-exponential-map-and-its-local-inverse" class="level2">
+<h2>The exponential map and its local inverse</h2>
+<p>Start at <span class="math inline">\(p\)</span> with velocity <span class="math inline">\(v\)</span>, follow the geodesic for time one, and call the endpoint <span class="math inline">\(\exp_p(v)\)</span>. Varying the travel time gives <span class="math inline">\(\gamma_v(t)=\exp_p(tv)\)</span>. On the plane this is <span class="math inline">\(p+tv\)</span>. On the unit sphere the great circle in the plane spanned by <span class="math inline">\(p\)</span> and <span class="math inline">\(v\)</span> gives
+<span class="math display">\[\exp_p(v)=\cos(|v|)\,p+\frac{\sin(|v|)}{|v|}\,v.\]</span>
+At <span class="math inline">\(v=0\)</span> take the continuous value <span class="math inline">\(p\)</span>. Near zero this map has an inverse <span class="math inline">\(\log_p\)</span>. The input to <span class="math inline">\(\log_p\)</span> is a nearby point and the output is its initial geodesic displacement. At the antipode every unit direction reaches the same endpoint after length <span class="math inline">\(\pi\)</span>. This is why the inverse in the paper is local.</p>
+<p>Choose a basis of <span class="math inline">\(T_pM\)</span>. The components of <span class="math inline">\(\log_p\)</span> are <strong>normal coordinates</strong> centered at <span class="math inline">\(p\)</span>. Every geodesic through the center becomes a straight radial line. A curved path elsewhere in the chart can still have quite different ordinary and covariant derivatives. <a href="sphere-latitude.html">Calculate both derivatives on a sphere</a> · <a href="taylor-maps.html">Read the paper</a></p>
+<p>For the construction of the induced connection and the geodesic equation, see John M. Lee, <em>Riemannian Manifolds: An Introduction to Curvature</em>. <a href="https://webhomes.maths.ed.ac.uk/~v1ranick/papers/leeriemm.pdf">Text</a></p>
+</section>
+    </article>
+    <footer><a href="index.html#introductory">More from Introductory</a></footer>
+  </main>
+</body>
+</html>

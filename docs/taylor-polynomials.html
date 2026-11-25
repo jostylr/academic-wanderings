@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Local polynomial approximation, remainders, and mixed derivatives in two variables.">
+  <title>Taylor polynomials and the error you leave behind · Academic Wanderings</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css"
+    integrity="sha384-WwGtaC6ywCHxA5cstpj/3+xIZvTez8dq2IcBQaXRkenHZ7FVVq1ZROtURwfbtTlG" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.js"
+    integrity="sha384-a1WQdjRj162i159OYq041X6I4K8NenkrI09LlPmiHg0YOb7CR+wJOraXwK9abpnE" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="math.js"></script>
+</head>
+<body>
+  <main class="page page--article">
+    <nav class="site-header" aria-label="Site">
+      <a class="site-title" href="index.html">Academic Wanderings</a>
+      <a href="index.html#introductory">Introductory</a>
+    </nav>
+    <article class="taylor-article">
+      <header><h1>Taylor polynomials and the error you leave behind</h1></header>
+<p>Imagine measuring a quantity near a point where you already know its value, slope, and concavity. Which quadratic should you use? At <span class="math inline">\(x=0\)</span>, the function <span class="math inline">\(e^x\)</span> has value, slope, and second derivative all equal to one. Matching them fixes the polynomial <span class="math inline">\(1+x+x^2/2\)</span>. The factor of two compensates for what happens when you differentiate <span class="math inline">\(x^2\)</span> twice.</p>
+<section id="what-the-error-tells-you" class="level2">
+<h2>What the error tells you</h2>
+<p>At <span class="math inline">\(x=0.1\)</span> the polynomial gives <span class="math inline">\(1.105\)</span>, against <span class="math inline">\(e^{0.1}\approx1.1051709\)</span>. At <span class="math inline">\(x=0.05\)</span> the error falls to about <span class="math inline">\(0.0000211\)</span>, roughly one eighth as large. The first term we left out is cubic. In general the degree-<span class="math inline">\(n\)</span> Taylor polynomial at <span class="math inline">\(p\)</span> is
+<span class="math display">\[P_n(h)=\sum_{k=0}^n \frac{f^{(k)}(p)}{k!}h^k,\qquad h=x-p.\]</span>
+If <span class="math inline">\(|f^{(n+1)}|\le L\)</span> on the segment, the error is at most <span class="math inline">\(L|h|^{n+1}/(n+1)!\)</span>. The word <em>local</em> matters here. The polynomial is chosen by matching derivatives at one point. A polynomial fitted to measurements across a whole interval answers a different question.</p>
+</section>
+<section id="moving-in-two-directions" class="level2">
+<h2>Moving in two directions</h2>
+<p>Suppose <span class="math inline">\(f(x,y)=e^x\cos y\)</span>. Choose a direction <span class="math inline">\(v=(a,b)\)</span> and follow the straight path <span class="math inline">\((ta,tb)\)</span> from the origin. Multiplying the one-variable expansions gives
+<span class="math display">\[f(ta,tb)=1+at+\tfrac12(a^2-b^2)t^2
++\tfrac16(a^3-3ab^2)t^3+O(t^4).\]</span>
+On the <span class="math inline">\(x\)</span>-axis this recovers the exponential. On the <span class="math inline">\(y\)</span>-axis the slope vanishes and the graph bends down. The mixed term <span class="math inline">\(ab^2\)</span> records information that neither axis reveals on its own.</p>
+<p>The coefficient of <span class="math inline">\(t^k\)</span> is <span class="math inline">\(D^kf(0)[v,\ldots,v]/k!\)</span>. Here <span class="math inline">\(D^kf\)</span> is a symmetric <span class="math inline">\(k\)</span>-linear map. Varying <span class="math inline">\(v\)</span> recovers even the mixed values. For example, if <span class="math inline">\(Q(v)=D^2f(0)[v,v]\)</span>, then <span class="math inline">\(D^2f(0)[u,w]=(Q(u+w)-Q(u)-Q(w))/2\)</span>. This is <strong>polarization</strong>. It explains how a paper about maps of surfaces can prove a tensor identity by testing one curve at a time.</p>
+</section>
+<section id="what-changes-on-a-surface" class="level2">
+<h2>What changes on a surface?</h2>
+<p>On a sphere, two points cannot be subtracted to give their displacement <em>within</em> the sphere. We need a way to turn a small move into a tangent vector before we can use a polynomial. The next two pages build those ingredients. <a href="manifolds.html">Manifolds and tangent spaces</a> · <a href="connections.html">Connections and the exponential map</a></p>
+<p>Each order above gives a finite approximation. A smooth function can share every derivative at a point with the zero function and still take nonzero values arbitrarily close by. The paper therefore compares finite-order Taylor data at each order. <a href="taylor-maps.html#two-jets">Taylor expansions of mappings between manifolds</a></p>
+</section>
+    </article>
+    <footer><a href="index.html#introductory">More from Introductory</a></footer>
+  </main>
+</body>
+</html>

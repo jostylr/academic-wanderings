@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Charts on the sphere, tangent velocities, and the differential of a map.">
+  <title>Manifolds and tangent spaces · Academic Wanderings</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css"
+    integrity="sha384-WwGtaC6ywCHxA5cstpj/3+xIZvTez8dq2IcBQaXRkenHZ7FVVq1ZROtURwfbtTlG" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.js"
+    integrity="sha384-a1WQdjRj162i159OYq041X6I4K8NenkrI09LlPmiHg0YOb7CR+wJOraXwK9abpnE" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="math.js"></script>
+</head>
+<body>
+  <main class="page page--article">
+    <nav class="site-header" aria-label="Site">
+      <a class="site-title" href="index.html">Academic Wanderings</a>
+      <a href="index.html#introductory">Introductory</a>
+    </nav>
+    <article class="taylor-article">
+      <header><h1>Manifolds and tangent spaces</h1></header>
+<p>Stand on the unit sphere near its north pole. To describe where you are, give your east and north displacements in the horizontal plane. The point on the upper hemisphere is then
+<span class="math display">\[X(x,y)=(x,y,\sqrt{1-x^2-y^2}),\qquad x^2+y^2&lt;1.\]</span>
+The inverse map just reads off the first two coordinates. Two numbers locate you even though the sphere sits in three-dimensional space.</p>
+<section id="charts-and-a-change-of-coordinates" class="level2">
+<h2>Charts and a change of coordinates</h2>
+<p>A <strong>chart</strong> assigns points of an open patch coordinates in an open subset of Euclidean space. In the example, <span class="math inline">\(X\)</span> goes in the reverse direction and parametrizes the patch. Other charts cover the rest of the sphere. On overlaps the coordinate changes must be smooth in both directions. A space covered this way is a smooth manifold (with the usual Hausdorff and countability assumptions).</p>
+<p>There are many valid coordinates for one motion. On a small patch where the longitude <span class="math inline">\(\lambda\)</span> is single-valued, latitude <span class="math inline">\(\phi\)</span> and longitude give
+<span class="math display">\[X(\lambda,\phi)=(\cos\phi\cos\lambda,\cos\phi\sin\lambda,\sin\phi).\]</span>
+At a pole every longitude names the same point. The first chart works perfectly at the north pole. A singularity in one coordinate system can be a feature of the chart.</p>
+</section>
+<section id="a-tangent-vector-is-a-possible-velocity" class="level2">
+<h2>A tangent vector is a possible velocity</h2>
+<p>Take a smooth path <span class="math inline">\(\gamma(t)\)</span> through <span class="math inline">\(p\)</span> at <span class="math inline">\(t=0\)</span>. Its velocity is a vector in the tangent space <span class="math inline">\(T_pM\)</span>. In a chart it has components <span class="math inline">\(\dot x^i(0)\)</span>. On changing charts the Jacobian transforms those components by the ordinary chain rule. This makes sense of velocity independently of which chart you used.</p>
+<p>For the sphere, differentiating <span class="math inline">\(\gamma\cdot\gamma=1\)</span> gives <span class="math inline">\(p\cdot\dot\gamma(0)=0\)</span>. Thus the tangent space is the plane perpendicular to <span class="math inline">\(p\)</span>, viewed as a vector space of displacements. At the north pole the path <span class="math inline">\((\sin t,0,\cos t)\)</span> has initial velocity <span class="math inline">\((1,0,0)\)</span>.</p>
+</section>
+<section id="what-a-map-does-to-a-velocity" class="level2">
+<h2>What a map does to a velocity</h2>
+<p>Given <span class="math inline">\(f:M\to N\)</span>, send the velocity of <span class="math inline">\(\gamma\)</span> to the velocity of <span class="math inline">\(f\circ\gamma\)</span>. This linear map is the <strong>differential</strong>, <span class="math inline">\(df_p:T_pM\to T_{f(p)}N\)</span>. For the sphere’s height <span class="math inline">\(f(p)=p_z\)</span>, it sends <span class="math inline">\(v\)</span> to <span class="math inline">\(v_z\)</span>. At the north pole every tangent vector has <span class="math inline">\(v_z=0\)</span>. Yet moving away from the pole lowers your height. To measure the change that the first derivative missed, we need a second derivative.</p>
+<p>A torus supplies another distinction. Glue opposite edges of a square by translations. Small patches cross the seams smoothly, and the Euclidean metric fits together across them. A doughnut in three-dimensional space has the same smooth torus underneath, with a different metric. Measuring lengths requires specifying that extra structure. <a href="connections.html">Connections on manifolds</a> · <a href="ring-torus.html">One torus, two metrics</a></p>
+</section>
+    </article>
+    <footer><a href="index.html#introductory">More from Introductory</a></footer>
+  </main>
+</body>
+</html>

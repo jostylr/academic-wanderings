@@ -132,3 +132,69 @@ article h1 {
 .math-display {
   overflow-x: auto;
 }
+
+.taylor-article .math.display {
+  display: block;
+  overflow-x: auto;
+  padding-block: 0.2rem;
+}
+
+.taylor-article .katex-display {
+  margin-block: 0.65rem;
+}
+
+.taylor-article table {
+  border-collapse: collapse;
+  font-size: 0.94rem;
+  margin-block: 1rem;
+  width: 100%;
+}
+
+.taylor-article th, .taylor-article td {
+  border-bottom: 1px solid var(--rule);
+  padding: 0.45rem;
+  text-align: start;
+  vertical-align: top;
+}
+
+.taylor-article .experiment {
+  background: var(--intro);
+  border-radius: 0.4rem;
+  padding: 1rem;
+}
+
+.experiment label, .experiment input, .experiment canvas {
+  display: block;
+  width: 100%;
+}
+
+.experiment input {
+  accent-color: var(--link);
+  margin: 0.4rem 0 1rem;
+}
+
+.experiment output, .experiment td {
+  font-variant-numeric: tabular-nums;
+}
+
+.experiment output {
+  float: right;
+}
+
+.experiment caption {
+  font-weight: 650;
+  text-align: start;
+}
+
+.taylor-article + footer {
+  border-top: 1px solid var(--rule);
+  margin-top: 2rem;
+  padding-top: 0.8rem;
+}
+
+@media (max-width: 42rem) {
+  .taylor-article table:not(.experiment table) {
+    display: block;
+    overflow-x: auto;
+  }
+}

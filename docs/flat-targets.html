@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Compute nonlinear Taylor coefficients with a flat target, and test a rotation between curved surfaces.">
+  <title>A shear of a flat torus and the height of a sphere · Academic Wanderings</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css"
+    integrity="sha384-WwGtaC6ywCHxA5cstpj/3+xIZvTez8dq2IcBQaXRkenHZ7FVVq1ZROtURwfbtTlG" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.js"
+    integrity="sha384-a1WQdjRj162i159OYq041X6I4K8NenkrI09LlPmiHg0YOb7CR+wJOraXwK9abpnE" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="math.js"></script>
+</head>
+<body>
+  <main class="page page--article">
+    <nav class="site-header" aria-label="Site">
+      <a class="site-title" href="index.html">Academic Wanderings</a>
+      <a href="index.html#exploratory">Exploratory</a>
+    </nav>
+    <article class="taylor-article">
+      <header><h1>A shear of a flat torus and the height of a sphere</h1></header>
+<p>The easiest place to test the paper is a flat target with a nonlinear map. There are still higher derivatives to calculate. We can see exactly why both prescriptions give the same ones.</p>
+<section id="a-shear-of-a-flat-torus" class="level2">
+<h2>A shear of a flat torus</h2>
+<p>Glue opposite edges of a square of side <span class="math inline">\(2\pi\)</span>. A point is an equivalence class <span class="math inline">\([u,w]\)</span> modulo <span class="math inline">\(2\pi\)</span> in each coordinate. Give the torus the metric <span class="math inline">\(du^2+dw^2\)</span> inherited from the plane. A geodesic lifts to a straight line, and locally <span class="math inline">\(\log_p\)</span> subtracts a chosen lift of <span class="math inline">\(p\)</span> from a nearby lift. The same torus can also carry the <a href="ring-torus.html">ring metric</a>.</p>
+<p>Consider the smooth map <span class="math inline">\(f([u,w])=[u,w+\sin u]\)</span>. Adding <span class="math inline">\(2\pi\)</span> to either input gives the same output class, so this defines a global map. It slides each vertical circle by an amount depending on its horizontal position. At the origin <span class="math inline">\(f(p)=p\)</span>. For a source direction <span class="math inline">\((a,b)\)</span> the exact tangent-plane representative along the ray is
+<span class="math display">\[F_p(t(a,b))=(ta,tb+\sin(ta)).\]</span>
+Its first four derivatives at zero are <span class="math inline">\((a,b+a)\)</span>, <span class="math inline">\((0,0)\)</span>, <span class="math inline">\((0,-a^3)\)</span>, and <span class="math inline">\((0,0)\)</span>. You get the same list by differentiating <span class="math inline">\(df\)</span> covariantly in the lifted coordinates, since every connection coefficient vanishes. For <span class="math inline">\(a=1,b=0\)</span> the original straight source line maps to the bent graph <span class="math inline">\((t,\sin t)\)</span>. All-order agreement even allows this bending.</p>
+<p>For a numerical check, take <span class="math inline">\(t=1/2\)</span>. The cubic estimate of the second component is <span class="math inline">\(1/2-(1/2)^3/6=23/48\)</span>. Its difference from <span class="math inline">\(\sin(1/2)\approx0.47942554\)</span> is about <span class="math inline">\(0.00025887\)</span>. Odd symmetry makes the first omitted nonzero term fifth order.</p>
+</section>
+<section id="height-on-the-unit-sphere" class="level2">
+<h2>Height on the unit sphere</h2>
+<p>Turn the test around. Take a curved source and the ordinary real line as target. Let <span class="math inline">\(h(p)=p_z\)</span>, choose a unit vector <span class="math inline">\(p\)</span> on the sphere and any tangent <span class="math inline">\(v\)</span>, and put <span class="math inline">\(s=|v|\)</span>. The great circle with initial velocity <span class="math inline">\(v\)</span> gives the exact formula
+<span class="math display">\[h(\exp_p(tv))=p_z\cos(st)+v_z\frac{\sin(st)}s.\]</span>
+The quotient has limiting value <span class="math inline">\(t\)</span> if <span class="math inline">\(s=0\)</span>. Since the logarithm in the real line subtracts <span class="math inline">\(h(p)\)</span>, the first four jets on <span class="math inline">\(v\)</span> are
+<span class="math display">\[v_z,\qquad -p_zs^2,\qquad -v_zs^2,\qquad p_zs^4.\]</span>
+For an independent second-order check, differentiate twice along the geodesic in the surrounding space. Its acceleration is <span class="math inline">\(-s^2\gamma\)</span>, so the height has second derivative <span class="math inline">\(-s^2h(\gamma)\)</span>. Equivalently <span class="math inline">\(\operatorname{Hess}h=-h\,g\)</span> on the sphere by polarization. At the north pole the linear term vanishes in every direction and the quadratic term is <span class="math inline">\(-|v|^2/2\)</span>. This quantifies the fall in height when you step away from the top.</p>
+</section>
+<section id="a-curved-target-that-preserves-every-geodesic" class="level2">
+<h2>A curved target that preserves every geodesic</h2>
+<p>Let <span class="math inline">\(A\)</span> be a rotation of the sphere. It preserves lengths, and applying <span class="math inline">\(A\)</span> to the great-circle formula gives <span class="math inline">\(A\exp_p(v)=\exp_{Ap}(Av)\)</span>. Thus <span class="math inline">\(F_p(v)=Av\)</span> exactly. Rotation sends each affinely parametrized source geodesic to an affinely parametrized target geodesic, whose covariant acceleration and all subsequent derivatives vanish. The two prescriptions agree everywhere even though the target has positive curvature. To see curvature enter the comparison, send a straight line into a <strong>latitude</strong> away from the equator. <a href="sphere-latitude.html">Compute the latitude example</a> · <a href="taylor-maps.html#agreement">Flat-image theorem</a></p>
+</section>
+    </article>
+    <footer><a href="index.html#exploratory">More from Exploratory</a></footer>
+  </main>
+</body>
+</html>
