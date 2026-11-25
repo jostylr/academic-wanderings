@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Compare exact oscillator and free-packet trajectories, then test the scalar phase argument on a spinning particle.">
+  <title>Following a Gaussian through five derivations · Academic Wanderings</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css"
+    integrity="sha384-WwGtaC6ywCHxA5cstpj/3+xIZvTez8dq2IcBQaXRkenHZ7FVVq1ZROtURwfbtTlG" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.js"
+    integrity="sha384-a1WQdjRj162i159OYq041X6I4K8NenkrI09LlPmiHg0YOb7CR+wJOraXwK9abpnE" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="math.js"></script>
+  <script defer src="bohmian-trajectories.js"></script>
+</head>
+<body>
+  <main class="page page--article">
+    <nav class="site-header" aria-label="Site">
+      <a class="site-title" href="index.html">Academic Wanderings</a>
+      <a href="index.html#exploratory">Exploratory</a>
+    </nav>
+    <article class="taylor-article">
+      <header><h1>Following a Gaussian through five derivations</h1></header>
+<p>Put a particle a little to the right of the peak of an oscillator’s ground-state Gaussian and release it. A classical oscillator accelerates toward the origin. What does the Bohmian particle do? We can answer by finding a velocity, a current, or a force, and check each against an exact trajectory. Throughout, choose units with <span class="math inline">\(m=\hbar=1\)</span> and, for oscillators, <span class="math inline">\(\omega=1\)</span>. Write <span class="math inline">\(x_0\)</span> for the particle’s actual starting position. <a href="bohmian-derivations.html">Five derivations of the guiding equation</a></p>
+<section id="oscillator" class="level2">
+<h2>An oscillator with a particle at rest</h2>
+<p>Take <span class="math inline">\(V(x)=x^2/2\)</span>. Its normalized ground state is <span class="math inline">\(\psi(x,t)=\pi^{-1/4}e^{-x^2/2}e^{-it/2}\)</span>. The time-dependent phase is the same everywhere. Thus <span class="math inline">\(\partial_x\psi/\psi=-x\)</span> is real, so <span class="math inline">\(v=0\)</span>, <span class="math inline">\(j=0\)</span>, and <span class="math inline">\(X(t)=x_0\)</span> at every starting point.</p>
+<p>Where did the restoring force go? With <span class="math inline">\(R=|\psi|\)</span>, differentiating twice gives <span class="math inline">\(R&#39;&#39;/R=x^2-1\)</span>. The quantum potential is <span class="math inline">\(U=(1-x^2)/2\)</span>, so <span class="math inline">\(V+U=1/2\)</span> everywhere. At <span class="math inline">\(x_0=1\)</span> the classical force is <span class="math inline">\(-1\)</span> and the quantum force is <span class="math inline">\(+1\)</span>. The total force vanishes. Newton’s equation for this total potential permits <em>any</em> constant velocity. The phase fixes the initial velocity at zero and picks out the stationary paths. This is the initial-condition issue in <a href="bohmian-derivations.html#action">Bohm’s Hamilton–Jacobi derivation</a>.</p>
+</section>
+<section id="coherent" class="level2">
+<h2>Displace the Gaussian and give it a kick</h2>
+<p>Keep the oscillator but start with the packet in §7.3 of the thesis, <span class="math display">\[\psi(x,0)=\pi^{-1/4}\exp[-(x-c)^2/2+iax].\]</span> Here <span class="math inline">\(c\)</span> is the initial packet center and <span class="math inline">\(a\)</span> its initial velocity. The packet keeps its shape. Define <span class="math display">\[b(t)=c\cos t+a\sin t,\qquad p(t)=b&#39;(t)=-c\sin t+a\cos t.\]</span> At time <span class="math inline">\(t\)</span> its wave has the form <span class="math inline">\(\pi^{-1/4}\exp[-(x-b)^2/2+i(px+\gamma(t))]\)</span>. To check this ansatz, substitute it into Schrödinger’s equation and match the coefficients of <span class="math inline">\(x\)</span> and the constant term. This gives <span class="math inline">\(b&#39;=p\)</span>, <span class="math inline">\(p&#39;=-b\)</span>, and <span class="math inline">\(\gamma&#39;=(b^2-p^2-1)/2\)</span>, with <span class="math inline">\(\gamma(0)=0\)</span>. Only the first two equations affect the paths. <a href="https://jostylr.com/pdfs/thesis.pdf#page=152">Thesis, §7.3, p. 141</a></p>
+<table>
+<thead>
+<tr>
+<th>Route</th>
+<th>Calculation on this packet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Local wave number</td>
+<td><span class="math inline">\(\partial_x\psi/\psi=-(x-b)+ip\)</span>. The local wave number is <span class="math inline">\(p\)</span>, so every particle has velocity <span class="math inline">\(p\)</span>.</td>
+</tr>
+<tr>
+<td>Probability current</td>
+<td><span class="math inline">\(\rho=\pi^{-1/2}e^{-(x-b)^2}\)</span> translates at speed <span class="math inline">\(b&#39;\)</span>. Hence <span class="math inline">\(\partial_t\rho=-b&#39;\partial_x\rho\)</span> and the current vanishing at infinity is <span class="math inline">\(j=b&#39;\rho\)</span>.</td>
+</tr>
+<tr>
+<td>Symmetry</td>
+<td>At a fixed time, go to a frame moving at <span class="math inline">\(u=p(t)\)</span>. The spatial phase slope in that frame is zero. The wave is real up to a constant phase at that instant, so time reversal requires zero instantaneous velocity there. Transforming back gives <span class="math inline">\(v=p(t)\)</span>.</td>
+</tr>
+<tr>
+<td>Hamilton–Jacobi</td>
+<td><span class="math inline">\(R&#39;&#39;/R=(x-b)^2-1\)</span>, so <span class="math inline">\(U=[1-(x-b)^2]/2\)</span>. The total force <span class="math inline">\(-\partial_x(V+U)=-b\)</span> accelerates every particle equally. With initial velocity <span class="math inline">\(a\)</span>, integration gives <span class="math inline">\(v=p(t)\)</span>.</td>
+</tr>
+<tr>
+<td>Commutator</td>
+<td>Try <span class="math inline">\(f=x^2\)</span>. Since <span class="math inline">\([H,x^2]\psi=-\psi-2x\partial_x\psi\)</span>, the real local value of <span class="math inline">\(i[H,x^2]\)</span> is <span class="math inline">\(2xp\)</span>. This is exactly <span class="math inline">\(d(X^2)/dt\)</span> at <span class="math inline">\(X=x\)</span>. Taking <span class="math inline">\(f=x\)</span> gives <span class="math inline">\(p\)</span> even at <span class="math inline">\(x=0\)</span>.</td>
+</tr>
+</tbody>
+</table>
+<p>Integrate once to get the thesis trajectory <span class="math display">\[X(t)=x_0+b(t)-c=x_0+c(\cos t-1)+a\sin t.\]</span> Every particle keeps its original offset from the packet center. For <span class="math inline">\(c=1\)</span>, <span class="math inline">\(a=0\)</span>, <span class="math inline">\(x_0=1.5\)</span>, the center arrives at zero at <span class="math inline">\(t=\pi/2\)</span> and the particle arrives at <span class="math inline">\(0.5\)</span>. After half a period the center is at <span class="math inline">\(-1\)</span> and the particle is at <span class="math inline">\(-0.5\)</span>. It remains on the <strong>right</strong> of the center, even though the entire density at half a period is the mirror image of its initial shape. A classical particle released from the same <span class="math inline">\(x_0\)</span> would be at <span class="math inline">\(-1.5\)</span>. This is the ordering argument behind the position-measurement example in §2.4.5 of the thesis. <a href="https://jostylr.com/pdfs/thesis.pdf#page=25">Thesis, §2.4.5, p. 14</a></p>
+<div id="oscillator-plot" class="experiment" hidden="">
+<h3>
+Follow one starting position through a period
+</h3>
+<p>
+The packet starts at 1 with zero velocity. Move the initial position onto the peak, then off it. The solid curve is the guided particle and the dashed curve is a classical oscillator released from the same point.
+</p>
+<label for="initial-position">Initial position
+<output id="position-value" for="initial-position">
+1.5
+</output>
+</label> <input id="initial-position" type="range" min="-1" max="3" step="0.1" value="1.5">
+<canvas width="640" height="300" role="img" aria-label="Guided and classical positions over one oscillator period" aria-describedby="half-period">
+</canvas>
+<p id="half-period" aria-live="polite">
+</p>
+</div>
+<p><strong>A sign in the thesis.</strong> In §7.3 the displayed quantum potential has <span class="math inline">\(-1/2\)</span> for its constant term. Differentiating the Gaussian gives <span class="math inline">\(+1/2\)</span>, as above. The resulting change is a spatial constant, so the force and the quoted trajectory agree. The ground state provides a quick check on the sign because <span class="math inline">\(V+U\)</span> must equal its energy <span class="math inline">\(1/2\)</span>.</p>
+</section>
+<section id="free" class="level2">
+<h2>Release the Gaussian and watch it spread</h2>
+<p>Turn off the oscillator and start at the origin with zero phase slope. The same initial wave <span class="math inline">\(\psi(x,0)=\pi^{-1/4}e^{-x^2/2}\)</span> now evolves freely according to <span class="math display">\[\psi(x,t)=\frac{\pi^{-1/4}}{\sqrt{1+it}}\exp\!\left[-\frac{x^2}{2(1+it)}\right].\]</span> The square root is continued from <span class="math inline">\(1\)</span> at <span class="math inline">\(t=0\)</span>. The spatial logarithmic derivative is <span class="math inline">\(-x/(1+it)\)</span>, so <span class="math inline">\(v(x,t)=xt/(1+t^2)\)</span>. Integrating <span class="math inline">\(\dot X=v(X,t)\)</span> gives <span class="math inline">\(X(t)=x_0\sqrt{1+t^2}\)</span>. At <span class="math inline">\(t=1\)</span> a particle starting at 1 is at <span class="math inline">\(\sqrt{2}\)</span> with velocity <span class="math inline">\(1/\sqrt{2}\)</span>. A particle starting at 0 remains at 0.</p>
+<p>Here the density <em>widens</em>. Write <span class="math inline">\(s=\sqrt{1+t^2}\)</span>. Then <span class="math inline">\(\rho(x,t)=\rho(x/s,0)/s\)</span>. Changing variables in the integral shows <span class="math display">\[\int_{-\infty}^{X(t)}\rho(x,t)\,dx=\int_{-\infty}^{x_0}\rho(x,0)\,dx.\]</span> A particle starting at the 75th percentile stays at the 75th percentile. On the line, the continuity equation gives this independently. The derivative of the integral along a path is <span class="math inline">\(-j(X,t)+\rho(X,t)\dot X\)</span>. It vanishes for the guided velocity. For a force check, <span class="math inline">\(U=1/(2s^2)-x^2/(2s^4)\)</span>, so <span class="math inline">\(-\partial_x U=X/s^4=x_0/s^3\)</span> on the path, exactly <span class="math inline">\(\ddot X\)</span>. Both the bound and free Gaussians start with every particle at rest. Switching off <span class="math inline">\(V\)</span> removes the force that balanced the outward quantum force.</p>
+</section>
+<section id="spin" class="level2">
+<h2>Give the oscillator a two-component wave</h2>
+<p>Can the scalar Hamilton–Jacobi construction survive if we just choose a clever phase? Consider a two-dimensional isotropic oscillator with the same Hamiltonian on both spin components and no magnetic field. Put <span class="math inline">\(r^2=x^2+y^2\)</span>. Use a ground state in the upper component and a first excited state with one unit of angular momentum in the lower. <span class="math display">\[\psi(x,y,t)=\frac{e^{-r^2/2}}{\sqrt{2\pi}}
+\begin{pmatrix}e^{-it}\\ (x+iy)e^{-2it}\end{pmatrix}.\]</span> The two energies are 1 and 2. Since spin components are orthogonal, their densities add, giving <span class="math inline">\(\rho=e^{-r^2}(1+r^2)/(2\pi)&gt;0\)</span>. Compute the convective current by adding <span class="math inline">\(\operatorname{Im}(\bar\psi_s\nabla\psi_s)\)</span> for each component. The common real Gaussian has no phase slope. The upper component contributes zero, and in the lower component <span class="math inline">\(\operatorname{Im}[(x-iy)(1,i)]=(-y,x)\)</span>. Thus <span class="math display">\[j=\frac{e^{-r^2}}{2\pi}(-y,x),\qquad v=\frac{(-y,x)}{1+r^2}.\]</span> Each path is a circle of constant radius, with angular velocity <span class="math inline">\(1/(1+r^2)\)</span> for <span class="math inline">\(r&gt;0\)</span>. Differentiating the velocity gives the planar curl <span class="math display">\[\partial_x v_y-\partial_y v_x=\frac{2}{(1+r^2)^2}.\]</span> It is nonzero even at the origin, where the upper component is nonzero. No real scalar <span class="math inline">\(S\)</span> can have <span class="math inline">\(\nabla S=v\)</span> even on a small open disk. This obstruction survives away from nodes and without magnetic fields. Both the current and the Pauli commutator from the introductory article give the velocity directly. The obstruction comes from discarding the local spin information. <a href="bohmian-derivations.html#action">Why the spinor needs more than one phase</a></p>
+</section>
+<section id="spin-current" class="level2">
+<h2>Which current for a spin-polarized Gaussian?</h2>
+<p>A different question already arises with <em>constant</em> spin orientation. In the three-dimensional isotropic oscillator take the spatial ground state times spin up along <span class="math inline">\(z\)</span>. Its density is <span class="math inline">\(\rho=\pi^{-3/2}e^{-(x^2+y^2+z^2)}\)</span>. Its convective current vanishes everywhere. Its spin density is <span class="math inline">\(\psi^\dagger\boldsymbol\sigma\psi=\rho\,\hat z\)</span>, so the current inherited from the Dirac equation gives <span class="math display">\[\frac{j_{\rm lim}}{\rho}=\frac{\nabla\times(\rho\hat z)}{2\rho}
+=\frac{(\partial_y\rho,-\partial_x\rho,0)}{2\rho}=(-y,x,0).\]</span> A particle starting at <span class="math inline">\((1,0,0)\)</span> stays there under the convective prescription. Under the Dirac-limit prescription it follows <span class="math inline">\((\cos t,\sin t,0)\)</span>. Both motions preserve this same stationary Gaussian density. In the preceding example the convective current already had curl in its <em>velocity</em>. Here we have added a curl to the <em>current</em> itself. Those are two distinct ways spin enters the problem. <a href="bohmian-derivations.html#dirac">How the two currents arise</a></p>
+</section>
+    </article>
+    <footer><a href="index.html#exploratory">More from Exploratory</a></footer>
+  </main>
+</body>
+</html>
