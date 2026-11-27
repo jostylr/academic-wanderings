@@ -471,6 +471,53 @@ button:hover {
   font-weight: 650;
 }
 
+.flow-diagram, .focus-diagram {
+  color: var(--ink);
+  display: block;
+  margin-block: 1rem;
+  width: 100%;
+}
+
+.flow-diagram text, .focus-diagram text {
+  fill: currentColor;
+  font: 16px system-ui, sans-serif;
+}
+
+.flow-original {
+  fill: none;
+  stroke: var(--ink);
+  stroke-dasharray: 5 4;
+  stroke-width: 2;
+}
+
+.flow-image {
+  fill: var(--link);
+  fill-opacity: 0.22;
+  stroke: var(--link);
+  stroke-width: 2;
+}
+
+.focus-path {
+  stroke: var(--link);
+  stroke-width: 2;
+}
+
+.focus-cursor {
+  stroke: var(--ink);
+  stroke-dasharray: 5 4;
+  stroke-width: 2;
+}
+
+.next-reading {
+  border-top: 1px solid var(--rule);
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+}
+
+.next-reading h2 {
+  font-size: 1.25rem;
+}
+
 @media (max-width: 42rem) {
   .topic-grid, .category-grid, .reading-path ul, .browse-controls, .lab-readings {
     grid-template-columns: minmax(0, 1fr);

@@ -22,6 +22,16 @@ test("catalogue has a separate introduction, explanation, and exploration for ea
   }
 });
 
+test("determinants and transport has sourced Reviews and an exploration, without requiring a new introduction", () => {
+  const reviews = filterAndSort(entries, { topic: "volume-transport", category: "reviews" });
+  for (const title of ["Determinants, trace, and the chain rule", "Jacobians turn motion into density"]) {
+    assert.ok(reviews.some(entry => entry.title === title));
+  }
+  const exploration = filterAndSort(entries, { topic: "volume-transport", category: "exploratory", tag: "transport" });
+  assert.ok(exploration.some(entry => entry.title === "Stretch, shear, and carry a density"));
+  assert.ok(filterAndSort(entries, { tag: "probability-current" }).some(entry => entry.topic === "volume-transport"));
+});
+
 test("topic, category, tag, and all search terms combine as intersections", () => {
   const result = filterAndSort(entries, { topic: "dirac", category: "exploratory", tag: "spinors", q: "PHASE current" });
   assert.ok(result.some(entry => entry.title === "Read a velocity from a Dirac spinor"));
