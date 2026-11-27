@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A first encounter with spin states, measurement directions, and half-angle rotations.">
+  <title>Spin: two amplitudes and a tilted magnet · Academic Wanderings</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css"
+    integrity="sha384-WwGtaC6ywCHxA5cstpj/3+xIZvTez8dq2IcBQaXRkenHZ7FVVq1ZROtURwfbtTlG" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.js"
+    integrity="sha384-a1WQdjRj162i159OYq041X6I4K8NenkrI09LlPmiHg0YOb7CR+wJOraXwK9abpnE" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="math.js"></script>
+</head>
+<body>
+  <main class="page page--article">
+    <nav class="site-header" aria-label="Site">
+      <a class="site-title" href="index.html">Academic Wanderings</a>
+      <a href="browse.html">Browse all pages</a>
+    </nav>
+    <nav class="page-context" aria-label="Page topics">
+      <a class="topic-label" href="spin.html">Spin</a>
+      <a class="tag" href="browse.html?category=introductory">Introductory</a>
+      <a class="tag" href="browse.html?tag=quantum-mechanics">Quantum mechanics</a><a class="tag" href="browse.html?tag=rotations">Rotations</a><a class="tag" href="browse.html?tag=spinors">Spinors</a>
+    </nav>
+    <article class="taylor-article">
+      <header><p class="eyebrow">Introductory · Spin</p><h1>Spin: two amplitudes and a tilted magnet</h1></header>
+<p class="lede">A magnet can ask a particle a directional question. For a spin-one-half system, an ideal analyzer has just two answers, however smoothly we turn the magnet.</p>
+<section aria-labelledby="two-answers">
+  <h2 id="two-answers">Two answers, many possible preparations</h2>
+  <p>Imagine preparing a beam in the “plus” output of an ideal Stern–Gerlach analyzer pointing along the vertical direction, called <span class="math inline">\(z\)</span>. A second analyzer pointing the same way gives plus again. Turn the second analyzer sideways and the prepared beam divides equally between its plus and minus outputs. Turn it upside down and every particle gives minus.</p>
+  <p>This describes an ideal spin-one-half degree of freedom, such as the relevant electronic spin in a suitably prepared atomic beam. The details of real beam splitting and magnetic forces are additional physics. “Plus” means a measured spin component of <span class="math inline">\(+\hbar/2\)</span> along the chosen axis; “minus” means <span class="math inline">\(-\hbar/2\)</span>.</p>
+  <p>The two outputs do not mean that there are only two possible preparations. A state aligned with a tilted axis is a different preparation. To keep track of all of them, we use two complex amplitudes:</p>
+  <div class="math-display">\[\chi=\begin{pmatrix}a\\b\end{pmatrix},\qquad |a|^2+|b|^2=1.\]</div>
+  <p>In this chosen <span class="math inline">\(z\)</span> basis, <span class="math inline">\(|a|^2\)</span> and <span class="math inline">\(|b|^2\)</span> are the probabilities of the two outputs. Their relative phase also matters: another analyzer direction can make the amplitudes interfere.</p>
+</section>
+<section aria-labelledby="half-angle">
+  <h2 id="half-angle">The half-angle is the clue</h2>
+  <p>For a state prepared plus along <span class="math inline">\(z\)</span> and an analyzer tilted by angle <span class="math inline">\(\theta\)</span> in the <span class="math inline">\(xz\)</span> plane, the predictions are</p>
+  <div class="math-display">\[P(+)=\cos^2(\theta/2),\qquad P(-)=\sin^2(\theta/2).\]</div>
+  <p>At zero tilt these are one and zero. At a right angle they are both one half. At a half-turn they exchange. The appearance of the half-angle is a hint that the amplitudes respond to rotations differently from an ordinary spatial arrow.</p>
+  <p>A spinor is an amplitude vector with this rotation behavior. For a physical rotation through <span class="math inline">\(2\pi\)</span>, a spin-one-half spinor acquires a minus sign. The probabilities of an isolated state are unchanged, because <span class="math inline">\(\chi\)</span> and <span class="math inline">\(-\chi\)</span> describe the same ray. Rotating just one arm of a coherent two-path experiment can turn that sign into a measurable <em>relative</em> phase. A <span class="math inline">\(4\pi\)</span> rotation restores the amplitude vector itself.</p>
+</section>
+<section aria-labelledby="what-spins">
+  <h2 id="what-spins">What is rotating?</h2>
+  <p>Spin is angular momentum carried by the quantum state. Its transformation law is the useful starting point. A tiny rigid ball turning about its own axis does not supply the two amplitudes or their rotation rule.</p>
+  <p>For a particle that can also move, the amplitudes become functions of position and time: <span class="math inline">\(\psi(q,t)=(\psi_+(q,t),\psi_-(q,t))^T\)</span>. The position density sums over the components, <span class="math inline">\(\rho=\psi^\dagger\psi\)</span>. The dagger means conjugate transpose. These are components of one wave function, which can be correlated with position.</p>
+  <p>Now we can ask a more productive question: once rotations act on those components, how should they enter the equation of motion? <a href="spin.html">The primary explanation follows that question into the Pauli equation.</a> <a href="spin-exploration.html">The exploration lets you vary both rotations and analyzer directions.</a></p>
+</section>
+<section aria-labelledby="references"><h2 id="references">Sources and further reading</h2>
+  <p>For ideal analyzers and the rotation of amplitudes, see Feynman, Leighton, and Sands, <cite>The Feynman Lectures on Physics</cite>, volume III, <a href="https://www.feynmanlectures.caltech.edu/III_05.html">chapter 5</a> and <a href="https://www.feynmanlectures.caltech.edu/III_06.html">chapter 6, “Spin One-Half”</a>. The discussion here uses an active rotation of the state; changing a coordinate basis uses the inverse transformation.</p>
+</section>
+    </article>
+    <footer><nav class="reading-path" aria-label="Read about Spin"><ul><li><a href="spin-introduction.html" aria-current="page">Introductory</a><span>Spin: two amplitudes and a tilted magnet</span></li><li><a href="spin.html">Explanation</a><span>Why let a wave function carry spin?</span></li><li><a href="spin-exploration.html">Exploratory</a><span>Turn the analyzer, then turn the spinor</span></li></ul></nav></footer>
+  </main>
+</body>
+</html>

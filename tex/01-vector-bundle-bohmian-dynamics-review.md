@@ -1,5 +1,43 @@
 # Review: Geometrically Formulating Bohmian Theories on Hermitian Vector Bundles
 
+## Web companions, November 27, 2026
+
+The [spin explanation](../docs/spin.html) and
+[Dirac explanation](../docs/dirac-equation.html) now reconstruct the motivation
+in §§3.6 and 3.8 as separate expository paths, each with introductory and
+exploratory companions. The original TeX remains unchanged; these pages do not
+claim to resolve every issue in the triage below.
+
+- The spin account takes the representation as input and explains the match
+  between infinitesimal rotations and curvature. It does not deduce spin one
+  half or spin-statistics. In the explicit flat-space model, signed charge `e`
+  and SI momentum `π = −iℏ∇ − eA` give
+  `[π_i,π_j] = ieℏ ε_ijk B_k`. The antisymmetric part of the Pauli product is
+  `(i/2) ε_ijk σ_k [π_i,π_j] = −eℏ σ·B`, fixing the sign and factor in
+  `(σ·π)² = π² − eℏ σ·B`. The choice of this square gives `g = 2`;
+  representation theory alone does not fix the magnetic coupling.
+- The Dirac account explicitly adds the Clifford relation
+  `{γ^μ,γ^ν} = 2η^μν I`, with `η = diag(1,−1,−1,−1)` and `x⁰ = ct`.
+  Ultralocality, covariance, and current conservation are motivations, not a
+  classification theorem. The extra metric selection is already flagged as
+  unproved from covariance in the thesis, printed p. 42, footnote 5.
+- The standard free equation implies current conservation and componentwise
+  Klein–Gordon equations. The explanations state these implications in that
+  direction. The current can be null, and curved-space spinors require global
+  structure and a compatible connection.
+- Source passages checked: the public thesis §§3.6–3.8; Feynman, Leighton,
+  and Sands, volume III, chapters 5–6; Tong, *Applications of Quantum Mechanics*,
+  §1.5; and Tong, *Quantum Field Theory*, §§4.3, 4.6–4.7. Tong's chiral matrix
+  basis is not the standard Dirac basis used in the component experiment;
+  bilinear currents and spectra agree after a unitary change of basis.
+- `tests/quantum-models.test.mjs` checks Clifford factors/signature, spin
+  probabilities against Pauli projectors, path interference, Dirac eigenvector
+  residuals, the squared free Hamiltonian, spectral weights, and current bounds.
+  These are independent algebraic checks of the examples, not proofs of a
+  uniqueness or global-existence claim.
+
+## Original editorial review
+
 Reviewed 2026-07-23. This is an editorial and mathematical triage, not a substitute for specialist peer review.
 
 ## Verdict

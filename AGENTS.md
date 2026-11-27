@@ -20,10 +20,12 @@ them. Preserve unrelated working-tree changes.
 | Location | Role |
 | --- | --- |
 | `docs/` | Handwritten HTML website; no generator or build step. |
-| `docs/index.html` | Navigation grouped into Introductory, Exploratory, My Work, Reviews, and Musings. |
+| `docs/index.html` | Topic reading paths, plus links to the six categories. |
+| `docs/browse.html` | Complete static catalogue and its topic/category/tag metadata; browser filtering and sorting enhance it. |
 | `docs/style.css` | Shared responsive layout, typography, light/dark colors, math overflow, and experiment styles. |
 | `docs/math.js` | KaTeX auto-render initialization within `main`. |
-| `docs/*.js` | Page-specific experiments: sphere latitude, ring torus, and Gaussian trajectories. |
+| `docs/*.js`, `docs/*.mjs` | Browser experiments, catalogue controls, and pure calculation modules. |
+| `tests/*.test.mjs`, `tools/check-site.py` | Dependency-free quantum/catalogue tests and static site checks. |
 | `tex/01-*.tex` through `tex/11-*.tex` | Standalone working manuscripts with their own preambles. |
 | `tex/*-review.md` | Editorial and mathematical triage, known defects, literature leads, and revision findings. |
 | `tex/references.bib` | Shared bibliography for all manuscripts. |
@@ -167,7 +169,13 @@ do not establish a uniform convention by themselves.
 
 - Edit HTML directly. Keep relative `.html`, script, stylesheet, and fragment
   links so the site works beneath a hosting subpath. Preserve existing URLs and
-  section IDs, and add authorized new pages to the appropriate index category.
+  section IDs. Give each new article one main topic, one category, and related
+  tags in `docs/browse.html`; match its compact context links to that metadata.
+  Add new filter options when needed. The categories are Introductory,
+  Explanation, Exploratory, My Work, Reviews, and Musings. Use Explanation for
+  primary exposition without implying an original research claim. Keep homepage
+  reading paths selective; the catalogue is the complete listing. It must remain
+  readable with JavaScript disabled. See `README.md` for the entry format.
 - Follow nearby pages: `<!doctype html>`, `lang="en"`, UTF-8, viewport and
   description metadata, a descriptive title ending in `· Academic Wanderings`,
   shared `style.css`, `main.page.page--article`, site/category navigation, and
@@ -189,9 +197,10 @@ do not establish a uniform convention by themselves.
 
 ## Commands and validation
 
-Run commands from the repository root. There is currently no checked-in test
-suite, package manifest, or CI workflow. Choose checks appropriate to the change
-and report their actual results, including pre-existing warnings.
+Run commands from the repository root. Checks use Python's standard library and
+Node's built-in test runner; no package installation is required. There is no
+package manifest or CI workflow. Choose checks appropriate to the change and
+report their actual results, including pre-existing warnings.
 
 ```sh
 # Static preview; open http://localhost:8000/
@@ -199,7 +208,9 @@ python3 -m http.server --bind 127.0.0.1 --directory docs 8000
 
 # Syntax only: checks the extractor without running its destructive generation
 node --check tools/extract-thesis.mjs
-for file in docs/*.js; do node --check "$file" || exit; done
+for file in docs/*.js docs/*.mjs; do node --check "$file" || exit; done
+python3 tools/check-site.py
+node --test tests/*.test.mjs
 
 # TeX build (requires latexmk, a TeX distribution, BibTeX, and scalable T1 fonts)
 latexmk -cd -pdf -interaction=nonstopmode -halt-on-error tex/*.tex

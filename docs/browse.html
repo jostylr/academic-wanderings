@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Browse Academic Wanderings by topic, page category, or related tags.">
+  <title>Browse all pages · Academic Wanderings</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="browse.mjs"></script>
+</head>
+<body>
+  <main class="page">
+    <nav class="site-header" aria-label="Site"><a class="site-title" href="index.html">Academic Wanderings</a><a href="index.html#topics">Topic paths</a></nav>
+    <h1>Browse all pages</h1>
+    <p class="lede">Choose a subject, a kind of reading, or an idea that crosses between subjects.</p>
+    <p>Each page has one main topic and one category. Tags connect related ideas across those boundaries. <a href="index.html#topics">For a suggested reading path, start with a topic.</a></p>
+    <form id="browse-controls" class="browse-controls" role="search" hidden>
+      <div class="search-field"><label for="page-search">Search titles, descriptions, and tags</label><input id="page-search" name="q" type="search" placeholder="Try spin, curvature, or current" autocomplete="off"></div>
+      <div><label for="page-topic">Main topic</label><select id="page-topic" name="topic"><option value="">All topics</option><option value="bohmian-mechanics">Bohmian mechanics</option><option value="spin">Spin</option><option value="dirac">Dirac equation</option><option value="geometry">Geometry and Taylor expansions</option></select></div>
+      <div><label for="page-category">Category</label><select id="page-category" name="category"><option value="">All categories</option><option value="introductory">Introductory</option><option value="explanation">Explanation</option><option value="exploratory">Exploratory</option><option value="my-work">My Work</option><option value="reviews">Reviews</option><option value="musings">Musings</option></select></div>
+      <div><label for="page-tag">Related tag</label><select id="page-tag" name="tag"><option value="">All tags</option><option value="connections">Connections</option><option value="curvature">Curvature</option><option value="magnetic-fields">Magnetic fields</option><option value="manifolds">Manifolds</option><option value="probability-current">Probability current</option><option value="quantum-mechanics">Quantum mechanics</option><option value="relativity">Relativity</option><option value="rotations">Rotations</option><option value="spinors">Spinors</option><option value="taylor-series">Taylor series</option><option value="wave-packets">Wave packets</option></select></div>
+      <div><label for="page-sort">Sort by</label><select id="page-sort" name="sort"><option value="topic">Topic, then title</option><option value="title">Title A–Z</option><option value="category">Category, then title</option></select></div>
+      <div class="browse-actions"><button type="reset">Clear filters</button><button type="submit">Apply filters</button></div>
+    </form>
+    <noscript><p>The complete catalogue is below. Enable JavaScript to filter and sort it; all article links work without it.</p></noscript>
+    <p id="browse-count" role="status" aria-live="polite">17 pages in the catalogue.</p>
+    <p id="browse-empty" hidden>No pages match these filters. Try another topic or tag, or clear the filters. Reviews and Musings do not have entries yet.</p>
+    <ul id="page-catalogue" class="catalogue">
+      <li class="catalogue-entry" data-topic="bohmian-mechanics" data-category="introductory" data-tags="quantum-mechanics probability-current">
+        <p class="entry-meta"><a href="browse.html?topic=bohmian-mechanics">Bohmian mechanics</a> · <a href="browse.html?category=introductory">Introductory</a></p>
+        <h2><a class="entry-title" href="bohmian-mechanics.html">How the wave function guides particles</a></h2>
+        <p class="entry-summary">The guiding equation and quantum probability current.</p>
+        <div class="tag-list" aria-label="Related tags"><a class="tag" href="browse.html?tag=quantum-mechanics">Quantum mechanics</a><a class="tag" href="browse.html?tag=probability-current">Probability current</a></div>
+      </li>
+      <li class="catalogue-entry" data-topic="bohmian-mechanics" data-category="introductory" data-tags="quantum-mechanics probability-current spinors">
+        <p class="entry-meta"><a href="browse.html?topic=bohmian-mechanics">Bohmian mechanics</a> · <a href="browse.html?category=introductory">Introductory</a></p>
+        <h2><a class="entry-title" href="bohmian-derivations.html">Five routes to the Bohmian guiding equation</a></h2>
+        <p class="entry-summary">Phase, current, symmetry, action, and commutators, with a comparison for spin.</p>
+        <div class="tag-list" aria-label="Related tags"><a class="tag" href="browse.html?tag=quantum-mechanics">Quantum mechanics</a><a class="tag" href="browse.html?tag=probability-current">Probability current</a><a class="tag" href="browse.html?tag=spinors">Spinors</a></div>
+      </li>
+      <li class="catalogue-entry" data-topic="bohmian-mechanics" data-category="exploratory" data-tags="wave-packets probability-current spinors">
+        <p class="entry-meta"><a href="browse.html?topic=bohmian-mechanics">Bohmian mechanics</a> · <a href="browse.html?category=exploratory">Exploratory</a></p>
+        <h2><a class="entry-title" href="bohmian-trajectories.html">Following a Gaussian through five derivations</a></h2>
+        <p class="entry-summary">Moving oscillator packets, released Gaussians, and two spin currents.</p>
+        <div class="tag-list" aria-label="Related tags"><a class="tag" href="browse.html?tag=wave-packets">Wave packets</a><a class="tag" href="browse.html?tag=probability-current">Probability current</a><a class="tag" href="browse.html?tag=spinors">Spinors</a></div>
+      </li>
+      <li class="catalogue-entry" data-topic="spin" data-category="introductory" data-tags="quantum-mechanics rotations spinors">
+        <p class="entry-meta"><a href="browse.html?topic=spin">Spin</a> · <a href="browse.html?category=introductory">Introductory</a></p>
+        <h2><a class="entry-title" href="spin-introduction.html">Spin: two amplitudes and a tilted magnet</a></h2>
+        <p class="entry-summary">A first encounter with spin states, measurement directions, and half-angle rotations.</p>
+        <div class="tag-list" aria-label="Related tags"><a class="tag" href="browse.html?tag=quantum-mechanics">Quantum mechanics</a><a class="tag" href="browse.html?tag=rotations">Rotations</a><a class="tag" href="browse.html?tag=spinors">Spinors</a></div>
+      </li>
+      <li class="catalogue-entry" data-topic="spin" data-category="explanation" data-tags="rotations spinors magnetic-fields curvature">
+        <p class="entry-meta"><a href="browse.html?topic=spin">Spin</a> · <a href="browse.html?category=explanation">Explanation</a></p>
+        <h2><a class="entry-title" href="spin.html">Why let a wave function carry spin?</a></h2>
+        <p class="entry-summary">An inspirational route from rotations to spinors, then from curvature to the Pauli magnetic coupling.</p>
+        <div class="tag-list" aria-label="Related tags"><a class="tag" href="browse.html?tag=rotations">Rotations</a><a class="tag" href="browse.html?tag=spinors">Spinors</a><a class="tag" href="browse.html?tag=magnetic-fields">Magnetic fields</a><a class="tag" href="browse.html?tag=curvature">Curvature</a></div>
+      </li>
+      <li class="catalogue-entry" data-topic="spin" data-category="exploratory" data-tags="rotations spinors quantum-mechanics">
+        <p class="entry-meta"><a href="browse.html?topic=spin">Spin</a> · <a href="browse.html?category=exploratory">Exploratory</a></p>
+        <h2><a class="entry-title" href="spin-exploration.html">Turn the analyzer, then turn the spinor</a></h2>
+        <p class="entry-summary">Compare spin probabilities with the relative sign revealed by interference.</p>
+        <div class="tag-list" aria-label="Related tags"><a class="tag" href="browse.html?tag=rotations">Rotations</a><a class="tag" href="browse.html?tag=spinors">Spinors</a><a class="tag" href="browse.html?tag=quantum-mechanics">Quantum mechanics</a></div>
+      </li>
+      <li class="catalogue-entry" data-topic="dirac" data-category="introductory" data-tags="relativity spinors probability-current">
+        <p class="entry-meta"><a href="browse.html?topic=dirac">Dirac equation</a> · <a href="browse.html?category=introductory">Introductory</a></p>
+        <h2><a class="entry-title" href="dirac-introduction.html">A first look at the Dirac equation</a></h2>
+        <p class="entry-summary">Four amplitudes, a relativistic wave equation, and a current at each event.</p>
+        <div class="tag-list" aria-label="Related tags"><a class="tag" href="browse.html?tag=relativity">Relativity</a><a class="tag" href="browse.html?tag=spinors">Spinors</a><a class="tag" href="browse.html?tag=probability-current">Probability current</a></div>
+      </li>
+      <li class="catalogue-entry" data-topic="dirac" data-category="explanation" data-tags="relativity spinors probability-current">
+        <p class="entry-meta"><a href="browse.html?topic=dirac">Dirac equation</a> · <a href="browse.html?category=explanation">Explanation</a></p>
+        <h2><a class="entry-title" href="dirac-equation.html">From a local current to the Dirac equation</a></h2>
+        <p class="entry-summary">Follow a motivating proposal from the thesis, and identify the extra choices it needs.</p>
+        <div class="tag-list" aria-label="Related tags"><a class="tag" href="browse.html?tag=relativity">Relativity</a><a class="tag" href="browse.html?tag=spinors">Spinors</a><a class="tag" href="browse.html?tag=probability-current">Probability current</a></div>
+      </li>
+      <li class="catalogue-entry" data-topic="dirac" data-category="exploratory" data-tags="relativity spinors probability-current">
+        <p class="entry-meta"><a href="browse.html?topic=dirac">Dirac equation</a> · <a href="browse.html?category=exploratory">Exploratory</a></p>
+        <h2><a class="entry-title" href="dirac-exploration.html">Read a velocity from a Dirac spinor</a></h2>
+        <p class="entry-summary">Change momentum and relative phase to see how amplitudes determine a local current.</p>
+        <div class="tag-list" aria-label="Related tags"><a class="tag" href="browse.html?tag=relativity">Relativity</a><a class="tag" href="browse.html?tag=spinors">Spinors</a><a class="tag" href="browse.html?tag=probability-current">Probability current</a></div>
+      </li>
+      <li class="catalogue-entry" data-topic="geometry" data-category="introductory" data-tags="taylor-series">
+        <p class="entry-meta"><a href="browse.html?topic=geometry">Geometry and Taylor expansions</a> · <a href="browse.html?category=introductory">Introductory</a></p>
+        <h2><a class="entry-title" href="taylor-polynomials.html">Taylor polynomials and the error you leave behind</a></h2>
+        <p class="entry-summary">Polynomial approximation, remainders, and mixed derivatives.</p>
+        <div class="tag-list" aria-label="Related tags"><a class="tag" href="browse.html?tag=taylor-series">Taylor series</a></div>
+      </li>
+      <li class="catalogue-entry" data-topic="geometry" data-category="introductory" data-tags="manifolds">
+        <p class="entry-meta"><a href="browse.html?topic=geometry">Geometry and Taylor expansions</a> · <a href="browse.html?category=introductory">Introductory</a></p>
+        <h2><a class="entry-title" href="manifolds.html">Manifolds and tangent spaces</a></h2>
+        <p class="entry-summary">Charts on a sphere, tangent velocities, and the differential of a map.</p>
+        <div class="tag-list" aria-label="Related tags"><a class="tag" href="browse.html?tag=manifolds">Manifolds</a></div>
+      </li>
+      <li class="catalogue-entry" data-topic="geometry" data-category="introductory" data-tags="connections manifolds">
+        <p class="entry-meta"><a href="browse.html?topic=geometry">Geometry and Taylor expansions</a> · <a href="browse.html?category=introductory">Introductory</a></p>
+        <h2><a class="entry-title" href="connections.html">Connections, geodesics, and the exponential map</a></h2>
+        <p class="entry-summary">Covariant acceleration, geodesics, and normal coordinates.</p>
+        <div class="tag-list" aria-label="Related tags"><a class="tag" href="browse.html?tag=connections">Connections</a><a class="tag" href="browse.html?tag=manifolds">Manifolds</a></div>
+      </li>
+      <li class="catalogue-entry" data-topic="geometry" data-category="my-work" data-tags="taylor-series curvature connections">
+        <p class="entry-meta"><a href="browse.html?topic=geometry">Geometry and Taylor expansions</a> · <a href="browse.html?category=my-work">My Work</a></p>
+        <h2><a class="entry-title" href="taylor-maps.html">Taylor expansions of mappings between manifolds</a></h2>
+        <p class="entry-summary">The revised working paper comparing exponential-coordinate and covariant jets.</p>
+        <div class="tag-list" aria-label="Related tags"><a class="tag" href="browse.html?tag=taylor-series">Taylor series</a><a class="tag" href="browse.html?tag=curvature">Curvature</a><a class="tag" href="browse.html?tag=connections">Connections</a></div>
+      </li>
+      <li class="catalogue-entry" data-topic="geometry" data-category="exploratory" data-tags="taylor-series manifolds">
+        <p class="entry-meta"><a href="browse.html?topic=geometry">Geometry and Taylor expansions</a> · <a href="browse.html?category=exploratory">Exploratory</a></p>
+        <h2><a class="entry-title" href="flat-targets.html">A shear of a flat torus and the height of a sphere</a></h2>
+        <p class="entry-summary">Nonlinear Taylor coefficients with a flat target and a rotation between curved surfaces.</p>
+        <div class="tag-list" aria-label="Related tags"><a class="tag" href="browse.html?tag=taylor-series">Taylor series</a><a class="tag" href="browse.html?tag=manifolds">Manifolds</a></div>
+      </li>
+      <li class="catalogue-entry" data-topic="geometry" data-category="exploratory" data-tags="taylor-series curvature">
+        <p class="entry-meta"><a href="browse.html?topic=geometry">Geometry and Taylor expansions</a> · <a href="browse.html?category=exploratory">Exploratory</a></p>
+        <h2><a class="entry-title" href="sphere-latitude.html">Where the two Taylor polynomials part on a sphere</a></h2>
+        <p class="entry-summary">Compare two jets of a latitude and measure their fourth-order discrepancy.</p>
+        <div class="tag-list" aria-label="Related tags"><a class="tag" href="browse.html?tag=taylor-series">Taylor series</a><a class="tag" href="browse.html?tag=curvature">Curvature</a></div>
+      </li>
+      <li class="catalogue-entry" data-topic="geometry" data-category="exploratory" data-tags="taylor-series curvature">
+        <p class="entry-meta"><a href="browse.html?topic=geometry">Geometry and Taylor expansions</a> · <a href="browse.html?category=exploratory">Exploratory</a></p>
+        <h2><a class="entry-title" href="ring-torus.html">One torus, two metrics</a></h2>
+        <p class="entry-summary">Watch a fourth-order correction change sign around a ring torus.</p>
+        <div class="tag-list" aria-label="Related tags"><a class="tag" href="browse.html?tag=taylor-series">Taylor series</a><a class="tag" href="browse.html?tag=curvature">Curvature</a></div>
+      </li>
+      <li class="catalogue-entry" data-topic="bohmian-mechanics" data-category="my-work" data-tags="quantum-mechanics connections">
+        <p class="entry-meta"><a href="browse.html?topic=bohmian-mechanics">Bohmian mechanics</a> · <a href="browse.html?category=my-work">My Work</a></p>
+        <h2><a class="entry-title" href="https://jostylr.com/pdfs/thesis.pdf">Connections with Bohmian Mechanics (PDF)</a></h2>
+        <p class="entry-summary">James Taylor’s 2003 Rutgers dissertation, the starting point for this site.</p>
+        <div class="tag-list" aria-label="Related tags"><a class="tag" href="browse.html?tag=quantum-mechanics">Quantum mechanics</a><a class="tag" href="browse.html?tag=connections">Connections</a></div>
+      </li>
+    </ul>
+  </main>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Compare spin probabilities with the relative sign revealed by interference.">
+  <title>Turn the analyzer, then turn the spinor · Academic Wanderings</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css"
+    integrity="sha384-WwGtaC6ywCHxA5cstpj/3+xIZvTez8dq2IcBQaXRkenHZ7FVVq1ZROtURwfbtTlG" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.js"
+    integrity="sha384-a1WQdjRj162i159OYq041X6I4K8NenkrI09LlPmiHg0YOb7CR+wJOraXwK9abpnE" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="math.js"></script>
+  <script type="module" src="spin-exploration.mjs"></script>
+</head>
+<body>
+  <main class="page page--article">
+    <nav class="site-header" aria-label="Site">
+      <a class="site-title" href="index.html">Academic Wanderings</a>
+      <a href="browse.html">Browse all pages</a>
+    </nav>
+    <nav class="page-context" aria-label="Page topics">
+      <a class="topic-label" href="spin.html">Spin</a>
+      <a class="tag" href="browse.html?category=exploratory">Exploratory</a>
+      <a class="tag" href="browse.html?tag=rotations">Rotations</a><a class="tag" href="browse.html?tag=spinors">Spinors</a><a class="tag" href="browse.html?tag=quantum-mechanics">Quantum mechanics</a>
+    </nav>
+    <article class="taylor-article">
+      <header><p class="eyebrow">Exploratory · Spin</p><h1>Turn the analyzer, then turn the spinor</h1></header>
+<p class="lede">A complete turn restores every spin probability. It can still reverse an interference fringe. Two adjustable angles let us keep those statements separate.</p>
+<section aria-labelledby="setup"><h2 id="setup">Prepare, rotate, analyze</h2>
+  <p>Prepare a normalized spin-one-half state plus along <span class="math inline">\(z\)</span>, then physically rotate its spin about <span class="math inline">\(y\)</span> by <span class="math inline">\(\alpha\)</span>. An analyzer points at angle <span class="math inline">\(\theta\)</span> from <span class="math inline">\(z\)</span> toward <span class="math inline">\(x\)</span>. All directions lie in the <span class="math inline">\(xz\)</span> plane. Our active-rotation convention gives</p>
+  <div class="math-display">\[\chi(\alpha)=\begin{pmatrix}\cos(\alpha/2)\\\sin(\alpha/2)\end{pmatrix},\qquad
+    P(+_\theta)=\cos^2\!\left(\frac{\alpha-\theta}{2}\right).\]</div>
+  <p>The solid blue line is the spin expectation direction; the dashed line is the analyzer's plus direction. The diagram summarizes the spin preparation and measurement setting.</p>
+</section>
+<section class="experiment" id="spin-lab" hidden aria-labelledby="spin-lab-title">
+  <h2 id="spin-lab-title">Two turns to compare</h2>
+  <label for="spin-angle">State rotation α <output id="spin-angle-value" for="spin-angle">0°</output></label>
+  <input id="spin-angle" type="range" min="0" max="720" step="1" value="0">
+  <label for="analyzer-angle">Analyzer direction θ <output id="analyzer-angle-value" for="analyzer-angle">0°</output></label>
+  <input id="analyzer-angle" type="range" min="0" max="360" step="1" value="0">
+  <svg class="spin-diagram" viewBox="0 0 320 250" role="img" aria-labelledby="spin-diagram-title spin-diagram-desc">
+    <title id="spin-diagram-title">Spin and analyzer directions in the xz plane</title>
+    <desc id="spin-diagram-desc">Both directions initially point up along z. The numeric results below also describe the selected state.</desc>
+    <circle cx="160" cy="125" r="84" class="diagram-guide"/>
+    <path d="M50 125H270 M160 18V232" class="diagram-guide"/>
+    <text x="279" y="130">x</text><text x="167" y="20">z</text>
+    <line id="analyzer-vector" x1="160" y1="125" x2="160" y2="30" class="analyzer-vector"/>
+    <line id="spin-vector" x1="160" y1="125" x2="160" y2="41" class="spin-vector"/>
+    <circle id="spin-tip" cx="160" cy="41" r="5" class="spin-tip"/>
+  </svg>
+  <dl class="lab-readings" aria-live="polite" aria-atomic="true">
+    <div><dt>Spinor (a, b)</dt><dd id="spin-components">(1.000, 0.000)</dd></div>
+    <div><dt>Analyzer plus</dt><dd id="spin-plus">100.0%</dd></div>
+    <div><dt>Analyzer minus</dt><dd id="spin-minus">0.0%</dd></div>
+    <div><dt>Bright interferometer port</dt><dd id="spin-bright">100.0%</dd></div>
+  </dl>
+  <button type="button" id="spin-reset">Reset angles</button>
+</section>
+<section aria-labelledby="relative-sign"><h2 id="relative-sign">Give the minus sign something to compare with</h2>
+  <p>The bright-port value describes a <em>separate</em> ideal experiment: split the initial state coherently into two equally weighted paths, rotate the spin in one path only, then recombine them with zero additional path phase. Detect the bright port without resolving spin. Assume the rotator introduces no extra overall phase beyond <span class="math inline">\(U_y(\alpha)\)</span>, and the paths otherwise match.</p>
+  <p>The overlap with the untouched reference is <span class="math inline">\(\langle+z|\chi(\alpha)\rangle=\cos(\alpha/2)\)</span>. Adding the path amplitudes and summing over spin gives</p>
+  <div class="math-display">\[P(\text{bright})=\frac{1+\operatorname{Re}\langle+z|\chi(\alpha)\rangle}{2}
+  =\frac{1+\cos(\alpha/2)}{2}.\]</div>
+  <p>This value depends on the state rotation, not the analyzer slider. At <span class="math inline">\(360^\circ\)</span>, the spin direction and all analyzer probabilities return, while the relative minus sign makes the bright port dark. At <span class="math inline">\(720^\circ\)</span>, the bright port returns too. Rotating both paths would give a common phase and would not do this.</p>
+  <table><caption>Reference values with the analyzer along z</caption><thead><tr><th scope="col">State rotation</th><th scope="col">Spinor</th><th scope="col">Analyzer plus</th><th scope="col">Bright port</th></tr></thead>
+    <tbody><tr><th scope="row">0°</th><td>(1, 0)</td><td>1</td><td>1</td></tr><tr><th scope="row">180°</th><td>(0, 1)</td><td>0</td><td>1/2</td></tr><tr><th scope="row">360°</th><td>(−1, 0)</td><td>1</td><td>0</td></tr><tr><th scope="row">720°</th><td>(1, 0)</td><td>1</td><td>1</td></tr></tbody>
+  </table>
+  <p>Try <span class="math inline">\(\alpha=90^\circ\)</span> and sweep the analyzer. Then compare <span class="math inline">\(\alpha=90^\circ\)</span> with <span class="math inline">\(450^\circ\)</span>. The analyzer probabilities agree for every setting, while the two bright-port probabilities add to one.</p>
+</section>
+<section aria-labelledby="references"><h2 id="references">What this checks</h2>
+  <p>This is an exact two-amplitude calculation using the rotation operator in <a href="spin.html#rotation-question">the spin explanation</a>, not a simulation of a complete Stern–Gerlach apparatus. The interference calculation makes the global/relative-phase distinction in <a href="https://www.feynmanlectures.caltech.edu/III_06.html">Feynman's spin-one-half discussion</a> explicit. It tests rotation probabilities and coherent recombination; it does not test a magnetic interaction model.</p>
+</section>
+    </article>
+    <footer><nav class="reading-path" aria-label="Read about Spin"><ul><li><a href="spin-introduction.html">Introductory</a><span>Spin: two amplitudes and a tilted magnet</span></li><li><a href="spin.html">Explanation</a><span>Why let a wave function carry spin?</span></li><li><a href="spin-exploration.html" aria-current="page">Exploratory</a><span>Turn the analyzer, then turn the spinor</span></li></ul></nav></footer>
+  </main>
+</body>
+</html>
