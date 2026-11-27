@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Follow a motivating proposal from the thesis, and identify the extra choices it needs.">
+  <title>From a local current to the Dirac equation · Academic Wanderings</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css"
+    integrity="sha384-WwGtaC6ywCHxA5cstpj/3+xIZvTez8dq2IcBQaXRkenHZ7FVVq1ZROtURwfbtTlG" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.js"
+    integrity="sha384-a1WQdjRj162i159OYq041X6I4K8NenkrI09LlPmiHg0YOb7CR+wJOraXwK9abpnE" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="math.js"></script>
+</head>
+<body>
+  <main class="page page--article">
+    <nav class="site-header" aria-label="Site">
+      <a class="site-title" href="index.html">Academic Wanderings</a>
+      <a href="browse.html">Browse all pages</a>
+    </nav>
+    <nav class="page-context" aria-label="Page topics">
+      <a class="topic-label" href="dirac-equation.html">Dirac equation</a>
+      <a class="tag" href="browse.html?category=explanation">Explanation</a>
+      <a class="tag" href="browse.html?tag=relativity">Relativity</a><a class="tag" href="browse.html?tag=spinors">Spinors</a><a class="tag" href="browse.html?tag=probability-current">Probability current</a>
+    </nav>
+    <article class="taylor-article">
+      <header><p class="eyebrow">Explanation · Dirac equation</p><h1>From a local current to the Dirac equation</h1></header>
+<p class="lede">Suppose a wave could tell a particle which spacetime direction to follow using only its value at that event. What internal structure would let amplitudes become a real vector? What evolution could keep that flow conserved?</p>
+<p>This is the motivating question in <a href="https://jostylr.com/pdfs/thesis.pdf#page=52">§3.8.2 of the dissertation</a>. We will follow it as an inspirational derivation: a proposal that becomes persuasive through compatible choices. In particular, locality and current conservation alone do not uniquely force the Dirac equation.</p>
+<section aria-labelledby="local-question"><h2 id="local-question">Ask for a direction without a derivative</h2>
+  <p>The scalar Schrödinger current uses a spatial derivative, so the wave's variation near a point contributes to its velocity. Try asking for something stricter: a real spacetime current built quadratically from the wave value itself. The thesis calls this <em>ultralocal</em>. Here that word concerns dependence on the wave; it does not mean that a wave field has no spatial correlations.</p>
+  <p>A scalar amplitude supplies its modulus squared, a number. A spinor can supply more: its components can combine into a vector if their transformation law and the bilinear map are matched. This is a reason to seek an internal amplitude space, even before deciding on an equation.</p>
+  <p>Work in Minkowski spacetime with <span class="math inline">\(x^0=ct\)</span>, metric <span class="math inline">\(\eta=\operatorname{diag}(1,-1,-1,-1)\)</span>, and indices <span class="math inline">\(\mu=0,1,2,3\)</span>. We seek a four-component spinor transforming under the spin cover of the proper orthochronous Lorentz group. Transforming the state and changing the observer must transform the proposed current as a vector.</p>
+</section>
+<section aria-labelledby="metric-question"><h2 id="metric-question">Choose a matrix square root of the metric</h2>
+  <p>The thesis then makes an additional selection: let the symmetric product of the matrices that convert spinors into spacetime information recover the metric. In standard notation that requirement is</p>
+  <div class="math-display">\[\gamma^\mu\gamma^\nu+\gamma^\nu\gamma^\mu=2\eta^{\mu\nu}I.\]</div>
+  <p>This is the Clifford relation. The factor of two and metric sign are part of our convention. The relation packages spacetime lengths into matrix multiplication; “square root” is a metaphor for this algebraic property, rather than a claim about the square root of each coordinate.</p>
+  <p>For the usual complex Dirac representation in four-dimensional spacetime, the matrices act on four complex components. Their compatible spinor transformation rule makes the bilinears covariant. The Clifford relation is a substantive extra requirement: it is not a consequence we have proved from current covariance alone. The original thesis itself flags that gap in a footnote on printed p. 42.</p>
+</section>
+<section aria-labelledby="current-question"><h2 id="current-question">Let amplitudes make a spacetime current</h2>
+  <p>Choose the usual Hermiticity conventions, <span class="math inline">\((\gamma^0)^\dagger=\gamma^0\)</span> and <span class="math inline">\((\gamma^i)^\dagger=-\gamma^i\)</span>. Define the Dirac adjoint <span class="math inline">\(\bar\psi=\psi^\dagger\gamma^0\)</span>. The bar here denotes this adjoint, not componentwise complex conjugation. Then a candidate current is</p>
+  <div class="math-display">\[J^\mu=c\bar\psi\gamma^\mu\psi.\]</div>
+  <p>Its time component is <span class="math inline">\(J^0=c\psi^\dagger\psi=c\rho\)</span>. Its spatial part is <span class="math inline">\(j_i=c\psi^\dagger\alpha_i\psi\)</span>, with <span class="math inline">\(\alpha_i=\gamma^0\gamma^i\)</span>. The density is positive for a nonzero wave, although it changes between frames as part of a four-current; the positive Euclidean norm of the spinor is not a Lorentz scalar.</p>
+  <p>At <span class="math inline">\(\rho&gt;0\)</span>, integral curves can be parametrized by coordinate time with velocity <span class="math inline">\(v=j/\rho\)</span>. For every spatial unit vector <span class="math inline">\(n\)</span>, <span class="math inline">\(n\cdot\boldsymbol\alpha\)</span> is Hermitian and squares to the identity. Its expectation is between minus one and one. Choosing <span class="math inline">\(n\)</span> along <span class="math inline">\(j\)</span> gives <span class="math inline">\(|v|\le c\)</span>. The bound permits null as well as timelike current directions.</p>
+</section>
+<section aria-labelledby="evolution-question"><h2 id="evolution-question">Find an evolution that conserves it</h2>
+  <p>The same matrices can contract a spacetime derivative into an operator on spinors. For a free state with real mass <span class="math inline">\(m&gt;0\)</span>, a simple candidate is</p>
+  <div class="math-display">\[\boxed{(i\hbar c\gamma^\mu\partial_\mu-mc^2)\psi=0.}\]</div>
+  <p>This is the free Dirac equation. With constant matrices, the changes to the wave and its adjoint cancel in the divergence of the current. Probability is redistributed through space without being created or destroyed.</p>
+  <details class="algebra-check"><summary>Optional algebra: current conservation</summary>
+  <p>The equation and its adjoint give</p>
+  <div class="math-display">\[\partial_\mu J^\mu=c\big[(\partial_\mu\bar\psi)\gamma^\mu\psi+
+  \bar\psi\gamma^\mu\partial_\mu\psi\big]=0.\]</div>
+  </details>
+  <p>It therefore supplies a conserved flow. The implication goes from the wave equation to conservation. Asking for one real divergence to vanish does not determine all the complex component equations. Additional interactions or other choices can also preserve a current.</p>
+</section>
+<section aria-labelledby="energy-question"><h2 id="energy-question">Meet the energy argument from the other side</h2>
+  <p>The same matrix choice also recovers the familiar relativistic energy relation when we square the first-order equation. The metric hidden in matrix multiplication becomes the spacetime wave operator.</p>
+  <details class="algebra-check"><summary>Optional algebra: the free squared equation</summary>
+  <p>Apply the operator with the opposite mass sign. Because partial derivatives commute in this free flat-space setting, the Clifford relation gives</p>
+  <div class="math-display">\[(i\hbar c\gamma^\mu\partial_\mu+mc^2)
+  (i\hbar c\gamma^\nu\partial_\nu-mc^2)\psi
+  =(-\hbar^2c^2\Box-m^2c^4)\psi.\]</div>
+  <p>Here <span class="math inline">\(\Box=c^{-2}\partial_t^2-\nabla^2\)</span>.</p>
+  </details>
+  <p>Every component of a Dirac solution satisfies the free Klein–Gordon equation. Equivalently, a plane wave has <span class="math inline">\(E^2=c^2|p|^2+m^2c^4\)</span>. The converse fails: a componentwise Klein–Gordon solution need not obey the first-order constraints. The current-first and energy-first motivations meet at the same matrix structure.</p>
+  <p>Replace partial derivatives by compatible covariant derivatives and their commutator need not vanish. Squaring then produces curvature or field-strength terms. This is the bridge to <a href="spin.html#magnetic-question">the spin–magnetic-field coupling in the Pauli discussion</a>. It also marks the limit of our free calculation; on a curved spacetime, spinor bundles and compatible connections require appropriate global structure.</p>
+</section>
+<section aria-labelledby="what-we-learn"><h2 id="what-we-learn">What the route earns</h2>
+  <p>We have assembled a coherent model: a spinor transformation law, a metric-compatible matrix algebra, a positive-density conserved current, and a first-order evolution. The equation becomes a natural candidate once those choices are visible. The argument does not classify every relativistic wave equation, prove spin-statistics, or supply the field-theoretic account of antiparticles.</p>
+  <p><a href="dirac-exploration.html">The exploration reads this current from explicit amplitudes.</a> For the low-speed connection, <a href="bohmian-derivations.html#dirac">compare the Dirac-limit and convective Pauli currents</a>: the extra spin curl term explains why their trajectories can differ.</p>
+</section>
+<section aria-labelledby="references"><h2 id="references">Sources and conventions</h2>
+  <ul>
+    <li>James Taylor, <cite>Connections with Bohmian Mechanics</cite> (Rutgers, 2003), <a href="https://jostylr.com/pdfs/thesis.pdf#page=51">§3.8, printed pp. 40–45</a>. The question and heuristic route originate there. This reconstruction distinguishes its choices from proven implications and adopts the explicit standard Clifford convention above.</li>
+    <li>David Tong, <a href="https://www.damtp.cam.ac.uk/user/tong/qft/qft.pdf"><cite>Quantum Field Theory</cite></a>, §§4.1–4.3, 4.6–4.7, for the spinor transformation law, equation, conserved current, and free solutions. This page restores <span class="math inline">\(c\)</span> and <span class="math inline">\(\hbar\)</span> instead of using natural units.</li>
+  </ul>
+</section>
+    </article>
+    <footer><nav class="reading-path" aria-label="Read about Dirac equation"><ul><li><a href="dirac-introduction.html">Introductory</a><span>A first look at the Dirac equation</span></li><li><a href="dirac-equation.html" aria-current="page">Explanation</a><span>From a local current to the Dirac equation</span></li><li><a href="dirac-exploration.html">Exploratory</a><span>Read a velocity from a Dirac spinor</span></li></ul></nav></footer>
+  </main>
+</body>
+</html>

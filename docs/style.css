@@ -198,3 +198,281 @@ article h1 {
     overflow-x: auto;
   }
 }
+
+/* Topic paths and the catalogue share the site's existing reading palette. */
+[hidden] {
+  display: none !important;
+}
+
+.lede {
+  color: var(--heading);
+  font-size: 1.12rem;
+  line-height: 1.65;
+}
+
+.eyebrow, .entry-meta {
+  font-size: 0.9rem;
+  margin: 0 0 0.55rem;
+}
+
+.page-context, .tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.page-context {
+  margin-bottom: 1.5rem;
+}
+
+.topic-label {
+  font-weight: 650;
+  margin-inline-end: 0.4rem;
+}
+
+.tag {
+  background: var(--intro);
+  border: 1px solid var(--rule);
+  border-radius: 1rem;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  padding: 0.25rem 0.65rem;
+  text-decoration: none;
+}
+
+.tag:hover, .tag:focus-visible {
+  border-color: var(--link);
+  text-decoration: underline;
+}
+
+.topic-grid, .category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+.topic-card {
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--link);
+  border-radius: 0.3rem;
+  margin: 0;
+  padding: 1.25rem;
+}
+
+.topic-card h3, .category-link h3 {
+  color: var(--heading);
+  font-size: 1.25rem;
+  line-height: 1.3;
+  margin: 0 0 0.5rem;
+}
+
+.topic-card p {
+  margin: 0;
+}
+
+.topic-path {
+  padding-left: 1.35rem;
+}
+
+.topic-path li {
+  padding-block: 0.15rem;
+}
+
+.topic-all {
+  font-size: 0.93rem;
+}
+
+.category-link {
+  margin: 0;
+  border-bottom: 1px solid var(--rule);
+  padding: 0.75rem 0;
+}
+
+.category-link p {
+  margin: 0;
+}
+
+.site-footer {
+  border-top: 1px solid var(--rule);
+  margin-top: 2rem;
+  font-size: 0.94rem;
+}
+
+.reading-path ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.reading-path a {
+  font-weight: 650;
+}
+
+.reading-path a[aria-current="page"] {
+  color: var(--ink);
+  text-decoration-thickness: 0.18em;
+}
+
+.reading-path span {
+  display: block;
+  font-size: 0.92rem;
+  margin-top: 0.35rem;
+}
+
+.browse-controls {
+  background: var(--intro);
+  border-radius: 0.35rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.browse-controls .search-field, .browse-actions {
+  grid-column: 1 / -1;
+}
+
+.browse-controls label {
+  display: block;
+  font-size: 0.94rem;
+  margin-bottom: 0.3rem;
+}
+
+.browse-controls input, .browse-controls select, button {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: 0.25rem;
+  color: var(--ink);
+  font: inherit;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.65rem;
+}
+
+.browse-controls input, .browse-controls select {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.browse-controls select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='m1 1 5 5 5-5' fill='none' stroke='%23708090' stroke-width='2'/%3E%3C/svg%3E");
+  background-position: right 0.85rem center;
+  background-repeat: no-repeat;
+  padding-right: 2.25rem;
+}
+
+.browse-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: var(--link);
+}
+
+:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 3px;
+}
+
+.catalogue {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.catalogue-entry {
+  border-top: 1px solid var(--rule);
+  padding: 1.25rem 0;
+}
+
+.catalogue-entry h2 {
+  font-size: 1.25rem;
+  margin: 0 0 0.4rem;
+}
+
+.entry-summary {
+  margin: 0 0 0.7rem;
+}
+
+.spin-diagram, .current-diagram {
+  display: block;
+  width: 100%;
+  margin-block: 1rem;
+  color: var(--ink);
+}
+
+.spin-diagram {
+  max-height: 17rem;
+}
+
+.diagram-guide {
+  fill: none;
+  stroke: var(--ink);
+  stroke-opacity: 0.5;
+}
+
+.spin-diagram text, .current-diagram text {
+  fill: currentColor;
+  font: 16px system-ui, sans-serif;
+}
+
+.spin-vector {
+  stroke: var(--link);
+  stroke-width: 4;
+}
+
+.spin-tip {
+  fill: var(--link);
+}
+
+.analyzer-vector {
+  stroke: var(--ink);
+  stroke-width: 3;
+  stroke-dasharray: 7 5;
+}
+
+.lab-readings {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.lab-readings dt {
+  font-size: 0.9rem;
+}
+
+.lab-readings dd {
+  font-weight: 650;
+  margin: 0.2rem 0 0;
+  overflow-wrap: anywhere;
+}
+
+.algebra-check {
+  border-inline-start: 3px solid var(--rule);
+  margin-block: 1.25rem;
+  padding: 0.6rem 1rem;
+}
+
+.algebra-check summary {
+  color: var(--link);
+  cursor: pointer;
+  font-weight: 650;
+}
+
+@media (max-width: 42rem) {
+  .topic-grid, .category-grid, .reading-path ul, .browse-controls, .lab-readings {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

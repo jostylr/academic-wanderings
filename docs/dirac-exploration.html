@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Change momentum and relative phase to see how amplitudes determine a local current.">
+  <title>Read a velocity from a Dirac spinor · Academic Wanderings</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css"
+    integrity="sha384-WwGtaC6ywCHxA5cstpj/3+xIZvTez8dq2IcBQaXRkenHZ7FVVq1ZROtURwfbtTlG" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.js"
+    integrity="sha384-a1WQdjRj162i159OYq041X6I4K8NenkrI09LlPmiHg0YOb7CR+wJOraXwK9abpnE" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="math.js"></script>
+  <script type="module" src="dirac-exploration.mjs"></script>
+</head>
+<body>
+  <main class="page page--article">
+    <nav class="site-header" aria-label="Site">
+      <a class="site-title" href="index.html">Academic Wanderings</a>
+      <a href="browse.html">Browse all pages</a>
+    </nav>
+    <nav class="page-context" aria-label="Page topics">
+      <a class="topic-label" href="dirac-equation.html">Dirac equation</a>
+      <a class="tag" href="browse.html?category=exploratory">Exploratory</a>
+      <a class="tag" href="browse.html?tag=relativity">Relativity</a><a class="tag" href="browse.html?tag=spinors">Spinors</a><a class="tag" href="browse.html?tag=probability-current">Probability current</a>
+    </nav>
+    <article class="taylor-article">
+      <header><p class="eyebrow">Exploratory · Dirac equation</p><h1>Read a velocity from a Dirac spinor</h1></header>
+<p class="lede">A positive density does not specify which way probability flows. Keep the density fixed, change a relative component phase, and watch a Dirac current change.</p>
+<section aria-labelledby="setup"><h2 id="setup">A small window into four components</h2>
+  <p>Take a free massive Dirac state with momentum along <span class="math inline">\(z\)</span>, in the standard Dirac representation. Restrict to the spin-up sector with first and third components occupied. On these two components, the dimensionless momentum-space Hamiltonian is</p>
+  <div class="math-display">\[\frac{H}{mc^2}=\begin{pmatrix}1&amp;\kappa\\\kappa&amp;-1\end{pmatrix},\qquad
+    \kappa=\frac{p_z}{mc},\qquad \varepsilon=\sqrt{1+\kappa^2}.\]</div>
+  <p>Set <span class="math inline">\(r=\kappa/(\varepsilon+1)\)</span>, <span class="math inline">\(a=1/\sqrt{1+r^2}\)</span>, and <span class="math inline">\(b=ra\)</span>. A normalized positive-energy eigenspinor is <span class="math inline">\(u_+=(a,0,b,0)^T\)</span>. The sign of <span class="math inline">\(b\)</span> follows the momentum. The first slider chooses this eigenstate; the second then applies a relative phase to its third component:</p>
+  <div class="math-display">\[\chi(\kappa,\delta)=(a,0,b e^{i\delta},0)^T,\qquad
+    \rho=\chi^\dagger\chi=1,\qquad \frac{v_z}{c}=2ab\cos\delta.\]</div>
+  <p>These are spinor factors of a plane wave, with a common spatial factor <span class="math inline">\(e^{ip_z z/\hbar}\)</span> suppressed. The constant density is a convenient normalization, not a normalizable wave packet on all space.</p>
+</section>
+<section class="experiment" id="dirac-lab" hidden aria-labelledby="dirac-lab-title">
+  <h2 id="dirac-lab-title">Same density, different flow</h2>
+  <label for="dirac-momentum">Momentum p<sub>z</sub>/(mc) <output id="dirac-momentum-value" for="dirac-momentum">1.00</output></label>
+  <input id="dirac-momentum" type="range" min="-5" max="5" step="0.05" value="1">
+  <label for="dirac-phase">Relative phase δ <output id="dirac-phase-value" for="dirac-phase">0°</output></label>
+  <input id="dirac-phase" type="range" min="0" max="360" step="1" value="0">
+  <svg class="current-diagram" viewBox="0 0 440 100" role="img" aria-labelledby="current-diagram-title current-diagram-desc">
+    <title id="current-diagram-title">Local current as a fraction of the speed of light</title>
+    <desc id="current-diagram-desc">The dot marks v z divided by c on a scale from minus one to one. Its numeric value appears below.</desc>
+    <path d="M30 45H410 M30 36V54 M220 36V54 M410 36V54" class="diagram-guide"/>
+    <text x="30" y="80" text-anchor="middle">−c</text><text x="220" y="80" text-anchor="middle">0</text><text x="410" y="80" text-anchor="middle">+c</text>
+    <line id="current-vector" x1="220" y1="45" x2="354.35" y2="45" class="spin-vector"/>
+    <circle id="current-tip" cx="354.35" cy="45" r="6" class="spin-tip"/>
+  </svg>
+  <dl class="lab-readings" aria-live="polite" aria-atomic="true">
+    <div><dt>First component a</dt><dd id="dirac-a">0.9239</dd></div>
+    <div><dt>Third component b exp(iδ)</dt><dd id="dirac-b">0.3827 + 0.0000i</dd></div>
+    <div><dt>Density</dt><dd id="dirac-density">1.0000</dd></div>
+    <div><dt>Current velocity v<sub>z</sub>/c</dt><dd id="dirac-velocity">0.7071</dd></div>
+    <div><dt>Positive-energy reference speed/c</dt><dd id="dirac-reference">0.7071</dd></div>
+    <div><dt>Positive-energy weight</dt><dd id="dirac-positive">100.0%</dd></div>
+  </dl>
+  <p id="dirac-state-note" role="status">This is the positive-energy plane-wave spinor.</p>
+  <button type="button" id="dirac-reset">Reset state</button>
+</section>
+<section aria-labelledby="try"><h2 id="try">Three comparisons</h2>
+  <p>First leave <span class="math inline">\(\delta=0\)</span> and change the momentum. The equation's positive-energy eigenspinor gives <span class="math inline">\(v_z/c=\kappa/\varepsilon\)</span>, matching <span class="math inline">\(dE/dp_z\)</span> for <span class="math inline">\(E=mc^2\varepsilon\)</span>. It reverses with momentum, vanishes at rest, and approaches the speed of light in magnitude for large momentum.</p>
+  <p>Next set <span class="math inline">\(\kappa=1\)</span> and turn the phase to <span class="math inline">\(90^\circ\)</span>. Neither component magnitude changes, so the density stays one. The current becomes zero. At <span class="math inline">\(180^\circ\)</span> it reverses.</p>
+  <p>What happened to <span class="math inline">\(v_z=pc^2/E\)</span>? Except for special cases such as zero momentum, the phase-adjusted state is no longer a positive-energy eigenstate. It is a superposition of positive- and negative-energy eigenspinors at that momentum. The positive-energy weight displayed above is the squared projection onto <span class="math inline">\(u_+\)</span>. The current is an instantaneous value; the relative phase will evolve under the free Hamiltonian. Changing this slider does not describe a particle maintaining that velocity forever.</p>
+  <p>Finally set the momentum to zero. The third component vanishes, so changing its phase has no effect. Every selected state obeys <span class="math inline">\(|v_z|\le c\)</span>, since <span class="math inline">\(2|ab|\le |a|^2+|b|^2=1\)</span>.</p>
+  <table><caption>Reference values, independent of JavaScript</caption><thead><tr><th scope="col">κ</th><th scope="col">δ</th><th scope="col">Density</th><th scope="col">v<sub>z</sub>/c</th><th scope="col">Positive-energy weight</th></tr></thead>
+    <tbody><tr><th scope="row">0</th><td>any</td><td>1</td><td>0</td><td>1</td></tr><tr><th scope="row">1</th><td>0°</td><td>1</td><td>1/√2</td><td>1</td></tr><tr><th scope="row">1</th><td>90°</td><td>1</td><td>0</td><td>3/4</td></tr><tr><th scope="row">1</th><td>180°</td><td>1</td><td>−1/√2</td><td>1/2</td></tr></tbody>
+  </table>
+</section>
+<section aria-labelledby="references"><h2 id="references">What this checks</h2>
+  <p>The component formulas follow by diagonalizing the displayed two-by-two Hamiltonian and evaluating the four-component Dirac current. They illustrate <a href="dirac-equation.html#current-question">the local-current construction</a>; they are not a wave-packet evolution or an antiparticle detector. Compare the free solutions and current in David Tong's <a href="https://www.damtp.cam.ac.uk/user/tong/qft/qft.pdf"><cite>Quantum Field Theory</cite>, §§4.6–4.7</a>.</p>
+</section>
+    </article>
+    <footer><nav class="reading-path" aria-label="Read about Dirac equation"><ul><li><a href="dirac-introduction.html">Introductory</a><span>A first look at the Dirac equation</span></li><li><a href="dirac-equation.html">Explanation</a><span>From a local current to the Dirac equation</span></li><li><a href="dirac-exploration.html" aria-current="page">Exploratory</a><span>Read a velocity from a Dirac spinor</span></li></ul></nav></footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An inspirational route from rotations to spinors, then from curvature to the Pauli magnetic coupling.">
+  <title>Why let a wave function carry spin? · Academic Wanderings</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css"
+    integrity="sha384-WwGtaC6ywCHxA5cstpj/3+xIZvTez8dq2IcBQaXRkenHZ7FVVq1ZROtURwfbtTlG" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.js"
+    integrity="sha384-a1WQdjRj162i159OYq041X6I4K8NenkrI09LlPmiHg0YOb7CR+wJOraXwK9abpnE" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="math.js"></script>
+</head>
+<body>
+  <main class="page page--article">
+    <nav class="site-header" aria-label="Site">
+      <a class="site-title" href="index.html">Academic Wanderings</a>
+      <a href="browse.html">Browse all pages</a>
+    </nav>
+    <nav class="page-context" aria-label="Page topics">
+      <a class="topic-label" href="spin.html">Spin</a>
+      <a class="tag" href="browse.html?category=explanation">Explanation</a>
+      <a class="tag" href="browse.html?tag=rotations">Rotations</a><a class="tag" href="browse.html?tag=spinors">Spinors</a><a class="tag" href="browse.html?tag=magnetic-fields">Magnetic fields</a><a class="tag" href="browse.html?tag=curvature">Curvature</a>
+    </nav>
+    <article class="taylor-article">
+      <header><p class="eyebrow">Explanation · Spin</p><h1>Why let a wave function carry spin?</h1></header>
+<p class="lede">Start with a wave function that already tells us where a particle might be. What would we add if its internal amplitudes could respond to a rotation? And what could that rotation rule contribute to its motion?</p>
+<p>This is an inspirational derivation: a sequence of questions and modeling choices that makes spin feel natural. The two-component spin-one-half state is an input, motivated by experiment and rotation theory. The route below explains how to use it; it does not deduce that every particle must have spin one half.</p>
+<section aria-labelledby="rotation-question">
+  <h2 id="rotation-question">Let rotations reach inside the wave function</h2>
+  <p>A scalar wave function changes under a rotation by having its spatial argument rotated. There is no internal direction for the rotation to act on. To describe a system with spin, let the value of the wave function be a vector in a complex amplitude space. A spatial rotation can now move the argument <em>and</em> mix the internal amplitudes.</p>
+  <p>The internal transformation must preserve probabilities and respect successive rotations. Such a rule is called a unitary representation. Quantum states are rays, so transformations that differ by an overall phase can represent the same physical rotation. This opens the door to representations of the double cover of the rotation group, <span class="math inline">\(\mathrm{SU}(2)\)</span>.</p>
+  <p>The smallest nontrivial irreducible choice has two complex components. Its infinitesimal rotation generators are the spin operators <span class="math inline">\(S_i=\hbar\sigma_i/2\)</span>, with <span class="math inline">\(\sigma_i\)</span> the Pauli matrices. For rotation through angle <span class="math inline">\(\alpha\)</span> about the unit direction <span class="math inline">\(n\)</span>,</p>
+  <div class="math-display">\[U_n(\alpha)=\exp\!\left(-\frac{i\alpha}{2}n\cdot\boldsymbol\sigma\right).\]</div>
+  <p>The half-angle gives <span class="math inline">\(U_n(2\pi)=-I\)</span> and <span class="math inline">\(U_n(4\pi)=I\)</span>. Rotations also admit spin zero, spin one, and higher choices. The representation tells us what sort of spin we chose; geometry alone did not pick the electron for us.</p>
+</section>
+<section aria-labelledby="geometry-question">
+  <h2 id="geometry-question">Give geometry a way to talk to those components</h2>
+  <p>The thesis's geometric viewpoint is useful here. At each position, place a small vector space of amplitudes. A connection supplies a rule for comparing values at nearby positions. The ordinary kinetic operator traces two covariant derivatives using the spatial metric. A rotation representation supplies another object, antisymmetric in two spatial directions, that can act on the internal amplitudes.</p>
+  <p>Why an antisymmetric pair? An infinitesimal rotation lives in an oriented plane. Curvature also compares transport around an infinitesimal oriented loop. Their matching shapes suggest a coupling: let the rotation generators act on the curvature of the connection. This is the motivating move in <a href="https://jostylr.com/pdfs/thesis.pdf#page=43">§3.6 of the dissertation, printed pp. 32–35</a>. It suggests a Pauli-type magnetic term, but does not fix every allowed coupling coefficient.</p>
+</section>
+<section aria-labelledby="magnetic-question">
+  <h2 id="magnetic-question">A magnetic field makes the suggestion concrete</h2>
+  <p>Work now in flat three-dimensional space, with a spin-one-half particle of mass <span class="math inline">\(m\)</span> and signed charge <span class="math inline">\(e\)</span>. Use SI minimal coupling, <span class="math inline">\(\boldsymbol\pi=-i\hbar\nabla-eA\)</span>, and <span class="math inline">\(B=\nabla\times A\)</span>.</p>
+  <p>Try building kinetic energy from the square of the spin-weighted momentum <span class="math inline">\(\boldsymbol\sigma\cdot\boldsymbol\pi\)</span>. With no field, its antisymmetric part cancels and the usual kinetic energy remains. In a magnetic field, the momentum derivatives fail to commute: transport around a loop notices magnetic flux. The part that failed to cancel becomes a coupling between spin and the field.</p>
+  <details class="algebra-check"><summary>Optional algebra: the Pauli square and its sign</summary>
+  <p>The Pauli matrices remember both a dot product and an oriented area:</p>
+  <div class="math-display">\[\sigma_i\sigma_j=\delta_{ij}I+i\epsilon_{ijk}\sigma_k.\]</div>
+  <p>The momentum commutator and the resulting square are</p>
+  <div class="math-display">\[[\pi_i,\pi_j]=ie\hbar\epsilon_{ijk}B_k,\qquad
+  (\boldsymbol\sigma\cdot\boldsymbol\pi)^2=\boldsymbol\pi^2I-e\hbar\boldsymbol\sigma\cdot B.\]</div>
+  <p>Thus this particular kinetic choice gives the Pauli Hamiltonian</p>
+  <div class="math-display">\[H=\frac{(\boldsymbol\sigma\cdot\boldsymbol\pi)^2}{2m}+e\phi I
+  =\frac{\boldsymbol\pi^2}{2m}I-\frac{e\hbar}{2m}\boldsymbol\sigma\cdot B+e\phi I.\]</div>
+  </details>
+  <p>The spin term has the form <span class="math inline">\(-\boldsymbol\mu\cdot B\)</span>, with <span class="math inline">\(\boldsymbol\mu=(e/m)\boldsymbol S\)</span>: the value conventionally called <span class="math inline">\(g=2\)</span>. For an electron, <span class="math inline">\(e&lt;0\)</span>, so its magnetic moment opposes its spin. The algebra fixes this coefficient <em>after</em> we choose this squared operator. Rotational symmetry by itself also permits a separate magnetic coupling; the measured electron moment includes quantum-field corrections.</p>
+  <p>This is a satisfying meeting of the two questions. The internal state knows about rotations, and the connection knows about magnetic flux. Their antisymmetric parts meet in a local spin–field energy.</p>
+</section>
+<section aria-labelledby="motion-question">
+  <h2 id="motion-question">Spin changes a wave without adding a little rotor</h2>
+  <p>In a magnetic field, the two-component state evolves and can become correlated with position. In a Bohmian description, positions still follow a current divided by <span class="math inline">\(\psi^\dagger\psi\)</span>; a separate spinning-ball coordinate is not needed for this model.</p>
+  <p>There is still a current choice to make. The convective Pauli current and the low-speed limit of the Dirac current differ by a divergence-free spin term. Equal density transport does not guarantee equal paths. <a href="bohmian-derivations.html#dirac">The guiding-equation discussion</a> and <a href="bohmian-trajectories.html#spin-current">the Gaussian example</a> keep those choices visible.</p>
+  <p>The next question is different: could a relativistic current be built from the amplitudes at a single event, without differentiating them? That is the starting point for <a href="dirac-equation.html">the separate Dirac explanation</a>. Nothing in the rotation argument above proves a relation between spin and exchange statistics; that requires further physical assumptions.</p>
+</section>
+<section aria-labelledby="references"><h2 id="references">Sources and the role of this reconstruction</h2>
+  <ul>
+    <li>James Taylor, <cite>Connections with Bohmian Mechanics</cite> (Rutgers, 2003), <a href="https://jostylr.com/pdfs/thesis.pdf#page=43">§3.6</a>. Source of the geometric motivation, presented here with explicit flat-space charge and matrix conventions. The historical TeX draft is retained separately.</li>
+    <li>Feynman, Leighton, and Sands, <a href="https://www.feynmanlectures.caltech.edu/III_06.html"><cite>The Feynman Lectures on Physics</cite>, III.6</a>, for spin-one-half rotation amplitudes.</li>
+    <li>David Tong, <a href="https://www.damtp.cam.ac.uk/user/tong/aqm/aqm.pdf"><cite>Applications of Quantum Mechanics</cite></a>, §1.5, for spin in a magnetic field. The displayed Pauli square above can also be checked directly from the two algebraic identities preceding it.</li>
+  </ul>
+</section>
+    </article>
+    <footer><nav class="reading-path" aria-label="Read about Spin"><ul><li><a href="spin-introduction.html">Introductory</a><span>Spin: two amplitudes and a tilted magnet</span></li><li><a href="spin.html" aria-current="page">Explanation</a><span>Why let a wave function carry spin?</span></li><li><a href="spin-exploration.html">Exploratory</a><span>Turn the analyzer, then turn the spinor</span></li></ul></nav></footer>
+  </main>
+</body>
+</html>
