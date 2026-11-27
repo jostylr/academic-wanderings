@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A review of classical volume and matrix-derivative identities, with a guide to accessible sources.">
+  <title>Determinants, trace, and the chain rule · Academic Wanderings</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css"
+    integrity="sha384-WwGtaC6ywCHxA5cstpj/3+xIZvTez8dq2IcBQaXRkenHZ7FVVq1ZROtURwfbtTlG" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.js"
+    integrity="sha384-a1WQdjRj162i159OYq041X6I4K8NenkrI09LlPmiHg0YOb7CR+wJOraXwK9abpnE" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="math.js"></script>
+</head>
+<body>
+  <main class="page page--article">
+    <nav class="site-header" aria-label="Site"><a class="site-title" href="index.html">Academic Wanderings</a><a href="browse.html">Browse all pages</a></nav>
+    <nav class="page-context" aria-label="Page topics"><a class="topic-label" href="determinants-trace.html">Determinants and transport</a><a class="tag" href="browse.html?category=reviews">Reviews</a><a class="tag" href="browse.html?tag=linear-algebra">Linear algebra</a><a class="tag" href="browse.html?tag=chain-rule">Chain rule</a><a class="tag" href="browse.html?tag=jacobians">Jacobians</a></nav>
+    <article class="taylor-article">
+      <header><p class="eyebrow">Reviews · Determinants and transport</p><h1>Determinants, trace, and the chain rule</h1></header>
+<p class="lede">A determinant measures the volume change made by a linear map. Trace measures the first hint of that change near the identity. The chain rule carries both ideas into moving coordinates and probability transport.</p>
+<p><strong>Review, not a research claim.</strong> This article revisits the opening of Appendix F of James Taylor's <cite>Connections with Bohmian Mechanics</cite>, printed pp. 171–174. The identities are classical. The aim is to connect them and point to readable, freely accessible treatments. The source guide below separates elementary starting points from more advanced extensions.</p>
+<p><strong>Starting point:</strong> vectors in the plane, a two-by-two matrix, and ordinary differentiation. Definitions appear as we need them; there is no separate introductory page to get through first. For the differential of a map, <a href="manifolds.html">the tangent-space article</a> provides another route in.</p>
+<nav aria-label="Article contents"><p><a href="#area">Area</a> · <a href="#volume-line">The volume line</a> · <a href="#trace">Trace</a> · <a href="#jacobi">Jacobi's formula</a> · <a href="#chain-rule">Composition</a> · <a href="#higher-derivatives">Higher derivatives</a> · <a href="#sources">Reading guide</a></p></nav>
+<section aria-labelledby="area"><h2 id="area">Begin with a small square</h2>
+  <p>Apply a matrix to the two edges of a unit square. The image is a parallelogram. Its signed area is the determinant; its area without orientation is the absolute value of that determinant.</p>
+  <div class="math-display">\[A=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix},\qquad \det A=ad-bc.\]</div>
+  <p>A shear, <span class="math inline">\((x,y)\mapsto(x+ky,y)\)</span>, has determinant one. The square can become very slanted without changing area. Stretching the two axes by factors two and three multiplies area by six. Reversing one axis reverses orientation; it does not create negative physical area.</p>
+  <p>For a differentiable nonlinear map <span class="math inline">\(f\)</span>, the derivative <span class="math inline">\(Df_x\)</span> is the local linear map at <span class="math inline">\(x\)</span>. Its determinant is the signed Jacobian. <a href="https://openstax.org/books/calculus-volume-3/pages/5-7-change-of-variables-in-multiple-integrals">OpenStax, Calculus Volume 3, §5.7</a> develops the geometry and change-of-variables formula through two- and three-dimensional examples.</p>
+</section>
+<section aria-labelledby="volume-line"><h2 id="volume-line">The same idea without a coordinate formula</h2>
+  <p>In an <span class="math inline">\(n\)</span>-dimensional vector space <span class="math inline">\(V\)</span>, the wedge <span class="math inline">\(v_1\wedge\cdots\wedge v_n\)</span> records an oriented volume element. Swapping two vectors changes its sign; linearly dependent vectors give zero. All such top-degree wedges lie in a one-dimensional space, <span class="math inline">\(\Lambda^nV\)</span>, often called the determinant line.</p>
+  <p>An endomorphism <span class="math inline">\(A:V\to V\)</span> acts on that line by applying itself to every vector. On a line, every linear map is multiplication by a scalar:</p>
+  <div class="math-display">\[Av_1\wedge\cdots\wedge Av_n=(\det A)(v_1\wedge\cdots\wedge v_n).\]</div>
+  <p>This defines the determinant without choosing a preferred basis. For <span class="math inline">\(A:V\to W\)</span> between different spaces of the same dimension, the image lies in <span class="math inline">\(\Lambda^nW\)</span>. To call its scale a number, choose a volume element in each space. The source and target types matter.</p>
+  <details class="algebra-check"><summary>A volume vector and a volume form have different jobs</summary>
+    <p>A volume vector <span class="math inline">\(\nu\in\Lambda^nV\)</span> can be evaluated by a volume form <span class="math inline">\(\Omega\in\Lambda^nV^*\)</span>. Normalize them by <span class="math inline">\(\Omega(\nu)=1\)</span>. Replacing <span class="math inline">\(\nu\)</span> by <span class="math inline">\(c\nu\)</span> requires replacing its dual normalized form by <span class="math inline">\(c^{-1}\Omega\)</span>.</p>
+    <p>For an endomorphism, pushing vectors forward and pulling forms back both give the determinant in their respective laws: <span class="math inline">\((\Lambda^nA)\nu=(\det A)\nu\)</span> and <span class="math inline">\(A^*\Omega=(\det A)\Omega\)</span>. The reciprocal normalization does not mean that every transformation of a form uses an inverse determinant.</p>
+    <p>The appendix's vector/form labels occasionally blur these distinctions. Keeping the operations explicit avoids copying that ambiguity. Grover's <a href="https://arxiv.org/pdf/1007.4402">survey, §1 and §3</a>, uses antisymmetric tensor powers to organize the matrix viewpoint.</p>
+  </details>
+</section>
+<section aria-labelledby="trace"><h2 id="trace">Trace is the infinitesimal volume change</h2>
+  <p>Now start at the identity and make a small change <span class="math inline">\(I+hB\)</span>. Each edge changes a little. At first order, change one edge at a time and add the resulting volume changes. Only the component in that edge's original direction survives the wedge; the other components repeat another edge and give zero. The sum is the trace, <span class="math inline">\(\operatorname{tr}B=\sum_i B_{ii}\)</span>:</p>
+  <div class="math-display">\[\det(I+hB)=1+h\operatorname{tr}B+O(h^2),\qquad
+  D\det_I[B]=\operatorname{tr}B.\]</div>
+  <p>In two dimensions the entire identity is <span class="math inline">\(\det(I+hB)=1+h\operatorname{tr}B+h^2\det B\)</span>. Thus zero trace means no <em>first-order</em> area change for this small-step map. It does not say that <span class="math inline">\(\det(I+hB)=1\)</span> at every finite step.</p>
+  <p>For example, <span class="math inline">\(B=\operatorname{diag}(1,-1)\)</span> has trace zero, but <span class="math inline">\(\det(I+hB)=1-h^2\)</span>. The exact continuous flow is <span class="math inline">\(e^{tB}=\operatorname{diag}(e^t,e^{-t})\)</span>, whose determinant really is one. This distinction will matter when an exploratory calculation uses discrete time steps.</p>
+</section>
+<section aria-labelledby="jacobi"><h2 id="jacobi">Differentiate at any matrix</h2>
+  <p>The determinant is multilinear in its columns, so a derivative replaces one column at a time and adds. Equivalently, if <span class="math inline">\(A(t)\)</span> is differentiable, Jacobi's formula says</p>
+  <div class="math-display">\[\frac{d}{dt}\det A(t)=\operatorname{tr}\!\big(\operatorname{adj}(A(t))A'(t)\big).\]</div>
+  <p>The adjugate is the transpose of the cofactor matrix, not the conjugate transpose. This formula remains valid at singular matrices. Only when <span class="math inline">\(A\)</span> is invertible may we replace the adjugate by <span class="math inline">\((\det A)A^{-1}\)</span> and write</p>
+  <div class="math-display">\[\frac{d}{dt}\det A=(\det A)\operatorname{tr}(A^{-1}A'),\qquad
+    \frac{d}{dt}\log|\det A|=\operatorname{tr}(A^{-1}A').\]</div>
+  <p>Try <span class="math inline">\(A(t)=\operatorname{diag}(t,1)\)</span>. Its determinant has derivative one even at zero, where the inverse does not exist. Its <em>absolute</em> determinant is <span class="math inline">\(|t|\)</span>, which is not differentiable there. Signed determinant, positive volume scale, and logarithmic derivative need their own hypotheses.</p>
+  <p>For a short column/row-product explanation, start with <a href="https://hanche.folk.ntnu.no/notes/diffdet/diffdet.pdf">Harald Hanche-Olsen's two-page note</a>. <a href="https://people.eecs.berkeley.edu/~wkahan/MathH110/jacobi.pdf">William Kahan's four-page notes</a> give the adjugate formula and applications at singular matrices.</p>
+</section>
+<section aria-labelledby="chain-rule"><h2 id="chain-rule">Two maps: keep the order, multiply the scales</h2>
+  <p>For differentiable maps <span class="math inline">\(f:U\to V\)</span> and <span class="math inline">\(g:V\to W\)</span> between open sets in <span class="math inline">\(\mathbb R^n\)</span>, use column vectors. The map applied first appears on the right:</p>
+  <div class="math-display">\[D(g\circ f)_x=Dg_{f(x)}Df_x,\qquad
+  \det D(g\circ f)_x=(\det Dg_{f(x)})(\det Df_x).\]</div>
+  <p>This is the ordinary chain rule plus multiplicativity of determinants. The point <span class="math inline">\(f(x)\)</span> is part of the formula: a nonlinear second map must be differentiated where the first one lands. <a href="https://openstax.org/books/calculus-volume-3/pages/4-5-the-chain-rule">OpenStax §4.5</a> develops the component chain rule.</p>
+  <p>Order still matters to the shape. Let <span class="math inline">\(S=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}\)</span> be a shear and <span class="math inline">\(L=\operatorname{diag}(2,1)\)</span> a stretch. Then <span class="math inline">\(LS=\begin{pmatrix}2&amp;2\\0&amp;1\end{pmatrix}\)</span> and <span class="math inline">\(SL=\begin{pmatrix}2&amp;1\\0&amp;1\end{pmatrix}\)</span>. Both determinants are two, while the parallelograms differ. A volume measurement does not recover the whole derivative.</p>
+</section>
+<section aria-labelledby="higher-derivatives"><h2 id="higher-derivatives">Repeated derivatives lead somewhere useful</h2>
+  <p>A second derivative follows the same rule: differentiate each eligible column in turn. At the identity, the mixed result is</p>
+  <div class="math-display">\[D^2\det_I[H,K]=(\operatorname{tr}H)(\operatorname{tr}K)-\operatorname{tr}(HK).\]</div>
+  <p>Along a twice differentiable matrix curve, the second derivative also notices that the curve itself accelerates:</p>
+  <div class="math-display">\[\frac{d^2}{dt^2}\det A(t)
+  =D^2\det_{A(t)}[A'(t),A'(t)]+D\det_{A(t)}[A''(t)].\]</div>
+  <p>That distinction is useful when reading the appendix's product-rule diagrams. The determinant is a degree-<span class="math inline">\(n\)</span> polynomial in the matrix entries, so its Fréchet derivatives above order <span class="math inline">\(n\)</span> vanish. But <span class="math inline">\(\det A(t)\)</span> can have nonzero time derivatives of arbitrarily high order if <span class="math inline">\(A(t)\)</span> is nonlinear in time. Grover's <a href="https://arxiv.org/pdf/1007.4402">§2, especially (2.1), Theorem 2.1, and (2.7)</a> is a source for the general column-replacement formulas.</p>
+  <p><strong>Use it next:</strong> <a href="jacobians-characteristics.html">differentiate the Jacobian of a moving flow</a> to obtain a density-transport equation. Or follow <a href="taylor-maps.html#chain">the higher chain rule for manifold-valued maps</a>, where argument order and the chosen connections must also be tracked. <a href="jacobian-exploration.html#flow">The interactive flow</a> compares one full step with two half steps.</p>
+</section>
+<section aria-labelledby="sources"><h2 id="sources">An accessible reading route</h2>
+  <ol>
+    <li><strong>Start with examples:</strong> Gilbert Strang and Edwin “Jed” Herman, <cite>Calculus Volume 3</cite>, OpenStax, <a href="https://openstax.org/books/calculus-volume-3/pages/4-5-the-chain-rule">§4.5</a> and <a href="https://openstax.org/books/calculus-volume-3/pages/5-7-change-of-variables-in-multiple-integrals">§5.7</a>. Free HTML with worked multivariable-calculus exercises.</li>
+    <li><strong>Read the short proof:</strong> Harald Hanche-Olsen, <a href="https://hanche.folk.ntnu.no/notes/diffdet/"><cite>The derivative of a determinant</cite></a>. The two-page PDF uses multilinearity and a matrix ODE; the landing page identifies the result as Jacobi's formula.</li>
+    <li><strong>Handle singular matrices:</strong> William Kahan, <a href="https://people.eecs.berkeley.edu/~wkahan/MathH110/jacobi.pdf"><cite>Jacobi's Formula for the Derivative of a Determinant</cite></a> (1998), pp. 1–2. Free course notes, with the adjugate version and Wronskian application.</li>
+    <li><strong>Go beyond first order:</strong> Priyanka Grover, <a href="https://arxiv.org/abs/1007.4402"><cite>Derivatives of Multilinear Functions of Matrices</cite></a>, §§1–3. An advanced survey, not the required starting point.</li>
+  </ol>
+  <p><strong>Relation to the thesis:</strong> <a href="https://jostylr.com/pdfs/thesis.pdf#page=182">Appendix F, opening and §F.1</a>, supplied the route through volume vectors. The material reviewed here matches established determinant and derivative identities. Its organization is expository; no new theorem or priority claim is being made.</p>
+</section>
+    </article>
+    <footer><nav class="reading-path" aria-label="Read about determinants and transport"><ul><li><a href="determinants-trace.html" aria-current="page">Review: the algebra</a></li><li><a href="jacobians-characteristics.html">Review: the applications</a></li><li><a href="jacobian-exploration.html">Explore the models</a></li></ul></nav></footer>
+  </main>
+</body>
+</html>

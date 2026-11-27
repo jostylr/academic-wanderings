@@ -16,15 +16,15 @@
     <p>Each page has one main topic and one category. Tags connect related ideas across those boundaries. <a href="index.html#topics">For a suggested reading path, start with a topic.</a></p>
     <form id="browse-controls" class="browse-controls" role="search" hidden>
       <div class="search-field"><label for="page-search">Search titles, descriptions, and tags</label><input id="page-search" name="q" type="search" placeholder="Try spin, curvature, or current" autocomplete="off"></div>
-      <div><label for="page-topic">Main topic</label><select id="page-topic" name="topic"><option value="">All topics</option><option value="bohmian-mechanics">Bohmian mechanics</option><option value="spin">Spin</option><option value="dirac">Dirac equation</option><option value="geometry">Geometry and Taylor expansions</option></select></div>
+      <div><label for="page-topic">Main topic</label><select id="page-topic" name="topic"><option value="">All topics</option><option value="bohmian-mechanics">Bohmian mechanics</option><option value="spin">Spin</option><option value="dirac">Dirac equation</option><option value="geometry">Geometry and Taylor expansions</option><option value="volume-transport">Determinants and transport</option></select></div>
       <div><label for="page-category">Category</label><select id="page-category" name="category"><option value="">All categories</option><option value="introductory">Introductory</option><option value="explanation">Explanation</option><option value="exploratory">Exploratory</option><option value="my-work">My Work</option><option value="reviews">Reviews</option><option value="musings">Musings</option></select></div>
-      <div><label for="page-tag">Related tag</label><select id="page-tag" name="tag"><option value="">All tags</option><option value="connections">Connections</option><option value="curvature">Curvature</option><option value="magnetic-fields">Magnetic fields</option><option value="manifolds">Manifolds</option><option value="probability-current">Probability current</option><option value="quantum-mechanics">Quantum mechanics</option><option value="relativity">Relativity</option><option value="rotations">Rotations</option><option value="spinors">Spinors</option><option value="taylor-series">Taylor series</option><option value="wave-packets">Wave packets</option></select></div>
+      <div><label for="page-tag">Related tag</label><select id="page-tag" name="tag"><option value="">All tags</option><option value="chain-rule">Chain rule</option><option value="connections">Connections</option><option value="curvature">Curvature</option><option value="jacobians">Jacobians</option><option value="linear-algebra">Linear algebra</option><option value="magnetic-fields">Magnetic fields</option><option value="manifolds">Manifolds</option><option value="probability-current">Probability current</option><option value="quantum-mechanics">Quantum mechanics</option><option value="relativity">Relativity</option><option value="rotations">Rotations</option><option value="spinors">Spinors</option><option value="taylor-series">Taylor series</option><option value="transport">Transport</option><option value="wave-packets">Wave packets</option></select></div>
       <div><label for="page-sort">Sort by</label><select id="page-sort" name="sort"><option value="topic">Topic, then title</option><option value="title">Title A–Z</option><option value="category">Category, then title</option></select></div>
       <div class="browse-actions"><button type="reset">Clear filters</button><button type="submit">Apply filters</button></div>
     </form>
     <noscript><p>The complete catalogue is below. Enable JavaScript to filter and sort it; all article links work without it.</p></noscript>
-    <p id="browse-count" role="status" aria-live="polite">17 pages in the catalogue.</p>
-    <p id="browse-empty" hidden>No pages match these filters. Try another topic or tag, or clear the filters. Reviews and Musings do not have entries yet.</p>
+    <p id="browse-count" role="status" aria-live="polite">20 pages in the catalogue.</p>
+    <p id="browse-empty" hidden>No pages match these filters. Try another topic or tag, or clear the filters.</p>
     <ul id="page-catalogue" class="catalogue">
       <li class="catalogue-entry" data-topic="bohmian-mechanics" data-category="introductory" data-tags="quantum-mechanics probability-current">
         <p class="entry-meta"><a href="browse.html?topic=bohmian-mechanics">Bohmian mechanics</a> · <a href="browse.html?category=introductory">Introductory</a></p>
@@ -127,6 +127,24 @@
         <h2><a class="entry-title" href="https://jostylr.com/pdfs/thesis.pdf">Connections with Bohmian Mechanics (PDF)</a></h2>
         <p class="entry-summary">James Taylor’s 2003 Rutgers dissertation, the starting point for this site.</p>
         <div class="tag-list" aria-label="Related tags"><a class="tag" href="browse.html?tag=quantum-mechanics">Quantum mechanics</a><a class="tag" href="browse.html?tag=connections">Connections</a></div>
+      </li>
+      <li class="catalogue-entry" data-topic="volume-transport" data-category="reviews" data-tags="linear-algebra chain-rule jacobians">
+        <p class="entry-meta"><a href="browse.html?topic=volume-transport">Determinants and transport</a> · <a href="browse.html?category=reviews">Reviews</a></p>
+        <h2><a class="entry-title" href="determinants-trace.html">Determinants, trace, and the chain rule</a></h2>
+        <p class="entry-summary">A review of classical volume and matrix-derivative identities, with a guide to accessible sources.</p>
+        <div class="tag-list" aria-label="Related tags"><a class="tag" href="browse.html?tag=linear-algebra">Linear algebra</a><a class="tag" href="browse.html?tag=chain-rule">Chain rule</a><a class="tag" href="browse.html?tag=jacobians">Jacobians</a></div>
+      </li>
+      <li class="catalogue-entry" data-topic="volume-transport" data-category="reviews" data-tags="jacobians transport probability-current">
+        <p class="entry-meta"><a href="browse.html?topic=volume-transport">Determinants and transport</a> · <a href="browse.html?category=reviews">Reviews</a></p>
+        <h2><a class="entry-title" href="jacobians-characteristics.html">Jacobians turn motion into density</a></h2>
+        <p class="entry-summary">A review connecting the chain rule, Liouville’s formula, continuity, and Hamilton–Jacobi characteristics.</p>
+        <div class="tag-list" aria-label="Related tags"><a class="tag" href="browse.html?tag=jacobians">Jacobians</a><a class="tag" href="browse.html?tag=transport">Transport</a><a class="tag" href="browse.html?tag=probability-current">Probability current</a></div>
+      </li>
+      <li class="catalogue-entry" data-topic="volume-transport" data-category="exploratory" data-tags="linear-algebra jacobians transport chain-rule">
+        <p class="entry-meta"><a href="browse.html?topic=volume-transport">Determinants and transport</a> · <a href="browse.html?category=exploratory">Exploratory</a></p>
+        <h2><a class="entry-title" href="jacobian-exploration.html">Stretch, shear, and carry a density</a></h2>
+        <p class="entry-summary">Explore trace-controlled area growth, reciprocal density transport, and the failure of an inverse at a caustic.</p>
+        <div class="tag-list" aria-label="Related tags"><a class="tag" href="browse.html?tag=linear-algebra">Linear algebra</a><a class="tag" href="browse.html?tag=jacobians">Jacobians</a><a class="tag" href="browse.html?tag=transport">Transport</a><a class="tag" href="browse.html?tag=chain-rule">Chain rule</a></div>
       </li>
     </ul>
   </main>

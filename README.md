@@ -28,8 +28,8 @@ catalogue still lists every page.
   examples, computations, and interactive experiments, including RatMath.
 - [My Work](docs/index.html#my-work) covers the author’s own research, papers,
   and projects.
-- [Reviews](docs/index.html#reviews) discuss other people’s work, including
-  summaries, questions, and directions worth following up.
+- [Reviews](docs/index.html#reviews) give sourced accounts of established ideas
+  and discuss other people’s work, with questions and directions to follow up.
 - [Musings](docs/index.html#musings) collect tentative ideas and half-formed
   thoughts.
 
@@ -37,6 +37,12 @@ Spin and the Dirac equation each have a separate introduction, primary
 explanation, and interactive exploration. The explanations reconstruct motivating
 ideas from the thesis alongside standard sources; they are not uniqueness proofs
 or new historical priority claims.
+
+The [determinants and transport path](docs/determinants-trace.html) reviews the
+classical material in Appendix F: determinant and trace identities, chain rules,
+Jacobians, continuity, and action along characteristics. Two sourced Reviews
+lead into an interactive exploration and onward to the Gaussian and higher-chain-rule
+examples. Their starting definitions are included in the reviews themselves.
 
 ## Project layout
 
@@ -81,7 +87,8 @@ git diff --check
 
 The site check covers local links, fragments, module imports, catalogue coverage,
 and filter metadata. The Node tests check catalogue filtering/sorting and compare
-the quantum experiments against independent matrix calculations. For changed
+the quantum and transport experiments against independent calculations, including
+matrix exponentials, polygon area, and continuity/action residuals. For changed
 pages, also inspect KaTeX rendering, filters, history navigation, controls,
 small-screen layout, both color schemes, and the no-JavaScript reading path in a
 browser when preview is available.

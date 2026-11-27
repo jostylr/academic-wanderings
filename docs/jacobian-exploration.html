@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore trace-controlled area growth, reciprocal density transport, and the failure of an inverse at a caustic.">
+  <title>Stretch, shear, and carry a density · Academic Wanderings</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css"
+    integrity="sha384-WwGtaC6ywCHxA5cstpj/3+xIZvTez8dq2IcBQaXRkenHZ7FVVq1ZROtURwfbtTlG" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.js"
+    integrity="sha384-a1WQdjRj162i159OYq041X6I4K8NenkrI09LlPmiHg0YOb7CR+wJOraXwK9abpnE" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="math.js"></script>
+  <script type="module" src="jacobian-exploration.mjs"></script>
+</head>
+<body>
+  <main class="page page--article">
+    <nav class="site-header" aria-label="Site"><a class="site-title" href="index.html">Academic Wanderings</a><a href="browse.html">Browse all pages</a></nav>
+    <nav class="page-context" aria-label="Page topics"><a class="topic-label" href="determinants-trace.html">Determinants and transport</a><a class="tag" href="browse.html?category=exploratory">Exploratory</a><a class="tag" href="browse.html?tag=linear-algebra">Linear algebra</a><a class="tag" href="browse.html?tag=jacobians">Jacobians</a><a class="tag" href="browse.html?tag=transport">Transport</a><a class="tag" href="browse.html?tag=chain-rule">Chain rule</a></nav>
+    <article class="taylor-article">
+      <header><p class="eyebrow">Exploratory · Determinants and transport</p><h1>Stretch, shear, and carry a density</h1></header>
+<p class="lede">Change the shape of a moving cell, predict its area from a trace, and reconstruct its density. Then contrast that smooth motion with a classical family whose position labels collapse.</p>
+<p>This is a companion to the Reviews on <a href="determinants-trace.html">determinants and trace</a> and <a href="jacobians-characteristics.html">Jacobian transport</a>. It uses exact elementary models, with static reference values below each experiment. The controls evaluate formulas, rather than numerically solving a PDE.</p>
+<section aria-labelledby="flow"><h2 id="flow">A square in a linear velocity field</h2>
+  <p>Use dimensionless time and coordinates, and let <span class="math inline">\(v(x)=Bx\)</span>, where</p>
+  <div class="math-display">\[B=\begin{pmatrix}d+s&amp;k\\0&amp;d-s\end{pmatrix},\qquad
+  Q(a,t)=F(t)a,\qquad F(t)=e^{tB}.\]</div>
+  <p>The mean expansion <span class="math inline">\(d\)</span> sets the divergence, <span class="math inline">\(\operatorname{tr}B=2d\)</span>. The strain <span class="math inline">\(s\)</span> expands one axis faster while compressing the other. The shear <span class="math inline">\(k\)</span> tilts the cell. Only the trace controls the area factor:</p>
+  <div class="math-display">\[J(t)=\det F(t)=e^{2dt},\qquad
+    \rho(Q(a,t),t)=e^{-2dt}\quad\text{when }\rho_0(a)=1.\]</div>
+  <p>The outlined cell starts as a unit square; the filled one is its image. Both use the same scale within a view. The view rescales to fit as you change parameters, so compare the numeric area values between views.</p>
+  <div class="experiment" id="flow-lab" hidden>
+    <label for="flow-expansion">Mean expansion d <output id="flow-expansion-value" for="flow-expansion">0.20</output></label>
+    <input id="flow-expansion" type="range" min="-0.4" max="0.4" step="0.05" value="0.2">
+    <label for="flow-strain">Strain s <output id="flow-strain-value" for="flow-strain">0.40</output></label>
+    <input id="flow-strain" type="range" min="-0.5" max="0.5" step="0.05" value="0.4">
+    <label for="flow-shear">Shear k <output id="flow-shear-value" for="flow-shear">0.80</output></label>
+    <input id="flow-shear" type="range" min="-1.5" max="1.5" step="0.1" value="0.8">
+    <label for="flow-time">Time t <output id="flow-time-value" for="flow-time">1.00</output></label>
+    <input id="flow-time" type="range" min="0" max="1.5" step="0.05" value="1">
+    <svg class="flow-diagram" viewBox="0 0 440 340" role="img" aria-labelledby="flow-title flow-desc">
+      <title id="flow-title">Initial square and its advected image</title><desc id="flow-desc">The filled image and outlined initial square share one coordinate scale. Numeric area and density appear below.</desc>
+      <path d="M25 170H415 M220 20V320" class="diagram-guide"/>
+      <text x="414" y="162" text-anchor="end">x</text><text x="229" y="24">y</text>
+      <polygon id="flow-original" points="" class="flow-original"/>
+      <polygon id="flow-image" points="" class="flow-image"/>
+    </svg>
+    <p id="flow-scale">View scale is set to fit both cells.</p>
+    <dl class="lab-readings" aria-live="polite" aria-atomic="true">
+      <div><dt>Trace / divergence</dt><dd id="flow-trace">0.4000</dd></div>
+      <div><dt>Area from det F</dt><dd id="flow-area">1.4918</dd></div>
+      <div><dt>Area from exp(t trace B)</dt><dd id="flow-predicted">1.4918</dd></div>
+      <div><dt>Transported density</dt><dd id="flow-density">0.6703</dd></div>
+      <div><dt>Density × area</dt><dd id="flow-mass">1.0000</dd></div>
+      <div><dt>Two half-step Jacobians, multiplied</dt><dd id="flow-halves">1.4918</dd></div>
+    </dl>
+    <table><caption>The derivative F(t) carrying the cell edges</caption><thead><tr><th scope="col">Row</th><th scope="col">Column 1</th><th scope="col">Column 2</th></tr></thead><tbody><tr><th scope="row">1</th><td id="flow-f11"></td><td id="flow-f12"></td></tr><tr><th scope="row">2</th><td id="flow-f21"></td><td id="flow-f22"></td></tr></tbody></table>
+    <button type="button" id="flow-reset">Reset flow</button>
+  </div>
+  <p><strong>Predict first:</strong> set <span class="math inline">\(d=0\)</span>, then vary strain and shear. The cell changes shape, but its area and density remain one. Change <span class="math inline">\(d\)</span> and keep the other sliders fixed: area grows or shrinks exponentially.</p>
+  <table><caption>Exact checks at t = 1</caption><thead><tr><th scope="col">d</th><th scope="col">s</th><th scope="col">k</th><th scope="col">F(1)</th><th scope="col">Area</th><th scope="col">Density</th></tr></thead><tbody>
+    <tr><th scope="row">0</th><td>0</td><td>1</td><td>[[1, 1], [0, 1]]</td><td>1</td><td>1</td></tr>
+    <tr><th scope="row">0</th><td>1/2</td><td>0</td><td>diag(e<sup>1/2</sup>, e<sup>−1/2</sup>)</td><td>1</td><td>1</td></tr>
+    <tr><th scope="row">1/4</th><td>0</td><td>0</td><td>e<sup>1/4</sup>I</td><td>e<sup>1/2</sup></td><td>e<sup>−1/2</sup></td></tr>
+  </tbody></table>
+  <details class="algebra-check"><summary>The exact formula used by the controls</summary>
+    <div class="math-display">\[F(t)=\begin{pmatrix}
+      e^{(d+s)t}&amp;k e^{dt}t\,\operatorname{sinhc}(st)\\0&amp;e^{(d-s)t}
+      \end{pmatrix},\qquad \operatorname{sinhc}(z)=\begin{cases}\sinh z/z,&amp;z\ne0,\\1,&amp;z=0.\end{cases}\]</div>
+    <p>The continuous value at zero gives the pure-shear entry <span class="math inline">\(kt e^{dt}\)</span>. For constant <span class="math inline">\(B\)</span>, two half steps compose to one full step: <span class="math inline">\(F(t/2)F(t/2)=F(t)\)</span>. Their determinants multiply, just as the chain rule predicts. A time-dependent matrix generally needs its actual evolution operator; replacing it by the exponential of its time integral can fail when matrices at different times do not commute.</p>
+  </details>
+</section>
+<section aria-labelledby="focus"><h2 id="focus">A different family: focusing classical paths</h2>
+  <p>Now choose one-dimensional free Newton motion, with mass one and initial velocity <span class="math inline">\(-a\)</span>. The labelled family is <span class="math inline">\(Q(a,t)=(1-t)a\)</span>. Its derivative <span class="math inline">\(J=1-t\)</span> vanishes at a finite time.</p>
+  <p>The graph shows time horizontally and position vertically, with one line per initial label. At the focus the positions coincide, but the velocities still differ. A single-valued smooth position-velocity field cannot describe the family through that event.</p>
+  <div class="experiment" id="focus-lab" hidden>
+    <label for="focus-time">Time t <output id="focus-time-value" for="focus-time">0.50</output></label>
+    <input id="focus-time" type="range" min="0" max="1.5" step="0.01" value="0.5">
+    <svg class="focus-diagram" viewBox="0 0 460 300" role="img" aria-labelledby="focus-title focus-desc">
+      <title id="focus-title">Classical trajectories focus at time one</title><desc id="focus-desc">Five straight trajectory lines meet at zero position at time one. The selected time is marked by a vertical dashed line.</desc>
+      <path d="M40 140H430 M40 35V250" class="diagram-guide"/>
+      <text x="40" y="277" text-anchor="middle">0</text><text x="300" y="277" text-anchor="middle">1</text><text x="430" y="277" text-anchor="middle">1.5</text><text x="422" y="127" text-anchor="end">time</text><text x="47" y="30">position</text>
+      <g id="focus-paths"></g><line id="focus-cursor" x1="170" y1="35" x2="170" y2="250" class="focus-cursor"/><g id="focus-points"></g>
+    </svg>
+    <dl class="lab-readings" aria-live="polite" aria-atomic="true">
+      <div><dt>Signed Jacobian</dt><dd id="focus-jacobian">0.5000</dd></div>
+      <div><dt>Positive length factor</dt><dd id="focus-length">0.5000</dd></div>
+      <div><dt>Density / initial density</dt><dd id="focus-density">2.0000</dd></div>
+      <div><dt>Position velocity v(x,t)/x</dt><dd id="focus-velocity">−2.0000</dd></div>
+    </dl>
+    <p id="focus-note" role="status">Before the focus, the position map is invertible.</p>
+    <button type="button" id="focus-reset">Reset focus time</button>
+  </div>
+  <table><caption>Reference values for the labelled position map</caption><thead><tr><th scope="col">Time</th><th scope="col">Signed J</th><th scope="col">Length factor</th><th scope="col">Density ratio</th></tr></thead><tbody><tr><th scope="row">0</th><td>1</td><td>1</td><td>1</td></tr><tr><th scope="row">1/2</th><td>1/2</td><td>1/2</td><td>2</td></tr><tr><th scope="row">1</th><td>0</td><td>0</td><td>No finite reconstructed density</td></tr><tr><th scope="row">3/2</th><td>−1/2</td><td>1/2</td><td>2 on the regular map after the focus</td></tr></tbody></table>
+  <p>Beyond time one, the labelled Newton paths give an orientation-reversed position map. The density ratio there describes that regular map, not a claim that a smooth Eulerian solution passed through the singularity. At the focus, the inverse formula and its finite density cease to apply. The signed determinant itself still has derivative minus one: a singular map need not make the determinant's derivative singular.</p>
+</section>
+<section aria-labelledby="tasks"><h2 id="tasks">Use the ideas on a new problem</h2>
+  <ol>
+    <li><strong>Audit a numerical step.</strong> For the trace-zero strain <span class="math inline">\(B=\operatorname{diag}(s,-s)\)</span>, compute the forward-Euler area factor <span class="math inline">\(\det(I+hB)=1-s^2h^2\)</span>. Compare <span class="math inline">\((1-s^2h^2)^N\)</span> after <span class="math inline">\(N\)</span> steps with the exact area one at time <span class="math inline">\(Nh\)</span>. Keep <span class="math inline">\(|sh|&lt;1\)</span>. Does halving the step reduce the drift? This is a concrete check before trusting a trajectory integrator.</li>
+    <li><strong>Carry a nonuniform density.</strong> Replace the local initial density one by <span class="math inline">\(\rho_0(a)=\pi^{-1}e^{-|a|^2}\)</span>. Use <span class="math inline">\(\rho(x,t)=\rho_0(F(t)^{-1}x)/\det F(t)\)</span>. The outline and normalization come from different parts of the formula. <a href="bohmian-trajectories.html#free">Compare the one-dimensional spreading Gaussian.</a></li>
+    <li><strong>Change the projection.</strong> Draw the focusing family as points <span class="math inline">\((Q,P)=((1-t)a,-a)\)</span> in phase space. At time one, the labels remain separated by momentum even when the position plot collapses. <a href="jacobians-characteristics.html#action">Relate this to the action construction.</a></li>
+    <li><strong>Differentiate a different function of a matrix.</strong> Expand <span class="math inline">\(\det(I+hB)\)</span> to second order and compare its first and second coefficients with trace and mixed trace products. <a href="determinants-trace.html#higher-derivatives">Use the higher-derivative review</a> before trying the same chain-rule bookkeeping for a nonlinear map.</li>
+  </ol>
+  <p>The exact linear examples are benchmarks, not evidence that every velocity field has these formulas or that an arbitrary discretization preserves mass.</p>
+</section>
+<section aria-labelledby="sources"><h2 id="sources">Where the formulas come from</h2>
+  <p>The models specialize the classical identities in the two companion Reviews. For the matrix ODE and determinant, see <a href="https://people.eecs.berkeley.edu/~wkahan/MathH110/jacobi.pdf">Kahan's Wronskian calculation</a> and <a href="https://www.mat.univie.ac.at/~gerald/ftp/book-ode/ode.pdf#page=94">Teschl's Lemma 3.11</a>. For characteristic intersections, compare <a href="https://web.stanford.edu/class/math220a/handouts/firstorder.pdf">Stanford Math 220A, §2.3, Example 8</a>. The focusing example is obtained directly by integrating the free Newton equation with the stated initial data; no novelty claim is intended.</p>
+</section>
+    </article>
+    <footer><nav class="reading-path" aria-label="Read about determinants and transport"><ul><li><a href="determinants-trace.html">Review: the algebra</a></li><li><a href="jacobians-characteristics.html">Review: the applications</a></li><li><a href="jacobian-exploration.html" aria-current="page">Explore the models</a></li></ul></nav></footer>
+  </main>
+</body>
+</html>

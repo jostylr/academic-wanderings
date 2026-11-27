@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A review connecting the chain rule, Liouville’s formula, continuity, and Hamilton–Jacobi characteristics.">
+  <title>Jacobians turn motion into density · Academic Wanderings</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css"
+    integrity="sha384-WwGtaC6ywCHxA5cstpj/3+xIZvTez8dq2IcBQaXRkenHZ7FVVq1ZROtURwfbtTlG" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.js"
+    integrity="sha384-a1WQdjRj162i159OYq041X6I4K8NenkrI09LlPmiHg0YOb7CR+wJOraXwK9abpnE" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="math.js"></script>
+</head>
+<body>
+  <main class="page page--article">
+    <nav class="site-header" aria-label="Site"><a class="site-title" href="index.html">Academic Wanderings</a><a href="browse.html">Browse all pages</a></nav>
+    <nav class="page-context" aria-label="Page topics"><a class="topic-label" href="determinants-trace.html">Determinants and transport</a><a class="tag" href="browse.html?category=reviews">Reviews</a><a class="tag" href="browse.html?tag=jacobians">Jacobians</a><a class="tag" href="browse.html?tag=transport">Transport</a><a class="tag" href="browse.html?tag=probability-current">Probability current</a></nav>
+    <article class="taylor-article">
+      <header><p class="eyebrow">Reviews · Determinants and transport</p><h1>Jacobians turn motion into density</h1></header>
+<p class="lede">Follow a tiny parcel as it moves. Its changing volume tells you how its density changes. Follow an action along the same kind of labelled path, and a partial differential equation becomes an ordinary derivative.</p>
+<p><strong>Review.</strong> Appendix F.2–F.3 of the thesis uses these classical characteristic methods. We connect the standard identities to accessible sources and worked examples. Start with <a href="determinants-trace.html">the determinant/trace review</a> if Jacobians are unfamiliar; its opening supplies the needed definitions.</p>
+<nav aria-label="Article contents"><p><a href="#along-path">Chain rule along a path</a> · <a href="#jacobian">Moving volume</a> · <a href="#density">Density</a> · <a href="#bohmian">A Gaussian</a> · <a href="#action">Action</a> · <a href="#caustic">Caustics</a> · <a href="#sources">Sources and next steps</a></p></nav>
+<section aria-labelledby="along-path"><h2 id="along-path">The chain rule turns a PDE into a pathwise equation</h2>
+  <p>Let <span class="math inline">\(v(x,t)\)</span> be a sufficiently smooth velocity field on an open region of <span class="math inline">\(\mathbb R^n\)</span>. Label a trajectory by its initial position <span class="math inline">\(a\)</span>:</p>
+  <div class="math-display">\[\partial_tQ(a,t)=v(Q(a,t),t),\qquad Q(a,0)=a.\]</div>
+  <p>For a differentiable scalar field <span class="math inline">\(u\)</span>, the chain rule reads</p>
+  <div class="math-display">\[\frac{d}{dt}u(Q(a,t),t)=(\partial_tu+v\cdot\nabla u)(Q(a,t),t).\]</div>
+  <p>So the transport equation <span class="math inline">\(\partial_tu+v\cdot\nabla u=f\)</span> says to integrate the source <span class="math inline">\(f\)</span> along trajectories. If <span class="math inline">\(f=0\)</span>, the scalar value is constant on each path. Stanford's <a href="https://web.stanford.edu/class/math220a/handouts/firstorder.pdf">Math 220A notes, §2.1</a>, build the characteristic method from this observation, beginning with constant-velocity transport.</p>
+</section>
+<section aria-labelledby="jacobian"><h2 id="jacobian">Trace tells a parcel how fast to expand</h2>
+  <p>Differentiate the trajectory with respect to its starting label. The matrix <span class="math inline">\(F=D_aQ\)</span> carries the edges of an initial small parcel to their current values. Differentiating the trajectory equation gives the variational equation</p>
+  <div class="math-display">\[\partial_tF=(D_xv)(Q,t)F,\qquad F(a,0)=I.\]</div>
+  <p>Let <span class="math inline">\(J=\det F\)</span>. Jacobi's formula and the cyclic property of trace give</p>
+  <div class="math-display">\[\partial_tJ=(\nabla\cdot v)(Q,t)J,\qquad
+  J(a,t)=\exp\!\left(\int_0^t\nabla\cdot v(Q(a,s),s)\,ds\right).\]</div>
+  <p>Divergence is the trace of the velocity-gradient matrix. It measures the instantaneous fractional volume change. The off-diagonal entries can shear a parcel without contributing to that trace.</p>
+  <p>This is the determinant evolution behind Abel's identity or Liouville's formula. <a href="https://www.mat.univie.ac.at/~gerald/ftp/book-ode/ode.pdf#page=94">Gerald Teschl, §3.4, Lemma 3.11</a>, proves it for linear systems; applying that result to the variational equation gives the flow formula above. With initial Jacobian one and finite integrated divergence, <span class="math inline">\(J\)</span> stays positive. A smooth, uniquely defined flow does not reverse orientation by casually passing through a zero Jacobian.</p>
+  <details class="algebra-check"><summary>Which volume does a Jacobian measure on a manifold?</summary>
+    <p>For a Riemannian metric, the local volume form in an oriented chart is <span class="math inline">\(\sqrt{\det(g_{ij})}\,dx^1\wedge\cdots\wedge dx^n\)</span>. The dual unit volume vector has the reciprocal factor. For <span class="math inline">\(f:M\to N\)</span> between equal-dimensional Riemannian manifolds, the positive volume scale is</p>
+    <div class="math-display">\[\mathcal J_f(x)=|\det Df_x|\,
+      \frac{\sqrt{\det g_N(f(x))}}{\sqrt{\det g_M(x)}}.\]</div>
+    <p>The metric factors convert coordinate volume to geometric volume. For a fixed metric, replace ordinary divergence by metric divergence in the flow formula. Using volume densities handles nonorientable manifolds as well. The main examples on this page stay in Euclidean space.</p>
+  </details>
+</section>
+<section aria-labelledby="density"><h2 id="density">A density is not just an advected scalar</h2>
+  <p>If a parcel's mass stays fixed while its volume expands, its density falls. For initial density <span class="math inline">\(\rho_0\)</span>, the local conservation statement is</p>
+  <div class="math-display">\[\rho(Q(a,t),t)J(a,t)=\rho_0(a).\]</div>
+  <p>Differentiating this product gives</p>
+  <div class="math-display">\[\partial_t\rho+v\cdot\nabla\rho=-\rho\nabla\cdot v,
+  \qquad \partial_t\rho+\nabla\cdot(\rho v)=0.\]</div>
+  <p>Only for zero divergence does density behave like a scalar carried unchanged along a path. If the flow map is invertible on the region, change of variables gives the equivalent reconstruction</p>
+  <div class="math-display">\[\rho(x,t)=\rho_0(Q_t^{-1}(x))\,|\det DQ_t^{-1}(x)|.\]</div>
+  <p>The inverse determinant is the reciprocal of the forward determinant <em>at corresponding points</em>. For a map with several regular preimages, pushforward density instead sums contributions from the branches. A single inverse formula assumes an invertible branch. These are applications of the <a href="https://openstax.org/books/calculus-volume-3/pages/5-7-change-of-variables-in-multiple-integrals">ordinary change-of-variables theorem</a>.</p>
+</section>
+<section aria-labelledby="bohmian"><h2 id="bohmian">Use it on a widening Gaussian</h2>
+  <p>For the freely spreading Gaussian already worked out on this site, use the dimensionless units <span class="math inline">\(\hbar=m=1\)</span> and initial density <span class="math inline">\(\rho_0(a)=\pi^{-1/2}e^{-a^2}\)</span>. The guiding trajectories are</p>
+  <div class="math-display">\[Q(a,t)=a\sqrt{1+t^2},\qquad J=\sqrt{1+t^2}.\]</div>
+  <p>The Jacobian immediately gives</p>
+  <div class="math-display">\[\rho(x,t)=\frac{1}{\sqrt{\pi}\sqrt{1+t^2}}
+  \exp\!\left(-\frac{x^2}{1+t^2}\right).\]</div>
+  <p>The parcel stretches and its density decreases by the reciprocal factor. This verifies transport once the wave has supplied the velocity. It does not derive the velocity from density alone. <a href="bohmian-trajectories.html#free">Continue to the wave function, current, and exact trajectory calculation.</a> <a href="jacobian-exploration.html#flow">The two-dimensional exploration</a> separates shape change from density change.</p>
+</section>
+<section aria-labelledby="action"><h2 id="action">The same chain rule transports an action</h2>
+  <p>Now consider a classical particle with mass <span class="math inline">\(m&gt;0\)</span> and smooth potential <span class="math inline">\(V\)</span>. Label Newton trajectories by <span class="math inline">\(Q(a,0)=a\)</span> and choose initial momentum <span class="math inline">\(P(a,0)=\nabla S_0(a)\)</span>. Then <span class="math inline">\(\dot Q=P/m\)</span> and <span class="math inline">\(\dot P=-\nabla V(Q)\)</span>. Before the position projection loses local invertibility, define the action by</p>
+  <div class="math-display">\[S(Q(a,t),t)=S_0(a)+\int_0^t
+    \left(\frac{|P(a,s)|^2}{2m}-V(Q(a,s))\right)ds.\]</div>
+  <p>Varying the initial label gives <span class="math inline">\(\nabla_x S(Q(a,t),t)=P(a,t)\)</span>. Apply the pathwise chain rule once more: the derivative of <span class="math inline">\(S\)</span> is the Lagrangian, whereas its spatial contribution is <span class="math inline">\(P\cdot\dot Q=|P|^2/m\)</span>. The result is the Hamilton–Jacobi equation</p>
+  <div class="math-display">\[\partial_tS+\frac{|\nabla S|^2}{2m}+V=0.\]</div>
+  <details class="algebra-check"><summary>Check the endpoint variation and its sign</summary>
+    <p>For a variation <span class="math inline">\(\delta a\)</span>, integrate the variation of the kinetic term by parts. Since <span class="math inline">\(P=m\dot Q\)</span>,</p>
+    <div class="math-display">\[\delta S(Q(a,t),t)=\nabla S_0\cdot\delta a+
+      [P\cdot\delta Q]_0^t-\int_0^t(\dot P+\nabla V)\cdot\delta Q\,ds.\]</div>
+    <p>The integral vanishes by Newton's equation, with a <em>plus</em> between <span class="math inline">\(\dot P\)</span> and <span class="math inline">\(\nabla V\)</span>. The initial endpoint cancels against <span class="math inline">\(\nabla S_0\cdot\delta a\)</span>, leaving <span class="math inline">\(P(a,t)\cdot\delta Q(a,t)\)</span>. Invertibility of <span class="math inline">\(D_aQ\)</span> then identifies the spatial gradient. This fixes the cancellation sign in the historical appendix.</p>
+  </details>
+  <p>For a broader account of action and Hamilton–Jacobi theory, read <a href="https://davidtong.org/pdfs/teaching/classical-dynamics/clas4.pdf">David Tong's Classical Dynamics notes, §4.7</a>. The construction here starts with an initial action field rather than a single fixed starting point.</p>
+</section>
+<section aria-labelledby="caustic"><h2 id="caustic">When position labels stop giving coordinates</h2>
+  <p>A classical family can focus even though individual Newton trajectories remain regular in phase space. In one dimension with <span class="math inline">\(m=1\)</span>, <span class="math inline">\(V=0\)</span>, and <span class="math inline">\(S_0(a)=-a^2/2\)</span>,</p>
+  <div class="math-display">\[Q(a,t)=(1-t)a,\qquad P(a,t)=-a,\qquad J=1-t.\]</div>
+  <p>All positions coincide at <span class="math inline">\(t=1\)</span>, although the momenta differ. This is a deliberately simple, nongeneric focus of an entire line. Before that time, <span class="math inline">\(S(x,t)=-x^2/[2(1-t)]\)</span> and <span class="math inline">\(v(x,t)=-x/(1-t)\)</span>. The divergence integral ceases to be finite at the focus, so this does not contradict positivity of the Jacobian for a regular first-order flow. Position coordinates have failed on the classical family.</p>
+  <p><a href="jacobian-exploration.html#focus">Move through the focus in the exploration.</a> Stanford's <a href="https://web.stanford.edu/class/math220a/handouts/firstorder.pdf">§2.3, Example 8, on Burgers' equation</a> explains the related failure when projected characteristics meet. After such a failure, a weak PDE solution, a multibranch classical family, and a quantum approximation are different continuations requiring additional choices.</p>
+  <p>Appendix F.4 goes on to semiclassical phases and the Maslov index. A zero determinant signals a problem with the chosen projection, but an unsigned count of determinant zeros is not a general definition of that index. We stop short of assigning phases from this scalar data.</p>
+</section>
+<section aria-labelledby="sources"><h2 id="sources">Sources and ways to use the review</h2>
+  <ul>
+    <li><strong>Linearized volume:</strong> Gerald Teschl, <a href="https://www.mat.univie.ac.at/~gerald/ftp/book-ode/ode.pdf#page=94"><cite>Ordinary Differential Equations and Dynamical Systems</cite>, §3.4, Lemma 3.11</a>, printed p. 83 in the author-hosted version. Kahan's <a href="https://people.eecs.berkeley.edu/~wkahan/MathH110/jacobi.pdf">Wronskian application, pp. 1–2</a>, gives another short route.</li>
+    <li><strong>Learn characteristics with examples:</strong> Stanford Math 220A, <a href="https://web.stanford.edu/class/math220a/handouts/firstorder.pdf"><cite>First-Order Equations: Method of Characteristics</cite></a>, §§2.1–2.3. Free course notes with transport, invertibility, and intersecting characteristic diagrams.</li>
+    <li><strong>Connect to mechanics:</strong> David Tong, <a href="https://davidtong.org/pdfs/teaching/classical-dynamics/clas4.pdf"><cite>Classical Dynamics</cite>, §§4.2 and 4.7</a>. Free notes on phase-space volume and Hamilton–Jacobi theory. Phase-space volume preservation does not forbid a singular position projection.</li>
+    <li><strong>Original route:</strong> James Taylor, <a href="https://jostylr.com/pdfs/thesis.pdf#page=186"><cite>Connections with Bohmian Mechanics</cite>, Appendix F.2–F.4</a>, printed pp. 175–180. The transport and action identities reviewed here are standard.</li>
+  </ul>
+  <p><strong>Continue by doing:</strong> use <a href="jacobian-exploration.html#tasks">the prediction-and-check tasks</a> to test a numerical step, diagnose an area-preserving map, and distinguish a caustic from a singular matrix derivative. Then connect the result to <a href="bohmian-mechanics.html">equivariance</a>, <a href="bohmian-trajectories.html#free">Gaussian motion</a>, or <a href="taylor-maps.html#chain">higher chain rules</a>.</p>
+</section>
+    </article>
+    <footer><nav class="reading-path" aria-label="Read about determinants and transport"><ul><li><a href="determinants-trace.html">Review: the algebra</a></li><li><a href="jacobians-characteristics.html" aria-current="page">Review: the applications</a></li><li><a href="jacobian-exploration.html">Explore the models</a></li></ul></nav></footer>
+  </main>
+</body>
+</html>
