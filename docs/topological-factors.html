@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Compare covering-space phases, flat bundles, connection holonomy, cut domains, and path-integral weights.">
+  <title>How topological factors enter a quantum theory · Academic Wanderings</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css"
+    integrity="sha384-WwGtaC6ywCHxA5cstpj/3+xIZvTez8dq2IcBQaXRkenHZ7FVVq1ZROtURwfbtTlG" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.js"
+    integrity="sha384-a1WQdjRj162i159OYq041X6I4K8NenkrI09LlPmiHg0YOb7CR+wJOraXwK9abpnE" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="math.js"></script>
+</head>
+<body>
+  <main class="page page--article">
+    <nav class="site-header" aria-label="Site"><a class="site-title" href="index.html">Academic Wanderings</a><a href="browse.html">Browse all pages</a></nav>
+    <nav class="page-context" aria-label="Page topics"><a class="topic-label" href="bohmian-manifolds.html">Quantum geometry</a><a class="tag" href="browse.html?category=explanation">Explanation</a><a class="tag" href="browse.html?tag=topology">Topology</a><a class="tag" href="browse.html?tag=holonomy">Holonomy</a><a class="tag" href="browse.html?tag=vector-bundles">Vector bundles</a><a class="tag" href="browse.html?tag=operator-domains">Operator domains</a></nav>
+    <article class="taylor-article">
+      <header><p class="eyebrow">Explanation · Quantum geometry</p><h1>How topological factors enter a quantum theory</h1></header>
+<p class="lede">A local wave equation cannot, by itself, tell us how amplitudes match after going around a noncontractible loop. That matching can change spectra and trajectories even when every small neighborhood has the same local law.</p>
+<p>Chapter 4 of the thesis compares a cover, connections, and cuts. The later joint papers give a more general treatment. We begin with rank-one unitary factors and then state where higher-rank and analytic qualifications enter. Background: <a href="bohmian-bundles.html">waves in Hermitian bundles</a>.</p>
+<nav aria-label="Article contents"><p><a href="#circle">Circle</a> · <a href="#routes">The different routes</a> · <a href="#cover">Cover</a> · <a href="#connection">Connection</a> · <a href="#cut">Cut domain</a> · <a href="#nonabelian">Beyond scalar factors</a> · <a href="#status">Established versus incomplete</a></p></nav>
+<section aria-labelledby="circle"><h2 id="circle">A circle gives the whole issue a concrete shape</h2>
+  <p>Lift the angular coordinate to the real line. A wave need not be periodic as an amplitude; it can return multiplied by a fixed unit phase:</p>
+  <div class="math-display">\[\widehat\psi(\theta+2\pi)=\gamma\widehat\psi(\theta),\qquad
+    \gamma=e^{2\pi i\alpha},\quad \alpha\in\mathbb R/\mathbb Z.\]</div>
+  <p>Its density and logarithmic derivative are periodic, so its guiding vector field is well defined on the circle. A free mode on a circle of radius <span class="math inline">\(R\)</span> is</p>
+  <div class="math-display">\[\widehat\psi_n=\frac{e^{i(n+\alpha)\theta-iE_nt/\hbar}}{\sqrt{2\pi R}},\quad
+  E_n=\frac{\hbar^2(n+\alpha)^2}{2MR^2},\quad
+  \dot\theta=\frac{\hbar(n+\alpha)}{MR^2},\qquad n\in\mathbb Z.\]</div>
+  <p>The wave is normalized on one turn with measure <span class="math inline">\(R\,d\theta\)</span>, not on the entire covering line. At <span class="math inline">\(\alpha=0\)</span> we have ordinary periodicity; at <span class="math inline">\(\alpha=1/2\)</span>, antiperiodicity. The same local free expression admits these different global sectors. <a href="holonomy-exploration.html">Vary the sector and compare its descriptions.</a></p>
+</section>
+<section aria-labelledby="routes"><h2 id="routes">Several routes to the same global data</h2>
+  <table><caption>Rank-one topological factors, under the indicated assumptions</caption><thead><tr><th scope="col">Route</th><th scope="col">Where the factor appears</th><th scope="col">What the route requires</th></tr></thead><tbody>
+    <tr><th scope="row">Universal cover</th><td>Deck transformations multiply the lifted wave by a character.</td><td>Unitary constant factors, compatibility with the lifted local Hamiltonian, and a suitable evolution domain.</td></tr>
+    <tr><th scope="row">Flat line bundle</th><td>Local amplitudes are glued by constant unitary transition factors.</td><td>A bundle with its flat connection; equivalence is of bundle-with-connection data, not just bare bundles.</td></tr>
+    <tr><th scope="row">Connection holonomy</th><td>Parallel transport around a loop can be nontrivial even with zero local curvature.</td><td>Gauge transformations must be single valued globally. A global one-form in one frame is not available for every bundle.</td></tr>
+    <tr><th scope="row">Cut and gluing domain</th><td>Endpoint or seam traces match with phases.</td><td>A self-adjoint domain and its derivative/normal matching conditions. Not every extension of a cut operator is a topological sector.</td></tr>
+    <tr><th scope="row">Homotopy-weighted path integral</th><td>Amplitudes for different homotopy classes receive representation weights.</td><td>Composition and consistency assumptions, plus a justified propagator construction. This is a separate route, not the Bohmian descent argument.</td></tr>
+  </tbody></table>
+  <p>These are often alternative descriptions of one sector, not five independent additions to the Hamiltonian. The classic path-integral literature includes Laidlaw and Morette DeWitt, <a href="https://doi.org/10.1103/PhysRevD.3.1375"><cite>Feynman Functional Integrals for Systems of Indistinguishable Particles</cite></a> (1971). The <a href="https://arxiv.org/pdf/quant-ph/0506173">2007 paper's introduction and §§6–8</a> place that literature beside the trajectory-based approach and provide a free detailed account.</p>
+</section>
+<section aria-labelledby="cover"><h2 id="cover">Why the cover produces characters</h2>
+  <p>For a connected smooth configuration manifold, let <span class="math inline">\(\pi:\widehat Q\to Q\)</span> be its universal cover with the lifted metric. Choose deck transformations with a consistent composition convention. Impose a scalar periodicity rule</p>
+  <div class="math-display">\[\widehat\psi(\sigma\widehat q)=\gamma_\sigma\widehat\psi(\widehat q).\]</div>
+  <p>Applying two deck transformations consistently gives <span class="math inline">\(\gamma_{\sigma\tau}=\gamma_\sigma\gamma_\tau\)</span>. Requiring unit-modulus factors makes the density independent of the lift; constant factors cancel from the guiding quotient. The velocity is projectable: <span class="math inline">\(\widehat v(\sigma\widehat q)=\sigma_*\widehat v(\widehat q)\)</span>. Thus the particle path belongs to <span class="math inline">\(Q\)</span> although the wave is represented on <span class="math inline">\(\widehat Q\)</span>.</p>
+  <p>A homomorphism <span class="math inline">\(\pi_1(Q)\to U(1)\)</span> is a character. This derives its algebraic form <em>within the imposed sector construction</em>. It is not a proof that projectability of an isolated wave alone forces every admissible theory into this ansatz. The lifted local operator must preserve the sector, and its self-adjoint realization still has to be specified.</p>
+  <p>The Hilbert norm integrates the descended density on <span class="math inline">\(Q\)</span>, equivalently over a fundamental domain. A nonzero periodic-modulus wave on an infinite cover is generally not square-integrable over the whole cover.</p>
+</section>
+<section aria-labelledby="connection"><h2 id="connection">Move the phase into a connection</h2>
+  <p>On the circle, set <span class="math inline">\(\phi=e^{-i\alpha\theta}\widehat\psi\)</span>. The new amplitude is periodic and</p>
+  <div class="math-display">\[\partial_\theta\widehat\psi=e^{i\alpha\theta}(\partial_\theta+i\alpha)\phi,
+  \qquad H_\phi=-\frac{\hbar^2}{2MR^2}(\partial_\theta+i\alpha)^2.\]</div>
+  <p>The same current follows from the covariant derivative <span class="math inline">\(D_\theta=\partial_\theta+i\alpha\)</span>. Locally the connection term can be removed; globally the transformation is not single valued unless <span class="math inline">\(\alpha\)</span> is integral. All complex line bundles on the circle are topologically trivial, yet their flat connections can have different holonomies.</p>
+  <p><strong>Phase convention:</strong> with <span class="math inline">\(D=d+i\alpha\,d\theta\)</span>, a parallel section solves <span class="math inline">\(D\chi=0\)</span>. Its transport holonomy is <span class="math inline">\(e^{-2\pi i\alpha}=\gamma^{-1}\)</span>. The cover multiplier and this parallel-transport holonomy are inverse in our convention. Changing conventions must change both formulas consistently.</p>
+  <p>For signed charge <span class="math inline">\(e\)</span> and electromagnetic convention <span class="math inline">\(D=d-ieA/\hbar\)</span>, a flux <span class="math inline">\(\Phi=\oint A\)</span> gives <span class="math inline">\(\alpha=-e\Phi/(2\pi\hbar)\)</span> in a constant circle gauge, so <span class="math inline">\(\gamma=e^{-ie\Phi/\hbar}\)</span>. This connects the circle to Aharonov–Bohm physics. On a general manifold, distinguish flatness, connection holonomy, and topological triviality of the underlying bundle.</p>
+</section>
+<section aria-labelledby="cut"><h2 id="cut">A seam is not a reflecting wall</h2>
+  <p>Cut the circle at an arbitrary point and use <span class="math inline">\(0&lt;\theta&lt;2\pi\)</span> on the resulting interval. In <span class="math inline">\(L^2((0,2\pi),R\,d\theta)\)</span>, the free differential expression has the twisted self-adjoint domain</p>
+  <div class="math-display">\[\mathcal D(H_\alpha)=\{u\in H^2(0,2\pi):
+    u(2\pi)=\gamma u(0),\quad u'(2\pi)=\gamma u'(0)\}.\]</div>
+  <p>Both value and derivative traces match. They cancel the boundary form, and a Fourier basis <span class="math inline">\(e^{i(n+\alpha)\theta}\)</span> identifies this operator with real eigenvalues <span class="math inline">\(E_n\)</span>. This gives a concrete self-adjoint realization, rather than merely a formal symmetry calculation.</p>
+  <p>General interval Laplacians have a larger family of self-adjoint extensions, commonly parametrized by <span class="math inline">\(U(2)\)</span>. Those can describe actual walls or contact interactions instead of a smoothly glued circle. Bonneau, Faraut, and Valent's <a href="https://arxiv.org/pdf/quant-ph/0103153">§§5–6</a> is an accessible treatment of momentum and Hamiltonian domains.</p>
+  <p>The thesis tries to select topological sectors by independence of the arbitrary cut. The circle equivalence above is explicit. A general characterization of all cut-independent extensions on arbitrary manifolds is not established by this example, and the manuscript's argument needs a precise Sobolev-domain and gluing analysis. The later cover-based publications should not be cited as automatically repairing that broader claim.</p>
+</section>
+<section aria-labelledby="nonabelian"><h2 id="nonabelian">What the later work adds beyond scalar factors</h2>
+  <p>For a rank-one wave, factors are characters. For a wave with values in a fixed vector space, unitary matrices can form a representation of <span class="math inline">\(\pi_1(Q)\)</span>, provided they commute with the potential. A circle has a cyclic fundamental group, so its representation matrices are powers of one matrix; that example does not exhibit genuinely noncommuting factors.</p>
+  <p>For a given nontrivial Hermitian bundle, the 2006 paper uses parallel unitary endomorphism sections on the pulled-back bundle. Their conditions include</p>
+  <div class="math-display">\[\Gamma_{\sigma\tau}(\widehat q)=\Gamma_\sigma(\tau\widehat q)\Gamma_\tau(\widehat q),\qquad
+    \nabla\Gamma_\sigma=0,\qquad [\widehat V,\Gamma_\sigma]=0.\]</div>
+  <p>The composition law need not become an ordinary matrix representation at a fixed base point: parallel transport introduces holonomy conjugations. This is the published <em>holonomy-twisted representation</em> construction. See <a href="https://arxiv.org/pdf/quant-ph/0601076">§4, equations (25), (28), (29), and (36)</a>, or <a href="https://arxiv.org/pdf/quant-ph/0506173">§8.4 of the longer paper</a>. The potential condition is essential, not a decorative extra.</p>
+  <p>For a simple obstruction, take a constant matrix factor <span class="math inline">\(\Gamma=\sigma_x\)</span> and potential <span class="math inline">\(V=\sigma_z\)</span> in a trivial rank-two bundle. The Pauli matrices do not commute, so this proposed periodicity sector is not preserved by that potential. A scalar potential commutes with both. This illustrates why a statement about all potentials or all internal wave spaces needs more hypotheses than the scalar circle example.</p>
+  <p>For unordered collision-free configurations of <span class="math inline">\(N\geq2\)</span> identical points in <span class="math inline">\(\mathbb R^3\)</span>, the fundamental group is the permutation group. Its one-dimensional unitary characters give the bosonic and fermionic choices. In two dimensions, braid groups permit more scalar phases; higher-rank sectors require further discussion. This is not a proof of the spin-statistics theorem or a claim that every chosen internal model admits only scalar factors.</p>
+</section>
+<section aria-labelledby="status"><h2 id="status">What was established, and what was not?</h2>
+  <ul>
+    <li><strong>Established construction:</strong> scalar unitary sectors have descended density/current and compatible local Schrödinger equations. The circle cover, periodic-connection, and twisted-domain descriptions are explicitly equivalent.</li>
+    <li><strong>Published extension:</strong> the 2006 and 2007 papers develop matrix factors and holonomy-twisted bundle factors under their specified local geometry, potential, and periodicity assumptions. They go beyond the thesis's blanket character language.</li>
+    <li><strong>Analytic input remains:</strong> sector-preserving differential expressions need self-adjoint domains and sufficiently regular states; global trajectories require further estimates. A formal commutator calculation is not an operator-domain theorem.</li>
+    <li><strong>Not established here:</strong> a unique quantization of every manifold, an exhaustive theorem about all guiding currents, or the thesis's unrestricted cut-independence classification.</li>
+  </ul>
+  <p>The two core sources are the five-author <a href="https://doi.org/10.1007/s00023-006-0269-5">2006 <cite>Annales Henri Poincaré</cite> article</a> (<a href="https://arxiv.org/abs/quant-ph/0601076">free preprint</a>) and <a href="https://doi.org/10.1088/1751-8113/40/12/S08">2007 <cite>J. Phys. A</cite> article</a> (<a href="https://arxiv.org/abs/quant-ph/0506173">free preprint</a>), by Dürr, Goldstein, Taylor, Tumulka, and Zanghì. The <a href="bohmian-bundles.html#published">publication map</a> identifies their relation to the thesis and the later fermionic-line-bundle preprint.</p>
+  <p><strong>Next:</strong> <a href="holonomy-exploration.html">change the circle's phase factor and move its seam</a>, then <a href="quantum-manifolds-review.html">compare which problems the different approaches actually solve</a>.</p>
+</section>
+    </article>
+    <footer><nav class="reading-path" aria-label="Read about quantum geometry"><ul><li><a href="bohmian-manifolds.html">Manifolds</a></li><li><a href="bohmian-bundles.html">Vector bundles</a></li><li><a href="topological-factors.html" aria-current="page">Topological factors</a></li><li><a href="quantum-manifolds-review.html">Compare approaches</a></li><li><a href="holonomy-exploration.html">Explore a circle</a></li></ul></nav></footer>
+  </main>
+</body>
+</html>

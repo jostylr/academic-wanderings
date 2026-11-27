@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A geometric wave equation and a guiding vector field, with a sphere example and explicit existence questions.">
+  <title>Bohmian motion on a manifold · Academic Wanderings</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css"
+    integrity="sha384-WwGtaC6ywCHxA5cstpj/3+xIZvTez8dq2IcBQaXRkenHZ7FVVq1ZROtURwfbtTlG" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.js"
+    integrity="sha384-a1WQdjRj162i159OYq041X6I4K8NenkrI09LlPmiHg0YOb7CR+wJOraXwK9abpnE" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="math.js"></script>
+</head>
+<body>
+  <main class="page page--article">
+    <nav class="site-header" aria-label="Site"><a class="site-title" href="index.html">Academic Wanderings</a><a href="browse.html">Browse all pages</a></nav>
+    <nav class="page-context" aria-label="Page topics"><a class="topic-label" href="bohmian-manifolds.html">Quantum geometry</a><a class="tag" href="browse.html?category=explanation">Explanation</a><a class="tag" href="browse.html?tag=manifolds">Manifolds</a><a class="tag" href="browse.html?tag=probability-current">Probability current</a><a class="tag" href="browse.html?tag=operator-domains">Operator domains</a></nav>
+    <article class="taylor-article">
+      <header><p class="eyebrow">Explanation · Quantum geometry</p><h1>Bohmian motion on a manifold</h1></header>
+<p class="lede">To move on a curved space, a particle needs a tangent velocity at its current position. A wave can supply that vector directly. The same metric that defines its kinetic equation turns the wave's phase variation into a direction of motion.</p>
+<p>This explanation develops the geometric core of chapter 3 of James Taylor's <cite>Connections with Bohmian Mechanics</cite>. The later joint paper <a href="https://arxiv.org/abs/quant-ph/0506173"><cite>Quantum Mechanics in Multiply-Connected Spaces</cite></a>, §5, is a published successor. Here the geometric construction, the checks it permits, and its analytic assumptions are kept separate.</p>
+<p><strong>Reading path:</strong> start here, continue to <a href="bohmian-bundles.html">vector bundles</a> and <a href="topological-factors.html">topological factors</a>, then <a href="holonomy-exploration.html">test three descriptions on a circle</a>. The <a href="quantum-manifolds-review.html">literature review</a> compares this route with operator and quantization approaches. Background: <a href="manifolds.html">tangent spaces</a> and <a href="connections.html">connections</a>.</p>
+<section aria-labelledby="data"><h2 id="data">Specify geometry, a wave, and a current</h2>
+  <p>Take a smooth Riemannian configuration manifold <span class="math inline">\((Q,g)\)</span>, a mass <span class="math inline">\(M&gt;0\)</span>, a real potential <span class="math inline">\(V\)</span>, and a smooth scalar wave <span class="math inline">\(\psi(q,t)\)</span>. Initially work away from boundaries and singularities. Choose the Laplace–Beltrami sign for which <span class="math inline">\(\Delta e^{ikx}=-|k|^2e^{ikx}\)</span> in Euclidean coordinates. The equations are</p>
+  <div class="math-display">\[i\hbar\partial_t\psi=-\frac{\hbar^2}{2M}\Delta_g\psi+V\psi,
+  \qquad \dot Q_t=v^{\psi_t}(Q_t),\qquad
+  v^\psi=\frac{\hbar}{M}\operatorname{Im}\frac{\operatorname{grad}_g\psi}{\psi}.\]</div>
+  <p>The quotient is defined where the wave is nonzero. The actual configuration <span class="math inline">\(Q_t\)</span> is one point of the manifold; <span class="math inline">\(q\)</span> denotes a possible configuration. No global chart or ambient embedding is needed to say what a tangent vector or an integral curve is.</p>
+  <p>For a many-particle configuration space, unequal masses can be kept as separate kinetic coefficients or incorporated into a mass-weighted product metric. The published paper's mass-weighted convention absorbs factors that we display as <span class="math inline">\(1/M\)</span>. The configuration manifold need not be physical three-dimensional space.</p>
+</section>
+<section aria-labelledby="coordinates"><h2 id="coordinates">Coordinates describe the law; they do not define it</h2>
+  <p>In a local chart, write <span class="math inline">\(g=\det(g_{ij})\)</span>. The inverse metric raises the derivative index:</p>
+  <div class="math-display">\[\Delta_g\psi=\frac{1}{\sqrt g}\partial_i\!\left(\sqrt g\,g^{ij}\partial_j\psi\right),
+  \qquad (v^\psi)^i=\frac{\hbar}{M}g^{ij}\operatorname{Im}\frac{\partial_j\psi}{\psi}.\]</div>
+  <p>Repeated indices are summed. An angular coordinate velocity and the physical speed along an arc are different quantities; the metric relates them. Under a chart change these components transform as a vector field, so descriptions of a path agree on overlapping charts.</p>
+  <p>A global momentum observable is not an ingredient of this guiding equation. We have chosen a kinetic differential expression, however, and it still needs a self-adjoint realization to define quantum wave evolution. <a href="quantum-manifolds-review.html#operators">The review explains that distinction through the half-line example.</a></p>
+</section>
+<section aria-labelledby="probability"><h2 id="probability">Probability uses geometric volume</h2>
+  <p>Set <span class="math inline">\(\rho=|\psi|^2\)</span> and <span class="math inline">\(j=(\hbar/M)\operatorname{Im}(\bar\psi\operatorname{grad}_g\psi)\)</span>. Probability is <span class="math inline">\(\rho\,d\mathrm{vol}_g\)</span>, with <span class="math inline">\(d\mathrm{vol}_g=\sqrt g\,d^nq\)</span> locally. Volume can be treated as a density on a nonorientable manifold.</p>
+  <div class="math-display">\[\partial_t\rho+\operatorname{div}_g j=0,\qquad
+  \operatorname{div}_g j=\frac{1}{\sqrt g}\partial_i(\sqrt g\,j^i),\qquad j=\rho v^\psi.\]</div>
+  <p>The identity follows by subtracting the complex-conjugate Schrödinger equation; the real potential cancels. It is the local reason that the wave density and particle transport fit together. For global equivariance, probability must not be lost through a boundary, a node reached by an ending trajectory, or escape to infinity. <a href="jacobians-characteristics.html#density">The Jacobian review</a> gives the transport side of this argument.</p>
+</section>
+<section aria-labelledby="sphere"><h2 id="sphere">A smooth wave on a sphere, with a nonglobal velocity formula</h2>
+  <p>On a sphere of radius <span class="math inline">\(R\)</span>, use polar angle <span class="math inline">\(\theta\)</span> and azimuth <span class="math inline">\(\varphi\)</span>. The metric is <span class="math inline">\(R^2(d\theta^2+\sin^2\theta\,d\varphi^2)\)</span>. For the free Hamiltonian, a normalized mode is</p>
+  <div class="math-display">\[\psi(\theta,\varphi,t)=\sqrt{\frac{3}{8\pi R^2}}\sin\theta\,e^{i\varphi}e^{-iEt/\hbar},
+  \qquad E=\frac{\hbar^2}{MR^2}.\]</div>
+  <p>The spatial factor is the restriction of <span class="math inline">\((x+iy)/R\)</span>, so it is a smooth function even at the coordinate poles. Substitution gives <span class="math inline">\(\Delta_g\psi=-2\psi/R^2\)</span>. Its guidance law is</p>
+  <div class="math-display">\[\dot\theta=0,\qquad \dot\varphi=\frac{\hbar}{MR^2\sin^2\theta},\qquad
+    |v|_g=\frac{\hbar}{MR\sin\theta}.\]</div>
+  <p>Each nonpolar configuration stays on its latitude and has a trajectory for every time. The wave vanishes at the poles: the failure of the velocity quotient there is a real nodal issue, not just a poor chart. The two polar points have zero wave probability. This example establishes its own trajectories explicitly; it is not a global-existence proof for arbitrary wave fields.</p>
+</section>
+<section aria-labelledby="status"><h2 id="status">What is established, and what has to be supplied?</h2>
+  <table><caption>Separate levels of the construction</caption><thead><tr><th scope="col">Claim</th><th scope="col">Status and conditions</th></tr></thead><tbody>
+    <tr><th scope="row">The PDE and ODE make geometric sense</th><td>Established from a metric, potential, and admissible smooth wave. The current is coordinate independent where the wave is nonzero.</td></tr>
+    <tr><th scope="row">The local continuity identity</th><td>Established for smooth solutions with real potential. It does not by itself prove a global probability-preserving flow.</td></tr>
+    <tr><th scope="row">A unitary wave evolution</th><td>Requires a self-adjoint Hamiltonian and its domain. Complete-manifold theorems cover useful classes; boundaries and singular/incomplete spaces need separate choices.</td></tr>
+    <tr><th scope="row">Almost every path exists for all time</th><td>Requires estimates excluding finite-time loss at nodes, singular sets, or infinity. The topology papers explicitly leave a general existence analysis aside.</td></tr>
+    <tr><th scope="row">All quantum models on Q have been selected</th><td>Not established by these equations. The kinetic operator, curvature terms, bundle, connection, domains, and sector data are modeling choices.</td></tr>
+  </tbody></table>
+  <p>Braverman, Milatovic, and Shubin's <a href="https://arxiv.org/abs/math/0201231">essential-self-adjointness results</a> address wave evolution on bundles. Teufel and Tumulka's <a href="https://arxiv.org/abs/math-ph/0406030"><cite>Simple Proof for Global Existence of Bohmian Trajectories</cite></a> supplies current-based sufficient conditions and applications, including spin and magnetic fields. Its stated configuration-space hypotheses must be checked; it is not a theorem about every arbitrary manifold. Smooth local geometry and global analytic control are distinct achievements.</p>
+</section>
+<section aria-labelledby="sources"><h2 id="sources">Sources and continuation</h2>
+  <ul>
+    <li>James Taylor, <a href="https://jostylr.com/pdfs/thesis.pdf#page=36"><cite>Connections with Bohmian Mechanics</cite></a> (Rutgers, 2003), chapter 3: the thesis route to manifold and bundle dynamics.</li>
+    <li>Dürr, Goldstein, Taylor, Tumulka, and Zanghì, <a href="https://arxiv.org/abs/quant-ph/0506173"><cite>Quantum Mechanics in Multiply-Connected Spaces</cite></a>, <cite>J. Phys. A</cite> <strong>40</strong> (2007), 2997–3031, §5.2–§5.4; §5.2's existence remark identifies the scope of the formal construction. <a href="https://doi.org/10.1088/1751-8113/40/12/S08">Published version</a>.</li>
+  </ul>
+  <p><strong>Next:</strong> let the value of the wave lie in a different vector space at each configuration. <a href="bohmian-bundles.html">The bundle page develops the current and explains which parts of this picture survive unchanged.</a></p>
+</section>
+    </article>
+    <footer><nav class="reading-path" aria-label="Read about quantum geometry"><ul><li><a href="bohmian-manifolds.html" aria-current="page">Manifolds</a></li><li><a href="bohmian-bundles.html">Vector bundles</a></li><li><a href="topological-factors.html">Topological factors</a></li><li><a href="quantum-manifolds-review.html">Compare approaches</a></li><li><a href="holonomy-exploration.html">Explore a circle</a></li></ul></nav></footer>
+  </main>
+</body>
+</html>

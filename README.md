@@ -44,6 +44,15 @@ Jacobians, continuity, and action along characteristics. Two sourced Reviews
 lead into an interactive exploration and onward to the Gaussian and higher-chain-rule
 examples. Their starting definitions are included in the reviews themselves.
 
+The [quantum geometry path](docs/bohmian-manifolds.html) separates manifold
+dynamics, Hermitian wave bundles, and topological factors. A literature review
+compares intrinsic operators, observable and geometric quantization, confinement,
+and Bohmian trajectories; an interactive circle compares cover, connection, and
+cut descriptions. The pages identify the later joint publications and distinguish
+local geometric identities from domain and global-existence results. Source
+findings and unresolved manuscript issues are recorded in the first three TeX
+reviews; the historical manuscripts remain unchanged.
+
 ## Project layout
 
 - [Web pages](docs/index.html) are written directly in HTML and use KaTeX for
@@ -88,7 +97,8 @@ git diff --check
 The site check covers local links, fragments, module imports, catalogue coverage,
 and filter metadata. The Node tests check catalogue filtering/sorting and compare
 the quantum and transport experiments against independent calculations, including
-matrix exponentials, polygon area, and continuity/action residuals. For changed
+matrix exponentials, polygon area, continuity/action residuals, circle boundary
+conditions and gauge transformations, and the sphere's metric Laplacian. For changed
 pages, also inspect KaTeX rendering, filters, history navigation, controls,
 small-screen layout, both color schemes, and the no-JavaScript reading path in a
 browser when preview is available.

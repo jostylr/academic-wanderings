@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Compare a twisted wave on the cover, a periodic wave with a connection, and an interval with a movable seam.">
+  <title>One circle, three descriptions of the same motion · Academic Wanderings</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css"
+    integrity="sha384-WwGtaC6ywCHxA5cstpj/3+xIZvTez8dq2IcBQaXRkenHZ7FVVq1ZROtURwfbtTlG" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.js"
+    integrity="sha384-a1WQdjRj162i159OYq041X6I4K8NenkrI09LlPmiHg0YOb7CR+wJOraXwK9abpnE" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="math.js"></script>
+  <script type="module" src="holonomy-exploration.mjs"></script>
+</head>
+<body>
+  <main class="page page--article">
+    <nav class="site-header" aria-label="Site"><a class="site-title" href="index.html">Academic Wanderings</a><a href="browse.html">Browse all pages</a></nav>
+    <nav class="page-context" aria-label="Page topics"><a class="topic-label" href="bohmian-manifolds.html">Quantum geometry</a><a class="tag" href="browse.html?category=exploratory">Exploratory</a><a class="tag" href="browse.html?tag=holonomy">Holonomy</a><a class="tag" href="browse.html?tag=topology">Topology</a><a class="tag" href="browse.html?tag=probability-current">Probability current</a></nav>
+    <article class="taylor-article">
+      <header><p class="eyebrow">Exploratory · Quantum geometry</p><h1>One circle, three descriptions of the same motion</h1></header>
+<p class="lede">Put a twist into the wave, or put a connection into its derivative. Cut the circle somewhere else. When the data are matched, the energy and particle motion agree.</p>
+<p>This exact rank-one example accompanies <a href="topological-factors.html">the topological-factors explanation</a>. It tests equivalent descriptions of one chosen free mode. It does not test the full non-Abelian construction or prove a classification of arbitrary cut domains.</p>
+<section aria-labelledby="model"><h2 id="model">The mode and the conventions</h2>
+  <p>Use <span class="math inline">\(\hbar=M=1\)</span>, a circle of radius <span class="math inline">\(R\)</span>, and integer mode label <span class="math inline">\(n\)</span>. The sector parameter <span class="math inline">\(\alpha\)</span> is defined modulo one. With its energy time factor suppressed,</p>
+  <div class="math-display">\[\widehat\psi(\theta)=C e^{i(n+\alpha)\theta},\qquad
+    \phi(\theta)=e^{-i\alpha\theta}\widehat\psi(\theta)=C e^{in\theta},\qquad C=(2\pi R)^{-1/2}.\]</div>
+  <p>The cover wave has twist <span class="math inline">\(\gamma=e^{2\pi i\alpha}\)</span>. The periodic wave uses <span class="math inline">\(D_\theta=\partial_\theta+i\alpha\)</span>. Parallel transport for that connection has holonomy <span class="math inline">\(\gamma^{-1}\)</span>. Both descriptions give</p>
+  <div class="math-display">\[E=\frac{(n+\alpha)^2}{2R^2},\qquad
+    \dot\theta=\frac{n+\alpha}{R^2},\qquad v_{\rm arc}=R\dot\theta,\qquad \rho=\frac{1}{2\pi R}.\]</div>
+  <p>The particle starts at physical angle zero. Time is a snapshot parameter, not an automatic animation. The circle is drawn at a fixed display size; the radius control sets its physical scale. The dashed radial line marks an arbitrary coordinate seam; the marked point crosses it without reflection.</p>
+</section>
+<section class="experiment" id="holonomy-lab" hidden aria-labelledby="lab-title">
+  <h2 id="lab-title">Change the sector, then move the seam</h2>
+  <label for="circle-alpha">Sector α <output id="circle-alpha-value" for="circle-alpha">0.25</output></label>
+  <input id="circle-alpha" type="range" min="0" max="1" step="0.01" value="0.25">
+  <label for="circle-mode">Integer mode n <output id="circle-mode-value" for="circle-mode">1</output></label>
+  <input id="circle-mode" type="range" min="-3" max="3" step="1" value="1">
+  <label for="circle-radius">Radius R <output id="circle-radius-value" for="circle-radius">1.00</output></label>
+  <input id="circle-radius" type="range" min="0.5" max="2" step="0.05" value="1">
+  <label for="circle-time">Time t <output id="circle-time-value" for="circle-time">2.00</output></label>
+  <input id="circle-time" type="range" min="0" max="8" step="0.05" value="2">
+  <label for="circle-seam">Coordinate seam</label>
+  <select id="circle-seam"><option value="0">0°</option><option value="90">90°</option><option value="180">180°</option><option value="270">270°</option></select>
+  <svg class="circle-diagram" viewBox="0 0 440 300" role="img" aria-labelledby="circle-title circle-desc">
+    <title id="circle-title">A particle on a circle with a movable coordinate seam</title><desc id="circle-desc">The particle starts at the right of the circle; the dashed radius marks the seam. Numerical angles and speeds appear below.</desc>
+    <circle cx="220" cy="145" r="105" class="diagram-guide"/>
+    <line id="circle-cut" x1="220" y1="145" x2="335" y2="145" class="circle-cut"/>
+    <circle cx="325" cy="145" r="5" class="circle-start"/>
+    <circle id="circle-particle" cx="325" cy="145" r="7" class="spin-tip"/>
+    <text x="220" y="285" text-anchor="middle">Angle increases counterclockwise</text>
+  </svg>
+  <p>Open marker: starting point. Filled marker: current position. Dashed radius: coordinate seam.</p>
+  <dl class="lab-readings" aria-live="polite" aria-atomic="true">
+    <div><dt>Energy E</dt><dd id="circle-energy"></dd></div>
+    <div><dt>Cover angular velocity</dt><dd id="circle-cover-velocity"></dd></div>
+    <div><dt>Connection angular velocity</dt><dd id="circle-connection-velocity"></dd></div>
+    <div><dt>Arc speed (signed)</dt><dd id="circle-arc-speed"></dd></div>
+    <div><dt>Density per unit arc length</dt><dd id="circle-density"></dd></div>
+    <div><dt>Cover multiplier γ</dt><dd id="circle-twist"></dd></div>
+    <div><dt>Parallel-transport holonomy</dt><dd id="circle-holonomy"></dd></div>
+    <div><dt>Physical angle, modulo 2π</dt><dd id="circle-angle"></dd></div>
+    <div><dt>Angle measured from the seam</dt><dd id="circle-seam-angle"></dd></div>
+    <div><dt>Probability on one turn</dt><dd id="circle-probability"></dd></div>
+  </dl>
+  <button type="button" id="circle-reset">Reset circle</button>
+</section>
+<section aria-labelledby="compare"><h2 id="compare">Compare the descriptions</h2>
+  <table><caption>The same mode in three representations</caption><thead><tr><th scope="col">Description</th><th scope="col">Matching rule</th><th scope="col">Derivative in the current</th></tr></thead><tbody>
+    <tr><th scope="row">Cover</th><td>ψ̂(θ + 2π) = γ ψ̂(θ)</td><td>∂<sub>θ</sub>ψ̂ = i(n + α)ψ̂</td></tr>
+    <tr><th scope="row">Periodic frame</th><td>φ(θ + 2π) = φ(θ)</td><td>(∂<sub>θ</sub> + iα)φ = i(n + α)φ</td></tr>
+    <tr><th scope="row">Cut interval</th><td>Both value and derivative match by γ at the endpoints</td><td>Ordinary derivative on the interval, with the twisted H² domain</td></tr>
+  </tbody></table>
+  <p>The cover's amplitude changes after a turn, but its density and current do not. The periodic-frame amplitude returns, but its derivative includes the connection. Omitting the connection while keeping the periodic components would describe another model.</p>
+  <p>Moving the seam changes a coordinate label, not the physical point, energy, or motion. The interval endpoints are glued, not walls. This is a direct check of the circle equivalence, not a proof of the thesis's general cut-independence proposal.</p>
+</section>
+<section aria-labelledby="tasks"><h2 id="tasks">Predictions to try</h2>
+  <ol>
+    <li>Choose <span class="math inline">\(n=0\)</span>, <span class="math inline">\(R=1\)</span>, and compare <span class="math inline">\(\alpha=0\)</span> with <span class="math inline">\(\alpha=1/2\)</span>. The density is the same, but the chosen free mode changes from rest to angular speed one half.</li>
+    <li>At fixed <span class="math inline">\(n,\alpha\)</span>, double <span class="math inline">\(R\)</span>. Energy and angular velocity fall by four; arc speed falls by two. The normalization changes with circumference.</li>
+    <li>Keep the state and time fixed and move the seam. The seam-relative angle changes, while the physical dot and both velocities agree.</li>
+    <li>Compare <span class="math inline">\((n,\alpha)=(1,0)\)</span> and <span class="math inline">\((0,1)\)</span>. They represent the same <span class="math inline">\(n+\alpha\)</span> and the same sector. Shifting <span class="math inline">\(\alpha\)</span> by one relabels the spectrum; keeping <span class="math inline">\(n\)</span> fixed is not the same state.</li>
+  </ol>
+  <table><caption>Exact values for R = 1</caption><thead><tr><th scope="col">n</th><th scope="col">α</th><th scope="col">γ</th><th scope="col">E</th><th scope="col">Angular velocity</th></tr></thead><tbody><tr><th scope="row">0</th><td>0</td><td>1</td><td>0</td><td>0</td></tr><tr><th scope="row">0</th><td>1/2</td><td>−1</td><td>1/8</td><td>1/2</td></tr><tr><th scope="row">1</th><td>0</td><td>1</td><td>1/2</td><td>1</td></tr><tr><th scope="row">0</th><td>1</td><td>1</td><td>1/2</td><td>1</td></tr></tbody></table>
+</section>
+<section aria-labelledby="sources"><h2 id="sources">Source and limits of the model</h2>
+  <p>The example specializes the scalar-cover circle construction in <a href="https://arxiv.org/pdf/quant-ph/0506173">Dürr, Goldstein, Taylor, Tumulka, and Zanghì, §6.1–§6.2</a>. The free mode is nodeless, so its circle trajectory exists explicitly for all times. It demonstrates normalization, gauge covariance, and gluing for this model; it does not remove the domain or nodal questions for general manifolds and bundles. Continue with <a href="quantum-manifolds-review.html#gaps">the review's map of established results and remaining checks</a>.</p>
+</section>
+    </article>
+    <footer><nav class="reading-path" aria-label="Read about quantum geometry"><ul><li><a href="bohmian-manifolds.html">Manifolds</a></li><li><a href="bohmian-bundles.html">Vector bundles</a></li><li><a href="topological-factors.html">Topological factors</a></li><li><a href="quantum-manifolds-review.html">Compare approaches</a></li><li><a href="holonomy-exploration.html" aria-current="page">Explore a circle</a></li></ul></nav></footer>
+  </main>
+</body>
+</html>
