@@ -1,5 +1,25 @@
 # Review: Virtual Boundaries and Cut-Independent Quantum Hamiltonians
 
+## Circle web example and unresolved general claim, November 27, 2026
+
+The new [topological-factors page](../docs/topological-factors.html#cut) uses
+only the explicit free circle construction: in `L²((0,2π),R dθ)`, the domain is
+`{u∈H²: u(2π)=γu(0), u′(2π)=γu′(0)}`, `|γ|=1`. The twisted Fourier basis
+diagonalizes the operator with real eigenvalues and fixes its self-adjoint
+realization. It is stronger evidence than boundary-form cancellation alone.
+The [circle exploration](../docs/holonomy-exploration.html) moves the seam for
+one exact mode and compares cover and connection descriptions of that same
+state. It is not a proof of the general cut-independence claim.
+
+Bonneau–Faraut–Valent, [quant-ph/0103153](https://arxiv.org/abs/quant-ph/0103153),
+§§5–6, was checked for the momentum/Hamiltonian distinction and interval
+extension families. A general interval `U(2)` extension need not glue a smooth
+circle. The cover-based 2006/2007 publications do not, by themselves, resolve
+the domain/locality/equivalence defects listed below. No revised general
+classification is claimed, and the TeX manuscript has not been altered.
+
+## Original editorial review
+
 Reviewed 2026-07-23. This is an editorial and mathematical triage, not a substitute for specialist peer review.
 
 ## Verdict

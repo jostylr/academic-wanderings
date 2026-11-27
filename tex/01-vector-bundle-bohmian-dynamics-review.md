@@ -1,6 +1,76 @@
 # Review: Geometrically Formulating Bohmian Theories on Hermitian Vector Bundles
 
-## Web companions, November 27, 2026
+## Manifold and bundle web companions, November 27, 2026
+
+New explanations: [Bohmian motion on a manifold](../docs/bohmian-manifolds.html)
+and [When the wave lives in a vector bundle](../docs/bohmian-bundles.html).
+The [comparison review](../docs/quantum-manifolds-review.html) places their
+formulation advantage alongside standard operator constructions. These are new
+web treatments; the TeX baseline and existing article bodies are unchanged.
+
+- Rechecked the public thesis, chapter 3 (printed p. 25 onward, PDF p. 36),
+  against Dürr–Goldstein–Taylor–Tumulka–Zanghì,
+  [*Quantum Mechanics in Multiply-Connected Spaces*](https://arxiv.org/abs/quant-ph/0506173),
+  §§5.2–5.4, and
+  [*Topological Factors Derived From Bohmian Mechanics*](https://arxiv.org/abs/quant-ph/0601076),
+  §§2–4. The former's §5.2, existence footnote, leaves global existence analysis
+  aside; a geometric formula should not be presented as that missing theorem.
+- Current conventions: nonpositive connection Laplacian, explicit common mass
+  `M`, Hermitian product conjugate-linear first/linear second, compatible
+  connection, newest covariant differentiation direction last. In a unitary
+  frame `D_i = ∂_i + A_i` with anti-Hermitian `A_i`,
+  `Δᴱ = (1/√g) D_i(√g g^{ij} D_j)`. The current is defined by
+  `g(j,X) = (ℏ/M) Im h(ψ,∇ᴱ_Xψ)` and `v = j/h(ψ,ψ)` off nodes.
+  The local continuity identity follows from compatibility and Hermitian `V`.
+- The time-independent frame calculation uses `ψ' = Uψ` and
+  `A' = UAU⁻¹ − dU U⁻¹`; transform `V` by conjugation too. A time-dependent
+  change needs an extra temporal connection/potential contribution. A generic
+  Hermitian bundle is not a spinor bundle. The displayed convective current does
+  not establish uniqueness among all currents with the same divergence.
+- Independent example: on `S²_R`, normalized
+  `ψ = √(3/(8πR²)) sinθ exp(iφ − iℏt/(MR²))` has
+  `Δψ = −2ψ/R²`, `θ̇ = 0`, `φ̇ = ℏ/(MR²sin²θ)`.
+  The wave is smooth, including its polar zeros; the guiding quotient is not
+  defined there. Every nonpolar latitude trajectory is explicit for all time.
+  This establishes this example, not a universal theorem.
+- Analytic sources actually checked: Braverman–Milatovic–Shubin,
+  [math/0201231](https://arxiv.org/abs/math/0201231), Theorem 2.13 and its
+  assumptions (a complete boundaryless manifold, smooth compatible connection,
+  and smooth Hermitian potential bounded below give a useful safe subcase);
+  Teufel–Tumulka, [math-ph/0406030](https://arxiv.org/abs/math-ph/0406030),
+  current theorem in §3 and Schrödinger applications in §5. The latter's stated
+  configuration-space and integrability hypotheses must not be replaced by
+  “all manifolds.” Berndl et al.,
+  [quant-ph/9503013](https://arxiv.org/abs/quant-ph/9503013), is a further primary
+  global-existence source, not a blanket justification of every new bundle model.
+- Comparison sources: Bonneau–Faraut–Valent,
+  [quant-ph/0103153](https://arxiv.org/abs/quant-ph/0103153), §§5.2 and 6.2
+  (half-line momentum versus Hamiltonian); Gotay,
+  [math-ph/9809011](https://arxiv.org/abs/math-ph/9809011) (quantization axioms,
+  no-go results, and positive examples); Carosso,
+  [1801.02307](https://arxiv.org/abs/1801.02307), §§3–4 (phase-space
+  prequantization, integrality, polarization, BKS); da Costa,
+  [Phys. Rev. A 23 (1981), 1982–1987](https://doi.org/10.1103/PhysRevA.23.1982),
+  read via the linked institutional copy in the web review (confinement-induced
+  `−ℏ²(𝓗²−𝓚)/(2M)`). Absence of a self-adjoint canonical momentum does not
+  imply absence of suitable Hamiltonians. Bohmian guidance does not select curvature
+  potentials or eliminate self-adjoint-domain analysis.
+- Publication metadata checked against arXiv records and DOI/publisher records:
+  the five-author AHP paper is **7 (2006), 791–807**, DOI
+  `10.1007/s00023-006-0269-5`; the five-author J. Phys. A paper is
+  **40 (2007), 2997–3031**, DOI `10.1088/1751-8113/40/12/S08`.
+  Goldstein–Taylor–Tumulka–Zanghì's *Are All Particles Identical?* is
+  **J. Phys. A 38 (2005), 1567–1576**, DOI `10.1088/0305-4470/38/7/012`.
+  The same four authors' *Fermionic Wave Functions on Unordered Configurations*,
+  [1403.3705](https://arxiv.org/abs/1403.3705), is labeled **2014 preprint**;
+  no journal publication is inferred from the arXiv identifier. Its quantum
+  triples retain the Hamiltonian domain and position PVM in equivalence claims.
+- `tests/holonomy-models.test.mjs` checks sphere normalization and the metric
+  Laplacian by independent integration/finite differences, and verifies a
+  position-dependent rank-two unitary frame change. These check the examples;
+  they do not prove essential self-adjointness or global existence in general.
+
+## Spin and Dirac web companions, November 27, 2026
 
 The [spin explanation](../docs/spin.html) and
 [Dirac explanation](../docs/dirac-equation.html) now reconstruct the motivation

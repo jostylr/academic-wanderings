@@ -32,6 +32,17 @@ test("determinants and transport has sourced Reviews and an exploration, without
   assert.ok(filterAndSort(entries, { tag: "probability-current" }).some(entry => entry.topic === "volume-transport"));
 });
 
+test("quantum geometry connects three explanations, a review, and a holonomy exploration", () => {
+  const geometry = filterAndSort(entries, { topic: "quantum-geometry" });
+  for (const title of ["Bohmian motion on a manifold", "When the wave lives in a vector bundle",
+    "How topological factors enter a quantum theory"]) {
+    assert.ok(geometry.some(entry => entry.title === title && entry.category === "explanation"));
+  }
+  assert.ok(filterAndSort(geometry, { category: "reviews", tag: "operator-domains" }).length > 0);
+  assert.ok(filterAndSort(geometry, { category: "exploratory", tag: "holonomy" }).length > 0);
+  assert.ok(filterAndSort(entries, { tag: "manifolds" }).some(entry => entry.topic !== "quantum-geometry"));
+});
+
 test("topic, category, tag, and all search terms combine as intersections", () => {
   const result = filterAndSort(entries, { topic: "dirac", category: "exploratory", tag: "spinors", q: "PHASE current" });
   assert.ok(result.some(entry => entry.title === "Read a velocity from a Dirac spinor"));

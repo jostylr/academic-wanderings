@@ -16,14 +16,14 @@
     <p>Each page has one main topic and one category. Tags connect related ideas across those boundaries. <a href="index.html#topics">For a suggested reading path, start with a topic.</a></p>
     <form id="browse-controls" class="browse-controls" role="search" hidden>
       <div class="search-field"><label for="page-search">Search titles, descriptions, and tags</label><input id="page-search" name="q" type="search" placeholder="Try spin, curvature, or current" autocomplete="off"></div>
-      <div><label for="page-topic">Main topic</label><select id="page-topic" name="topic"><option value="">All topics</option><option value="bohmian-mechanics">Bohmian mechanics</option><option value="spin">Spin</option><option value="dirac">Dirac equation</option><option value="geometry">Geometry and Taylor expansions</option><option value="volume-transport">Determinants and transport</option></select></div>
+      <div><label for="page-topic">Main topic</label><select id="page-topic" name="topic"><option value="">All topics</option><option value="bohmian-mechanics">Bohmian mechanics</option><option value="spin">Spin</option><option value="dirac">Dirac equation</option><option value="geometry">Geometry and Taylor expansions</option><option value="volume-transport">Determinants and transport</option><option value="quantum-geometry">Quantum geometry</option></select></div>
       <div><label for="page-category">Category</label><select id="page-category" name="category"><option value="">All categories</option><option value="introductory">Introductory</option><option value="explanation">Explanation</option><option value="exploratory">Exploratory</option><option value="my-work">My Work</option><option value="reviews">Reviews</option><option value="musings">Musings</option></select></div>
-      <div><label for="page-tag">Related tag</label><select id="page-tag" name="tag"><option value="">All tags</option><option value="chain-rule">Chain rule</option><option value="connections">Connections</option><option value="curvature">Curvature</option><option value="jacobians">Jacobians</option><option value="linear-algebra">Linear algebra</option><option value="magnetic-fields">Magnetic fields</option><option value="manifolds">Manifolds</option><option value="probability-current">Probability current</option><option value="quantum-mechanics">Quantum mechanics</option><option value="relativity">Relativity</option><option value="rotations">Rotations</option><option value="spinors">Spinors</option><option value="taylor-series">Taylor series</option><option value="transport">Transport</option><option value="wave-packets">Wave packets</option></select></div>
+      <div><label for="page-tag">Related tag</label><select id="page-tag" name="tag"><option value="">All tags</option><option value="chain-rule">Chain rule</option><option value="connections">Connections</option><option value="curvature">Curvature</option><option value="holonomy">Holonomy</option><option value="jacobians">Jacobians</option><option value="linear-algebra">Linear algebra</option><option value="magnetic-fields">Magnetic fields</option><option value="manifolds">Manifolds</option><option value="operator-domains">Operator domains</option><option value="probability-current">Probability current</option><option value="quantization">Quantization</option><option value="quantum-mechanics">Quantum mechanics</option><option value="relativity">Relativity</option><option value="rotations">Rotations</option><option value="spinors">Spinors</option><option value="taylor-series">Taylor series</option><option value="topology">Topology</option><option value="transport">Transport</option><option value="vector-bundles">Vector bundles</option><option value="wave-packets">Wave packets</option></select></div>
       <div><label for="page-sort">Sort by</label><select id="page-sort" name="sort"><option value="topic">Topic, then title</option><option value="title">Title A–Z</option><option value="category">Category, then title</option></select></div>
       <div class="browse-actions"><button type="reset">Clear filters</button><button type="submit">Apply filters</button></div>
     </form>
     <noscript><p>The complete catalogue is below. Enable JavaScript to filter and sort it; all article links work without it.</p></noscript>
-    <p id="browse-count" role="status" aria-live="polite">20 pages in the catalogue.</p>
+    <p id="browse-count" role="status" aria-live="polite">25 pages in the catalogue.</p>
     <p id="browse-empty" hidden>No pages match these filters. Try another topic or tag, or clear the filters.</p>
     <ul id="page-catalogue" class="catalogue">
       <li class="catalogue-entry" data-topic="bohmian-mechanics" data-category="introductory" data-tags="quantum-mechanics probability-current">
@@ -145,6 +145,36 @@
         <h2><a class="entry-title" href="jacobian-exploration.html">Stretch, shear, and carry a density</a></h2>
         <p class="entry-summary">Explore trace-controlled area growth, reciprocal density transport, and the failure of an inverse at a caustic.</p>
         <div class="tag-list" aria-label="Related tags"><a class="tag" href="browse.html?tag=linear-algebra">Linear algebra</a><a class="tag" href="browse.html?tag=jacobians">Jacobians</a><a class="tag" href="browse.html?tag=transport">Transport</a><a class="tag" href="browse.html?tag=chain-rule">Chain rule</a></div>
+      </li>
+      <li class="catalogue-entry" data-topic="quantum-geometry" data-category="explanation" data-tags="manifolds probability-current operator-domains">
+        <p class="entry-meta"><a href="browse.html?topic=quantum-geometry">Quantum geometry</a> · <a href="browse.html?category=explanation">Explanation</a></p>
+        <h2><a class="entry-title" href="bohmian-manifolds.html">Bohmian motion on a manifold</a></h2>
+        <p class="entry-summary">A geometric wave equation and a guiding vector field, with a sphere example and explicit existence questions.</p>
+        <div class="tag-list" aria-label="Related tags"><a class="tag" href="browse.html?tag=manifolds">Manifolds</a><a class="tag" href="browse.html?tag=probability-current">Probability current</a><a class="tag" href="browse.html?tag=operator-domains">Operator domains</a></div>
+      </li>
+      <li class="catalogue-entry" data-topic="quantum-geometry" data-category="explanation" data-tags="vector-bundles manifolds probability-current">
+        <p class="entry-meta"><a href="browse.html?topic=quantum-geometry">Quantum geometry</a> · <a href="browse.html?category=explanation">Explanation</a></p>
+        <h2><a class="entry-title" href="bohmian-bundles.html">When the wave lives in a vector bundle</a></h2>
+        <p class="entry-summary">Hermitian fibers, compatible connections, and a frame-independent current, with limits and links to published work.</p>
+        <div class="tag-list" aria-label="Related tags"><a class="tag" href="browse.html?tag=vector-bundles">Vector bundles</a><a class="tag" href="browse.html?tag=manifolds">Manifolds</a><a class="tag" href="browse.html?tag=probability-current">Probability current</a></div>
+      </li>
+      <li class="catalogue-entry" data-topic="quantum-geometry" data-category="explanation" data-tags="topology holonomy vector-bundles operator-domains">
+        <p class="entry-meta"><a href="browse.html?topic=quantum-geometry">Quantum geometry</a> · <a href="browse.html?category=explanation">Explanation</a></p>
+        <h2><a class="entry-title" href="topological-factors.html">How topological factors enter a quantum theory</a></h2>
+        <p class="entry-summary">Compare covering-space phases, flat bundles, connection holonomy, cut domains, and path-integral weights.</p>
+        <div class="tag-list" aria-label="Related tags"><a class="tag" href="browse.html?tag=topology">Topology</a><a class="tag" href="browse.html?tag=holonomy">Holonomy</a><a class="tag" href="browse.html?tag=vector-bundles">Vector bundles</a><a class="tag" href="browse.html?tag=operator-domains">Operator domains</a></div>
+      </li>
+      <li class="catalogue-entry" data-topic="quantum-geometry" data-category="reviews" data-tags="quantization manifolds operator-domains vector-bundles">
+        <p class="entry-meta"><a href="browse.html?topic=quantum-geometry">Quantum geometry</a> · <a href="browse.html?category=reviews">Reviews</a></p>
+        <h2><a class="entry-title" href="quantum-manifolds-review.html">Quantum mechanics on manifolds: choices, operators, and trajectories</a></h2>
+        <p class="entry-summary">A literature review of intrinsic wave equations, observable quantization, geometric quantization, and confinement, with an assessment of the Bohmian comparison.</p>
+        <div class="tag-list" aria-label="Related tags"><a class="tag" href="browse.html?tag=quantization">Quantization</a><a class="tag" href="browse.html?tag=manifolds">Manifolds</a><a class="tag" href="browse.html?tag=operator-domains">Operator domains</a><a class="tag" href="browse.html?tag=vector-bundles">Vector bundles</a></div>
+      </li>
+      <li class="catalogue-entry" data-topic="quantum-geometry" data-category="exploratory" data-tags="holonomy topology probability-current">
+        <p class="entry-meta"><a href="browse.html?topic=quantum-geometry">Quantum geometry</a> · <a href="browse.html?category=exploratory">Exploratory</a></p>
+        <h2><a class="entry-title" href="holonomy-exploration.html">One circle, three descriptions of the same motion</a></h2>
+        <p class="entry-summary">Compare a twisted wave on the cover, a periodic wave with a connection, and an interval with a movable seam.</p>
+        <div class="tag-list" aria-label="Related tags"><a class="tag" href="browse.html?tag=holonomy">Holonomy</a><a class="tag" href="browse.html?tag=topology">Topology</a><a class="tag" href="browse.html?tag=probability-current">Probability current</a></div>
       </li>
     </ul>
   </main>

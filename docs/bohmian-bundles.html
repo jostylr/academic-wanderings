@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Hermitian fibers, compatible connections, and a frame-independent current, with limits and links to published work.">
+  <title>When the wave lives in a vector bundle · Academic Wanderings</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css"
+    integrity="sha384-WwGtaC6ywCHxA5cstpj/3+xIZvTez8dq2IcBQaXRkenHZ7FVVq1ZROtURwfbtTlG" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.js"
+    integrity="sha384-a1WQdjRj162i159OYq041X6I4K8NenkrI09LlPmiHg0YOb7CR+wJOraXwK9abpnE" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="math.js"></script>
+</head>
+<body>
+  <main class="page page--article">
+    <nav class="site-header" aria-label="Site"><a class="site-title" href="index.html">Academic Wanderings</a><a href="browse.html">Browse all pages</a></nav>
+    <nav class="page-context" aria-label="Page topics"><a class="topic-label" href="bohmian-manifolds.html">Quantum geometry</a><a class="tag" href="browse.html?category=explanation">Explanation</a><a class="tag" href="browse.html?tag=vector-bundles">Vector bundles</a><a class="tag" href="browse.html?tag=manifolds">Manifolds</a><a class="tag" href="browse.html?tag=probability-current">Probability current</a></nav>
+    <article class="taylor-article">
+      <header><p class="eyebrow">Explanation · Quantum geometry</p><h1>When the wave lives in a vector bundle</h1></header>
+<p class="lede">A vector bundle lets the wave carry internal amplitudes without demanding one global basis for them. A connection compares nearby fibers; a Hermitian metric compares amplitudes in the same fiber. Together they define the probability current.</p>
+<p>This extends <a href="bohmian-manifolds.html">the manifold explanation</a> and develops chapter 3 of the thesis. The core construction appears in <a href="https://arxiv.org/pdf/quant-ph/0506173">the 2007 joint paper, §5.4</a>. It accommodates spin, gauge connections, and topologically nontrivial wave bundles, with further structures specified for each physical model.</p>
+<section aria-labelledby="fibers"><h2 id="fibers">What replaces a complex number?</h2>
+  <p>A rank-<span class="math inline">\(k\)</span> complex vector bundle <span class="math inline">\(E\to Q\)</span> assigns a <span class="math inline">\(k\)</span>-dimensional amplitude space <span class="math inline">\(E_q\)</span> to each configuration. A wave is a section: <span class="math inline">\(\psi(q)\in E_q\)</span>. Locally we may write <span class="math inline">\(k\)</span> complex component functions; a different local frame mixes them. On overlaps, those descriptions must agree by the bundle's transition maps.</p>
+  <p>A positive Hermitian product <span class="math inline">\(h_q\)</span> gives the local density <span class="math inline">\(\rho=h(\psi,\psi)\)</span>. We take it conjugate-linear in its first slot and linear in its second. The global state Hilbert space is <span class="math inline">\(L^2(Q,E,d\mathrm{vol}_g)\)</span>, formed by integrating this density.</p>
+  <p>A connection <span class="math inline">\(\nabla^E\)</span> differentiates a section in a tangent direction. We require it to preserve <span class="math inline">\(h\)</span>. This is extra geometric data, not something determined by a bare bundle alone. A topologically trivial bundle can still carry a connection with nontrivial holonomy.</p>
+</section>
+<section aria-labelledby="equations"><h2 id="equations">One wave equation, one invariant current</h2>
+  <p>Use the Levi-Civita connection of the fixed metric <span class="math inline">\(g\)</span> on the base, the chosen Hermitian connection on <span class="math inline">\(E\)</span>, a mass <span class="math inline">\(M&gt;0\)</span>, and a smooth fiberwise Hermitian endomorphism <span class="math inline">\(V\)</span>. Define the connection Laplacian with the same nonpositive sign as the scalar Laplace–Beltrami operator:</p>
+  <div class="math-display">\[\Delta^E\psi=\operatorname{tr}_g(\nabla^2\psi),\qquad
+    (\nabla^2\psi)(X,Y)=\nabla^E_Y\nabla^E_X\psi-\nabla^E_{\nabla^g_YX}\psi.\]</div>
+  <p>The newest differentiating direction is last, as in the site's Taylor conventions. Equivalently, in a local frame <span class="math inline">\(D_i=\partial_i+A_i\)</span>,</p>
+  <div class="math-display">\[\Delta^E\psi=\frac{1}{\sqrt g}D_i\!\left(\sqrt g\,g^{ij}D_j\psi\right),\qquad
+    i\hbar\partial_t\psi=\left(-\frac{\hbar^2}{2M}\Delta^E+V\right)\psi.\]</div>
+  <p>The current is most clearly specified by its contraction with an arbitrary real tangent vector <span class="math inline">\(X\)</span>:</p>
+  <div class="math-display">\[g(j,X)=\frac{\hbar}{M}\operatorname{Im}h(\psi,\nabla^E_X\psi),\qquad
+    \rho=h(\psi,\psi),\qquad v^\psi=j/\rho\quad(\rho&gt;0).\]</div>
+  <p>The Hermitian connection makes the product rule work, and the Hermitian potential makes its contribution to <span class="math inline">\(\partial_t\rho\)</span> cancel. The result is <span class="math inline">\(\partial_t\rho+\operatorname{div}_g j=0\)</span>. The PDE and particle ODE are intrinsic; global wave and trajectory existence still need the conditions discussed on <a href="bohmian-manifolds.html#status">the manifold page</a>.</p>
+</section>
+<section aria-labelledby="frames"><h2 id="frames">A changing frame does not change a path</h2>
+  <p>In unitary frames, the connection matrices <span class="math inline">\(A_i\)</span> are anti-Hermitian. If the components change by <span class="math inline">\(\psi'=U(q)\psi\)</span>, transform the connection with them:</p>
+  <div class="math-display">\[A'=UAU^{-1}-(dU)U^{-1},\qquad D'\psi'=U D\psi.\]</div>
+  <p>Then both <span class="math inline">\(h(\psi,\psi)\)</span> and <span class="math inline">\(h(\psi,D\psi)\)</span> have the same values in both frames. For a time-independent frame change, transform <span class="math inline">\(V\)</span> as <span class="math inline">\(UVU^{-1}\)</span> and the Hamiltonians intertwine as well. Time-dependent changes require the extra time-connection/potential term; they are outside this displayed calculation.</p>
+  <p>Changing components while keeping an incompatible connection fixed changes the physical model. Gauge-equivalent descriptions are different from genuinely different connections. <a href="holonomy-exploration.html">The circle exploration</a> makes this distinction explicit with a removable local potential and a surviving loop phase.</p>
+</section>
+<section aria-labelledby="examples"><h2 id="examples">Examples, and structures they do not determine</h2>
+  <ul>
+    <li><strong>Scalar waves:</strong> the trivial complex line with its trivial connection recovers the scalar equations.</li>
+    <li><strong>Electromagnetism:</strong> on a trivial line in a chart, <span class="math inline">\(D=d-ieA/\hbar\)</span> gives mechanical phase gradient <span class="math inline">\(dS-eA\)</span>, for signed charge <span class="math inline">\(e\)</span>. A global line bundle and connection may be needed instead of a single global potential.</li>
+    <li><strong>Spin:</strong> a rotation representation acts on internal amplitudes. A spinor bundle requires suitable spin or spin-c structure and a compatible connection. A generic rank-two Hermitian bundle is not automatically a spinor bundle. <a href="spin.html">The spin explanation</a> describes the magnetic coupling and its modeling choices.</li>
+    <li><strong>Topology:</strong> tensoring with a flat unitary line bundle changes global gluing while keeping the same local differential expression. Higher-rank factors can carry non-Abelian data; <a href="topological-factors.html#nonabelian">the topology page</a> states their compatibility conditions.</li>
+  </ul>
+  <p>The displayed current is the convective current for this connection-Laplacian model. A divergence-free spin term can lead to another equivariant current. A choice motivated by the Dirac limit is discussed <a href="bohmian-derivations.html#dirac">in the guiding-equation comparison</a>. Bundle geometry alone does not establish uniqueness of every admissible guiding current.</p>
+</section>
+<section aria-labelledby="published"><h2 id="published">What became published work?</h2>
+  <p>The thesis predates the following joint articles. The later work is coauthored; these pages do not attribute its results to James Taylor alone.</p>
+  <table><caption>Publications and the claims they support</caption><thead><tr><th scope="col">Work</th><th scope="col">Relevant contribution</th></tr></thead><tbody>
+    <tr><th scope="row">Dürr, Goldstein, Taylor, Tumulka, Zanghì, <cite>Topological Factors Derived From Bohmian Mechanics</cite>, <cite>Annales Henri Poincaré</cite> 7 (2006), 791–807</th><td>§§2–4: bundle dynamics, projectable currents, and unitary parallel periodicity sections, including holonomy-twisted factors. <a href="https://arxiv.org/abs/quant-ph/0601076">Free preprint</a> · <a href="https://doi.org/10.1007/s00023-006-0269-5">Published article</a>.</td></tr>
+    <tr><th scope="row">The same five authors, <cite>Quantum Mechanics in Multiply-Connected Spaces</cite>, <cite>J. Phys. A</cite> 40 (2007), 2997–3031</th><td>§5 develops manifolds and bundles; §§6–8 treat scalar, matrix, and bundle topological factors. Its scope fixes the local data and the classes being compared. <a href="https://arxiv.org/abs/quant-ph/0506173">Free preprint</a> · <a href="https://doi.org/10.1088/1751-8113/40/12/S08">Published article</a>.</td></tr>
+    <tr><th scope="row">Goldstein, Taylor, Tumulka, Zanghì, <cite>Are All Particles Identical?</cite>, <cite>J. Phys. A</cite> 38 (2005), 1567–1576</th><td>Related identity-based configuration-space program. It proposes a viewpoint and dynamics; it is not an experimental proof that all species are identical. <a href="https://arxiv.org/abs/quant-ph/0405039">Free preprint</a> · <a href="https://doi.org/10.1088/0305-4470/38/7/012">Published article</a>.</td></tr>
+  </tbody></table>
+  <p>Goldstein, Taylor, Tumulka, and Zanghì's <a href="https://arxiv.org/abs/1403.3705"><cite>Fermionic Wave Functions on Unordered Configurations</cite></a> is listed here as a <strong>2014 preprint</strong>. It develops the equivalence between fermionic line-bundle sections and antisymmetric ordered wave functions, using quantum triples that retain Hilbert space, Hamiltonian, and position data. It is a distinct source from the journal articles above.</p>
+</section>
+<section aria-labelledby="status"><h2 id="status">What these results leave open for a particular model</h2>
+  <p>The current construction and its local covariance are established, and the published topology papers extend the thesis's scalar factors. They do not prove that every bundle, connection, singular potential, or boundary condition gives a unique global Bohmian model. The thesis's broad cut-independence argument needs a domain-level reconstruction; a square-root motivation for the Dirac equation remains a motivation with extra assumptions, as <a href="dirac-equation.html">its own explanation</a> makes clear.</p>
+  <p>For a model under study, specify <span class="math inline">\((Q,g,E,h,\nabla^E,V)\)</span>, the self-adjoint operator domain, the regularity class of states, and any topological sector. Then check current covariance, probability balance, and trajectory existence. <a href="quantum-manifolds-review.html#gaps">The review separates results supplied by the literature from checks still needed.</a></p>
+</section>
+    </article>
+    <footer><nav class="reading-path" aria-label="Read about quantum geometry"><ul><li><a href="bohmian-manifolds.html">Manifolds</a></li><li><a href="bohmian-bundles.html" aria-current="page">Vector bundles</a></li><li><a href="topological-factors.html">Topological factors</a></li><li><a href="quantum-manifolds-review.html">Compare approaches</a></li><li><a href="holonomy-exploration.html">Explore a circle</a></li></ul></nav></footer>
+  </main>
+</body>
+</html>

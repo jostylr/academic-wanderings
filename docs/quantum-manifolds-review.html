@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A literature review of intrinsic wave equations, observable quantization, geometric quantization, and confinement, with an assessment of the Bohmian comparison.">
+  <title>Quantum mechanics on manifolds: choices, operators, and trajectories · Academic Wanderings</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css"
+    integrity="sha384-WwGtaC6ywCHxA5cstpj/3+xIZvTez8dq2IcBQaXRkenHZ7FVVq1ZROtURwfbtTlG" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.js"
+    integrity="sha384-a1WQdjRj162i159OYq041X6I4K8NenkrI09LlPmiHg0YOb7CR+wJOraXwK9abpnE" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="math.js"></script>
+</head>
+<body>
+  <main class="page page--article">
+    <nav class="site-header" aria-label="Site"><a class="site-title" href="index.html">Academic Wanderings</a><a href="browse.html">Browse all pages</a></nav>
+    <nav class="page-context" aria-label="Page topics"><a class="topic-label" href="bohmian-manifolds.html">Quantum geometry</a><a class="tag" href="browse.html?category=reviews">Reviews</a><a class="tag" href="browse.html?tag=quantization">Quantization</a><a class="tag" href="browse.html?tag=manifolds">Manifolds</a><a class="tag" href="browse.html?tag=operator-domains">Operator domains</a><a class="tag" href="browse.html?tag=vector-bundles">Vector bundles</a></nav>
+    <article class="taylor-article">
+      <header><p class="eyebrow">Reviews · Quantum geometry</p><h1>Quantum mechanics on manifolds: choices, operators, and trajectories</h1></header>
+<p class="lede">There are good wave operators on manifolds. What is harder is choosing a quantum model uniquely from classical or geometric data—and deciding what replaces a preferred list of Cartesian observables. Bohmian mechanics makes the particle law direct, while sharing much of the wave-operator analysis.</p>
+<p>This is a review of several approaches, including the comparison in §2 of <a href="https://arxiv.org/pdf/quant-ph/0506173"><cite>Quantum Mechanics in Multiply-Connected Spaces</cite></a>. Its criticism of a compulsory momentum-observable framework has a concrete mathematical example. Its broader claims about the clarity of competing interpretations are methodological arguments, not no-go theorems against quantum mechanics on curved spaces.</p>
+<section aria-labelledby="compare"><h2 id="compare">The approaches ask different starting questions</h2>
+  <table><caption>What is being constructed?</caption><thead><tr><th scope="col">Approach</th><th scope="col">Starting point</th><th scope="col">What remains to choose or prove</th></tr></thead><tbody>
+    <tr><th scope="row">Intrinsic Schrödinger/spectral theory</th><td>A configuration manifold, metric, bundle/connection, and differential expression.</td><td>Potential terms, operator domain, boundary conditions, and state regularity.</td></tr>
+    <tr><th scope="row">Canonical/observable quantization</th><td>Classical observables and desired commutator rules.</td><td>A usable observable subalgebra, ordering, representations, and self-adjoint domains.</td></tr>
+    <tr><th scope="row">Geometric quantization</th><td>A symplectic phase space, prequantum line bundle, and polarization.</td><td>Integrality, polarization choices, operators that preserve states, and sometimes BKS/half-form corrections.</td></tr>
+    <tr><th scope="row">Quantization by confinement</th><td>An ambient quantum system confined near an embedded submanifold.</td><td>A controlled limiting procedure and the effective curvature/interactions it produces.</td></tr>
+    <tr><th scope="row">Bohmian dynamics</th><td>A wave evolution plus a current and actual configuration.</td><td>The same wave-operator choices, a guiding-current choice, and global trajectory/probability control.</td></tr>
+  </tbody></table>
+  <p>These approaches can be combined. Geometric quantization might help select a Hamiltonian whose wave then guides a Bohmian configuration; confinement might supply an effective potential in either interpretation. They are not all rival claims about what a particle is.</p>
+</section>
+<section aria-labelledby="operators"><h2 id="operators">Which operator is missing?</h2>
+  <p>A global real coordinate need not exist, and a manifold need not have Euclidean translation symmetries. This prevents treating Cartesian momentum formulas as a universally preferred list of observables. It does not prevent position probabilities or Hamiltonians.</p>
+  <p>For sections in <span class="math inline">\(L^2(Q,E)\)</span>, position has a projection-valued measure: <span class="math inline">\((P(B)\psi)(q)=1_B(q)\psi(q)\)</span> for measurable sets <span class="math inline">\(B\subset Q\)</span>. Real bounded functions on <span class="math inline">\(Q\)</span> act as bounded self-adjoint multiplication operators. The <a href="https://arxiv.org/abs/1403.3705">2014 quantum-triple preprint</a> explicitly retains this position data alongside Hilbert space and Hamiltonian.</p>
+  <p>Momentum needs a more careful statement. A chosen real vector field <span class="math inline">\(X\)</span> supplies the formally symmetric expression</p>
+  <div class="math-display">\[\widehat p_X=-i\hbar\left(\nabla^E_X+\tfrac12\operatorname{div}_gX\right)\]</div>
+  <p>on compactly supported smooth sections, with the compatible Hermitian connection. This is one geometric generator associated with a chosen direction field, not a unique set of globally commuting momenta. Symmetry still does not establish a self-adjoint operator; completeness and domain issues enter.</p>
+  <p>The half-line makes the distinction sharp. The minimal <span class="math inline">\(-i\hbar\,d/dx\)</span> on <span class="math inline">\(C_c^\infty(0,\infty)\)</span> has unequal deficiency indices <span class="math inline">\((1,0)\)</span>, so it has no self-adjoint extension. The positive half-line Laplacian does admit self-adjoint extensions, such as the Dirichlet Hamiltonian. The absence of that momentum operator is therefore not the absence of a quantum theory. See <a href="https://arxiv.org/pdf/quant-ph/0103153">Bonneau, Faraut, and Valent, §§5.2 and 6.2</a>.</p>
+</section>
+<section aria-labelledby="intrinsic"><h2 id="intrinsic">Intrinsic wave equations work, but do not select themselves</h2>
+  <p>A metric defines the scalar Laplace–Beltrami operator; a bundle and compatible connection define a connection Laplacian. This is ordinary differential geometry used in standard spectral theory as well as Bohmian mechanics. On differential forms, after aligning sign conventions, Hodge and connection Laplacians can differ by a curvature endomorphism; the 2007 paper notes this in §5.4.</p>
+  <p>Even a scalar classical kinetic energy does not settle every lower-order quantum term. For example, the family</p>
+  <div class="math-display">\[H_\xi=-\frac{\hbar^2}{2M}\Delta_g+V+
+    \frac{\hbar^2}{2M}\xi\,\mathrm{Scal}_g\]</div>
+  <p>has the same principal kinetic symbol for different real <span class="math inline">\(\xi\)</span>. Writing down covariant equations alone does not decide this parameter. The added term is a real potential, so the local current formula remains the same; the evolving waves and resulting paths can nevertheless differ. A physical model or a quantization prescription must supply the missing choice.</p>
+  <p>For analytic existence, there are strong positive results. A useful smooth subcase on a complete boundaryless Riemannian manifold is a Hermitian connection Laplacian with a smooth Hermitian potential bounded below. Braverman, Milatovic, and Shubin's <a href="https://arxiv.org/pdf/math/0201231">Theorem 2.13</a> gives essential self-adjointness under its completeness, semiboundedness, and regularity assumptions; smooth coefficients meet the relevant local regularity requirements. The theorem is not a statement that arbitrary singular potentials on incomplete spaces have a unique realization.</p>
+</section>
+<section aria-labelledby="quantization"><h2 id="quantization">Quantizing observables is a stronger demand</h2>
+  <p>The Groenewold–van Hove problem concerns simultaneously assigning operators to a large classical Poisson algebra while retaining specified algebraic, commutator, and irreducibility properties. Obstructions already occur for the full polynomial algebra on flat phase space. They do not say that a selected Hamiltonian and useful observables cannot be defined.</p>
+  <p>Mark Gotay's <a href="https://arxiv.org/abs/math-ph/9809011"><cite>Obstructions to Quantization</cite></a> explains both no-go and positive examples. Use the theorem's precise axioms and observable algebra when invoking it. A bare phrase such as “there are no suitable operators on a manifold” overstates the conclusion.</p>
+  <p>Geometric quantization makes different choices visible. It starts from a <em>symplectic phase space</em>, not just a configuration metric. A prequantum line bundle has curvature tied to the symplectic form and exists subject to an integrality condition. A polarization reduces the state space. Some classical flows do not preserve that polarization; additional constructions are then needed to represent their evolution.</p>
+  <p>Andrea Carosso's <a href="https://arxiv.org/abs/1801.02307"><cite>Geometric Quantization</cite></a>, §§3–4, is a free review with examples and a discussion of BKS evolution. Its prequantum bundle over phase space should not be confused with the configuration-space amplitude bundle in <a href="bohmian-bundles.html">the Bohmian construction</a>. The two can be related, but they serve different roles.</p>
+</section>
+<section aria-labelledby="confinement"><h2 id="confinement">An embedded constraint can remember more than the intrinsic metric</h2>
+  <p>Consider an ambient three-dimensional quantum particle squeezed into a thin layer around a surface. Under the specified confining limit, an effective surface Hamiltonian can acquire the geometric potential</p>
+  <div class="math-display">\[V_{\rm geom}=-\frac{\hbar^2}{2M}(\mathcal H^2-\mathcal K),\]</div>
+  <p>where <span class="math inline">\(\mathcal H\)</span> is mean curvature and <span class="math inline">\(\mathcal K\)</span> is Gaussian curvature. R. C. T. da Costa's <a href="https://doi.org/10.1103/PhysRevA.23.1982"><cite>Quantum mechanics of a constrained particle</cite></a>, <cite>Phys. Rev. A</cite> 23 (1981), 1982–1987 (<a href="https://www.math.tecnico.ulisboa.pt/~jnatar/nonarxivpapers/Costa_1981.pdf">accessible paper copy</a>), derives this in a physical confinement model.</p>
+  <p>Mean curvature depends on the embedding, so isometric surfaces can have different effective quantum models. This is evidence that the physical way a constraint is imposed matters, rather than evidence that intrinsic geometry is inconsistent. Bohmian mechanics can use the resulting effective Hamiltonian, but choosing a guiding law does not remove the confinement calculation.</p>
+</section>
+<section aria-labelledby="smoothness"><h2 id="smoothness">What is especially direct in the Bohmian description?</h2>
+  <p>Once the geometric wave model is chosen, its current provides a tangent vector field and the actual configuration follows an ODE. That makes the role of configuration space and a test for equivalent descriptions particularly explicit. One can compare projected paths and probability measures without first demanding a momentum operator for every coordinate.</p>
+  <p>The circle is a concrete success: a lifted twisted wave, a periodic wave with a connection, and a twisted self-adjoint interval domain give the same motion when matched correctly. More general topological sectors appear by demanding a descended current and compatible wave evolution. <a href="topological-factors.html">The topological-factors page</a> states the scope and the higher-rank conditions.</p>
+  <p>This directness concerns the formulation. The wave PDE still uses a Hamiltonian and its domain. At nodes, the current-to-density quotient is undefined. At boundaries, singularities, or infinity, trajectories can require a global analysis. Even the smooth sphere example has zeros of its wave. Thus “PDE plus ODE on a manifold” is a clear starting point, not an automatic well-posedness theorem.</p>
+  <p>For an operator comparison, an explicit equivalence should map domains and preserve position as well as the Hamiltonian. A unitary <span class="math inline">\(U\)</span> should obey <span class="math inline">\(U\mathcal D(H)=\mathcal D(H')\)</span>, <span class="math inline">\(UH=H'U\)</span>, and <span class="math inline">\(UP(B)=P'(B)U\)</span>. The 2014 preprint develops this quantum-triple viewpoint. Our local frame and circle transformations additionally preserve the displayed guiding current.</p>
+</section>
+<section aria-labelledby="gaps"><h2 id="gaps">Which gaps are supplied elsewhere, and which remain?</h2>
+  <table><caption>Claims and the evidence needed</caption><thead><tr><th scope="col">Issue</th><th scope="col">Established input or present limit</th></tr></thead><tbody>
+    <tr><th scope="row">Frame-independent bundle current</th><td>Derived from metric compatibility; developed in the thesis and in the 2006/2007 published papers. <a href="bohmian-bundles.html#frames">The frame calculation</a> states the conventions.</td></tr>
+    <tr><th scope="row">Self-adjoint manifold Hamiltonians</th><td>Substantial sufficient conditions in Braverman–Milatovic–Shubin; boundaries and singular/incomplete cases must satisfy a separate theorem or specified extension construction.</td></tr>
+    <tr><th scope="row">Global Bohmian trajectories</th><td>Berndl and coauthors (1995) and Teufel–Tumulka provide rigorous sufficient conditions and applications. Their stated domains/current estimates must be verified; the topology papers do not prove this for every manifold/bundle model.</td></tr>
+    <tr><th scope="row">Beyond the thesis's characters</th><td>Unitary matrix and holonomy-twisted factors are in the 2006/2007 papers, with parallelity, composition, and potential-compatibility conditions.</td></tr>
+    <tr><th scope="row">Arbitrary cut-independent extensions</th><td>The circle is established explicitly here. The manuscript's general classification needs domain/gluing repairs; no blanket resolution is inferred from the later cover-based papers.</td></tr>
+    <tr><th scope="row">A unique quantization from geometry</th><td>Not supplied by Bohmian guidance, the classical-observable obstruction theorems, or an unspecified covariant differential operator.</td></tr>
+  </tbody></table>
+  <p>For existence, read <a href="https://arxiv.org/abs/quant-ph/9503013"><cite>On the Global Existence of Bohmian Mechanics</cite></a> and <a href="https://arxiv.org/abs/math-ph/0406030"><cite>Simple Proof for Global Existence of Bohmian Trajectories</cite></a>, especially the latter's current theorem and Schrödinger applications (§§3 and 5). We use them as analytic sources, not as unrestricted manifold theorems.</p>
+  <p><strong>Continue:</strong> <a href="bohmian-manifolds.html#sphere">check the sphere mode</a>, <a href="bohmian-bundles.html#published">identify the actual publications</a>, or <a href="holonomy-exploration.html">compare equivalent descriptions on a circle</a>. For a new model, identify its bundle, connection, potential, domain, state regularity, and global flow estimates before claiming it has been fully established.</p>
+</section>
+    </article>
+    <footer><nav class="reading-path" aria-label="Read about quantum geometry"><ul><li><a href="bohmian-manifolds.html">Manifolds</a></li><li><a href="bohmian-bundles.html">Vector bundles</a></li><li><a href="topological-factors.html">Topological factors</a></li><li><a href="quantum-manifolds-review.html" aria-current="page">Compare approaches</a></li><li><a href="holonomy-exploration.html">Explore a circle</a></li></ul></nav></footer>
+  </main>
+</body>
+</html>

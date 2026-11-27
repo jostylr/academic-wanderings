@@ -358,7 +358,7 @@ article h1 {
   width: 100%;
 }
 
-.browse-controls select {
+.browse-controls select, #holonomy-lab select {
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='m1 1 5 5 5-5' fill='none' stroke='%23708090' stroke-width='2'/%3E%3C/svg%3E");
   background-position: right 0.85rem center;
@@ -516,6 +516,42 @@ button:hover {
 
 .next-reading h2 {
   font-size: 1.25rem;
+}
+
+.circle-diagram {
+  color: var(--ink);
+  display: block;
+  margin-block: 1rem;
+  width: 100%;
+}
+
+.circle-diagram text {
+  fill: currentColor;
+  font: 16px system-ui, sans-serif;
+}
+
+.circle-cut {
+  stroke: var(--ink);
+  stroke-dasharray: 5 4;
+  stroke-width: 2;
+}
+
+.circle-start {
+  fill: var(--panel);
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+
+#holonomy-lab select {
+  background-color: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: 0.25rem;
+  color: var(--ink);
+  font: inherit;
+  margin-block: 0.4rem 1rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 2.25rem 0.5rem 0.65rem;
+  width: 100%;
 }
 
 @media (max-width: 42rem) {
