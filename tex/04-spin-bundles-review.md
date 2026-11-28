@@ -83,6 +83,24 @@ new web treatments and source checks, not repairs of all claims below.
   singular or interacting systems. Control-wiring tests use a minimal DOM adapter;
   browser preview failed because the managed relay timed out.
 
+## Species conversion musing
+
+The [conversion musing](../docs/species-conversion.html) extends the question in
+thesis §5.9, especially the potential term in (5.9b), printed p. 104. Sections
+3 and 7 of the [2005 paper](https://arxiv.org/pdf/quant-ph/0405039) address
+different issues: disjoint assignment support and an invariant fixed-count
+subbundle. Neither argument supplies dynamical selection of a preferred
+decomposition from generic initial data.
+
+For the new example, a square pulse acts on two channels of the same mass,
+charge and exchange symmetry. A diagonal conditional translation then reads
+out the resulting population through a logistic pointer packet. The cumulative
+distribution gives a unique one-dimensional trajectory for each initial
+quantile. Differentiating that quantile recovers the translating-packet current.
+The collision-induced pair conversion and search for approximately invariant
+projectors across probes are proposed investigations. Their scattering yields
+and lifetimes have yet to be calculated.
+
 ## Original editorial review
 
 Reviewed 2026-07-23. This is an editorial and mathematical triage, not a substitute for specialist peer review.
