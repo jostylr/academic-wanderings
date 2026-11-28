@@ -53,6 +53,15 @@ local geometric identities from domain and global-existence results. Source
 findings and unresolved manuscript issues are recorded in the first three TeX
 reviews; the historical manuscripts remain unchanged.
 
+The [particle identity path](docs/identical-particles.html) explains bare points,
+wave-carried species data, and effective species behavior. A second page compares
+the thesis's set-indexed and mixed-species bundles with the published construction
+and distinguishes packet selection from exchange characters. The two-point
+exploration holds the wave fixed while opposite small changes to one initial
+position produce different outgoing channel roles. It uses exact free Gaussian
+waves and an integrated identity-based current, with explicit approximation and
+subsystem-isolation limits.
+
 ## Project layout
 
 - [Web pages](docs/index.html) are written directly in HTML and use KaTeX for
@@ -98,7 +107,10 @@ The site check covers local links, fragments, module imports, catalogue coverage
 and filter metadata. The Node tests check catalogue filtering/sorting and compare
 the quantum and transport experiments against independent calculations, including
 matrix exponentials, polygon area, continuity/action residuals, circle boundary
-conditions and gauge transformations, and the sphere's metric Laplacian. For changed
+conditions and gauge transformations, and the sphere's metric Laplacian. Identity
+tests additionally check the wave PDE, permutation covariance, continuity,
+trajectory convergence, and mixed-statistics gluing. A minimal DOM adapter checks
+the species experiment's actual IDs and handlers; it does not replace browser QA. For changed
 pages, also inspect KaTeX rendering, filters, history navigation, controls,
 small-screen layout, both color schemes, and the no-JavaScript reading path in a
 browser when preview is available.
