@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A musing on stable species, reversible channel mixing, and collision-induced conversion with an interactive two-state pulse and position readout.">
+  <title>How long does a particle species last? · Academic Wanderings</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css"
+    integrity="sha384-WwGtaC6ywCHxA5cstpj/3+xIZvTez8dq2IcBQaXRkenHZ7FVVq1ZROtURwfbtTlG" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.js"
+    integrity="sha384-a1WQdjRj162i159OYq041X6I4K8NenkrI09LlPmiHg0YOb7CR+wJOraXwK9abpnE" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="math.js"></script>
+  <script type="module" src="conversion-lab.mjs"></script>
+</head>
+<body>
+  <main class="page page--article">
+    <nav class="site-header" aria-label="Site"><a class="site-title" href="index.html">Academic Wanderings</a><a href="browse.html">Browse all pages</a></nav>
+    <nav class="page-context" aria-label="Page topics"><a class="topic-label" href="identical-particles.html">Particle identity</a><a class="tag" href="browse.html?category=musings">Musings</a><a class="tag" href="browse.html?tag=identical-particles">Identical particles</a><a class="tag" href="browse.html?tag=species">Species</a><a class="tag" href="browse.html?tag=vector-bundles">Vector bundles</a></nav>
+    <article class="taylor-article">
+      <header><p class="eyebrow">Musings · Particle identity</p><h1>How long does a particle species last?</h1></header>
+<p class="lede">Imagine a chamber that sorts a cloud of points into two outgoing beams. Run either beam through a second copy of the chamber and it takes the same exit again. Now put a small interaction region between the chambers. Can points from the first beam begin to turn up reliably in the second? What would justify calling this a change of species?</p>
+<p>In an identity-based Bohmian universe the points have positions. The wave and its Hamiltonian supply the different ways those points can move. I would give a species name to a pattern that survives a battery of tests: preparation, free propagation, scattering, and sorting again. That suggests an experiment one can do on a proposed universe before deciding which parts of its bundle deserve species names.</p>
+
+<h2 id="paper">What the paper keeps stable</h2>
+<p>The fixed-count example makes the sense of “diagonal” precise. In §7 of the 2005 paper, a one-point internal space splits as \(W=\bigoplus_s W_s\). Over an unordered configuration \(q\), the bosonic fiber takes a tensor product of copies of \(W\), indexed by the positions in \(q\). The authors choose a subbundle with specified counts \((N_A,N_B,\ldots)\). Their Schrödinger evolution preserves that subbundle. It may act richly within it. The choice builds in conserved populations from the start. <a href="https://arxiv.org/pdf/quant-ph/0405039#page=9">Goldstein, Taylor, Tumulka, and Zanghì, §§6–7</a> · <a href="https://doi.org/10.1088/0305-4470/38/7/012">journal article</a>.</p>
+<p>The paper gives a second ingredient in §3. When only one assignment has appreciable wave density at the actual configuration, the point in the A packet follows nearly the A guiding velocity. Near overlap, several assignments contribute. Thus a system can have exactly one A and one B while the species role along a given worldline is ambiguous. The earlier experiment lets you change that assignment by moving the initial configuration. <a href="species-exploration.html">Explore assignment at fixed counts</a>.</p>
+<p>The thesis offers room for a different question. In §5.9 the fiber includes a sum over maps assigning types to positions, and equation (5.9b) includes the component \((V_q\psi)^\nu\). A Hermitian potential on that larger fiber can have matrix elements between different population blocks if the symmetries allow them. The conversion model below explores this freedom. The paper’s fixed-count construction establishes stability for its chosen Hamiltonian. The thesis supplies the bundle language for varying that choice. <a href="https://jostylr.com/pdfs/thesis.pdf#page=115">Taylor, thesis, printed p. 104</a> · <a href="species-bundles.html">Species bundles and exchange characters</a>.</p>
+
+<h2 id="hypothesis">How might one discover the species?</h2>
+<p><strong>Hypothesis.</strong> Look for a small set of subspaces that many ordinary interactions preserve approximately, and that at least one ordinary interaction can distinguish. For example, repeated weak fields might consistently sort waves into the same two ranges of deflection. The two resulting preparations should predict the outcome of a different probe, such as scattering from a target. This last test matters: if all probes act as the identity on a degenerate internal space, any choice of axes fits the observations equally well.</p>
+<p>In bundle language, a candidate channel is an orthogonal projector \(P(q)\) that transforms consistently between frames. Parallel transport must also respect the splitting to the required accuracy. Even a diagonal potential can accompany a kinetic term that mixes the proposed channels through the connection. An exchange loop that permutes two proposed subspaces defeats a path-independent global name for either one, though a larger block or a local preparation can still be meaningful. <a href="topological-factors.html">Holonomy and exchange</a>.</p>
+<p>There is a timescale to test. Suppose \(P\) is time-independent, preserves the Hamiltonian domain, and the off-block operator is bounded on the model space. For a normalized state initially in \(P\), unitary evolution gives</p>
+<div class="math-display">\[\|(1-P)\psi(T)\|\ \leq\ \frac{1}{\hbar}\int_0^T\|(1-P)H(t)P\|\,dt.\]</div>
+<p>To see why, evolve the complementary component with its own diagonal block. Its source is \((1-P)HP\psi\), and its propagator preserves norm. This argument assumes the diagonal blocks generate unitary evolutions. Squaring the bound gives a sufficient leakage estimate. A weak coupling can accumulate over a long observation, and rapid phase cancellation can make the bound loose. For unbounded derivative couplings one needs state-dependent estimates on the prepared states.</p>
+<p>A universe-wide search could fit candidate projectors using one set of low-energy preparations, then measure leakage and predictive accuracy on another set. At occupied configurations, check that a single assignment dominates the guiding current and that the outgoing packets leave distinct, lasting records. A decomposition that changes with each probe would fail this test. Large environmental records may prolong effective separation if the alternative packets have negligible overlap in environment configuration space. Unitary evolution alone gives no general attraction to a diagonal form. <a href="identical-particles.html#systems">Effective subsystems</a>.</p>
+
+<p>Suppose the same A response recurs at many distant points. A sorter can report “three A, two B” and subsequent low-energy scattering can depend only on these groups and their positions. In a sector with a fixed assignment, permutations within each group then act with its inherited exchange law. This is how an observer could describe several species, each made up of identical particles. The masses, response operators, and allowed exchange laws still require a microscopic model. A population prepared across many patterns could retain all of them if its Hamiltonian preserved every assignment and its dynamics never sorted them into different records.</p>
+
+<h2 id="interaction">An interaction that can change the counts</h2>
+<p>Take two orthogonal, scalar internal states A and B with the same exchange statistics, equal kinetic mass, and the same exactly conserved charges. On a patch where the channels are identified, a driven region can supply the Hermitian interaction</p>
+<div class="math-display">\[V_{\rm mix}(q,t)=\frac{\hbar\Omega(t)}{2}\sum_{x\in q} f(x)
+  \bigl(|B\rangle\langle A|+|A\rangle\langle B|\bigr)_x .\]</div>
+<p>Each term acts on the factor at a location. A real profile \(f\) selects the chamber, so interchanging numerical names leaves the operator unchanged. With \(N_B=\sum_x P_{B,x}\), the coupling has matrix elements between eigenspaces of \(N_B\) differing by one. Total point number stays fixed. On a general bundle the raising term must be a well-defined section of \(\operatorname{Hom}(W_A,W_B)\), with its adjoint supplying the reverse process. A local matrix written in one frame becomes physical only when its transformations on overlaps agree.</p>
+<p>For a block-preserving kinetic term the local B probability gains a source \(2\operatorname{Im}(\psi_B^*V_{BA}\psi_A)/\hbar\), in addition to its spatial flux. A has the opposite source. This is amplitude transfer at fixed position. The Bohmian position still follows the total current divided by total density. A detector can register the changed response only once the interaction correlates the internal channel with a position record.</p>
+
+<h2 id="pulse">A pulse and a second sorting chamber</h2>
+<p>Follow one occupied, isolated packet through a uniform drive with \(f=1\). Spectators lie outside the illuminated region. In this idealization the common spatial evolution factors out. Prepare A and wait one time unit. From \(t=1\) to \(2\) apply \(H_{\rm int}=\hbar(\Delta\sigma_z+\Omega\sigma_x)/2\) in the A,B response basis, with constant drive \(\Omega\) and detuning \(\Delta\). For elapsed pulse time \(s\), the B population is</p>
+<div class="math-display">\[p_B(s)=\frac{\Omega^2}{\Omega^2+\Delta^2}
+ \sin^2\!\left(\tfrac{s}{2}\sqrt{\Omega^2+\Delta^2}\right).\]</div>
+<p>The squared Pauli combination is \((\Omega^2+\Delta^2)I\), so exponentiating gives the displayed sine directly. With both parameters zero the initial state persists. After the drive, diagonal evolution preserves the populations. The apparatus then couples each channel to a different pointer displacement. This is an adaptation of the standard two-level transition calculation. <a href="https://farside.ph.utexas.edu/teaching/qmech/lectures/node113.html">Fitzpatrick, Two-State System</a>.</p>
+<section class="experiment" id="conversion-lab" aria-labelledby="lab-heading" hidden>
+<h3 id="lab-heading">Follow one pointer through the readout</h3>
+<label for="area">Drive Ω in units of π <output for="area">1.00</output></label>
+<input id="area" type="range" min="0" max="2" step="0.05" value="1">
+<label for="detuning">Detuning Δ in units of π <output for="detuning">0.00</output></label>
+<input id="detuning" type="range" min="0" max="3" step="0.05" value="0">
+<label for="quantile">Initial pointer quantile <output for="quantile">0.50</output></label>
+<input id="quantile" type="range" min="0.03" max="0.97" step="0.01" value="0.5">
+<label for="elapsed">Time <output for="elapsed">5.00</output></label>
+<input id="elapsed" type="range" min="0" max="5" step="0.02" value="5">
+<canvas aria-label="Pointer position versus time, with guides at the start and end of the pulse and readout" role="img" style="width:100%;height:13rem"></canvas>
+<p>Horizontal axis: time. Vertical axis: pointer position. Negative positions favor the A exit after sorting. Positive positions favor B.</p>
+<p id="pulse-reading" role="status"></p>
+</section>
+<ol>
+<li><strong>Conversion and persistence.</strong> Set the drive to 1 in units of π and detuning to zero. At time 1 the B population is zero, at 1.5 it is one half, and at 2 it is one. The pointer has stayed still throughout the pulse. Scrub forward and it moves eight units right, recording B. The subsequent plateau lasts as long as the model keeps the mixer off and holds the record.</li>
+<li><strong>Two different exits for one preparation.</strong> Set the drive to 0.5 and keep resonance. Both populations finish at one half. At time 5 try quantiles 0.48 and 0.52. The same outgoing wave guides the two nearby initial pointer positions to opposite sides. At exactly 0.50 the symmetric pointer remains at the midpoint with ambiguous local weight.</li>
+<li><strong>A failed conversion.</strong> Return the drive to 1 and set detuning to 3. Even with a different pulse duration, the B population can reach at most one tenth. At resonance a drive of 2 instead brings the population all the way through B and back to A before readout. An intermediate probe would constitute a different experiment.</li>
+</ol>
+<details><summary>How the plotted pointer trajectory is calculated</summary>
+<p>The ideal pointer has initial cumulative distribution \(F(y)=(1+e^{-y})^{-1}\). From time 2 to 4 the readout Hamiltonian is \(4(P_B-P_A)p_y\), with \(p_y=-i\hbar\partial_y\). It translates the A and B densities by \(-d\) and \(+d\), where \(d=4(t-2)\). Earlier \(d=0\), and after time 4 we freeze it at 8. The plotted point solves</p>
+<div class="math-display">\[(1-p_B)F(Y+d)+p_B F(Y-d)=u,\qquad 0&lt;u&lt;1.\]</div>
+<p>The left side increases strictly with \(Y\). Holding the initial quantile \(u\) fixed and differentiating during readout yields \(\dot Y=4(\rho_B-\rho_A)/(\rho_A+\rho_B)\), the guiding law for the translating densities. Thus the curve follows an actual model pointer. The two displayed weights distinguish total B population from the B share of the density at that pointer. Finite displacement leaves overlapping tails. This closed calculation idealizes the sorter and drive as controls. A full universe model would have to include their motions and energy budgets.</p></details>
+
+<h2 id="collisions">Could the same thing happen inside a closed universe?</h2>
+<p>A candidate internal trigger is a short-range collision. Give two nearby points an interaction proportional to \(g(|x-y|)|BB\rangle\langle AA|\) plus its adjoint, summed over unordered pairs. If the channel charges and exchange symmetries match, the matrix element converts a pair while preserving permutation symmetry. Outside the interaction range the channel populations are again conserved. A level gap must be paid from relative kinetic energy or another degree of freedom. An incoming packet below an endothermic scattering threshold cannot populate that open outgoing channel. Above threshold, a nonzero amplitude still depends on overlap, duration and scattering dynamics.</p>
+<p>If A and B have different exactly conserved charges, a lone flip is forbidden by charge conservation. A reaction \(A+C\leftrightarrow B+D\) can instead have a nonzero matrix element when total charges agree and energy, momentum and exchange symmetry permit it. The extra degrees of freedom can carry away energy and a record of the reaction. Likewise, a scalar, parallel coupling between inequivalent exchange-character lines would have to intertwine their loop phases and hence vanishes. A proposed change involving different statistics needs a compatible total sector and explicit additional degrees of freedom. <a href="species-bundles.html#mixed">Subset sign lines and total exchange symmetry</a>.</p>
+<p><strong>A testable conjecture for a toy universe.</strong> Prepare two dilute beams, allow one close encounter, and sort the outgoing packets twice. Vary the incoming relative energy across the channel threshold. Record the fraction of equilibrium configurations yielding two B exits and the fraction that repeat those exits in the second sorter. A threshold-dependent conversion yield together with high repeatability far from the target would support long-lived species with a collision-induced conversion. Substantial reversals on the second sort would instead point to unfinished separation or continued mixing. Computing those yields requires a coupled-channel scattering model. The pulse above solves the driven case.</p>
+<p>The open question is which bundle decompositions an observer could infer from many such encounters. A generic complicated bundle supplies plenty of amplitudes. Repeatedly finding the same nearly invariant, experimentally distinguishable subspaces across different preparations would give those amplitudes a reason to be called species.</p>
+    </article>
+    <footer><nav class="reading-path" aria-label="Read about particle identity"><ul><li><a href="identical-particles.html">Identity and emergence</a></li><li><a href="species-bundles.html">Bundles and characters</a></li><li><a href="species-exploration.html">Jiggle two points</a></li></ul></nav></footer>
+  </main>
+</body>
+</html>
