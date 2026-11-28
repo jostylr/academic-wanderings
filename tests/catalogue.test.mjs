@@ -43,6 +43,16 @@ test("quantum geometry connects three explanations, a review, and a holonomy exp
   assert.ok(filterAndSort(entries, { tag: "manifolds" }).some(entry => entry.topic !== "quantum-geometry"));
 });
 
+test("particle identity links its bundle explanation to an exploration through species tags", () => {
+  const topic = filterAndSort(entries, { topic: "particle-identity", tag: "species" });
+  for (const title of ["Particles without permanent species labels", "Species, bundles, and exchange characters"]) {
+    assert.ok(topic.some(entry => entry.title === title && entry.category === "explanation"));
+  }
+  assert.ok(filterAndSort(topic, { category: "exploratory", tag: "wave-packets" })
+    .some(entry => entry.title === "Jiggle a configuration, change its outgoing role"));
+  assert.ok(filterAndSort(entries, { tag: "vector-bundles" }).some(entry => entry.topic === "quantum-geometry"));
+});
+
 test("topic, category, tag, and all search terms combine as intersections", () => {
   const result = filterAndSort(entries, { topic: "dirac", category: "exploratory", tag: "spinors", q: "PHASE current" });
   assert.ok(result.some(entry => entry.title === "Read a velocity from a Dirac spinor"));

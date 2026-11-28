@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Two exact free Gaussian channels and a permutation-invariant guiding law: nearby initial configurations can give a tracked point different outgoing species roles.">
+  <title>Jiggle a configuration, change its outgoing role · Academic Wanderings</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css"
+    integrity="sha384-WwGtaC6ywCHxA5cstpj/3+xIZvTez8dq2IcBQaXRkenHZ7FVVq1ZROtURwfbtTlG" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.js"
+    integrity="sha384-a1WQdjRj162i159OYq041X6I4K8NenkrI09LlPmiHg0YOb7CR+wJOraXwK9abpnE" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="math.js"></script>
+  <script type="module" src="species-exploration.mjs"></script>
+</head>
+<body>
+  <main class="page page--article">
+    <nav class="site-header" aria-label="Site"><a class="site-title" href="index.html">Academic Wanderings</a><a href="browse.html">Browse all pages</a></nav>
+    <nav class="page-context" aria-label="Page topics"><a class="topic-label" href="identical-particles.html">Particle identity</a><a class="tag" href="browse.html?category=exploratory">Exploratory</a><a class="tag" href="browse.html?tag=identical-particles">Identical particles</a><a class="tag" href="browse.html?tag=species">Species</a><a class="tag" href="browse.html?tag=wave-packets">Wave packets</a><a class="tag" href="browse.html?tag=probability-current">Probability current</a></nav>
+    <article class="taylor-article">
+      <header><p class="eyebrow">Exploratory · Particle identity</p><h1>Jiggle a configuration, change its outgoing role</h1></header>
+
+<p class="lede">Begin with two points inside the same overlapping spatial cloud. Keep the wave fixed. A small sideways change in one point's initial position can send its continuous trajectory into the other outgoing packet.</p>
+<p>This experiment implements the two-assignment current in <a href="identical-particles.html#law">the identity explanation</a>. It uses two spinless channels in a physical plane, one A and one B, with \(\hbar=1\), masses \(m_A=1,m_B=4\), initial position standard deviation \(\sigma=0.7\), and packet-center velocities \(u_A=(2,0),u_B=(-2,0)\). These masses and velocities are inputs. The experiment exhibits effective channel behavior; it does not create new particles, derive the species spectrum, or simulate exchange statistics.</p>
+<section class="experiment" id="species-lab" hidden aria-labelledby="lab-title">
+<h2 id="lab-title">Move one initial point</h2>
+<label for="species-jiggle">Initial horizontal displacement δ <output id="species-jiggle-value" for="species-jiggle">0.040</output></label>
+<input id="species-jiggle" type="range" min="-0.12" max="0.12" step="0.002" value="0.04">
+<div class="experiment-actions"><button id="species-negative" type="button">Small negative jiggle</button><button id="species-positive" type="button">Small positive jiggle</button><button id="species-balanced" type="button">Balanced configuration</button></div>
+<label for="species-time">Time snapshot <output id="species-time-value" for="species-time">3.00</output></label>
+<input id="species-time" type="range" min="0" max="3" step="0.01" value="3">
+<p><label class="checkbox-label"><input id="species-compare" type="checkbox" checked> Show the counterfactual run with −δ as dashed paths</label></p>
+<svg id="species-diagram" viewBox="0 0 760 370" role="img" aria-labelledby="species-title species-desc">
+<title id="species-title">Two points guided by separating wave channels</title><desc id="species-desc">Packet contours and trajectories in physical two-dimensional space. A filled round marker tracks one point; a square tracks the other. Dashed paths show the opposite initial jiggle.</desc>
+<line x1="28" y1="185" x2="732" y2="185" class="diagram-guide"/>
+<line x1="380" y1="28" x2="380" y2="342" class="diagram-guide"/>
+<ellipse id="species-cloud-a" class="species-cloud species-cloud-a" cx="380" cy="185" rx="43" ry="43"/>
+<ellipse id="species-cloud-b" class="species-cloud species-cloud-b" cx="380" cy="185" rx="43" ry="43"/>
+<path id="species-shadow-0" class="species-path species-tracked species-shadow"/><path id="species-shadow-1" class="species-path species-other species-shadow"/>
+<path id="species-path-0" class="species-path species-tracked"/><path id="species-path-1" class="species-path species-other"/>
+<circle id="species-point-0" class="species-tracked" r="6"/><rect id="species-point-1" class="species-other" width="10" height="10"/>
+<text id="species-label-a" x="550" y="45">A channel</text><text id="species-label-b" x="150" y="45">B channel</text>
+<text x="732" y="205" text-anchor="end">x</text><text x="393" y="38">y</text>
+</svg>
+<p>Solid round marker: tracked point, initially \((\delta,-0.45)\). Square: other point, initially \((0,0.45)\). Shapes and path colors follow trajectories, never permanent species. Packet contours mark two position standard deviations, not hard support boundaries. The display scale stays fixed.</p>
+<dl class="lab-readings" aria-live="polite" aria-atomic="true">
+<div><dt>A weight at tracked point now</dt><dd id="species-weight"></dd></div><div><dt>Tracked-point velocity (x, y)</dt><dd id="species-velocity"></dd></div>
+<div><dt>At t = 3, selected run</dt><dd id="species-outcome"></dd></div><div><dt>At t = 3, opposite jiggle</dt><dd id="species-counterfactual"></dd></div>
+<div><dt>Point separation now</dt><dd id="species-separation"></dd></div><div><dt>Final unwanted assignment weight</dt><dd id="species-tail"></dd></div>
+<div><dt>Tracked speed error versus dominant channel now</dt><dd id="species-error"></dd></div>
+</dl>
+<p id="species-balanced-note" hidden>The exactly balanced configuration stays on a symmetry boundary with equal assignment weights. No outgoing species is selected for the tracked trajectory in this special run.</p>
+<button id="species-reset" type="button">Reset experiment</button>
+</section>
+<section aria-labelledby="predictions"><h2 id="predictions">What to look for</h2>
+<ol><li>Compare the two small-jiggle buttons at \(t=3\). Only the initial x-coordinate of the round point changes, from \(-0.04\) to \(+0.04\). The same wave channels produce B-like and A-like outgoing motion, respectively.</li>
+<li>Scrub time back to zero. Both spatial densities initially coincide and both assignment weights are one half. Distinct outgoing packet phases and masses are already present in the wave. No point is secretly allocated a channel by the display.</li>
+<li>Choose the balanced configuration. It remains equally weighted: the model does not promise that every initial condition acquires a definite species role.</li>
+<li>Compare \(\delta=0.002\) and \(\delta=0.12\). Later dominance can be sharp while the finite-time flow remains continuous in the initial data. The outcome label uses a 99% threshold; it is not a discontinuity in the differential equation.</li></ol>
+<p>Reference calculation at \(t=3\), rounded to three decimals: with \(\delta=+0.04\), the round point is near \((3.174,-1.369)\); with \(\delta=-0.04\), near \((-4.855,-0.600)\). The unwanted assignment weights are below \(10^{-20}\) in these runs. At exactly zero displacement, its position is near \((-1.804,-0.906)\) with weight \(1/2\). These are numerical ODE results for specified configurations, not experimental data or probabilities for an ensemble of jiggles.</p>
+</section>
+<section aria-labelledby="waves"><h2 id="waves">The waves are exact free solutions</h2>
+<p>For each channel \(s\), set \(r_s=x-u_st\), \(\tau_s=t/(2m_s\sigma^2)\), and use the normalized two-dimensional Gaussian</p>
+<div class="math-display">\[f_s(x,t)=\frac{1}{\sqrt{2\pi\sigma^2}(1+i\tau_s)}
+\exp\!\left[-\frac{|r_s|^2}{4\sigma^2(1+i\tau_s)}+im_s\left(u_s\cdot x-\frac{|u_s|^2t}{2}\right)\right].\]</div>
+<p>It satisfies \(i\partial_tf_s=-\Delta f_s/(2m_s)\). Its density and guiding velocity are</p>
+<div class="math-display">\[a_s(x,t)=\frac{\exp[-|r_s|^2/(2s_s^2)]}{2\pi s_s^2},\quad s_s^2=\sigma^2(1+\tau_s^2),\qquad
+U_s(x,t)=u_s+\frac{t\,r_s}{4m_s^2\sigma^4+t^2}.\]</div>
+<p>The product \(\psi(x,y,t)=f_A(x,t)f_B(y,t)\) solves its unequal-mass free two-body equation. Its two assignment components give \(D=a_A(x)a_B(y)+a_B(x)a_A(y)\), and the actual two-point velocity is the weighted law on the explanation page. A weight is a share of this local current construction; it is not a sampled hidden species or, by itself, a probability for every possible later measurement.</p>
+<p>The plot shows physical space. The full configuration has four coordinates, and each point's assignment weight depends on both positions. “Two packets have separated” must be understood together with this configuration dependence.</p>
+</section>
+<section aria-labelledby="verification"><h2 id="verification">What the computation establishes</h2>
+<p>The wave evolution above is analytic. Trajectories use fourth-order Runge–Kutta with time step \(0.005\); the time control chooses the nearest computed snapshot. Independent finite differences check the Schrödinger equations, phase-gradient velocities, and summed continuity equation. Step-halving checks verify the quoted trajectories and their separation.</p>
+<p>In this particular model, the Gaussian assignment density is strictly positive. The velocity is smooth even across the coincidence set and is bounded by \(C_T(1+|q|)\) on each finite time interval. This excludes finite-time escape. The coincidence set is invariant by permutation symmetry, so uniqueness also prevents a distinct-point solution from reaching it in finite time. These properties justify a global flow for this free Gaussian model; they do not settle singular or interacting models.</p>
+<p>Gaussian packets retain tails, and the perfectly balanced solution never becomes a pure assignment. There is no collapse of the full wave. For a laboratory subsystem, stable environmental records and decoupling would need to be added; see <a href="identical-particles.html#systems">the subsystem discussion</a>.</p>
+<p>Here the channel Hamiltonians are already free and decoupled. When one assignment dominates over an interval, the factorized packets supply approximately independent one-point systems; the displayed speed error measures the tracked point's instantaneous departure from its dominant channel law. Both opposite-jiggle runs retain one A and one B channel occupation. What changes is which worldline acquires each outgoing role.</p>
+</section>
+<section aria-labelledby="continue"><h2 id="continue">Where this leads</h2>
+<p>The two-assignment setup is the thesis's §5.9 construction specialized to exact free packets. The related published formulation is Goldstein, Taylor, Tumulka, and Zanghì's <a href="https://arxiv.org/pdf/quant-ph/0405039"><cite>Are All Particles Identical?</cite></a> (2005), §3, equations (10)–(11). The packet parameters and numerical example here are an independent worked example.</p>
+<p>A useful next experiment would bring separated channels back into overlap and test when species-like tracking ceases to be effective. A third point introduces more assignments and collective dependence. Neither extension would derive masses or exchange signs: <a href="species-bundles.html#characters">the bundle explanation distinguishes those inputs from packet selection</a>.</p>
+</section>
+
+    </article>
+    <footer><nav class="reading-path" aria-label="Read about particle identity"><ul><li><a href="identical-particles.html">Identity and emergence</a></li><li><a href="species-bundles.html">Bundles and characters</a></li><li><a href="species-exploration.html" aria-current="page">Jiggle two points</a></li></ul></nav></footer>
+  </main>
+</body>
+</html>

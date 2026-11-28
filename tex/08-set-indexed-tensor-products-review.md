@@ -1,5 +1,22 @@
 # Review: The Set-Indexed Tensor Product
 
+## Web application, November 27, 2026
+
+The new [species-bundle explanation](../docs/species-bundles.html#tensor) uses
+finite-set tensor products by their universal multilinear property, distinguishes
+pure tensors from general entangled vectors, and treats reindexing as canonical
+isomorphism. Ordinary reindexing contributes no fermionic sign. The sign lines
+are additional bundle data.
+
+It applies the standard distributivity isomorphism to
+`⊗_{x∈q}(⊕_s W_{s,x})`, summing once over assignments `ν:q→{1,…,K}`.
+Dimensions and a fixed-population example are checked independently in the
+identity tests. This is a reusable exposition of standard algebra, not a new
+tensor-product result. The legacy manuscript remains unchanged, with its
+definition and notation issues below still requiring revision.
+
+## Original editorial review
+
 Reviewed 2026-07-23. This is an editorial and mathematical triage, not a substitute for specialist peer review.
 
 ## Verdict

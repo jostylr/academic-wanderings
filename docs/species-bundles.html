@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The thesis’s set-indexed and mixed-species bundles, their relation to the published models, and what packet separation does not derive.">
+  <title>Species, bundles, and exchange characters · Academic Wanderings</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.css"
+    integrity="sha384-WwGtaC6ywCHxA5cstpj/3+xIZvTez8dq2IcBQaXRkenHZ7FVVq1ZROtURwfbtTlG" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/katex.min.js"
+    integrity="sha384-a1WQdjRj162i159OYq041X6I4K8NenkrI09LlPmiHg0YOb7CR+wJOraXwK9abpnE" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.1/dist/contrib/auto-render.min.js"
+    integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="math.js"></script>
+</head>
+<body>
+  <main class="page page--article">
+    <nav class="site-header" aria-label="Site"><a class="site-title" href="index.html">Academic Wanderings</a><a href="browse.html">Browse all pages</a></nav>
+    <nav class="page-context" aria-label="Page topics"><a class="topic-label" href="identical-particles.html">Particle identity</a><a class="tag" href="browse.html?category=explanation">Explanation</a><a class="tag" href="browse.html?tag=identical-particles">Identical particles</a><a class="tag" href="browse.html?tag=species">Species</a><a class="tag" href="browse.html?tag=vector-bundles">Vector bundles</a><a class="tag" href="browse.html?tag=topology">Topology</a></nav>
+    <article class="taylor-article">
+      <header><p class="eyebrow">Explanation · Particle identity</p><h1>Species, bundles, and exchange characters</h1></header>
+
+<p class="lede">The bundle keeps the alternatives that an unordered set of positions leaves open. Its components can describe different ways to distribute species among those positions. Exchange statistics adds another kind of information: how amplitudes are transported around loops.</p>
+<p>Continue from <a href="identical-particles.html">particles without permanent species labels</a>. This page reconstructs the thesis's <a href="https://jostylr.com/pdfs/thesis.pdf#page=93">§5.3</a>, <a href="https://jostylr.com/pdfs/thesis.pdf#page=112">§5.9</a>, and Appendix A, with explicit distinctions among the constructions. For connections and Hermitian currents, use <a href="bohmian-bundles.html">the general bundle explanation</a>.</p>
+<section aria-labelledby="assignments"><h2 id="assignments">A bundle of possible assignments</h2>
+<p>For a collision-free unordered configuration \(q\) of \(N\) points, let \(B_q\) be the set of bijections \(\nu:q\to\{1,\ldots,N\}\). A scalar ordered wave can be packaged as</p>
+<div class="math-display">\[E_q=\bigoplus_{\nu\in B_q}\mathbb C,\qquad
+\Phi_\nu(q)=\psi(\nu^{-1}(1),\ldots,\nu^{-1}(N)).\]</div>
+<p>There are \(N!\) components. With the orthogonal-sum Hermitian product and quotient volume, this map preserves the Hilbert norm. No additional \(1/N!\) factor is used here. Along a collision-free path, a temporary numbering follows the moving points. Around an exchange loop the components can be permuted: the connection is flat but can have nontrivial holonomy.</p>
+<p>For the two-channel product example, the components are \(f_A(x)f_B(y)\) and \(f_B(x)f_A(y)\). A single actual point is not assigned one component as an additional hidden variable. All components contribute to its guiding current.</p>
+<p>The published 2005 paper, §§4–5, contains this labeling bundle. Its §7 also gives a direct tensor-of-internal-spaces construction for bosons. Thus the vector-bundle perspective is present in the publication as well as in the thesis.</p>
+</section>
+<section aria-labelledby="tensor"><h2 id="tensor">The thesis starts with internal spaces at locations</h2>
+<p>Let the one-point amplitude bundle over physical space be an orthogonal direct sum \(W=\bigoplus_{s=1}^K W_s\). Each \(W_s\) can have its own compatible connection and internal dimension \(d_s\). For now take bosonic reindexing, with no exchange signs. The unordered fiber is</p>
+<div class="math-display">\[\mathcal E_q=\bigotimes_{x\in q}W_x
+\cong\bigoplus_{\nu:q\to\{1,\ldots,K\}}
+\bigotimes_{x\in q}(W_{\nu(x)})_x.\]</div>
+<p>The tensor product is indexed by the finite set of positions, not permanent particle numbers. It is defined by the usual universal multilinear property. A tuple of vectors specifies a pure tensor, while a general state is a sum of pure tensors and may be entangled. Reindexing supplies canonical isomorphisms; it does not make all orderings literally the same set-theoretic object.</p>
+<p>Each \(\nu\) partitions the positions into species subsets. For one A and one B, \(W=\mathbb C_A\oplus\mathbb C_B\) gives four local tensor components AA, AB, BA, BB; restricting to one of each leaves AB and BA. For fixed populations \((N_1,\ldots,N_K)\), the general rank is</p>
+<div class="math-display">\[\operatorname{rank}\mathcal E_{(N_1,\ldots,N_K)}
+=\frac{N!}{\prod_sN_s!}\prod_s d_s^{N_s}.\]</div>
+<p>For example, two scalar A channels and one scalar B give three assignment components, according to B's location. Without fixed populations, summing each assignment once gives \((\sum_s d_s)^N\). Do not multiply each assignment by a second multinomial coefficient; that would count it again.</p>
+</section>
+<section aria-labelledby="mass"><h2 id="mass">Put the inverse mass inside the component sum</h2>
+<p>In a local ordering, and with only species-preserving kinetic terms for clarity, write the wave as \(\Phi=(\Phi_\nu)_\nu\). For positive masses and compatible connections, a model is</p>
+<div class="math-display">\[(H\Phi)_\nu=-\sum_{x\in q}\frac{\hbar^2}{2m_{\nu(x)}}\Delta_x^\nu\Phi_\nu+(V\Phi)_\nu,\qquad
+\rho=\sum_\nu h_\nu(\Phi_\nu,\Phi_\nu).\]</div>
+<p>The point velocity is specified by contraction with \(X\in T_xM\):</p>
+<div class="math-display">\[g_x(j_x,X)=\sum_\nu\frac{\hbar}{m_{\nu(x)}}\operatorname{Im}
+h_\nu(\Phi_\nu,\nabla^{\nu}_{x,X}\Phi_\nu),\qquad v_x=j_x/\rho.\]</div>
+<p>This is the species-dependent version of the common-mass current. Taking an average mass after contracting the components would give the wrong law. The formulas use inverse masses explicitly; they do not inherit the legacy draft's ambiguous mass-matrix notation. Self-adjoint realization and global flow estimates still need checking for a chosen manifold and potential.</p>
+<p>Fixed population sectors remain invariant only when the Hamiltonian preserves them. Off-diagonal interactions can mix internal assignments or change populations if the model permits it. Spatial packet separation alone does not establish a superselection rule, a conservation law, or the physical availability of coherent superpositions between every proposed species.</p>
+</section>
+<section aria-labelledby="characters"><h2 id="characters">Species character and topological character are different</h2>
+<p>A mathematical character is a one-dimensional unitary representation of a fundamental group. For collision-free unordered points in \(\mathbb R^3\), \(N\geq2\), the fundamental group is \(S_N\). Its scalar characters are the trivial character and the sign character, giving the bosonic and fermionic loop factors. Two-dimensional braid topology allows other choices. This is separate from a channel having a characteristic mass or response.</p>
+<p>For two scalar points the assignment-bundle exchange matrix is</p>
+<div class="math-display">\[P=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix},\qquad
+P\binom{1}{1}=\binom{1}{1},\qquad
+P\binom{1}{-1}=-\binom{1}{-1}.\]</div>
+<p>The two character lines can therefore be seen inside a larger assignment space. Restricting the theory to such a line requires a Hamiltonian that preserves the restriction. With species-dependent masses or interactions, that is an additional condition. For internal spin spaces, the exchange also reindexes tensor factors; the extra fermionic sign must be specified. Reindexing ordinary tensor products produces no sign by itself.</p>
+<p><strong>Packet separation does not dynamically change a topological character.</strong> It makes one local assignment or channel dominate the current. A prescribed exchange sign and a trajectory's effective species role are different pieces of structure. There is no spin-statistics theorem here.</p>
+</section>
+<section aria-labelledby="mixed"><h2 id="mixed">How can alike points support different exchange statistics?</h2>
+<p>The stronger tension appears if one wants both bosonic and fermionic species. A single common scalar character of all \(S_N\) does not supply independently chosen signs for different subsets. The thesis instead allows a larger bundle whose components record the subsets and their sign lines.</p>
+<p>For fixed species populations, pick reference subsets and their stabilizer \(G=\prod_s S_{N_s}\). Give species \(s\) a chosen sign exponent \(\epsilon_s\in\{0,1\}\):</p>
+<div class="math-display">\[\chi_G((\sigma_s)_s)=\prod_s\operatorname{sgn}(\sigma_s)^{\epsilon_s}.\]</div>
+<p>For scalar internal spaces, transporting all assignments gives the induced representation \(\operatorname{Ind}_G^{S_N}\chi_G\), of dimension \(N!/\prod_sN_s!\). This is a precise way to express the thesis's subset/sign-line construction. Internal tensor factors can be included too. It is generally a matrix-valued representation rather than one scalar character on the whole configuration space.</p>
+<p>For two fermionic A points and one bosonic B point, the three components specify B's location. A loop that returns that assignment and swaps its two A locations contributes a minus sign. Other loops can move the assignment component itself. The number of A points can be preserved while no permanent point is selected as A. With only one B there is no B–B exchange to test; two B points are needed to contrast both exchange signs in one configuration.</p>
+<p>The bare points can remain alike because these distinctions reside in wave-bundle data. But this does not derive mixed statistics from a single irreducible fundamental species with one common exchange law. The signs, sectors, and compatible Hamiltonian have been supplied. Whether a deeper theory selects them is a further question.</p>
+</section>
+<section aria-labelledby="status"><h2 id="status">What is established, and where does work remain?</h2>
+<table><caption>Keep the claims at their stated level</caption><thead><tr><th scope="col">Claim</th><th scope="col">Status</th></tr></thead><tbody>
+<tr><th scope="row">Unordered dynamics and the labeling bundle</th><td>Explicit in the published 2005 formulation; the wave still carries the physical channel data.</td></tr>
+<tr><th scope="row">Direct internal-space and mixed-species bundles</th><td>Outlined in thesis §5.9; the bosonic route is also in the 2005 paper, §7. The induced-representation description above clarifies the finite-dimensional gluing data, not all analytic dynamics.</td></tr>
+<tr><th scope="row">Fermionic line versus antisymmetric ordered waves</th><td>Developed in the 2014 preprint, with Hamiltonian and position data in the equivalence. This is not an equivalence between the different trajectories of the two 2005 formulations.</td></tr>
+<tr><th scope="row">All observed masses, charges, statistics, and stable species emerge</th><td>Not established. Those data, their conservation or mixing, and long-lived environmental records require more input.</td></tr>
+<tr><th scope="row">Thesis bundle-triviality claims</th><td>Not used here. The legacy appendix needs an independent audit; no repair of its exterior-power or parity arguments is claimed.</td></tr>
+</tbody></table>
+<p>Sources: Taylor, <cite>Connections with Bohmian Mechanics</cite> (2003), §§5.3, 5.9 and Appendix A; Goldstein–Taylor–Tumulka–Zanghì, <a href="https://arxiv.org/pdf/quant-ph/0405039"><cite>Are All Particles Identical?</cite></a> (2005), §§4–7; the same four authors, <a href="https://arxiv.org/abs/1403.3705"><cite>Fermionic Wave Functions on Unordered Configurations</cite></a> (<strong>2014 preprint</strong>), §§2–3. The <a href="topological-factors.html#nonabelian">topological-factors explanation</a> links the 2006/2007 published generalizations and states compatibility conditions for additional factors.</p>
+<p><strong>Try the local mechanism:</strong> <a href="species-exploration.html">keep the two-channel wave fixed and change one initial position</a>.</p>
+</section>
+
+    </article>
+    <footer><nav class="reading-path" aria-label="Read about particle identity"><ul><li><a href="identical-particles.html">Identity and emergence</a></li><li><a href="species-bundles.html" aria-current="page">Bundles and characters</a></li><li><a href="species-exploration.html">Jiggle two points</a></li></ul></nav></footer>
+  </main>
+</body>
+</html>
